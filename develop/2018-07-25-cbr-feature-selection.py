@@ -13,24 +13,146 @@ from matminer.utils.conversions import str_to_composition
 from matminer.featurizers.composition import ElementProperty
 
 
-# In[15]:
+# In[247]:
 
 
 df  = pd.read_pickle('../deliver/NIST_CeramicDataSet.pkl')
 df.head()
 
 
+# ### Drop non-density materials
+
+# In[223]:
+
+
+# New DataFrame containing only samples with a density value
+df_dens = df1[df1.isnull()['Density'] == False]
+
+
+# In[224]:
+
+
+df_dens.shape
+
+
+# In[225]:
+
+
+# Plot occurrence of features of the reduced dataset
+df_dens.count().sort_values()[-17:].plot.barh()
+plt.show()
+
+
+# In[226]:
+
+
+# Drop all columns that contain less than 300 entries 
+# (crystallinity is only features left with NaN)
+df_dens = df_dens.dropna(axis=1, thresh=300)
+
+
+# ### Clean up columns
+
+# #### Check if all density units are the same
+
+# In[228]:
+
+
+# Check if all density units are the same, in which case we don't need the units.
+df_dens['Density-units'].unique()
+
+
+# #### Fill missing crystallinity values
+
+# In[229]:
+
+
+# Determine number of polycrystalline / single crystal samples
+N_polyX = df_dens[df_dens['Crystallinity']=='Polycrystalline']['Crystallinity'].shape
+N_singleX = df_dens[df_dens['Crystallinity']=='Single Crystal']['Crystallinity'].shape
+print('Polycrystalline: {0}, Single crystal: {1}'.format(N_polyX, N_singleX))
+
+
+# In[230]:
+
+
+#Fill NaN values in crystallinity with polycrystalline:
+df_dens['Crystallinity'] = df_dens['Crystallinity'].fillna('Polycrystalline')
+
+
+# #### Convert density to float
+
+# In[231]:
+
+
+# Check how density values cannot simply be transformed from string to int
+
+N_errors, N_total = 0, 0
+for entry in df_dens['Density']:
+    try:
+        pd.Series([entry]).astype(float)
+    except:
+        N_errors +=1
+        print(entry)
+    finally:
+        N_total +=1
+
+print('{0} errors in {1} samples'.format(N_errors, N_total))
+
+
+# In[232]:
+
+
+#convert the troublesome density value to a good value
+df_dens.set_value(1185, 'Density', '3.16');
+df_dens.loc[1185,'Density']
+
+
+# In[233]:
+
+
+# Convert densities to float
+df_dens['Density'] = df_dens['Density'].astype(float)
+
+
+# #### Remove useless columns
+
+# In[236]:
+
+
+#Drop columns that don't contain numerical or categorical data
+df_dens = df_dens.drop(['licenses','names','references','Density-units','Density-conditions','Chemical Family'], axis=1)
+df_dens.head()
+
+
+# ### Eliminate duplicate materials
+
+# In[238]:
+
+
+N_unique_entries = len(df_dens['chemicalFormula'].unique())
+print('There are just {0} unique entries in the {1} materials.'.format(N_unique_entries,df_dens.shape[0]))
+
+
+# In[249]:
+
+
+df_dens.sort_values('chemicalFormula').head()
+
+
+# In[251]:
+
+
+df_dens = df_dens.groupby(['chemicalFormula','Crystallinity'], as_index=False).mean()
+
+
 # ### Composition with Chih-Hao's method
 
-# In[16]:
+# In[253]:
 
 
-df1 = df.copy()
-df1.loc[3892,'chemicalFormula'] = 'BN' #fix 'B-N' to 'BN'
-
-
-# In[17]:
-
+df_feat = df_dens.copy()
+df_feat.loc[3892,'chemicalFormula'] = 'BN' #fix 'B-N' to 'BN'
 
 # Parse the chemicalFormula
 def formula_decompose(formula):
@@ -90,111 +212,49 @@ def formula_reconstruct(composition, x=0.1, y=0.1, z=0.1, w=0.1):
 def formula_parser(formula):
     return formula_reconstruct(formula_decompose(formula))
 
-
-# In[18]:
-
-
-df1["flatFormula"] = df1["chemicalFormula"].map(formula_parser)
-df1.dropna(axis=1).head()
+df_feat["flatFormula"] = df_feat["chemicalFormula"].map(formula_parser)
+df_feat["composition"] = df_feat["flatFormula"].transform(str_to_composition)
 
 
-# In[19]:
+# ### Composition with Chris' method
+
+# In[255]:
 
 
-df1["composition"] =df1["flatFormula"].transform(str_to_composition)
-df1.dropna(axis=1).head()
+# Add second composition column (that doesn't have float stoichiometries; Chris' version)
+def make_chem_form_compatible(formula):
+    
+    for bad_str in ['\.','x', 'y', '\+', '\-', 'z', 'w', '\%', '\^',   # individual characters
+                 'Cordierite','hisker','Sialon', # certain words that show up in some formulas
+                 '\$(.*?)\$',    # LaTeX expressions
+                 '\((.*?)\)',    # bracketed expressions
+                 '^\d{1,2}']:    # leading numbers of 1 or 2 digits
+        formula = re.sub(bad_str, '', formula)
+    
+    return formula
+
+# Convert chemical formulas using above function
+df_feat["comp_int"] = df_feat["chemicalFormula"].transform(make_chem_form_compatible)
+
+# Converting chemical formula to composition object using
+# matminer.utils.conversions.str_to_composition
+# which in turn uses pymatgen.core.composition
+df_feat["comp_int"] = df_feat["comp_int"].transform(str_to_composition)
 
 
-# ### Drop samples without 'density'
-
-# In[126]:
+# In[256]:
 
 
-# New DataFrame containing only samples with a density value
-df_dens = df1[df1.isnull()['Density'] == False]
+df_feat.head()
 
 
-# In[127]:
+# In[261]:
 
 
-df_dens.shape
-
-
-# In[128]:
-
-
-# Plot occurrence of features of the reduced dataset
-df_dens.count().sort_values()[-17:].plot.barh()
-plt.show()
-
-
-# In[132]:
-
-
-# Drop all columns that contain less than 300 entries 
-# (crystallinity is only features left with NaN)
-df_dens = df_dens.dropna(axis=1, thresh=300)
-
-
-# ### Clean up columns
-
-# In[147]:
-
-
-df_dens.head()
-
-
-# We can drop some more columns that don't contain numerical or categorical data. Further, we 
-
-# In[152]:
-
-
-# Check if all density units are the same, in which case we don't need the units.
-df_dens['Density-units'].unique()
-
-
-# In[169]:
-
-
-# Determine number of polycrystalline / single crystal samples
-N_polyX = df_dens[df_dens['Crystallinity']=='Polycrystalline']['Crystallinity'].shape
-N_singleX = df_dens[df_dens['Crystallinity']=='Single Crystal']['Crystallinity'].shape
-print('Polycrystalline: {0}, Single crystal: {1}'.format(N_polyX, N_singleX))
-
-
-# In[168]:
-
-
-#Fill NaN values in crystallinity with polycrystalline:
-df_dens['Crystallinity'] = df_dens['Crystallinity'].fillna('Polycrystalline')
-
-
-# In[173]:
-
-
-# Check how density values cannot simply be transformed from string to int
-
-N_errors, N_total = 0, 0
-for entry in df_dens['Density']:
-    try:
-        pd.Series([entry]).astype(float)
-    except:
-        N_errors +=1
-        print(entry)
-    finally:
-        N_total +=1
-
-print('{0} errors in {1} samples'.format(N_errors, N_total))
-
-
-
-
-
-# In[170]:
-
-
-#Drop columns that don't contain numerical or categorical data
-df_dens.drop(['licenses','names','references','Density-units','Density-conditions','Chemical Family'], axis=1)
+sample=2
+print('chemical formula: ', df_feat.loc[sample,'chemicalFormula'])
+print('composition :', df_feat.loc[sample,'composition'])
+print('comp_int :', df_feat.loc[sample,'comp_int'])
 
 
 # ### Add Additional Features with matminer

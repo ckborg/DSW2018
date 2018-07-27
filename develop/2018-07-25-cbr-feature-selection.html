@@ -11792,7 +11792,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[15]:</div>
+<div class="prompt input_prompt">In&nbsp;[247]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span>  <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_pickle</span><span class="p">(</span><span class="s1">&#39;../deliver/NIST_CeramicDataSet.pkl&#39;</span><span class="p">)</span>
@@ -11809,7 +11809,7 @@ div#notebook {
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[15]:</div>
+<div class="prompt output_prompt">Out[247]:</div>
 
 
 
@@ -11992,312 +11992,13 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Composition-with-Chih-Hao's-method">Composition with Chih-Hao's method<a class="anchor-link" href="#Composition-with-Chih-Hao's-method">&#182;</a></h3>
+<h3 id="Drop-non-density-materials">Drop non-density materials<a class="anchor-link" href="#Drop-non-density-materials">&#182;</a></h3>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[16]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df1</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-<span class="n">df1</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">3892</span><span class="p">,</span><span class="s1">&#39;chemicalFormula&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;BN&#39;</span> <span class="c1">#fix &#39;B-N&#39; to &#39;BN&#39;</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[17]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Parse the chemicalFormula</span>
-<span class="k">def</span> <span class="nf">formula_decompose</span><span class="p">(</span><span class="n">formula</span><span class="p">):</span>
-    <span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">    decompose chemical formula </span>
-<span class="sd">    return</span>
-<span class="sd">        composition: list, [(element,num),...]</span>
-<span class="sd">            element: string</span>
-<span class="sd">            num: string, can be math expression such as &#39;1+0.5x&#39;</span>
-<span class="sd">    &#39;&#39;&#39;</span>
-
-    <span class="n">comp</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="n">p</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;(\d?[w-z]?)([A-Z][a-u]?)(\d*\+?\-?\d*\.?\d*[w-z]?)&#39;</span><span class="p">)</span>
-
-    <span class="c1">#split the chemical formula if there is dots, but not for cases like Mg1.5x</span>
-    <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\.&#39;</span><span class="p">,</span> <span class="n">formula</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\d+\.\d[w-z]&#39;</span><span class="p">,</span> <span class="n">formula</span><span class="p">):</span> 
-        <span class="n">formula</span> <span class="o">=</span> <span class="n">formula</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)</span>
-        <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">formula</span><span class="p">:</span>
-            <span class="n">prefactor</span> <span class="o">=</span> <span class="s1">&#39;1&#39;</span>
-            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
-                <span class="n">pre</span><span class="p">,</span> <span class="n">elem</span><span class="p">,</span> <span class="n">num</span> <span class="o">=</span> <span class="n">i</span>
-                <span class="k">if</span> <span class="n">pre</span><span class="p">:</span>
-                    <span class="n">prefactor</span> <span class="o">=</span> <span class="n">pre</span>
-                <span class="k">if</span> <span class="n">num</span> <span class="o">==</span> <span class="s1">&#39;&#39;</span><span class="p">:</span>
-                    <span class="n">num</span> <span class="o">=</span> <span class="s1">&#39;1&#39;</span>
-                <span class="n">num</span> <span class="o">=</span> <span class="n">prefactor</span> <span class="o">+</span> <span class="s1">&#39;*(</span><span class="si">{}</span><span class="s1">)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
-                <span class="n">comp</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">elem</span><span class="p">,</span> <span class="n">num</span><span class="p">))</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">prefactor</span> <span class="o">=</span> <span class="s1">&#39;1&#39;</span>
-        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">formula</span><span class="p">):</span>
-            <span class="n">pre</span><span class="p">,</span> <span class="n">elem</span><span class="p">,</span> <span class="n">num</span> <span class="o">=</span> <span class="n">i</span>
-            <span class="k">if</span> <span class="n">pre</span><span class="p">:</span>
-                <span class="n">prefactor</span> <span class="o">=</span> <span class="n">pre</span>
-            <span class="k">if</span> <span class="n">num</span> <span class="o">==</span> <span class="s1">&#39;&#39;</span><span class="p">:</span>
-                <span class="n">num</span> <span class="o">=</span> <span class="s1">&#39;1&#39;</span>
-            <span class="n">num</span> <span class="o">=</span> <span class="n">prefactor</span> <span class="o">+</span> <span class="s1">&#39;*(</span><span class="si">{}</span><span class="s1">)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
-            <span class="n">comp</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">elem</span><span class="p">,</span> <span class="n">num</span><span class="p">))</span>
-    <span class="k">return</span> <span class="n">comp</span> 
-
-<span class="k">def</span> <span class="nf">formula_reconstruct</span><span class="p">(</span><span class="n">composition</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">w</span><span class="o">=</span><span class="mf">0.1</span><span class="p">):</span>
-    <span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">    reconstruct chemical formula from composition</span>
-<span class="sd">    composition in form of [(element,num), (element,num),...]</span>
-<span class="sd">        element: string</span>
-<span class="sd">        num: string, can be math expression such as &#39;1+0.5x&#39;</span>
-
-<span class="sd">    return </span>
-<span class="sd">        flat chemcial formula: string, such as &#39;Ti1.5Cu0.1Au1.0&#39;</span>
-<span class="sd">    &#39;&#39;&#39;</span>
-    <span class="n">flat_list</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="k">for</span> <span class="p">(</span><span class="n">elem</span><span class="p">,</span> <span class="n">num</span><span class="p">)</span> <span class="ow">in</span> <span class="n">composition</span><span class="p">:</span>
-        <span class="n">num</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;(\d)([w-z])&#39;</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;\1*\2&#39;</span><span class="p">,</span> <span class="n">num</span><span class="p">)</span> <span class="c1">#convert 5x to 5*x</span>
-        <span class="n">flat_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">elem</span><span class="p">)</span>
-        <span class="n">flat_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">format</span><span class="p">(</span><span class="nb">eval</span><span class="p">(</span><span class="n">num</span><span class="p">),</span> <span class="s1">&#39;.1f&#39;</span><span class="p">))</span>
-    <span class="k">return</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">flat_list</span><span class="p">)</span>
-  
-<span class="k">def</span> <span class="nf">formula_parser</span><span class="p">(</span><span class="n">formula</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">formula_reconstruct</span><span class="p">(</span><span class="n">formula_decompose</span><span class="p">(</span><span class="n">formula</span><span class="p">))</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[18]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df1</span><span class="p">[</span><span class="s2">&quot;flatFormula&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df1</span><span class="p">[</span><span class="s2">&quot;chemicalFormula&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">formula_parser</span><span class="p">)</span>
-<span class="n">df1</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[18]:</div>
-
-
-
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
-<style>
-    .dataframe thead tr:only-child th {
-        text-align: right;
-    }
-
-    .dataframe thead th {
-        text-align: left;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>chemicalFormula</th>
-      <th>licenses</th>
-      <th>references</th>
-      <th>Chemical Family</th>
-      <th>flatFormula</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>1</th>
-      <td>SiO2</td>
-      <td>[{'name': 'NIST_SRD-30'}]</td>
-      <td>[{'citation': 'Gaseous Corrosion of Ceramics, ...</td>
-      <td>Si-O</td>
-      <td>Si1.0O2.0</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>3Al2O3.2SiO2.xZrO2.yY2O3</td>
-      <td>[{'name': 'NIST_SRD-30'}]</td>
-      <td>[{'citation': 'Thermal Diffusivity/Conductivit...</td>
-      <td>Al-Si-O:ZrO</td>
-      <td>Al6.0O9.0Si2.0O4.0Zr0.1O0.2Y0.2O0.3</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>Al2O3</td>
-      <td>[{'name': 'NIST_SRD-30'}]</td>
-      <td>[{'citation': 'Mechanical Properties of Pure, ...</td>
-      <td>Al-O</td>
-      <td>Al2.0O3.0</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>Si3N4.xCeO2.ySiC</td>
-      <td>[{'name': 'NIST_SRD-30'}]</td>
-      <td>[{'citation': 'Effect of Silicon Carbide Whisk...</td>
-      <td>Si-N:CeO</td>
-      <td>Si3.0N4.0Ce0.1O0.2Si0.1C0.1</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>Si3N4</td>
-      <td>[{'name': 'NIST_SRD-30'}]</td>
-      <td>[{'citation': 'Corrosion of Silicon Nitride Ce...</td>
-      <td>Si-N</td>
-      <td>Si3.0N4.0</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[19]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df1</span><span class="p">[</span><span class="s2">&quot;composition&quot;</span><span class="p">]</span> <span class="o">=</span><span class="n">df1</span><span class="p">[</span><span class="s2">&quot;flatFormula&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">str_to_composition</span><span class="p">)</span>
-<span class="n">df1</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[19]:</div>
-
-
-
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
-<style>
-    .dataframe thead tr:only-child th {
-        text-align: right;
-    }
-
-    .dataframe thead th {
-        text-align: left;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>chemicalFormula</th>
-      <th>licenses</th>
-      <th>references</th>
-      <th>Chemical Family</th>
-      <th>flatFormula</th>
-      <th>composition</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>1</th>
-      <td>SiO2</td>
-      <td>[{'name': 'NIST_SRD-30'}]</td>
-      <td>[{'citation': 'Gaseous Corrosion of Ceramics, ...</td>
-      <td>Si-O</td>
-      <td>Si1.0O2.0</td>
-      <td>(Si, O)</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>3Al2O3.2SiO2.xZrO2.yY2O3</td>
-      <td>[{'name': 'NIST_SRD-30'}]</td>
-      <td>[{'citation': 'Thermal Diffusivity/Conductivit...</td>
-      <td>Al-Si-O:ZrO</td>
-      <td>Al6.0O9.0Si2.0O4.0Zr0.1O0.2Y0.2O0.3</td>
-      <td>(Al, O, Si, Zr, Y)</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>Al2O3</td>
-      <td>[{'name': 'NIST_SRD-30'}]</td>
-      <td>[{'citation': 'Mechanical Properties of Pure, ...</td>
-      <td>Al-O</td>
-      <td>Al2.0O3.0</td>
-      <td>(Al, O)</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>Si3N4.xCeO2.ySiC</td>
-      <td>[{'name': 'NIST_SRD-30'}]</td>
-      <td>[{'citation': 'Effect of Silicon Carbide Whisk...</td>
-      <td>Si-N:CeO</td>
-      <td>Si3.0N4.0Ce0.1O0.2Si0.1C0.1</td>
-      <td>(Si, N, Ce, O, C)</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>Si3N4</td>
-      <td>[{'name': 'NIST_SRD-30'}]</td>
-      <td>[{'citation': 'Corrosion of Silicon Nitride Ce...</td>
-      <td>Si-N</td>
-      <td>Si3.0N4.0</td>
-      <td>(Si, N)</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Drop-samples-without-'density'">Drop samples without 'density'<a class="anchor-link" href="#Drop-samples-without-'density'">&#182;</a></h3>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[126]:</div>
+<div class="prompt input_prompt">In&nbsp;[223]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># New DataFrame containing only samples with a density value</span>
@@ -12311,7 +12012,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[127]:</div>
+<div class="prompt input_prompt">In&nbsp;[224]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_dens</span><span class="o">.</span><span class="n">shape</span>
@@ -12327,7 +12028,7 @@ div#notebook {
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[127]:</div>
+<div class="prompt output_prompt">Out[224]:</div>
 
 
 
@@ -12344,7 +12045,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[128]:</div>
+<div class="prompt input_prompt">In&nbsp;[225]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Plot occurrence of features of the reduced dataset</span>
@@ -12591,7 +12292,7 @@ QmCC
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[132]:</div>
+<div class="prompt input_prompt">In&nbsp;[226]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Drop all columns that contain less than 300 entries </span>
@@ -12612,154 +12313,17 @@ QmCC
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[147]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_dens</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[147]:</div>
-
-
-
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
-<style>
-    .dataframe thead tr:only-child th {
-        text-align: right;
-    }
-
-    .dataframe thead th {
-        text-align: left;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>chemicalFormula</th>
-      <th>licenses</th>
-      <th>names</th>
-      <th>references</th>
-      <th>Chemical Family</th>
-      <th>Crystallinity</th>
-      <th>Density</th>
-      <th>Density-conditions</th>
-      <th>Density-units</th>
-      <th>flatFormula</th>
-      <th>composition</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>14</th>
-      <td>Si12-4.5xAl4.5xO1.5xN16-1.5xDyx</td>
-      <td>[{'name': 'NIST_SRD-30'}]</td>
-      <td>[Sialon composite]</td>
-      <td>[{'citation': 'Preparation and Properties of S...</td>
-      <td>Si-Al-O-N:Dy</td>
-      <td>Polycrystalline</td>
-      <td>3.30</td>
-      <td>[{'name': 'x of Dyx', 'scalars': [{'value': '0...</td>
-      <td>g cm$^{-3}$</td>
-      <td>Si11.6Al0.5O0.2N15.8D0.1</td>
-      <td>(Si, Al, O, N, D0+)</td>
-    </tr>
-    <tr>
-      <th>19</th>
-      <td>NiO</td>
-      <td>[{'name': 'NIST_SRD-30'}]</td>
-      <td>[Nickel oxide]</td>
-      <td>[{'citation': 'Thermal Constants for Ni, NiO, ...</td>
-      <td>Ni-O</td>
-      <td>Single Crystal</td>
-      <td>6.80</td>
-      <td>[{'name': 'Massof Specimen', 'scalars': [{'val...</td>
-      <td>g cm$^{-3}$</td>
-      <td>Ni1.0O1.0</td>
-      <td>(Ni, O)</td>
-    </tr>
-    <tr>
-      <th>23</th>
-      <td>ZrO2</td>
-      <td>[{'name': 'NIST_SRD-30'}]</td>
-      <td>[Zirconia (TZP)]</td>
-      <td>[{'citation': 'Effects of Environment on the M...</td>
-      <td>Zr-O:Al</td>
-      <td>Polycrystalline</td>
-      <td>5.4</td>
-      <td>[{'name': 'Temperature', 'scalars': [{'value':...</td>
-      <td>g cm$^{-3}$</td>
-      <td>Zr1.0O2.0</td>
-      <td>(Zr, O)</td>
-    </tr>
-    <tr>
-      <th>35</th>
-      <td>WC.xCo</td>
-      <td>[{'name': 'NIST_SRD-30'}]</td>
-      <td>[Tungsten carbide]</td>
-      <td>[{'citation': 'Engineering Properties of Carbi...</td>
-      <td>W-C</td>
-      <td>Polycrystalline</td>
-      <td>15.3</td>
-      <td>[{'name': 'Temperature', 'scalars': [{'value':...</td>
-      <td>g cm$^{-3}$</td>
-      <td>W1.0C1.0Co0.1</td>
-      <td>(W, C, Co)</td>
-    </tr>
-    <tr>
-      <th>46</th>
-      <td>Si3N4</td>
-      <td>[{'name': 'NIST_SRD-30'}]</td>
-      <td>[Silicon nitride]</td>
-      <td>[{'citation': 'Corrosion of Silicon Nitride Ce...</td>
-      <td>Si-N</td>
-      <td>Polycrystalline</td>
-      <td>3.23</td>
-      <td>[{'name': 'Sample Number', 'scalars': [{'value...</td>
-      <td>g cm$^{-3}$</td>
-      <td>Si3.0N4.0</td>
-      <td>(Si, N)</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>We can drop some more columns that don't contain numerical or categorical data. Further, we</p>
-
+<h4 id="Check-if-all-density-units-are-the-same">Check if all density units are the same<a class="anchor-link" href="#Check-if-all-density-units-are-the-same">&#182;</a></h4>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[152]:</div>
+<div class="prompt input_prompt">In&nbsp;[228]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Check if all density units are the same, in which case we don&#39;t need the units.</span>
@@ -12776,7 +12340,7 @@ QmCC
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[152]:</div>
+<div class="prompt output_prompt">Out[228]:</div>
 
 
 
@@ -12791,9 +12355,17 @@ QmCC
 </div>
 
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Fill-missing-crystallinity-values">Fill missing crystallinity values<a class="anchor-link" href="#Fill-missing-crystallinity-values">&#182;</a></h4>
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[169]:</div>
+<div class="prompt input_prompt">In&nbsp;[229]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Determine number of polycrystalline / single crystal samples</span>
@@ -12816,7 +12388,7 @@ QmCC
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Polycrystalline: (369,), Single crystal: (27,)
+<pre>Polycrystalline: (354,), Single crystal: (27,)
 </pre>
 </div>
 </div>
@@ -12827,7 +12399,7 @@ QmCC
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[168]:</div>
+<div class="prompt input_prompt">In&nbsp;[230]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Fill NaN values in crystallinity with polycrystalline:</span>
@@ -12838,91 +12410,18 @@ QmCC
 </div>
 </div>
 
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[168]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>14      Polycrystalline
-19       Single Crystal
-23      Polycrystalline
-35      Polycrystalline
-46      Polycrystalline
-84      Polycrystalline
-101     Polycrystalline
-102     Polycrystalline
-117     Polycrystalline
-121     Polycrystalline
-128     Polycrystalline
-137     Polycrystalline
-162     Polycrystalline
-178     Polycrystalline
-210     Polycrystalline
-216     Polycrystalline
-224     Polycrystalline
-231     Polycrystalline
-267     Polycrystalline
-270     Polycrystalline
-271     Polycrystalline
-276     Polycrystalline
-280     Polycrystalline
-289     Polycrystalline
-293     Polycrystalline
-296     Polycrystalline
-301     Polycrystalline
-306      Single Crystal
-307     Polycrystalline
-320     Polycrystalline
-             ...       
-3812    Polycrystalline
-3814     Single Crystal
-3821    Polycrystalline
-3832    Polycrystalline
-3865    Polycrystalline
-3894    Polycrystalline
-3902    Polycrystalline
-3905    Polycrystalline
-3917    Polycrystalline
-3926    Polycrystalline
-3937    Polycrystalline
-3950    Polycrystalline
-3959    Polycrystalline
-3964     Noncrystalline
-3978    Polycrystalline
-3990    Polycrystalline
-3992     Single Crystal
-3995    Polycrystalline
-3998    Polycrystalline
-4019    Polycrystalline
-4048    Polycrystalline
-4049    Polycrystalline
-4059    Polycrystalline
-4068    Polycrystalline
-4076    Polycrystalline
-4078    Polycrystalline
-4079    Polycrystalline
-4083    Polycrystalline
-4092    Polycrystalline
-4094    Polycrystalline
-Name: Crystallinity, Length: 398, dtype: object</pre>
 </div>
-
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
-
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Convert-density-to-float">Convert density to float<a class="anchor-link" href="#Convert-density-to-float">&#182;</a></h4>
 </div>
 </div>
-
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[173]:</div>
+<div class="prompt input_prompt">In&nbsp;[231]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Check how density values cannot simply be transformed from string to int</span>
@@ -12966,11 +12465,12 @@ Name: Crystallinity, Length: 398, dtype: object</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[170]:</div>
+<div class="prompt input_prompt">In&nbsp;[232]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Drop columns that don&#39;t contain numerical or categorical data</span>
-<span class="n">df_dens</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;licenses&#39;</span><span class="p">,</span><span class="s1">&#39;names&#39;</span><span class="p">,</span><span class="s1">&#39;references&#39;</span><span class="p">,</span><span class="s1">&#39;Density-units&#39;</span><span class="p">,</span><span class="s1">&#39;Density-conditions&#39;</span><span class="p">,</span><span class="s1">&#39;Chemical Family&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#convert the troublesome density value to a good value</span>
+<span class="n">df_dens</span><span class="o">.</span><span class="n">set_value</span><span class="p">(</span><span class="mi">1185</span><span class="p">,</span> <span class="s1">&#39;Density&#39;</span><span class="p">,</span> <span class="s1">&#39;3.16&#39;</span><span class="p">);</span>
+<span class="n">df_dens</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">1185</span><span class="p">,</span><span class="s1">&#39;Density&#39;</span><span class="p">]</span>
 </pre></div>
 
 </div>
@@ -12983,7 +12483,64 @@ Name: Crystallinity, Length: 398, dtype: object</pre>
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[170]:</div>
+<div class="prompt output_prompt">Out[232]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&#39;3.16&#39;</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[233]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Convert densities to float</span>
+<span class="n">df_dens</span><span class="p">[</span><span class="s1">&#39;Density&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_dens</span><span class="p">[</span><span class="s1">&#39;Density&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Remove-useless-columns">Remove useless columns<a class="anchor-link" href="#Remove-useless-columns">&#182;</a></h4>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[236]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Drop columns that don&#39;t contain numerical or categorical data</span>
+<span class="n">df_dens</span> <span class="o">=</span> <span class="n">df_dens</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;licenses&#39;</span><span class="p">,</span><span class="s1">&#39;names&#39;</span><span class="p">,</span><span class="s1">&#39;references&#39;</span><span class="p">,</span><span class="s1">&#39;Density-units&#39;</span><span class="p">,</span><span class="s1">&#39;Density-conditions&#39;</span><span class="p">,</span><span class="s1">&#39;Chemical Family&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">df_dens</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[236]:</div>
 
 
 
@@ -13011,6 +12568,7 @@ Name: Crystallinity, Length: 398, dtype: object</pre>
       <th>Density</th>
       <th>flatFormula</th>
       <th>composition</th>
+      <th>comp_int</th>
     </tr>
   </thead>
   <tbody>
@@ -13021,6 +12579,7 @@ Name: Crystallinity, Length: 398, dtype: object</pre>
       <td>3.30</td>
       <td>Si11.6Al0.5O0.2N15.8D0.1</td>
       <td>(Si, Al, O, N, D0+)</td>
+      <td>(Si, Al, O, N, D0+)</td>
     </tr>
     <tr>
       <th>19</th>
@@ -13029,21 +12588,24 @@ Name: Crystallinity, Length: 398, dtype: object</pre>
       <td>6.80</td>
       <td>Ni1.0O1.0</td>
       <td>(Ni, O)</td>
+      <td>(Ni, O)</td>
     </tr>
     <tr>
       <th>23</th>
       <td>ZrO2</td>
       <td>Polycrystalline</td>
-      <td>5.4</td>
+      <td>5.40</td>
       <td>Zr1.0O2.0</td>
+      <td>(Zr, O)</td>
       <td>(Zr, O)</td>
     </tr>
     <tr>
       <th>35</th>
       <td>WC.xCo</td>
       <td>Polycrystalline</td>
-      <td>15.3</td>
+      <td>15.30</td>
       <td>W1.0C1.0Co0.1</td>
+      <td>(W, C, Co)</td>
       <td>(W, C, Co)</td>
     </tr>
     <tr>
@@ -13053,461 +12615,436 @@ Name: Crystallinity, Length: 398, dtype: object</pre>
       <td>3.23</td>
       <td>Si3.0N4.0</td>
       <td>(Si, N)</td>
+      <td>(Si, N)</td>
     </tr>
-    <tr>
-      <th>84</th>
-      <td>HfB2</td>
-      <td>Polycrystalline</td>
-      <td>10.578</td>
-      <td>Hf1.0B2.0</td>
-      <td>(Hf, B)</td>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Eliminate-duplicate-materials">Eliminate duplicate materials<a class="anchor-link" href="#Eliminate-duplicate-materials">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[238]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">N_unique_entries</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">df_dens</span><span class="p">[</span><span class="s1">&#39;chemicalFormula&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;There are just </span><span class="si">{0}</span><span class="s1"> unique entries in the </span><span class="si">{1}</span><span class="s1"> materials.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">N_unique_entries</span><span class="p">,</span><span class="n">df_dens</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>There are just 110 unique entries in the 398 materials.
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[249]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_dens</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;chemicalFormula&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[249]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>chemicalFormula</th>
+      <th>Crystallinity</th>
+      <th>Density</th>
+      <th>flatFormula</th>
+      <th>composition</th>
+      <th>comp_int</th>
     </tr>
+  </thead>
+  <tbody>
     <tr>
-      <th>101</th>
-      <td>Si3N4.xY2O3.yLa2O3.zSiO2</td>
+      <th>2812</th>
+      <td>$\beta$-Si3Al3O3N5</td>
       <td>Polycrystalline</td>
-      <td>3.28</td>
-      <td>Si3.0N4.0Y0.2O0.3La0.2O0.3Si0.1O0.2</td>
-      <td>(Si, N, Y, O, La)</td>
-    </tr>
-    <tr>
-      <th>102</th>
-      <td>TiB2</td>
-      <td>Polycrystalline</td>
-      <td>4.34</td>
-      <td>Ti1.0B2.0</td>
-      <td>(Ti, B)</td>
-    </tr>
-    <tr>
-      <th>117</th>
-      <td>Si6-xAlxOxN8-x</td>
-      <td>Polycrystalline</td>
-      <td>3.234</td>
-      <td>Si5.9Al0.1O0.1N7.9</td>
+      <td>3.091</td>
+      <td>Si3.0Al3.0O3.0N5.0</td>
+      <td>(Si, Al, O, N)</td>
       <td>(Si, Al, O, N)</td>
     </tr>
     <tr>
-      <th>121</th>
-      <td>Si3N4.xY2O3</td>
+      <th>1368</th>
+      <td>(1-x-y)Al2O3.xAlN.yTiN</td>
       <td>Polycrystalline</td>
-      <td>2.28</td>
-      <td>Si3.0N4.0Y0.2O0.3</td>
-      <td>(Si, N, Y, O)</td>
-    </tr>
-    <tr>
-      <th>128</th>
-      <td>TiC</td>
-      <td>Polycrystalline</td>
-      <td>4.42</td>
-      <td>Ti1.0C1.0</td>
-      <td>(Ti, C)</td>
-    </tr>
-    <tr>
-      <th>137</th>
-      <td>Si3N4</td>
-      <td>Polycrystalline</td>
-      <td>3.23</td>
-      <td>Si3.0N4.0</td>
-      <td>(Si, N)</td>
-    </tr>
-    <tr>
-      <th>162</th>
-      <td>Si3N4.xMgO</td>
-      <td>Polycrystalline</td>
-      <td>3.16</td>
-      <td>Si3.0N4.0Mg0.1O0.1</td>
-      <td>(Si, N, Mg, O)</td>
-    </tr>
-    <tr>
-      <th>178</th>
-      <td>ZrO2</td>
-      <td>Polycrystalline</td>
-      <td>4.3</td>
-      <td>Zr1.0O2.0</td>
-      <td>(Zr, O)</td>
-    </tr>
-    <tr>
-      <th>210</th>
-      <td>ZrO2.xAl2O3.yY2O3</td>
-      <td>Polycrystalline</td>
-      <td>5.9</td>
-      <td>Zr1.0O2.0Al0.2O0.3Y0.2O0.3</td>
-      <td>(Zr, O, Al, Y)</td>
-    </tr>
-    <tr>
-      <th>216</th>
-      <td>Si3N4.xY2O3.yAl2O3</td>
-      <td>Polycrystalline</td>
-      <td>3.24</td>
-      <td>Si3.0N4.0Y0.2O0.3Al0.2O0.3</td>
-      <td>(Si, N, Y, O, Al)</td>
-    </tr>
-    <tr>
-      <th>224</th>
-      <td>AlN.xBN</td>
-      <td>Polycrystalline</td>
-      <td>2.42</td>
-      <td>Al1.0N1.0B0.1N0.1</td>
-      <td>(Al, N, B)</td>
-    </tr>
-    <tr>
-      <th>231</th>
-      <td>Si3N4.xAl2O3.yY2O3</td>
-      <td>Polycrystalline</td>
-      <td>2.43</td>
-      <td>Si3.0N4.0Al0.2O0.3Y0.2O0.3</td>
-      <td>(Si, N, Al, O, Y)</td>
-    </tr>
-    <tr>
-      <th>267</th>
-      <td>Si3N4.xLa2O3.yY2O3</td>
-      <td>Polycrystalline</td>
-      <td>3.12</td>
-      <td>Si3.0N4.0La0.2O0.3Y0.2O0.3</td>
-      <td>(Si, N, La, O, Y)</td>
-    </tr>
-    <tr>
-      <th>270</th>
-      <td>Si3N4.xY2O3.ySiO2.zMo2C</td>
-      <td>Polycrystalline</td>
-      <td>3.28</td>
-      <td>Si3.0N4.0Y0.2O0.3Si0.1O0.2Mo0.2C0.1</td>
-      <td>(Si, N, Y, O, Mo, C)</td>
-    </tr>
-    <tr>
-      <th>271</th>
-      <td>Al2O3.xCeO2.yZrO2</td>
-      <td>Polycrystalline</td>
-      <td>4.71</td>
-      <td>Al2.0O3.0Ce0.1O0.2Zr0.1O0.2</td>
-      <td>(Al, O, Ce, Zr)</td>
-    </tr>
-    <tr>
-      <th>276</th>
-      <td>TiN</td>
-      <td>Polycrystalline</td>
-      <td>4.05</td>
-      <td>Ti1.0N1.0</td>
-      <td>(Ti, N)</td>
-    </tr>
-    <tr>
-      <th>280</th>
-      <td>TiB2</td>
-      <td>Polycrystalline</td>
-      <td>4.54</td>
-      <td>Ti1.0B2.0</td>
-      <td>(Ti, B)</td>
-    </tr>
-    <tr>
-      <th>289</th>
-      <td>Si3N4</td>
-      <td>Polycrystalline</td>
-      <td>2.56</td>
-      <td>Si3.0N4.0</td>
-      <td>(Si, N)</td>
-    </tr>
-    <tr>
-      <th>293</th>
-      <td>ZrO2</td>
-      <td>Polycrystalline</td>
-      <td>5.21</td>
-      <td>Zr1.0O2.0</td>
-      <td>(Zr, O)</td>
-    </tr>
-    <tr>
-      <th>296</th>
-      <td>Si6-xAlxOxN8-x</td>
-      <td>Polycrystalline</td>
-      <td>2.30</td>
-      <td>Si5.9Al0.1O0.1N7.9</td>
-      <td>(Si, Al, O, N)</td>
-    </tr>
-    <tr>
-      <th>301</th>
-      <td>SiC</td>
-      <td>Polycrystalline</td>
-      <td>3.12</td>
-      <td>Si1.0C1.0</td>
-      <td>(Si, C)</td>
-    </tr>
-    <tr>
-      <th>306</th>
-      <td>Al2O3</td>
-      <td>Single Crystal</td>
-      <td>3.982</td>
-      <td>Al2.0O3.0</td>
-      <td>(Al, O)</td>
-    </tr>
-    <tr>
-      <th>307</th>
-      <td>Si3N4.xLa2O3.ySrO.zSiO2</td>
-      <td>Polycrystalline</td>
-      <td>2.76</td>
-      <td>Si3.0N4.0La0.2O0.3Sr0.1O0.1Si0.1O0.2</td>
-      <td>(Si, N, La, O, Sr)</td>
-    </tr>
-    <tr>
-      <th>320</th>
-      <td>SiC</td>
-      <td>Polycrystalline</td>
-      <td>2.93</td>
-      <td>Si1.0C1.0</td>
-      <td>(Si, C)</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>3812</th>
-      <td>Si6-xAlxOxN8-x.yCeO2.zY2O3</td>
-      <td>Polycrystalline</td>
-      <td>3.24</td>
-      <td>Si5.9Al0.1O0.1N7.9Ce0.1O0.2Y0.2O0.3</td>
-      <td>(Si, Al, O, N, Ce, Y)</td>
-    </tr>
-    <tr>
-      <th>3814</th>
-      <td>Sm2O3</td>
-      <td>Single Crystal</td>
-      <td>7.68</td>
-      <td>Sm2.0O3.0</td>
-      <td>(Sm, O)</td>
-    </tr>
-    <tr>
-      <th>3821</th>
-      <td>TiB2.xB4C</td>
-      <td>Polycrystalline</td>
-      <td>4.53</td>
-      <td>Ti1.0B2.0B0.4C0.1</td>
-      <td>(Ti, B, C)</td>
-    </tr>
-    <tr>
-      <th>3832</th>
-      <td>Si3N4</td>
-      <td>Polycrystalline</td>
-      <td>3.23</td>
-      <td>Si3.0N4.0</td>
-      <td>(Si, N)</td>
-    </tr>
-    <tr>
-      <th>3865</th>
-      <td>Si3N4.wAl2O3.xMo2C.ySiO2.zY2O3</td>
-      <td>Polycrystalline</td>
-      <td>3.29</td>
-      <td>Si3.0N4.0Al0.2O0.3Mo0.2C0.1Si0.1O0.2Y0.2O0.3</td>
-      <td>(Si, N, Al, O, Mo, C, Y)</td>
-    </tr>
-    <tr>
-      <th>3894</th>
-      <td>TiB2</td>
-      <td>Polycrystalline</td>
-      <td>4.213</td>
-      <td>Ti1.0B2.0</td>
-      <td>(Ti, B)</td>
-    </tr>
-    <tr>
-      <th>3902</th>
-      <td>TiB2</td>
-      <td>Polycrystalline</td>
-      <td>4.191</td>
-      <td>Ti1.0B2.0</td>
-      <td>(Ti, B)</td>
-    </tr>
-    <tr>
-      <th>3905</th>
-      <td>AlN</td>
-      <td>Polycrystalline</td>
-      <td>3.31</td>
-      <td>Al1.0N1.0</td>
-      <td>(Al, N)</td>
-    </tr>
-    <tr>
-      <th>3917</th>
-      <td>ZrO2</td>
-      <td>Polycrystalline</td>
-      <td>6.03</td>
-      <td>Zr1.0O2.0</td>
-      <td>(Zr, O)</td>
-    </tr>
-    <tr>
-      <th>3926</th>
-      <td>TiO2</td>
-      <td>Polycrystalline</td>
-      <td>4.21</td>
-      <td>Ti1.0O2.0</td>
-      <td>(Ti, O)</td>
-    </tr>
-    <tr>
-      <th>3937</th>
-      <td>SiC</td>
-      <td>Polycrystalline</td>
-      <td>3.21</td>
-      <td>Si1.0C1.0</td>
-      <td>(Si, C)</td>
-    </tr>
-    <tr>
-      <th>3950</th>
-      <td>Si6-xAlxOxN8-x</td>
-      <td>Polycrystalline</td>
-      <td>3.24</td>
-      <td>Si5.9Al0.1O0.1N7.9</td>
-      <td>(Si, Al, O, N)</td>
-    </tr>
-    <tr>
-      <th>3959</th>
-      <td>Si3N4.xLa2O3.ySiO2</td>
-      <td>Polycrystalline</td>
-      <td>3.32</td>
-      <td>Si3.0N4.0La0.2O0.3Si0.1O0.2</td>
-      <td>(Si, N, La, O)</td>
+      <td>4.380</td>
+      <td>Al2.0O3.0Al0.1N0.1Ti0.1N0.1</td>
+      <td>(Al, O, N, Ti)</td>
+      <td>(Al, O, N, Ti)</td>
     </tr>
     <tr>
       <th>3964</th>
       <td>0.5SiO2.(0.5-x)Al2O3.xE2O3</td>
       <td>Noncrystalline</td>
-      <td>3.52</td>
+      <td>3.520</td>
       <td>Si5.0O10.0Al2.0O3.0E0.2O0.3</td>
+      <td>(Si, O, Al, E0+)</td>
       <td>(Si, O, Al, E0+)</td>
     </tr>
     <tr>
-      <th>3978</th>
-      <td>Si3N4.xLa2O3.ySiO2</td>
-      <td>Polycrystalline</td>
-      <td>3.30</td>
-      <td>Si3.0N4.0La0.2O0.3Si0.1O0.2</td>
-      <td>(Si, N, La, O)</td>
-    </tr>
-    <tr>
-      <th>3990</th>
+      <th>3392</th>
       <td>3Al2O3.2SiO2</td>
       <td>Polycrystalline</td>
-      <td>3.18</td>
+      <td>3.150</td>
       <td>Al6.0O9.0Si2.0O4.0</td>
+      <td>(Al, O, Si)</td>
       <td>(Al, O, Si)</td>
     </tr>
     <tr>
-      <th>3992</th>
-      <td>ZrO2.xY2O3</td>
-      <td>Single Crystal</td>
-      <td>6.011</td>
-      <td>Zr1.0O2.0Y0.2O0.3</td>
-      <td>(Zr, O, Y)</td>
-    </tr>
-    <tr>
-      <th>3995</th>
-      <td>SiC.xTiB2</td>
+      <th>3386</th>
+      <td>3Al2O3.2SiO2</td>
       <td>Polycrystalline</td>
-      <td>3.215</td>
-      <td>Si1.0C1.0Ti0.1B0.2</td>
-      <td>(Si, C, Ti, B)</td>
-    </tr>
-    <tr>
-      <th>3998</th>
-      <td>3Al2O3.2SiO3.2ZrO2</td>
-      <td>Polycrystalline</td>
-      <td>3.76</td>
-      <td>Al6.0O9.0Si2.0O6.0Zr2.0O4.0</td>
-      <td>(Al, O, Si, Zr)</td>
-    </tr>
-    <tr>
-      <th>4019</th>
-      <td>ZrO2</td>
-      <td>Polycrystalline</td>
-      <td>5.70</td>
-      <td>Zr1.0O2.0</td>
-      <td>(Zr, O)</td>
-    </tr>
-    <tr>
-      <th>4048</th>
-      <td>3Al2O3.2SiO2.ySi6-xAlxOxN8-x</td>
-      <td>Polycrystalline</td>
-      <td>2.87</td>
-      <td>Al6.0O9.0Si2.0O4.0Si0.6Al0.0O0.0N0.8</td>
-      <td>(Al, O, Si, N)</td>
-    </tr>
-    <tr>
-      <th>4049</th>
-      <td>Si3N4.xLa2O3.ySrO.zSiO2</td>
-      <td>Polycrystalline</td>
-      <td>3.35</td>
-      <td>Si3.0N4.0La0.2O0.3Sr0.1O0.1Si0.1O0.2</td>
-      <td>(Si, N, La, O, Sr)</td>
-    </tr>
-    <tr>
-      <th>4059</th>
-      <td>Si3N4</td>
-      <td>Polycrystalline</td>
-      <td>3.22</td>
-      <td>Si3.0N4.0</td>
-      <td>(Si, N)</td>
-    </tr>
-    <tr>
-      <th>4068</th>
-      <td>Al2O3</td>
-      <td>Polycrystalline</td>
-      <td>3.941</td>
-      <td>Al2.0O3.0</td>
-      <td>(Al, O)</td>
-    </tr>
-    <tr>
-      <th>4076</th>
-      <td>Si3N4.xY2O3</td>
-      <td>Polycrystalline</td>
-      <td>3.24</td>
-      <td>Si3.0N4.0Y0.2O0.3</td>
-      <td>(Si, N, Y, O)</td>
-    </tr>
-    <tr>
-      <th>4078</th>
-      <td>Al2O3</td>
-      <td>Polycrystalline</td>
-      <td>3.00</td>
-      <td>Al2.0O3.0</td>
-      <td>(Al, O)</td>
-    </tr>
-    <tr>
-      <th>4079</th>
-      <td>SiC</td>
-      <td>Polycrystalline</td>
-      <td>3.06</td>
-      <td>Si1.0C1.0</td>
-      <td>(Si, C)</td>
-    </tr>
-    <tr>
-      <th>4083</th>
-      <td>SiC</td>
-      <td>Polycrystalline</td>
-      <td>3.15</td>
-      <td>Si1.0C1.0</td>
-      <td>(Si, C)</td>
-    </tr>
-    <tr>
-      <th>4092</th>
-      <td>Si3N4.xLa2O3.ySrO</td>
-      <td>Polycrystalline</td>
-      <td>2.32</td>
-      <td>Si3.0N4.0La0.2O0.3Sr0.1O0.1</td>
-      <td>(Si, N, La, O, Sr)</td>
-    </tr>
-    <tr>
-      <th>4094</th>
-      <td>AlN</td>
-      <td>Polycrystalline</td>
-      <td>3.20</td>
-      <td>Al1.0N1.0</td>
-      <td>(Al, N)</td>
+      <td>3.110</td>
+      <td>Al6.0O9.0Si2.0O4.0</td>
+      <td>(Al, O, Si)</td>
+      <td>(Al, O, Si)</td>
     </tr>
   </tbody>
 </table>
-<p>398 rows × 5 columns</p>
 </div>
 </div>
 
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[251]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_dens</span> <span class="o">=</span> <span class="n">df_dens</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;chemicalFormula&#39;</span><span class="p">,</span><span class="s1">&#39;Crystallinity&#39;</span><span class="p">],</span> <span class="n">as_index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Composition-with-Chih-Hao's-method">Composition with Chih-Hao's method<a class="anchor-link" href="#Composition-with-Chih-Hao's-method">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[253]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_feat</span> <span class="o">=</span> <span class="n">df_dens</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">df_feat</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">3892</span><span class="p">,</span><span class="s1">&#39;chemicalFormula&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;BN&#39;</span> <span class="c1">#fix &#39;B-N&#39; to &#39;BN&#39;</span>
+
+<span class="c1"># Parse the chemicalFormula</span>
+<span class="k">def</span> <span class="nf">formula_decompose</span><span class="p">(</span><span class="n">formula</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    decompose chemical formula </span>
+<span class="sd">    return</span>
+<span class="sd">        composition: list, [(element,num),...]</span>
+<span class="sd">            element: string</span>
+<span class="sd">            num: string, can be math expression such as &#39;1+0.5x&#39;</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
+    <span class="n">comp</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;(\d?[w-z]?)([A-Z][a-u]?)(\d*\+?\-?\d*\.?\d*[w-z]?)&#39;</span><span class="p">)</span>
+
+    <span class="c1">#split the chemical formula if there is dots, but not for cases like Mg1.5x</span>
+    <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\.&#39;</span><span class="p">,</span> <span class="n">formula</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\d+\.\d[w-z]&#39;</span><span class="p">,</span> <span class="n">formula</span><span class="p">):</span> 
+        <span class="n">formula</span> <span class="o">=</span> <span class="n">formula</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">formula</span><span class="p">:</span>
+            <span class="n">prefactor</span> <span class="o">=</span> <span class="s1">&#39;1&#39;</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
+                <span class="n">pre</span><span class="p">,</span> <span class="n">elem</span><span class="p">,</span> <span class="n">num</span> <span class="o">=</span> <span class="n">i</span>
+                <span class="k">if</span> <span class="n">pre</span><span class="p">:</span>
+                    <span class="n">prefactor</span> <span class="o">=</span> <span class="n">pre</span>
+                <span class="k">if</span> <span class="n">num</span> <span class="o">==</span> <span class="s1">&#39;&#39;</span><span class="p">:</span>
+                    <span class="n">num</span> <span class="o">=</span> <span class="s1">&#39;1&#39;</span>
+                <span class="n">num</span> <span class="o">=</span> <span class="n">prefactor</span> <span class="o">+</span> <span class="s1">&#39;*(</span><span class="si">{}</span><span class="s1">)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
+                <span class="n">comp</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">elem</span><span class="p">,</span> <span class="n">num</span><span class="p">))</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">prefactor</span> <span class="o">=</span> <span class="s1">&#39;1&#39;</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">formula</span><span class="p">):</span>
+            <span class="n">pre</span><span class="p">,</span> <span class="n">elem</span><span class="p">,</span> <span class="n">num</span> <span class="o">=</span> <span class="n">i</span>
+            <span class="k">if</span> <span class="n">pre</span><span class="p">:</span>
+                <span class="n">prefactor</span> <span class="o">=</span> <span class="n">pre</span>
+            <span class="k">if</span> <span class="n">num</span> <span class="o">==</span> <span class="s1">&#39;&#39;</span><span class="p">:</span>
+                <span class="n">num</span> <span class="o">=</span> <span class="s1">&#39;1&#39;</span>
+            <span class="n">num</span> <span class="o">=</span> <span class="n">prefactor</span> <span class="o">+</span> <span class="s1">&#39;*(</span><span class="si">{}</span><span class="s1">)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
+            <span class="n">comp</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">elem</span><span class="p">,</span> <span class="n">num</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">comp</span> 
+
+<span class="k">def</span> <span class="nf">formula_reconstruct</span><span class="p">(</span><span class="n">composition</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">w</span><span class="o">=</span><span class="mf">0.1</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    reconstruct chemical formula from composition</span>
+<span class="sd">    composition in form of [(element,num), (element,num),...]</span>
+<span class="sd">        element: string</span>
+<span class="sd">        num: string, can be math expression such as &#39;1+0.5x&#39;</span>
+
+<span class="sd">    return </span>
+<span class="sd">        flat chemcial formula: string, such as &#39;Ti1.5Cu0.1Au1.0&#39;</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">flat_list</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">elem</span><span class="p">,</span> <span class="n">num</span><span class="p">)</span> <span class="ow">in</span> <span class="n">composition</span><span class="p">:</span>
+        <span class="n">num</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;(\d)([w-z])&#39;</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;\1*\2&#39;</span><span class="p">,</span> <span class="n">num</span><span class="p">)</span> <span class="c1">#convert 5x to 5*x</span>
+        <span class="n">flat_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">elem</span><span class="p">)</span>
+        <span class="n">flat_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">format</span><span class="p">(</span><span class="nb">eval</span><span class="p">(</span><span class="n">num</span><span class="p">),</span> <span class="s1">&#39;.1f&#39;</span><span class="p">))</span>
+    <span class="k">return</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">flat_list</span><span class="p">)</span>
+  
+<span class="k">def</span> <span class="nf">formula_parser</span><span class="p">(</span><span class="n">formula</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">formula_reconstruct</span><span class="p">(</span><span class="n">formula_decompose</span><span class="p">(</span><span class="n">formula</span><span class="p">))</span>
+
+<span class="n">df_feat</span><span class="p">[</span><span class="s2">&quot;flatFormula&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_feat</span><span class="p">[</span><span class="s2">&quot;chemicalFormula&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">formula_parser</span><span class="p">)</span>
+<span class="n">df_feat</span><span class="p">[</span><span class="s2">&quot;composition&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_feat</span><span class="p">[</span><span class="s2">&quot;flatFormula&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">str_to_composition</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Composition-with-Chris'-method">Composition with Chris' method<a class="anchor-link" href="#Composition-with-Chris'-method">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[255]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Add second composition column (that doesn&#39;t have float stoichiometries; Chris&#39; version)</span>
+<span class="k">def</span> <span class="nf">make_chem_form_compatible</span><span class="p">(</span><span class="n">formula</span><span class="p">):</span>
+    
+    <span class="k">for</span> <span class="n">bad_str</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;\.&#39;</span><span class="p">,</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="s1">&#39;\+&#39;</span><span class="p">,</span> <span class="s1">&#39;\-&#39;</span><span class="p">,</span> <span class="s1">&#39;z&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="s1">&#39;\%&#39;</span><span class="p">,</span> <span class="s1">&#39;\^&#39;</span><span class="p">,</span>   <span class="c1"># individual characters</span>
+                 <span class="s1">&#39;Cordierite&#39;</span><span class="p">,</span><span class="s1">&#39;hisker&#39;</span><span class="p">,</span><span class="s1">&#39;Sialon&#39;</span><span class="p">,</span> <span class="c1"># certain words that show up in some formulas</span>
+                 <span class="s1">&#39;\$(.*?)\$&#39;</span><span class="p">,</span>    <span class="c1"># LaTeX expressions</span>
+                 <span class="s1">&#39;\((.*?)\)&#39;</span><span class="p">,</span>    <span class="c1"># bracketed expressions</span>
+                 <span class="s1">&#39;^\d{1,2}&#39;</span><span class="p">]:</span>    <span class="c1"># leading numbers of 1 or 2 digits</span>
+        <span class="n">formula</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="n">bad_str</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">formula</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">formula</span>
+
+<span class="c1"># Convert chemical formulas using above function</span>
+<span class="n">df_feat</span><span class="p">[</span><span class="s2">&quot;comp_int&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_feat</span><span class="p">[</span><span class="s2">&quot;chemicalFormula&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">make_chem_form_compatible</span><span class="p">)</span>
+
+<span class="c1"># Converting chemical formula to composition object using</span>
+<span class="c1"># matminer.utils.conversions.str_to_composition</span>
+<span class="c1"># which in turn uses pymatgen.core.composition</span>
+<span class="n">df_feat</span><span class="p">[</span><span class="s2">&quot;comp_int&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_feat</span><span class="p">[</span><span class="s2">&quot;comp_int&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">str_to_composition</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[256]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_feat</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[256]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>chemicalFormula</th>
+      <th>Crystallinity</th>
+      <th>Density</th>
+      <th>flatFormula</th>
+      <th>composition</th>
+      <th>comp_int</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>$\beta$-Si3Al3O3N5</td>
+      <td>Polycrystalline</td>
+      <td>3.091000</td>
+      <td>Si3.0Al3.0O3.0N5.0</td>
+      <td>(Si, Al, O, N)</td>
+      <td>(Si, Al, O, N)</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>(1-x-y)Al2O3.xAlN.yTiN</td>
+      <td>Polycrystalline</td>
+      <td>4.380000</td>
+      <td>Al2.0O3.0Al0.1N0.1Ti0.1N0.1</td>
+      <td>(Al, O, N, Ti)</td>
+      <td>(Al, O, N, Ti)</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.5SiO2.(0.5-x)Al2O3.xE2O3</td>
+      <td>Noncrystalline</td>
+      <td>3.520000</td>
+      <td>Si5.0O10.0Al2.0O3.0E0.2O0.3</td>
+      <td>(Si, O, Al, E0+)</td>
+      <td>(Si, O, Al, E0+)</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>3Al2O3.2SiO2</td>
+      <td>Polycrystalline</td>
+      <td>3.097167</td>
+      <td>Al6.0O9.0Si2.0O4.0</td>
+      <td>(Al, O, Si)</td>
+      <td>(Al, O, Si)</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>3Al2O3.2SiO2.xCordierite</td>
+      <td>Polycrystalline</td>
+      <td>2.720000</td>
+      <td>Al6.0O9.0Si2.0O4.0Co0.1</td>
+      <td>(Al, O, Si, Co)</td>
+      <td>(Al, O, Si)</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[261]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">sample</span><span class="o">=</span><span class="mi">2</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;chemical formula: &#39;</span><span class="p">,</span> <span class="n">df_feat</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">sample</span><span class="p">,</span><span class="s1">&#39;chemicalFormula&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;composition :&#39;</span><span class="p">,</span> <span class="n">df_feat</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">sample</span><span class="p">,</span><span class="s1">&#39;composition&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;comp_int :&#39;</span><span class="p">,</span> <span class="n">df_feat</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">sample</span><span class="p">,</span><span class="s1">&#39;comp_int&#39;</span><span class="p">])</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>chemical formula:  0.5SiO2.(0.5-x)Al2O3.xE2O3
+composition : Si5 O13.3 Al2 E0+0.2
+comp_int : Si1 O8 Al2 E0+2
+</pre>
+</div>
 </div>
 
 </div>
