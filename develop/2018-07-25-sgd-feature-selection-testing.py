@@ -11,6 +11,9 @@ import re
 from matminer.utils.conversions import str_to_composition
 from matminer.featurizers.composition import ElementProperty
 from matminer.featurizers.composition import ElementFraction
+#from matminer.featurizers.structure import DensityFeatures
+#DensityFeatures doesn't work because it depends on an old version of pymatgen
+#the newest version of pymatgen doesn't have the module 'pymatgen.analysis.defects.point_defects' which DensityFeatures needs to import sucessfully
 
 
 # In[2]:
@@ -178,18 +181,18 @@ print('{0} errors in {1} samples'.format(N_errors, N_total))
 
 # ## Convert a column of dataframe (e.g. Density) to float values from strings
 
-# In[17]:
+# In[16]:
 
 df_dens.shape
 
 
-# In[44]:
+# In[17]:
 
 df_d = df_dens.drop(['licenses','names','references','Density-units','Density-conditions','Chemical Family'], axis=1)
 df_d.head()
 
 
-# In[45]:
+# In[18]:
 
 # Check how density values cannot simply be transformed from string to int
 #also locate which row the errors occur in
@@ -210,26 +213,26 @@ for entry in df_d['Density']:
 print('{0} errors in {1} samples'.format(N_errors, N_total))
 
 
-# In[46]:
+# In[19]:
 
 #examine the troublesome density value in the 109th row of df_d
 df_d.iloc[109]
 
 
-# In[47]:
+# In[20]:
 
 #convert the troublesome density value to a good value
 df_d.set_value(1185, 'Density', '3.16');
 df_d.loc[1185]
 
 
-# In[48]:
+# In[21]:
 
 df_d['index1'] = df_d.index
 df_d.head()
 
 
-# In[49]:
+# In[22]:
 
 #convert densities to floats
 #df_d['Density'].astype(float)
@@ -251,50 +254,85 @@ for entry in df_d['index1']:
 print('{0} errors in {1} samples'.format(N_errors, N_total))
 
 
-# In[51]:
+# In[23]:
 
 #sort by density
+#it actually sorts in numerical order because the density column contains floats, not strings
+
 df_d.sort_values(by='Density')
 
 
 # ## Add features with element fraction
 
-# In[53]:
+# In[24]:
+
 
 df_d_feat = df_d.copy()
 ep_frac = ElementFraction()
 df_d_feat = ep_frac.featurize_dataframe(df_d_feat, col_id = "composition", ignore_errors = True)
 
 
-# In[54]:
+# In[25]:
 
 df_d_feat.shape
 
 
-# In[55]:
+# In[26]:
 
 list(set(df_d_feat.columns))
 
 
-# In[60]:
+# In[27]:
 
+#we see that it creates a column for each element and the value of the column is the percentage of atoms in the composition of that element
 df_d_feat.head()
 
 
-# In[58]:
+# In[28]:
 
 #how many entires had an error? 398-395 = 3 errors
 df_d_feat.dropna().shape
 
 
-# In[59]:
+# In[29]:
 
 df_d_feat.dropna().head()
 
 
-# In[61]:
+# In[30]:
 
+#examine the Si column since a good number of entries contain Si. 
 df_d_feat['Si']
+
+
+# In[ ]:
+
+
+
+
+# In[ ]:
+
+
+
+
+# In[ ]:
+
+
+
+
+# In[ ]:
+
+
+
+
+# In[ ]:
+
+
+
+
+# In[ ]:
+
+
 
 
 # ### Add Additional Features with matminer
