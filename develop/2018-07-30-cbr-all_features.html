@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head><meta charset="utf-8" />
-<title>2018-07-25-cbr-feature-selection</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>2018-07-30-cbr-all_features</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
 <style type="text/css">
@@ -11773,17 +11773,13 @@ div#notebook {
 
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[67]:</div>
+<div class="prompt input_prompt">In&nbsp;[302]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">re</span>
-
-<span class="kn">from</span> <span class="nn">matminer.utils.conversions</span> <span class="k">import</span> <span class="n">str_to_composition</span>
-<span class="kn">from</span> <span class="nn">matminer.featurizers.composition</span> <span class="k">import</span> <span class="n">ElementProperty</span>
-<span class="kn">from</span> <span class="nn">matminer.featurizers.composition</span> <span class="k">import</span> <span class="n">ElementFraction</span>
 </pre></div>
 
 </div>
@@ -11793,7 +11789,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[68]:</div>
+<div class="prompt input_prompt">In&nbsp;[303]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span>  <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_pickle</span><span class="p">(</span><span class="s1">&#39;../deliver/NIST_CeramicDataSet.pkl&#39;</span><span class="p">)</span>
@@ -11810,7 +11806,7 @@ div#notebook {
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[68]:</div>
+<div class="prompt output_prompt">Out[303]:</div>
 
 
 
@@ -11989,42 +11985,20 @@ div#notebook {
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Prepare-dataset">Prepare dataset<a class="anchor-link" href="#Prepare-dataset">&#182;</a></h1>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Drop-non-density-materials">Drop non-density materials<a class="anchor-link" href="#Drop-non-density-materials">&#182;</a></h3>
-</div>
-</div>
-</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[27]:</div>
+<div class="prompt input_prompt">In&nbsp;[304]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># New DataFrame containing only samples with a density value</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">isnull</span><span class="p">()[</span><span class="s1">&#39;Density&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="kc">False</span><span class="p">]</span>
-</pre></div>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Remove all unit  and condition columns</span>
+<span class="n">list_unit_cols</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">column</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+    <span class="k">if</span> <span class="s1">&#39;-units&#39;</span> <span class="ow">in</span> <span class="n">column</span> <span class="ow">or</span> <span class="s1">&#39;-conditions&#39;</span> <span class="ow">in</span> <span class="n">column</span> <span class="ow">or</span> <span class="s1">&#39;-maximum&#39;</span> <span class="ow">in</span> <span class="n">column</span> <span class="ow">or</span> <span class="s1">&#39;-minimum&#39;</span> <span class="ow">in</span> <span class="n">column</span><span class="p">:</span>
+        <span class="n">list_unit_cols</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">column</span><span class="p">)</span>
+ 
 
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[28]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">shape</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">list_unit_cols</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">shape</span>
 </pre></div>
 
 </div>
@@ -12037,13 +12011,13 @@ div#notebook {
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[28]:</div>
+<div class="prompt output_prompt">Out[304]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>(398, 161)</pre>
+<pre>(4098, 59)</pre>
 </div>
 
 </div>
@@ -12054,11 +12028,544 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[29]:</div>
+<div class="prompt input_prompt">In&nbsp;[305]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Plot occurrence of features of the reduced dataset</span>
-<span class="n">df</span><span class="o">.</span><span class="n">count</span><span class="p">()</span><span class="o">.</span><span class="n">sort_values</span><span class="p">()[</span><span class="o">-</span><span class="mi">17</span><span class="p">:]</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">barh</span><span class="p">()</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Groups entries by chemical formula and counts the number of entries for each features</span>
+<span class="n">df_counts</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;chemicalFormula&#39;</span><span class="p">,</span> <span class="n">as_index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+<span class="n">df_counts</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[305]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>chemicalFormula</th>
+      <th>licenses</th>
+      <th>names</th>
+      <th>preparation</th>
+      <th>references</th>
+      <th>Axis Length</th>
+      <th>Bulk Modulus</th>
+      <th>Cell Angle</th>
+      <th>Chemical Family</th>
+      <th>Commercial Name</th>
+      <th>...</th>
+      <th>Sound Velocity</th>
+      <th>Space Group</th>
+      <th>Specific Heat</th>
+      <th>Tensile Strength</th>
+      <th>Thermal Conductivity</th>
+      <th>Thermal Diffusivity</th>
+      <th>Thermal Expansion</th>
+      <th>Thermal Shock Resistance</th>
+      <th>Weibull Modulus</th>
+      <th>Weibull Strength</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>$\alpha$-SiC.x$\beta$-SiC.yAl2O3.zC</td>
+      <td>3</td>
+      <td>3</td>
+      <td>3</td>
+      <td>3</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>3</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>$\beta$-Si3Al3O3N5</td>
+      <td>6</td>
+      <td>6</td>
+      <td>6</td>
+      <td>6</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>6</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>(1-x)12C.x13C</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>2</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>(1-x)Al2O3.xAlN</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>2</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>(1-x)SiC.xAlN(solidsolution)</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 59 columns</p>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[306]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_counts</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[306]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>(309, 59)</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[307]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Checking how often there is more than one entry for a feature for a given chemical formula</span>
+<span class="p">(</span><span class="n">df_counts</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[307]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>chemicalFormula    309
+references         253
+licenses           253
+Chemical Family    253
+names              252
+dtype: int64</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[308]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># How many of the 158 features have more than one entry for any given chemical formula?</span>
+<span class="p">((</span><span class="n">df_counts</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">&gt;</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[308]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>53</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[309]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">list</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[309]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[&#39;chemicalFormula&#39;,
+ &#39;licenses&#39;,
+ &#39;names&#39;,
+ &#39;preparation&#39;,
+ &#39;references&#39;,
+ &#39;Axis Length&#39;,
+ &#39;Bulk Modulus&#39;,
+ &#39;Cell Angle&#39;,
+ &#39;Chemical Family&#39;,
+ &#39;Commercial Name&#39;,
+ &#39;Compressive Strength&#39;,
+ &#39;Corrosion Activtn Energy&#39;,
+ &#39;Corrosion Rate&#39;,
+ &#39;Corrosion Species&#39;,
+ &#39;Creep Activatn Energy&#39;,
+ &#39;Creep Rate&#39;,
+ &#39;Creep Rate Exponent&#39;,
+ &#39;Crystal Cell System&#39;,
+ &#39;Crystallinity&#39;,
+ &#39;Debye Temperature&#39;,
+ &#39;Density&#39;,
+ &#39;Diffusion Coefficient&#39;,
+ &#39;Dopant&#39;,
+ &#39;Elastic Modulus&#39;,
+ &#39;Elasticity Tensor&#39;,
+ &#39;Electrical Resistivity Log&#39;,
+ &#39;Flexural Strength&#39;,
+ &#39;Fracture Energy&#39;,
+ &#39;Fracture Toughness&#39;,
+ &#39;Friction Coefficient&#39;,
+ &#39;Grain Size&#39;,
+ &#39;Grinding Rat&#39;,
+ &#39;Gruneisen Parameter&#39;,
+ &#39;Hardness&#39;,
+ &#39;Impurity&#39;,
+ &#39;InChI&#39;,
+ &#39;Log Wear Coefficient&#39;,
+ &#39;Log Wear Rate&#39;,
+ &#39;Manufacturer&#39;,
+ &#39;Maximum-Use Temperature&#39;,
+ &#39;Melting Point Temperature&#39;,
+ &#39;Phase&#39;,
+ &#39;Poissons Ratio&#39;,
+ &#39;Porosity&#39;,
+ &#39;Production Form&#39;,
+ &#39;Relative Atomic Coordinate&#39;,
+ &#39;SMILES&#39;,
+ &#39;Shear Modulus&#39;,
+ &#39;Sintering Aid&#39;,
+ &#39;Sound Velocity&#39;,
+ &#39;Space Group&#39;,
+ &#39;Specific Heat&#39;,
+ &#39;Tensile Strength&#39;,
+ &#39;Thermal Conductivity&#39;,
+ &#39;Thermal Diffusivity&#39;,
+ &#39;Thermal Expansion&#39;,
+ &#39;Thermal Shock Resistance&#39;,
+ &#39;Weibull Modulus&#39;,
+ &#39;Weibull Strength&#39;]</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[337]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># List of columns that contain numerical value and can easily be converted</span>
+<span class="n">numerical_cols</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;chemicalFormula&#39;</span><span class="p">,</span><span class="s1">&#39;Axis Length&#39;</span><span class="p">,</span><span class="s1">&#39;Bulk Modulus&#39;</span><span class="p">,</span><span class="s1">&#39;Cell Angle&#39;</span><span class="p">,</span><span class="s1">&#39;Compressive Strength&#39;</span><span class="p">,</span><span class="s1">&#39;Corrosion Activtn Energy&#39;</span><span class="p">,</span> \
+                  <span class="s1">&#39;Corrosion Rate&#39;</span><span class="p">,</span><span class="s1">&#39;Creep Activatn Energy&#39;</span><span class="p">,</span><span class="s1">&#39;Creep Rate&#39;</span><span class="p">,</span><span class="s1">&#39;Creep Rate Exponent&#39;</span><span class="p">,</span> \
+                  <span class="s1">&#39;Debye Temperature&#39;</span><span class="p">,</span><span class="s1">&#39;Density&#39;</span><span class="p">,</span><span class="s1">&#39;Diffusion Coefficient&#39;</span><span class="p">,</span><span class="s1">&#39;Elastic Modulus&#39;</span><span class="p">,</span><span class="s1">&#39;Electrical Resistivity Log&#39;</span><span class="p">,</span>\
+                  <span class="s1">&#39;Flexural Strength&#39;</span><span class="p">,</span><span class="s1">&#39;Fracture Energy&#39;</span><span class="p">,</span><span class="s1">&#39;Fracture Toughness&#39;</span><span class="p">,</span><span class="s1">&#39;Friction Coefficient&#39;</span><span class="p">,</span><span class="s1">&#39;Grain Size&#39;</span><span class="p">,</span>\
+                  <span class="s1">&#39;Grinding Rat&#39;</span><span class="p">,</span><span class="s1">&#39;Gruneisen Parameter&#39;</span><span class="p">,</span><span class="s1">&#39;Hardness&#39;</span><span class="p">,</span><span class="s1">&#39;Log Wear Coefficient&#39;</span><span class="p">,</span><span class="s1">&#39;Log Wear Rate&#39;</span><span class="p">,</span>\
+                  <span class="s1">&#39;Maximum-Use Temperature&#39;</span><span class="p">,</span><span class="s1">&#39;Melting Point Temperature&#39;</span><span class="p">,</span><span class="s1">&#39;Poissons Ratio&#39;</span><span class="p">,</span><span class="s1">&#39;Porosity&#39;</span><span class="p">,</span><span class="s1">&#39;Relative Atomic Coordinate&#39;</span><span class="p">,</span>\
+                  <span class="s1">&#39;Shear Modulus&#39;</span><span class="p">,</span><span class="s1">&#39;Sound Velocity&#39;</span><span class="p">,</span><span class="s1">&#39;Specific Heat&#39;</span><span class="p">,</span><span class="s1">&#39;Tensile Strength&#39;</span><span class="p">,</span><span class="s1">&#39;Thermal Conductivity&#39;</span><span class="p">,</span>\
+                  <span class="s1">&#39;Thermal Diffusivity&#39;</span><span class="p">,</span><span class="s1">&#39;Thermal Expansion&#39;</span><span class="p">,</span><span class="s1">&#39;Weibull Modulus&#39;</span><span class="p">,</span><span class="s1">&#39;Weibull Strength&#39;</span><span class="p">]</span>
+
+<span class="n">non_numerical_cols</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Chemical Family&#39;</span><span class="p">,</span><span class="s1">&#39;Commercial Name&#39;</span><span class="p">,</span><span class="s1">&#39;Corrosion Species&#39;</span><span class="p">,</span><span class="s1">&#39;Crystal Cell System&#39;</span><span class="p">,</span>\
+                      <span class="s1">&#39;Dopant&#39;</span><span class="p">,</span><span class="s1">&#39;Elasticity Tensor&#39;</span><span class="p">,</span><span class="s1">&#39;Impurity&#39;</span><span class="p">,</span><span class="s1">&#39;InChI&#39;</span><span class="p">,</span><span class="s1">&#39;Manufacturer&#39;</span><span class="p">,</span><span class="s1">&#39;Phase&#39;</span><span class="p">,</span><span class="s1">&#39;SMILES&#39;</span><span class="p">,</span><span class="s1">&#39;Sintering Aid&#39;</span><span class="p">,</span>\
+                      <span class="s1">&#39;Space Group&#39;</span><span class="p">,</span><span class="s1">&#39;Thermal Shock Resistance&#39;</span><span class="p">,</span><span class="s1">&#39;licenses&#39;</span><span class="p">,</span><span class="s1">&#39;references&#39;</span><span class="p">]</span>
+
+<span class="n">categorical_cols</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;preparation&#39;</span><span class="p">,</span><span class="s1">&#39;Crystallinity&#39;</span><span class="p">,</span><span class="s1">&#39;Production Form&#39;</span><span class="p">,</span><span class="s1">&#39;names&#39;</span><span class="p">]</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[320]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">numerical_cols</span><span class="p">),</span><span class="s1">&#39;+&#39;</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">non_numerical_cols</span><span class="p">),</span><span class="s1">&#39;+&#39;</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">categorical_cols</span><span class="p">))</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>38 + 16 + 5
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Remove errors given in parentheses from numerical columns</span>
+<span class="k">def</span> <span class="nf">remove_par_errs</span><span class="p">(</span><span class="n">entry_str</span><span class="p">):</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">entry_str</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s1">&#39;- &#39;</span><span class="p">,</span> <span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">entry_str</span><span class="p">)</span>
+        <span class="n">ret</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span> <span class="s1">&#39;\((.*?)\)&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">entry_str</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">entry_str</span><span class="o">==</span><span class="s1">&#39;-&#39;</span><span class="p">:</span>
+            <span class="n">ret</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="n">ret</span> <span class="o">=</span> <span class="n">entry_str</span>
+    <span class="k">return</span> <span class="n">ret</span>
+
+<span class="c1"># Convert column to float (dropping values that have an error in parentheses)</span>
+<span class="k">def</span> <span class="nf">conv_to_float</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">column</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">df</span><span class="p">[</span><span class="n">column</span><span class="p">]</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">remove_par_errs</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+
+<span class="c1">#conv_to_float(df, &#39;Axis Length&#39;).dropna().head()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[389]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_num</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">numerical_cols</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">column</span> <span class="ow">in</span> <span class="n">numerical_cols</span><span class="p">[</span><span class="mi">1</span><span class="p">:]:</span>
+    <span class="n">df_num</span><span class="p">[</span><span class="n">column</span><span class="p">]</span> <span class="o">=</span> <span class="n">conv_to_float</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">column</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>/usr/local/lib/python3.6/site-packages/ipykernel_launcher.py:3: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: http://pandas.pydata.org/pandas-docs/stable/indexing.html#indexing-view-versus-copy
+  This is separate from the ipykernel package so we can avoid doing imports until
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[390]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_num</span> <span class="o">=</span> <span class="n">df_num</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;chemicalFormula&#39;</span><span class="p">,</span> <span class="n">as_index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[381]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">16</span><span class="p">))</span>
+<span class="n">df_num</span><span class="o">.</span><span class="n">count</span><span class="p">()</span><span class="o">.</span><span class="n">sort_values</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">barh</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 
@@ -12078,240 +12585,731 @@ div#notebook {
 
 
 <div class="output_png output_subarea ">
-<img src="data:image/png;base64,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
-AAAAAElFTkSuQmCC
+<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAmIAAAOICAYAAAB1/p22AAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
+AAALEgAACxIB0t1+/AAAIABJREFUeJzs3Xucl3Wd///HUzAOIVhK7mTZbERLGko6WmmWltVWZpqW
+pptQ27K2pZtFxVZbWO2uZVtmpi6WYeUpT2XiqTQ8H2A4DXj6/lZxE820lETRBJ+/Pz7v0YtxhpmB
+YS6Yed5vt7nNdb2v9+F1fUB53V7X+/P5yDYRERER0f+2qDuAiIiIiMEqiVhERERETZKIRURERNQk
+iVhERERETZKIRURERNQkiVhERERETZKIRURERNQkiVhERERETZKIRURERNRkaN0BxOCw7bbburm5
+ue4wIiIi+kVra+sjtsd21y+JWPSL5uZm5s2bV3cYERER/ULSfT3pl0eTERERETVJIhYRERFRkyRi
+ERERETVJIhYRERFRk2zWj37RtnwFzdNn1x1GRETECyw7/n21rZ2KWERERERNNvtETNIaSQsrP819
+MOeBknbc8Og6nfvWEuf/SXq4L+OurLGfpF/21XwRERGxcQyER5OrbE/q6qKkobZX93LOA4FLgdt7
+OqCn69h+Y+k/BWix/elexhYREREDxGZfEeuMpCmSLpF0DXC1pFGSrpY0X1KbpA9U+h4pabGkRZJ+
+JmlP4ADghFKpGidpjqSW0n9bScs6W6e0fV7S3DLncb2M+x9KfEsk/WdpGyrpsUqfwyT9qByPLxW2
+Nkn/Ue0HbCXpIkl3SfppZfz9kmZIWlBifG1pHyVplqTbyrX3l/aJ5X4Wlv6vlrSVpMvLa7ZE0iG9
+uc+IiIhoGAgVsRGSFpbje20fVI53BXa2/WdJQ4GDbP9F0rbALZIuAXYEvgLsafsRSS8t/S8BLrV9
+AYCkda1fXeddwHhgD0DAJZLeavu67m5C0iuAbwItwArgt5L2B65Yx7AfAN+xfb6kjpW1XYGdgIfK
+/b7J9i3l2kO23yDpGOCzwFHAV4ErbE+R9BLgVkm/Af6lrHGepGHlvj4ALLP9nhL7mC7uaSowFWDI
+6G6/5SEiImLQGQgVsVW2J5Wfgyrtv7H953Is4D8lLQZ+C2wPbAe8HTjf9iMAlf69UV3nXeVnATAf
+mEAjMeuJNwLX2H7E9jPA2cBbezDmwnJ8dodrt9h+wPYaYCHQXLl2UfndWml/F/DlktT+DhgO7ADc
+BHxF0heAV9p+ClgM/L2k4yXtZXtFZ8HZnmm7xXbLkJGd5moRERGD2kCoiHXlicrxEcBYYDfbz5RH
+i8N7Mddqnk9aO46rriPgv2z/Ty9jXZdny7ztehr305XjNaz9Z/10J+0CDrT9vx3muVvSzcD7gCsk
+fdz2deVR7XuB4yVdbvs/exhXREREFAOhItYTY4A/liRsX+BVpf0a4EOStgGQ9NLS/jiwVWX8MmC3
+cryu/VBXAh+XNKrMt72kl/UwxluBfSVtUx6lHgZca/tZ4NGyH2wLoFr1u61yflgP11lX7Ee3n0h6
+Q/n9atv/n+3v03gDw86StgdW2v4Z8N80HoNGRERELw2WROwsoEVSG3AkcCeA7aXAfwDXSloEfLf0
+Pxf4fNm0Pg74DvBJSQuAbbtaxPZVNB4R3lzWuoC1E7ou2b4f+HdgDo1HibfYbv8E1C/SSJRuAu6v
+DDsG+GJ55Pq3NPaWra/jgBeXjf9LgRml/XBJS8sjy9cCPwd2AeaWti8BqYZFRESsB9muO4ZYT5Je
+DDxp25L+gcYbEg6uO67ODGsa76bJJ9YdRkRExAtsjE/Wl9Rqu6W7fgN5j9hgsDtwYnlk+SjwsZrj
+6dLE7ccwr8avkIiIiNgUJRHbjNmeA3T5YbYRERGxaRsse8QiIiIiNjlJxCIiIiJqkkQsIiIioiZJ
+xCIiIiJqkkQsIiIioiZJxCIiIiJqkkQsIiIioiZJxCIiIiJqkkQsIiIioiZJxCIiIiJqkq84in7R
+tnwFzdNn1x1GREQMIBvjy7r7WypiERERETVJItYFSWskLaz8TC/tcyS1rMd8B0rasXL+dUn79XBs
+syRL+malbVtJz0g6uZdxrOxBn/W6x4iIiOidPJrs2irbk/pwvgOBS4HbAWx/tZfj7wXeB3ylnH8I
+WNpn0UVERES/S0VsA0g6VdI8SUslHVdpP17S7ZIWS/qOpD2BA4ATSnVtnKRZkg4p/XeXdJOkRZJu
+k7RVJ8s9CdxRqVQdCvyismazpGvKmldL2qG0/62kmyW1daio7SPp0sr5yZKmdHKPKyvHh0iaVY4/
+JGlJifm69Xn9IiIiBrtUxLo2QtLCyvl/2T6vQ58v2/6zpCHA1ZJ2BpYDBwETbFvS1rYfk3QJcKnt
+CwAkUX6/CDgPONT2XEmjgVVdxHQucJikh4A1wAPAy8u1HwBn2j5T0seBk2hU4b4PnGr7p5I+tSEv
+SAdfBd5te7mkrTvrIGkqMBVgyOixfbh0RETEwJCKWNdW2Z5U+emYhAF8WNJ8YAGwE7AjsAJ4Cvix
+pA/SqGSty98BD9qeC2D7L7ZXd9H3CuCdwGE0kreqNwNnl+OfAW8px3sB51Ta+8qNwCxJ/wQM6ayD
+7Zm2W2y3DBk5pg+XjoiIGBiSiK0nSX8LTAPeYXtnYDYwvCRRewAXAPvTSJ76hO2/Aq3A58r8PR7a
+Sdtq1v7zH96Dsc/1sX0Ujf1qrwRaJW3Ti3giIiKCJGIbYjTwBLBC0nbAewAkjQLG2L4MOBbYpfR/
+HOhs79ddQJOk3cv4rSSt65HxfwNftP3nDu030aiUARwBXF+Ob+zQ3u4+YEdJw8qjxXd0sd5Dkl4n
+aQsaj1wpcY6zfWt508HDNBKyiIiI6IXsEetaxz1iV9ie3n5ie5GkBcCdwO9pJDzQSLZ+JWk4IOCz
+pf1c4HRJxwCHVOb5q6RDgR9IGkFjf9h+QKcfM2F7KZ2/W/Jo4CeSPk8jMfpYaf9X4GxJXwR+VZnn
+95J+ASyh8Y7MBV28DtNpvNvzYWAeMKq0nyBpfLnHq4FFXYyPiIiILsju7KlVRN8a1jTeTZNPrDuM
+iIgYQDblT9aX1Gq728/kTEUs+sXE7ccwbxP+DyYiIqIO2SMWERERUZMkYhERERE1SSIWERERUZMk
+YhERERE1SSIWERERUZMkYhERERE1SSIWERERUZMkYhERERE1SSIWERERUZMkYhERERE1SSIWERER
+UZN812T0i7blK2iePrvuMCIiYjOzKX+xd19IRSwiIiKiJoMyEZO0RtLCyk+zpH0kXVpjTHMktXTS
+vr+kBZIWSbpd0j+X9gMl7dhPsU2R9PLK+TJJ2/bH2hEREQPZYH00ucr2pGqDpOaNuaAkAbL9bC/G
+bAnMBPawfb+kYUBzuXwgcClweyfjhtpeveFRP2cKsAR4oA/njIiIGPQGZUWsO5JeLOkMSbeVatQH
+Svuxks4oxxMlLZE0UtIMSdMq45eUKluzpLsk/ZRGIvNKSadKmidpqaTjugllKxrJ8p8AbD9t+y5J
+ewIHACeUit64UlE7UdI84F8ljZV0oaS55WevEtuMcm9zJN0j6ZhK3P9e4r1B0jmSpkk6BGgBzipr
+jSjdj5Y0X1KbpAl98LJHREQMOoO1IjZC0sJyfK/tgzpc/zJwje2PS9oauE3Sb4HvA3MkHVT6/LPt
+JxvFri6NBybbvgVA0pdt/1nSEOBqSTvbXtzZwNLvEuA+SVfTqICdY/um0n6p7QvKvAAvst1Szs8G
+vmf7Bkk7AFcCrytTTwD2pZHo3SXpVGAScDCwC7AlMB9otX2BpE8D02zPq6z1iO1dJf0LMA34RMf4
+JU0FpgIMGT12Xa9RRETEoDRYE7EXPJrs4F3AAZUq13BgB9t3SJoCLAb+x/aNPVjrvvYkrPhwSVCG
+Ak3AjmW+Ttn+hKSJwH40Ep530nhU2JnzKsf7ATtWksTRkkaV49m2nwaelvRHYDtgL+BXtp8CnpL0
+627u66LyuxX4YBexz6TxaJVhTePdzXwRERGDzmBNxLoj4GDbd3VybTywEnh5pW01az/mHV45fuK5
+SaW/pZFM7W77UUmzOvTtlO02oE3Sz4B76ToRe6JyvAXwppJYPackZk9Xmtawfn8P2udY3/ERERGD
+XvaIde5KGnugBCDpDeX3GOAk4K3ANmX/FMAyYNfSZ1fgb7uYdzSNZGmFpO2A96wrCEmjJO1TaZoE
+3FeOH6fxaLErVwFHV+ZaVwUQ4Ebg/ZKGl8rZ/pVr3a0VERER6yGJWOe+QWOf1GJJS8s5wPeAH9q+
+G/hH4HhJLwMuBF5a+n4auLuzSW0vAhYAdwJn00h+1kXAF8oG+oXAcTxfDTsX+Hx5M8G4TsYeA7RI
+WizpduCodS1key5wCY3HpJcDbcCKcnkWcFqHzfoRERGxgWRn6040SBple6WkkcB1wFTb8/ti7mFN
+4900+cS+mCoiIgaRzfWT9SW1tr+Bbl2ytyeqZpYPiR0OnNlXSRjAxO3HMG8z/Y8pIiJiY0kiFs+x
+fXjdMURERAwm2SMWERERUZMkYhERERE1SSIWERERUZMkYhERERE1SSIWERERUZMkYhERERE1SSIW
+ERERUZMkYhERERE1SSIWERERUZN8sn70i7blK2iePrvuMCIioh9trt8T2Z9SEYuIiIioSRKxiIiI
+iJokEdtMSVojaaGkpZIWSfqcpD7985R0lKQjy/EUSS/vy/kjIiIGu+wR23ytsj0JQNLLgLOB0cDX
++moB26dVTqcAS4AH+mr+iIiIwS4VsQHA9h+BqcCn1TBE0gmS5kpaLOmfASTtI2mOpAsk3SnpLEkq
+146XdHvp/53SNkPSNEmHAC3AWaUK9z5Jv2xfX9I7JV3c/3ceERGxeUtFbICwfY+kIcDLgA8AK2zv
+LmkYcKOkq0rXNwA70ahs3QjsJekO4CBggm1L2rrD3BdI+jQwzfa8krz9t6Sxth8GPgac0TEmSVNp
+JIgMGT12Y9x2RETEZi0VsYHpXcCRkhYCtwLbAOPLtdts32/7WWAh0AysAJ4Cfizpg8CT65rctoGf
+Af9QkrY3A5d30m+m7RbbLUNGjumbO4uIiBhAUhEbICS9GlgD/BEQcLTtKzv02Qd4utK0Bhhqe7Wk
+PYB3AIcAnwbe3s2SPwF+TSOBO9/26r64j4iIiMEkidgAIGkscBpwcnm0eCXwSUnX2H5G0muB5esY
+PwoYafsySTcC93TS7XFgq/YT2w9IegD4CrBfX95PRETEYJFEbPM1ojx63BJYTeNR4XfLtR/ReOQ4
+v+znehg4cB1zbQX8StJwGtW0z3bSZxZwmqRVwJttrwLOAsbavmPDbyciImLwUWO7T0TvSToZWGD7
+x931HdY03k2TT+yHqCIiYlMxmL/iSFKr7Zbu+qUiFutFUivwBPC5nvSfuP0Y5g3i/yAjIiI6k0Qs
+1ovt3eqOISIiYnOXj6+IiIiIqEkSsYiIiIiaJBGLiIiIqEkSsYiIiIiaJBGLiIiIqEkSsYiIiIia
+JBGLiIiIqEkSsYiIiIiaJBGLiIiIqEk+WT/6RdvyFTRPn113GBERm63B/L2NA1kqYhERERE1SSIW
+ERERUZMkYn1E0pclLZW0WNJCSW/s4/kvk7R1OT5G0h2SzpJ0gKTpvZhnmaRtK+f7SLp0PWNqlnT4
++oyNiIiI7BHrE5LeDOwP7Gr76ZLovKgv17D93srpvwD72b6/nF/Sl2v1QjNwOHB2TetHRERs1lIR
+6xtNwCO2nwaw/YjtB+C5CtS3JbVJuk3Sa0r7WEkXSppbfvYq7aMk/aT0Xyzp4Mo820o6DXg1cLmk
+YyVNkXRy6bOdpIslLSo/e/bmJiS9WNIZJc4Fkj5Q2pslXS9pfvlpn/d4YO9SATx2g1/FiIiIQSYV
+sb5xFfBVSXcDvwXOs31t5foK2xMlHQmcSKN69n3ge7ZvkLQDcCXwOuDf2/sDSHpJdSHbR0n6e2Bf
+249ImlK5fBJwre2DJA0BRnUR7+8krSnHo4A7y/GXgWtsf7w8Br1N0m+BPwLvtP2UpPHAOUALMB2Y
+Znv/zhaRNBWYCjBk9NiuXruIiIhBK4lYH7C9UtJuwN7AvsB5kqbbnlW6nFP5/b1yvB+wo6T2aUZL
+GlXaD6vM/WgvQnk7cGQZtwZY0UW/fW0/Ao09YsC00v4u4ABJ7efDgR2AB4CTJU0C1gCv7UkwtmcC
+MwGGNY13L+4jIiJiUEgi1kdK4jMHmCOpDZgMzGq/XO1afm8BvMn2U9V5KolZHQQcbPuutRqlGcBD
+wC404n7qhUMjIiKit7JHrA9I+rvyyK7dJOC+yvmhld83l+OrgKMrc0wqh78BPlVpX+vRZDeuBj5Z
+xg2RNKYXY6HxePRolWxQ0htK+xjgQdvPAh8FhpT2x4GterlGREREFEnE+sYo4ExJt0taDOwIzKhc
+f0lp/1egfVP7MUBL2ZB/O3BUaf9m6b9E0iIajzp76l+BfUtFrrXE0RvfALYEFktaWs4BTgEml3gm
+AE+U9sXAmvLGgGzWj4iI6CXZ2bqzMUlaBrS078karIY1jXfT5BPrDiMiYrOVrzjavEhqtd3SXb/s
+EYt+MXH7MczL/0QiIiLWkkRsI7PdXHcMERERsWnKHrGIiIiImiQRi4iIiKhJErGIiIiImiQRi4iI
+iKhJErGIiIiImiQRi4iIiKhJErGIiIiImiQRi4iIiKhJErGIiIiImuST9aNftC1fQfP02XWHERHR
+Z/Ldj9EXUhGLiIiIqEkSsYiIiIiaJBHbBEla2eF8iqSTN3DOOZJaNiyyiIiI6EtJxAYgSdn7FxER
+sRlIIraZkfR+SbdKWiDpt5K2K+0zJP1M0o3AzySNkHSupDskXQyMqMyxUtJ/SFok6ZbKHGMlXShp
+bvnZq7S/TdLC8rNA0laSmiRdV9qWSNq7jtcjIiJic5bKyaZphKSFlfOXApeU4xuAN9m2pE8AXwA+
+V67tCLzF9ipJnwWetP06STsD8yvzvRi4xfaXJX0b+Cfgm8D3ge/ZvkHSDsCVwOuAacCnbN8oaRTw
+FDAVuNL2f0gaAozseBOSppZ+DBk9doNflIiIiIEmidimaZXtSe0nkqYA7fu7XgGcJ6kJeBFwb2Xc
+JbZXleO3AicB2F4saXGl31+BS8txK/DOcrwfsKOk9n6jS+J1I/BdSWcBF9m+X9Jc4AxJWwK/tF1N
+HCnrzgRmAgxrGu9evgYREREDXh5Nbn5+AJxseyLwz8DwyrUnejjHM7bbE6M1PJ+Qb0Gj2jap/Gxv
+e6Xt44FP0Hi8eaOkCbavo5HsLQdmSTpyA+8rIiJi0EkitvkZQyP5AZi8jn7XAYcDSHo9sHMP5r4K
+OLr9RNKk8nuc7Tbb3wLmAhMkvQp4yPbpwI+AXXt7IxEREYNdErHNzwzgfEmtwCPr6HcqMErSHcDX
+aTyC7M4xQIukxZJuB44q7Z8pG/IXA88AlwP7AIskLQAOpbG/LCIiInpBzz+hith4hjWNd9PkE+sO
+IyKiz+QrjmJdJLXa7vbzO7NZP/rFxO3HMC//04qIiFhLHk1GRERE1CSJWERERERNkohFRERE1CSJ
+WERERERNkohFRERE1CSJWERERERNkohFRERE1CSJWERERERNkohFRERE1CSJWERERERN8hVH0S/a
+lq+gefrsusOIiD6Q71iM6DupiEVERETUZEBVxCRtA1xdTv8GWAM8DDQDD9jesabQkDQLuNT2BZ20
+vw1YUZqetL1n/0a3VjxHlRh+WlcMERERg8WASsRs/wmYBCBpBrDS9nckNQOXru+8kobaXt0XMXbh
+8x0TtLrYPq3uGCIiIgaLwfRocoik0yUtlXSVpBEAksZJukJSq6TrJU0o7bMknSbpVuDbkmZIOrP0
+uU/SByV9W1JbGb9lGfdVSXMlLZE0U5LWJ1hJ35f01XL8bknXSdqiEtc8SXdL2r/0aS6xzS8/e5b2
+fSTNkXSBpDslndUek6TjJd0uabGk75S2GZKmleNJkm4p1y+W9JLSPkfStyTdVmLYewP+XCIiIgat
+wZSIjQd+aHsn4DHg4NI+Ezja9m7ANOCUyphXAHva/mw5Hwe8HTgA+DnwO9sTgVVA++7Vk23vbvv1
+wAhg/x7EdoKkheXnrNL2b8ChkvYFTgI+ZvvZcq0Z2KOseZqk4cAfgXfa3hU4tIxp9wbgM8COwKuB
+vcpj3IOAnWzvDHyzk7h+CnyxXG8Dvla5NtT2HmXer3UyNiIiIroxoB5NduNe2wvLcSvQLGkUsCdw
+fqVwNawy5nzbayrnl9t+RlIbMAS4orS30UiOAPaV9AVgJPBSYCnw625ie8GjSdtPSvon4DrgWNv/
+W7n8i5KU/T9J9wATgHuBkyVNorE37rWV/rfZvh9A0sIS6y3AU8CPJV1Kh0e3ksYAW9u+tjSdCZxf
+6XJR+d1aufe1SJoKTAUYMnpsNy9BRETE4DOYErGnK8draFSrtgAesz2pizFPdDaH7WclPWPbpf1Z
+YGipTJ0CtNj+fdmnNnwDYp4I/Al4eYd2d3J+LPAQsAuN+3qqY9zFGhrVrNWS9gDeARwCfJpGta+n
+2udcQxd/j2zPpFFxZFjT+I4xR0REDHqD6dHkC9j+C3CvpA8BqGGXDZiyPel6pFTbDlnfiSS9Cvgc
+jceK75H0xsrlD5X9YuNoPGq8CxgDPFgqZR+lUbFb1/yjgDG2L6ORxK1137ZXAI9W9n99FLiWiIiI
+6DODqSLWlSOAUyV9BdgSOBdYtD4T2X5M0unAEuAPwNweDj2hrN/ujcCPgWm2H5D0j8AsSbuX6/8H
+3AaMBo6y/ZSkU4ALJR1J45Fpx2peR1sBvypVPAGf7aTPZBp70EYC9wAf6+H9RERERA/o+adrsTno
+6vPINnXDmsa7afKJdYcREX0gn6wf0T1JrbZbuus3qB9NRkRERNQpFbHoFy0tLZ43b17dYURERPSL
+VMQiIiIiNnFJxCIiIiJqkkQsIiIioiZJxCIiIiJqkkQsIiIioiZJxCIiIiJqkkQsIiIioiZJxCIi
+IiJqkkQsIiIioiZJxCIiIiJqMrTuAGJwaFu+gubps+sOIyLWQ77kO2LjSUUsIiIioiZJxPqJpAMl
+WdKEHvRtkXRSL+ZeuWHRdTv/FEkvr5wvk7TtxlwzIiJiMEgi1n8+AtxQfq+T7Xm2j9n4IfXYFODl
+3XWKiIiI3kki1g8kjQLeAvwjcFil/SBJV6uhSdLdkv5G0j6SLi193iZpYflZIGmrHq45VtKFkuaW
+n71K+wxJZ0iaI+keScdUxvy7pLsk3SDpHEnTJB0CtABnlRhGlO5HS5ovqa0nVb6IiIh4oSRi/eMD
+wBW27wb+JGk3ANsXAw8CnwJOB75m+w8dxk4DPmV7ErA3sKqHa34f+J7t3YGDgR9Vrk0A3g3sAXxN
+0paS2vvtAryHRvKF7QuAecARtifZbl//Edu7AqeWGCMiIqKX8q7J/vERGokRwLnlvLWcHw0sAW6x
+fU4nY28EvivpLOAi2/f3cM39gB0ltZ+PLpU5gNm2nwaelvRHYDtgL+BXtp8CnpL0627mv6j8bgU+
+2FkHSVOBqQBDRo/tYdgRERGDRxKxjUzSS4G3AxMlGRgCWNLnbRt4BfAssJ2kLWw/Wx1v+3hJs4H3
+AjdKerftO3uw9BbAm0piVY0H4OlK0xrW7+9B+xxdjrc9E5gJMKxpvNdjjYiIiAEtjyY3vkOAn9l+
+le1m268E7gX2ljQUOINGhewO4LMdB0saZ7vN9reAuTQeK/bEVTSqbe3zTOqm/43A+yUNL5Wz/SvX
+Hgd6tDctIiIiei4VsY3vI8C3OrRdWNr3Aa63fYOkRcDcUv2q+oykfWlUzZYCl3eyxkhJ1UeW3wWO
+AX4oaTGNP+frgKO6CtL2XEmXAIuBh4A2YEW5PAs4TdIq4M3rvt2IiIjoKTWejkU03t1pe6WkkTQS
+t6m25/fF3MOaxrtp8ol9MVVE9LN8sn5E70lqtd3SXb9UxKJqpqQdgeHAmX2VhAFM3H4M8/I/84iI
+iLUkEYvn2D687hgiIiIGk2zWj4iIiKhJErGIiIiImiQRi4iIiKhJErGIiIiImiQRi4iIiKhJErGI
+iIiImiQRi4iIiKhJErGIiIiImiQRi4iIiKhJErGIiIiImuQrjqJftC1fQfP02XWHEdHv8oXZEbEu
+qYhFRERE1CSJWA9J+rKkpZIWS1oo6Y2lfZmkbfth/WWSru/QtlDSkl7OM0dSSzd9Zkiatj5xRkRE
+RM/l0WQPSHozsD+wq+2nS+L1oo243lDbqzu5tJWkV9r+vaTXbaz1IyIion+kItYzTcAjtp8GsP2I
+7Qcq14+WNF9Sm6QJAJJeLOkMSbdJWiDpA6W9WdL1pf98SXuW9n1K+yXA7V3E8Qvg0HL8EeCc9guS
+hkv6SYlhgaR9S/sISedKukPSxcCIypiVleNDJM3quGC1giZpW0nLyvFO5d4Wlirh+J6/nBEREQFJ
+xHrqKuCVku6WdIqkt3W4/ojtXYFTgfZHel8GrrG9B7AvcIKkFwN/BN5Z+h8KnFSZZ1fgX22/tos4
+LgQ+WI7fD/y6cu1TgG1PpJGknSlpOPBJ4EnbrwO+BuzW25vvwlHA921PAlqA+/to3oiIiEEjiVgP
+2F5JI4GZCjwMnCdpSqXLReV3K9Bcjt8FTJe0EJgDDAd2ALYETpfUBpwP7FiZ5zbb964jlD8Bj0o6
+DLgDeLJy7S3Az0u8dwL3Aa8F3lppXwws7uFtd+dm4EuSvgi8yvaqjh0kTZU0T9K8NU+u6KNlIyIi
+Bo4kYj1ke43tOba/BnwaOLhy+enyew3P77sTcLDtSeVnB9t3AMcCDwG70KgkVfeaPdGDUM4Dfkjl
+seQGcOV4eBd9VvP835Pn+tg+GzgAWAVcJuntL5jcnmm7xXbLkJFj+iDciIiIgSWJWA9I+rsOe6Am
+0ag4rcuVNPaOqczxhtI+BnjQ9rPAR4EhvQznYuDbZf6q64EjylqvpVF9uwu4Dji8tL8e2Lky5iFJ
+r5O0BXBQF+st4/nHmYe0N0p6NXCP7ZOAX3WYNyIiInogiVjPjKKx5+p2SYtpPE6c0c2Yb9B4DLlY
+0tJyDnCLaDb2AAAgAElEQVQKMFnSImACPauCPcf247a/ZfuvHS6dAmxRHnmeB0wpby44FRgl6Q7g
+6zQen7abDlwK3AQ82MWS3wE+KWkBUP2Yjg8DS8qj19cDP+3NfURERATIdve9IjbQsKbxbpp8Yt1h
+RPS7fLJ+xOAkqdX2Oj+3E/I5YtFPJm4/hnn5BykiImIteTQZERERUZMkYhERERE1SSIWERERUZMk
+YhERERE1SSIWERERUZMkYhERERE1SSIWERERUZMkYhERERE1SSIWERERUZMkYhERERE1SSIWERER
+UZN812T0i7blK2iePrvuMCI2inyxd0Ssr1TEIiIiImqySSdikraRtLD8/EHS8nL8mKTba45tlqRD
+urg2TdKdJda5ko7sozWXSdp2PcY1Szq8ct4i6aRuxhzVHrekKZJe3vuIIyIiYl026UeTtv8ETAKQ
+NANYafs7kpqBS9d3XklDba/uixg7mfso4J3AHrb/Imk0cNDGWKsXmoHDgbMBbM8D5q1rgO3TKqdT
+gCXAAxsnvIiIiMFpk66IdWOIpNMlLZV0laQRAJLGSbpCUquk6yVNKO2zJJ0m6Vbg25JmSDqz9LlP
+0gclfVtSWxm/ZRn31VLVWiJppiR1E9eXgE/a/guA7b/YPrPM9Q5JC8oaZ0gaVtqXSTpO0vxyrT3m
+bcq9LZX0I0ClvVnSkvYFSwVuRjl+jaTfSlpU5hsHHA/sXSp0x0raR9KlkrYoa29dmev/SdquvD7T
+StWvBTirjH+fpF9W+r9T0sXr/acYERExiG3Oidh44Ie2dwIeAw4u7TOBo23vBkwDTqmMeQWwp+3P
+lvNxwNuBA4CfA7+zPRFYBbTvvj3Z9u62Xw+MAPbvKqBS/drK9j2dXBsOzAIOLWsMBT5Z6fKI7V2B
+U0vcAF8Dbij3eDGww7pfEgDOovG67ALsCTwITAeutz3J9vfaO9p+FvgVpWIn6Y3AfbYfqvS5gEb1
+7Ajbk4DLgAmSxpYuHwPO6OL1mCppnqR5a55c0YPQIyIiBpfNORG71/bCctwKNEsaRSP5OF/SQuB/
+gKbKmPNtr6mcX277GaANGAJcUdrbaDzOA9hX0q2S2mgkbTutZ7x/V2K+u5yfCby1cv2i6r2U47fS
+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
+rkJggg==
 "
 >
 </div>
@@ -12324,42 +13322,10 @@ AAAAAElFTkSuQmCC
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[30]:</div>
+<div class="prompt input_prompt">In&nbsp;[392]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Drop all columns that contain less than 300 entries </span>
-<span class="c1"># (crystallinity is only features left with NaN)</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">thresh</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Clean-up-columns">Clean up columns<a class="anchor-link" href="#Clean-up-columns">&#182;</a></h3>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Check-if-all-density-units-are-the-same">Check if all density units are the same<a class="anchor-link" href="#Check-if-all-density-units-are-the-same">&#182;</a></h4>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[31]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Check if all density units are the same, in which case we don&#39;t need the units.</span>
-<span class="n">df</span><span class="p">[</span><span class="s1">&#39;Density-units&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_num</span>
 </pre></div>
 
 </div>
@@ -12372,393 +13338,7 @@ AAAAAElFTkSuQmCC
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[31]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>array([&#39;g cm$^{-3}$&#39;], dtype=object)</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Fill-missing-crystallinity-values">Fill missing crystallinity values<a class="anchor-link" href="#Fill-missing-crystallinity-values">&#182;</a></h4>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[33]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Determine number of polycrystalline / single crystal samples</span>
-<span class="n">N_polyX</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Crystallinity&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;Polycrystalline&#39;</span><span class="p">][</span><span class="s1">&#39;Crystallinity&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span>
-<span class="n">N_singleX</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Crystallinity&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;Single Crystal&#39;</span><span class="p">][</span><span class="s1">&#39;Crystallinity&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Polycrystalline: </span><span class="si">{0}</span><span class="s1">, Single crystal: </span><span class="si">{1}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">N_polyX</span><span class="p">,</span> <span class="n">N_singleX</span><span class="p">))</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Polycrystalline: (354,), Single crystal: (27,)
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[34]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Fill NaN values in crystallinity with polycrystalline:</span>
-<span class="n">df</span><span class="p">[</span><span class="s1">&#39;Crystallinity&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Crystallinity&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="s1">&#39;Polycrystalline&#39;</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Convert-density-to-float">Convert density to float<a class="anchor-link" href="#Convert-density-to-float">&#182;</a></h4>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[35]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Check how density values cannot simply be transformed from string to int</span>
-
-<span class="n">N_errors</span><span class="p">,</span> <span class="n">N_total</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
-<span class="k">for</span> <span class="n">entry</span> <span class="ow">in</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Density&#39;</span><span class="p">]:</span>
-    <span class="k">try</span><span class="p">:</span>
-        <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="n">entry</span><span class="p">])</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
-    <span class="k">except</span><span class="p">:</span>
-        <span class="n">N_errors</span> <span class="o">+=</span><span class="mi">1</span>
-        <span class="nb">print</span><span class="p">(</span><span class="n">entry</span><span class="p">)</span>
-    <span class="k">finally</span><span class="p">:</span>
-        <span class="n">N_total</span> <span class="o">+=</span><span class="mi">1</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{0}</span><span class="s1"> errors in </span><span class="si">{1}</span><span class="s1"> samples&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">N_errors</span><span class="p">,</span> <span class="n">N_total</span><span class="p">))</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>3.16 (1%)
-1 errors in 398 samples
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[36]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#convert the troublesome density value to a good value</span>
-<span class="n">df</span><span class="o">.</span><span class="n">set_value</span><span class="p">(</span><span class="mi">1185</span><span class="p">,</span> <span class="s1">&#39;Density&#39;</span><span class="p">,</span> <span class="s1">&#39;3.16&#39;</span><span class="p">);</span>
-<span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">1185</span><span class="p">,</span><span class="s1">&#39;Density&#39;</span><span class="p">]</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[36]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>&#39;3.16&#39;</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[37]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Convert densities to float</span>
-<span class="n">df</span><span class="p">[</span><span class="s1">&#39;Density&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Density&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Remove-useless-columns">Remove useless columns<a class="anchor-link" href="#Remove-useless-columns">&#182;</a></h4>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[38]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Drop columns that don&#39;t contain numerical or categorical data</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;licenses&#39;</span><span class="p">,</span><span class="s1">&#39;names&#39;</span><span class="p">,</span><span class="s1">&#39;references&#39;</span><span class="p">,</span><span class="s1">&#39;Density-units&#39;</span><span class="p">,</span><span class="s1">&#39;Density-conditions&#39;</span><span class="p">,</span><span class="s1">&#39;Chemical Family&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Eliminate-duplicate-materials">Eliminate duplicate materials<a class="anchor-link" href="#Eliminate-duplicate-materials">&#182;</a></h3>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[39]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">N_unique_entries</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;chemicalFormula&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;There are just </span><span class="si">{0}</span><span class="s1"> unique entries in the </span><span class="si">{1}</span><span class="s1"> materials.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">N_unique_entries</span><span class="p">,</span><span class="n">df_dens</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>There are just 110 unique entries in the 122 materials.
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[40]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;chemicalFormula&#39;</span><span class="p">,</span><span class="s1">&#39;Crystallinity&#39;</span><span class="p">],</span> <span class="n">as_index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Composition-with-Chih-Hao's-method">Composition with Chih-Hao's method<a class="anchor-link" href="#Composition-with-Chih-Hao's-method">&#182;</a></h3>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[41]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">3892</span><span class="p">,</span><span class="s1">&#39;chemicalFormula&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;BN&#39;</span> <span class="c1">#fix &#39;B-N&#39; to &#39;BN&#39;</span>
-
-<span class="c1"># Parse the chemicalFormula</span>
-<span class="k">def</span> <span class="nf">formula_decompose</span><span class="p">(</span><span class="n">formula</span><span class="p">):</span>
-    <span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">    decompose chemical formula </span>
-<span class="sd">    return</span>
-<span class="sd">        composition: list, [(element,num),...]</span>
-<span class="sd">            element: string</span>
-<span class="sd">            num: string, can be math expression such as &#39;1+0.5x&#39;</span>
-<span class="sd">    &#39;&#39;&#39;</span>
-
-    <span class="n">comp</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="n">p</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;(\d?[w-z]?)([A-Z][a-u]?)(\d*\+?\-?\d*\.?\d*[w-z]?)&#39;</span><span class="p">)</span>
-
-    <span class="c1">#split the chemical formula if there is dots, but not for cases like Mg1.5x</span>
-    <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\.&#39;</span><span class="p">,</span> <span class="n">formula</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\d+\.\d[w-z]&#39;</span><span class="p">,</span> <span class="n">formula</span><span class="p">):</span> 
-        <span class="n">formula</span> <span class="o">=</span> <span class="n">formula</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)</span>
-        <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">formula</span><span class="p">:</span>
-            <span class="n">prefactor</span> <span class="o">=</span> <span class="s1">&#39;1&#39;</span>
-            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
-                <span class="n">pre</span><span class="p">,</span> <span class="n">elem</span><span class="p">,</span> <span class="n">num</span> <span class="o">=</span> <span class="n">i</span>
-                <span class="k">if</span> <span class="n">pre</span><span class="p">:</span>
-                    <span class="n">prefactor</span> <span class="o">=</span> <span class="n">pre</span>
-                <span class="k">if</span> <span class="n">num</span> <span class="o">==</span> <span class="s1">&#39;&#39;</span><span class="p">:</span>
-                    <span class="n">num</span> <span class="o">=</span> <span class="s1">&#39;1&#39;</span>
-                <span class="n">num</span> <span class="o">=</span> <span class="n">prefactor</span> <span class="o">+</span> <span class="s1">&#39;*(</span><span class="si">{}</span><span class="s1">)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
-                <span class="n">comp</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">elem</span><span class="p">,</span> <span class="n">num</span><span class="p">))</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">prefactor</span> <span class="o">=</span> <span class="s1">&#39;1&#39;</span>
-        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">formula</span><span class="p">):</span>
-            <span class="n">pre</span><span class="p">,</span> <span class="n">elem</span><span class="p">,</span> <span class="n">num</span> <span class="o">=</span> <span class="n">i</span>
-            <span class="k">if</span> <span class="n">pre</span><span class="p">:</span>
-                <span class="n">prefactor</span> <span class="o">=</span> <span class="n">pre</span>
-            <span class="k">if</span> <span class="n">num</span> <span class="o">==</span> <span class="s1">&#39;&#39;</span><span class="p">:</span>
-                <span class="n">num</span> <span class="o">=</span> <span class="s1">&#39;1&#39;</span>
-            <span class="n">num</span> <span class="o">=</span> <span class="n">prefactor</span> <span class="o">+</span> <span class="s1">&#39;*(</span><span class="si">{}</span><span class="s1">)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
-            <span class="n">comp</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">elem</span><span class="p">,</span> <span class="n">num</span><span class="p">))</span>
-    <span class="k">return</span> <span class="n">comp</span> 
-
-<span class="k">def</span> <span class="nf">formula_reconstruct</span><span class="p">(</span><span class="n">composition</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">w</span><span class="o">=</span><span class="mf">0.1</span><span class="p">):</span>
-    <span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">    reconstruct chemical formula from composition</span>
-<span class="sd">    composition in form of [(element,num), (element,num),...]</span>
-<span class="sd">        element: string</span>
-<span class="sd">        num: string, can be math expression such as &#39;1+0.5x&#39;</span>
-
-<span class="sd">    return </span>
-<span class="sd">        flat chemcial formula: string, such as &#39;Ti1.5Cu0.1Au1.0&#39;</span>
-<span class="sd">    &#39;&#39;&#39;</span>
-    <span class="n">flat_list</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="k">for</span> <span class="p">(</span><span class="n">elem</span><span class="p">,</span> <span class="n">num</span><span class="p">)</span> <span class="ow">in</span> <span class="n">composition</span><span class="p">:</span>
-        <span class="n">num</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;(\d)([w-z])&#39;</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;\1*\2&#39;</span><span class="p">,</span> <span class="n">num</span><span class="p">)</span> <span class="c1">#convert 5x to 5*x</span>
-        <span class="n">flat_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">elem</span><span class="p">)</span>
-        <span class="n">flat_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">format</span><span class="p">(</span><span class="nb">eval</span><span class="p">(</span><span class="n">num</span><span class="p">),</span> <span class="s1">&#39;.1f&#39;</span><span class="p">))</span>
-    <span class="k">return</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">flat_list</span><span class="p">)</span>
-  
-<span class="k">def</span> <span class="nf">formula_parser</span><span class="p">(</span><span class="n">formula</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">formula_reconstruct</span><span class="p">(</span><span class="n">formula_decompose</span><span class="p">(</span><span class="n">formula</span><span class="p">))</span>
-
-<span class="n">df</span><span class="p">[</span><span class="s2">&quot;flatFormula&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;chemicalFormula&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">formula_parser</span><span class="p">)</span>
-<span class="n">df</span><span class="p">[</span><span class="s2">&quot;composition&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;flatFormula&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">str_to_composition</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Composition-with-Chris'-method">Composition with Chris' method<a class="anchor-link" href="#Composition-with-Chris'-method">&#182;</a></h3>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[42]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Add second composition column (that doesn&#39;t have float stoichiometries; Chris&#39; version)</span>
-<span class="k">def</span> <span class="nf">make_chem_form_compatible</span><span class="p">(</span><span class="n">formula</span><span class="p">):</span>
-    
-    <span class="k">for</span> <span class="n">bad_str</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;\.&#39;</span><span class="p">,</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="s1">&#39;\+&#39;</span><span class="p">,</span> <span class="s1">&#39;\-&#39;</span><span class="p">,</span> <span class="s1">&#39;z&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="s1">&#39;\%&#39;</span><span class="p">,</span> <span class="s1">&#39;\^&#39;</span><span class="p">,</span>   <span class="c1"># individual characters</span>
-                 <span class="s1">&#39;Cordierite&#39;</span><span class="p">,</span><span class="s1">&#39;hisker&#39;</span><span class="p">,</span><span class="s1">&#39;Sialon&#39;</span><span class="p">,</span> <span class="c1"># certain words that show up in some formulas</span>
-                 <span class="s1">&#39;\$(.*?)\$&#39;</span><span class="p">,</span>    <span class="c1"># LaTeX expressions</span>
-                 <span class="s1">&#39;\((.*?)\)&#39;</span><span class="p">,</span>    <span class="c1"># bracketed expressions</span>
-                 <span class="s1">&#39;^\d{1,2}&#39;</span><span class="p">]:</span>    <span class="c1"># leading numbers of 1 or 2 digits</span>
-        <span class="n">formula</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="n">bad_str</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">formula</span><span class="p">)</span>
-    
-    <span class="k">return</span> <span class="n">formula</span>
-
-<span class="c1"># Convert chemical formulas using above function</span>
-<span class="n">df</span><span class="p">[</span><span class="s2">&quot;comp_int&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;chemicalFormula&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">make_chem_form_compatible</span><span class="p">)</span>
-
-<span class="c1"># Converting chemical formula to composition object using</span>
-<span class="c1"># matminer.utils.conversions.str_to_composition</span>
-<span class="c1"># which in turn uses pymatgen.core.composition</span>
-<span class="n">df</span><span class="p">[</span><span class="s2">&quot;comp_int&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;comp_int&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">str_to_composition</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[43]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[43]:</div>
+<div class="prompt output_prompt">Out[392]:</div>
 
 
 
@@ -12782,403 +13362,85 @@ AAAAAElFTkSuQmCC
     <tr style="text-align: right;">
       <th></th>
       <th>chemicalFormula</th>
-      <th>Crystallinity</th>
-      <th>Density</th>
-      <th>flatFormula</th>
-      <th>composition</th>
-      <th>comp_int</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>$\beta$-Si3Al3O3N5</td>
-      <td>Polycrystalline</td>
-      <td>3.091000</td>
-      <td>Si3.0Al3.0O3.0N5.0</td>
-      <td>(Si, Al, O, N)</td>
-      <td>(Si, Al, O, N)</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>(1-x-y)Al2O3.xAlN.yTiN</td>
-      <td>Polycrystalline</td>
-      <td>4.380000</td>
-      <td>Al2.0O3.0Al0.1N0.1Ti0.1N0.1</td>
-      <td>(Al, O, N, Ti)</td>
-      <td>(Al, O, N, Ti)</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>0.5SiO2.(0.5-x)Al2O3.xE2O3</td>
-      <td>Noncrystalline</td>
-      <td>3.520000</td>
-      <td>Si5.0O10.0Al2.0O3.0E0.2O0.3</td>
-      <td>(Si, O, Al, E0+)</td>
-      <td>(Si, O, Al, E0+)</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>3Al2O3.2SiO2</td>
-      <td>Polycrystalline</td>
-      <td>3.097167</td>
-      <td>Al6.0O9.0Si2.0O4.0</td>
-      <td>(Al, O, Si)</td>
-      <td>(Al, O, Si)</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>3Al2O3.2SiO2.xCordierite</td>
-      <td>Polycrystalline</td>
-      <td>2.720000</td>
-      <td>Al6.0O9.0Si2.0O4.0Co0.1</td>
-      <td>(Al, O, Si, Co)</td>
-      <td>(Al, O, Si)</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[44]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">sample</span><span class="o">=</span><span class="mi">5</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;chemical formula: &#39;</span><span class="p">,</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">sample</span><span class="p">,</span><span class="s1">&#39;chemicalFormula&#39;</span><span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;composition :&#39;</span><span class="p">,</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">sample</span><span class="p">,</span><span class="s1">&#39;composition&#39;</span><span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;comp_int :&#39;</span><span class="p">,</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">sample</span><span class="p">,</span><span class="s1">&#39;comp_int&#39;</span><span class="p">])</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>chemical formula:  3Al2O3.2SiO2.xSiC
-composition : Al6 O13 Si2.1 C0.1
-comp_int : Al2 O34 Si2 C1
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Add-Additional-Features-with-matminer">Add Additional Features with matminer<a class="anchor-link" href="#Add-Additional-Features-with-matminer">&#182;</a></h1>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[45]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_feat</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span> <span class="c1"># Create new DataFrame for featurization</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="ElementProperty">ElementProperty<a class="anchor-link" href="#ElementProperty">&#182;</a></h3>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[46]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_feat</span><span class="o">.</span><span class="n">shape</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[46]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>(123, 6)</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[47]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Add features with matminer (using the floating point composition by Chih-Hao)</span>
-<span class="n">ep_feat</span> <span class="o">=</span> <span class="n">ElementProperty</span><span class="o">.</span><span class="n">from_preset</span><span class="p">(</span><span class="n">preset_name</span><span class="o">=</span><span class="s2">&quot;magpie&quot;</span><span class="p">)</span>
-<span class="n">df_feat</span> <span class="o">=</span> <span class="n">ep_feat</span><span class="o">.</span><span class="n">featurize_dataframe</span><span class="p">(</span><span class="n">df_feat</span><span class="p">,</span> <span class="n">col_id</span><span class="o">=</span><span class="s2">&quot;composition&quot;</span><span class="p">,</span> <span class="n">ignore_errors</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[48]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_feat</span><span class="o">.</span><span class="n">shape</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[48]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>(123, 138)</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[51]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># List of the new columns</span>
-<span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">df_feat</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span> <span class="o">^</span> <span class="nb">set</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">))[:</span><span class="mi">10</span><span class="p">]</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[51]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>[&#39;mean NfUnfilled&#39;,
- &#39;maximum MendeleevNumber&#39;,
- &#39;mode Column&#39;,
- &#39;mean GSmagmom&#39;,
- &#39;mean GSbandgap&#39;,
- &#39;minimum GSvolume_pa&#39;,
- &#39;avg_dev NpUnfilled&#39;,
- &#39;mean SpaceGroupNumber&#39;,
- &#39;mean Row&#39;,
- &#39;mean CovalentRadius&#39;]</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="ElementFraction">ElementFraction<a class="anchor-link" href="#ElementFraction">&#182;</a></h3>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[55]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Adds a column for every element. Values are fraction of atoms that belong to that element.</span>
-<span class="n">ep_frac</span> <span class="o">=</span> <span class="n">ElementFraction</span><span class="p">()</span>
-<span class="n">df_feat</span> <span class="o">=</span> <span class="n">ep_frac</span><span class="o">.</span><span class="n">featurize_dataframe</span><span class="p">(</span><span class="n">df_feat</span><span class="p">,</span> <span class="n">col_id</span> <span class="o">=</span> <span class="s2">&quot;composition&quot;</span><span class="p">,</span> <span class="n">ignore_errors</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[65]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_feat</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[65]:</div>
-
-
-
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
-<style>
-    .dataframe thead tr:only-child th {
-        text-align: right;
-    }
-
-    .dataframe thead th {
-        text-align: left;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>chemicalFormula</th>
-      <th>Crystallinity</th>
-      <th>Density</th>
-      <th>flatFormula</th>
-      <th>composition</th>
-      <th>comp_int</th>
-      <th>minimum Number</th>
-      <th>maximum Number</th>
-      <th>range Number</th>
-      <th>mean Number</th>
+      <th>Axis Length</th>
+      <th>Bulk Modulus</th>
+      <th>Cell Angle</th>
+      <th>Compressive Strength</th>
+      <th>Corrosion Activtn Energy</th>
+      <th>Corrosion Rate</th>
+      <th>Creep Activatn Energy</th>
+      <th>Creep Rate</th>
+      <th>Creep Rate Exponent</th>
       <th>...</th>
-      <th>Pu</th>
-      <th>Am</th>
-      <th>Cm</th>
-      <th>Bk</th>
-      <th>Cf</th>
-      <th>Es</th>
-      <th>Fm</th>
-      <th>Md</th>
-      <th>No</th>
-      <th>Lr</th>
+      <th>Relative Atomic Coordinate</th>
+      <th>Shear Modulus</th>
+      <th>Sound Velocity</th>
+      <th>Specific Heat</th>
+      <th>Tensile Strength</th>
+      <th>Thermal Conductivity</th>
+      <th>Thermal Diffusivity</th>
+      <th>Thermal Expansion</th>
+      <th>Weibull Modulus</th>
+      <th>Weibull Strength</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>0</th>
-      <td>$\beta$-Si3Al3O3N5</td>
-      <td>Polycrystalline</td>
-      <td>3.091000</td>
-      <td>Si3.0Al3.0O3.0N5.0</td>
-      <td>(Si, Al, O, N)</td>
-      <td>(Si, Al, O, N)</td>
-      <td>7.0</td>
-      <td>14.0</td>
-      <td>7.0</td>
-      <td>10.000000</td>
+      <td>$\alpha$-SiC.x$\beta$-SiC.yAl2O3.zC</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
       <td>...</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>(1-x-y)Al2O3.xAlN.yTiN</td>
-      <td>Polycrystalline</td>
-      <td>4.380000</td>
-      <td>Al2.0O3.0Al0.1N0.1Ti0.1N0.1</td>
-      <td>(Al, O, N, Ti)</td>
-      <td>(Al, O, N, Ti)</td>
-      <td>7.0</td>
-      <td>22.0</td>
-      <td>15.0</td>
-      <td>10.166667</td>
+      <td>$\beta$-Si3Al3O3N5</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
       <td>...</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>0.5SiO2.(0.5-x)Al2O3.xE2O3</td>
-      <td>Noncrystalline</td>
-      <td>3.520000</td>
-      <td>Si5.0O10.0Al2.0O3.0E0.2O0.3</td>
-      <td>(Si, O, Al, E0+)</td>
-      <td>(Si, O, Al, E0+)</td>
+      <td>(1-x)12C.x13C</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -13189,63 +13451,1407 @@ comp_int : Al2 O34 Si2 C1
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
+      <td>33.000000</td>
+      <td>18.40000</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>3Al2O3.2SiO2</td>
-      <td>Polycrystalline</td>
-      <td>3.097167</td>
-      <td>Al6.0O9.0Si2.0O4.0</td>
-      <td>(Al, O, Si)</td>
-      <td>(Al, O, Si)</td>
-      <td>8.0</td>
-      <td>14.0</td>
-      <td>6.0</td>
-      <td>10.000000</td>
+      <td>(1-x)Al2O3.xAlN</td>
+      <td>7.951200</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
       <td>...</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>5.610000</td>
+      <td>NaN</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>3Al2O3.2SiO2.xCordierite</td>
-      <td>Polycrystalline</td>
-      <td>2.720000</td>
-      <td>Al6.0O9.0Si2.0O4.0Co0.1</td>
-      <td>(Al, O, Si, Co)</td>
-      <td>(Al, O, Si)</td>
-      <td>8.0</td>
-      <td>27.0</td>
-      <td>19.0</td>
-      <td>10.080569</td>
+      <td>(1-x)SiC.xAlN(solidsolution)</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
       <td>...</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>(1-x)SiC.xAlN(two-phase)</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>(1-x)ZrO2.xY2O3</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>54.200000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>(1-x-y)Al2O3.xAlN.yTiN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.8000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>(3+x)Al2O3.(2-x)SiO2</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>0.5SiO2.(0.5-x)Al2O3.xE2O3</td>
+      <td>NaN</td>
+      <td>90.200000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>6.260</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>2Al2O3.SiO2</td>
+      <td>7.579475</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>0.000000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>4.100000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>2MgO.2Al2O3.5SiO2</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-0.060000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>3Al2O3.2SiO2</td>
+      <td>7.540080</td>
+      <td>168.036667</td>
+      <td>NaN</td>
+      <td>784.000000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>548.166667</td>
+      <td>896.788923</td>
+      <td>1.090</td>
+      <td>...</td>
+      <td>0.000000</td>
+      <td>88.130000</td>
+      <td>NaN</td>
+      <td>748.000000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>4.900000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>3Al2O3.2SiO2.xCordierite</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>72.000000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>5.000000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>3Al2O3.2SiO2.xSiC</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>385.000000</td>
+      <td>6.020000</td>
+      <td>2.502</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>767.000000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.02100</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>3Al2O3.2SiO2.xSialon</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>3Al2O3.2SiO2.xZrO2</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>647.000000</td>
+      <td>NaN</td>
+      <td>5.600000</td>
+      <td>0.02320</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>3Al2O3.2SiO2.xZrO2.wSiC</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>666.000000</td>
+      <td>NaN</td>
+      <td>10.200000</td>
+      <td>0.04330</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>3Al2O3.2SiO2.xZrO2.yY2O3</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>660.000000</td>
+      <td>NaN</td>
+      <td>4.700000</td>
+      <td>0.01830</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>3Al2O3.2SiO2.xZrO2.yY2O3.wSiC</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>672.000000</td>
+      <td>NaN</td>
+      <td>6.300000</td>
+      <td>0.02920</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>3Al2O3.2SiO2.ySi6-xAlxOxN8-x</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>3Al2O3.2SiO3.2ZrO2</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>3AlN.SiC</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>4MgO.(4+x)Al2O3.(10-y)SiO2.zR</td>
+      <td>9.784000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2.100000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>AL2O3</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>Al2O3</td>
+      <td>5.388120</td>
+      <td>211.601111</td>
+      <td>NaN</td>
+      <td>6.046667</td>
+      <td>71.0</td>
+      <td>0.1258</td>
+      <td>450.000000</td>
+      <td>10180.635833</td>
+      <td>3.228</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>128.820000</td>
+      <td>9.362</td>
+      <td>366.689667</td>
+      <td>658.75</td>
+      <td>19.446667</td>
+      <td>0.09500</td>
+      <td>5.073647</td>
+      <td>10.535</td>
+      <td>414.000000</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>Al2O3.LaAl11O18.ySiO2</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>Al2O3.SiO2</td>
+      <td>7.470833</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>0.108467</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>Al2O3.xCeO2.yZrO2</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>Al2O3.xCr2O3</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.04800</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>279</th>
+      <td>ZrC</td>
+      <td>4.695300</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>500.000000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>280</th>
+      <td>ZrCx</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>367.130000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>281</th>
+      <td>ZrN</td>
+      <td>4.599000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>154.000000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>282</th>
+      <td>ZrNx</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>283</th>
+      <td>ZrO.5%Y2O3</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>81.000000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>13.900</td>
+      <td>774.000000</td>
+    </tr>
+    <tr>
+      <th>284</th>
+      <td>ZrO2</td>
+      <td>5.079567</td>
+      <td>373.000000</td>
+      <td>99.2422</td>
+      <td>4.100000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>0.267267</td>
+      <td>73.450000</td>
+      <td>NaN</td>
+      <td>451.000000</td>
+      <td>352.00</td>
+      <td>1.655000</td>
+      <td>NaN</td>
+      <td>10.334444</td>
+      <td>17.200</td>
+      <td>616.000000</td>
+    </tr>
+    <tr>
+      <th>285</th>
+      <td>ZrO2.0.5Pr2O3</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>86.200000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>286</th>
+      <td>ZrO2.0.5Tb2O3</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>76.200000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>287</th>
+      <td>ZrO2.SiO2</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>71.500000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>288</th>
+      <td>ZrO2.wMgO.xAl2O3.ySiO2.zTiO2</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>289</th>
+      <td>ZrO2.wY2O3.x$\gamma$-Al2O3</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>290</th>
+      <td>ZrO2.xAl2O3.ySiO2.zY2O3</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>4.800000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>291</th>
+      <td>ZrO2.xAl2O3.yY2O3</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>450.00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>8.000</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>292</th>
+      <td>ZrO2.xCaO</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>10.080000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>293</th>
+      <td>ZrO2.xCeO2</td>
+      <td>4.369950</td>
+      <td>180.000000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>73.900000</td>
+      <td>6.710</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>294</th>
+      <td>ZrO2.xCeO2.yAl2O3</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>10.700000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>295</th>
+      <td>ZrO2.xCeO2.yLaNbO4</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>296</th>
+      <td>ZrO2.xEr2O3</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>297</th>
+      <td>ZrO2.xMgO</td>
+      <td>5.077500</td>
+      <td>NaN</td>
+      <td>98.8900</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>58.000000</td>
+      <td>1.400</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>49.500000</td>
+      <td>NaN</td>
+      <td>473.000000</td>
+      <td>NaN</td>
+      <td>3.110000</td>
+      <td>0.01225</td>
+      <td>9.993333</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>298</th>
+      <td>ZrO2.xSc2O3</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>28000.000000</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>299</th>
+      <td>ZrO2.xY2O3</td>
+      <td>5.130860</td>
+      <td>163.000000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>682.000000</td>
+      <td>11551.714286</td>
+      <td>5.140</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>101.833333</td>
+      <td>7.090</td>
+      <td>512.500000</td>
+      <td>759.00</td>
+      <td>2.710000</td>
+      <td>0.01190</td>
+      <td>8.038571</td>
+      <td>9.200</td>
+      <td>867.714286</td>
+    </tr>
+    <tr>
+      <th>300</th>
+      <td>ZrO2.xY2O3+yYb2O3</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>301</th>
+      <td>ZrO2.xY2O3.yAl2O3</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>9.900000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>302</th>
+      <td>ZrO2.xY2O3.yCeO2</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>303</th>
+      <td>ZrO2.xY2O3.yFe2O3</td>
+      <td>NaN</td>
+      <td>35.800000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>13.900000</td>
+      <td>3.205</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>304</th>
+      <td>ZrO2.xY2O3.ySiC</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>305</th>
+      <td>ZrO3.wY2O3.x$\gamma$-Al2O3.y$\beta$-Al2O3</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>306</th>
+      <td>^(13)C</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>307</th>
+      <td>xAl2O3.ySiO2</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2100.000000</td>
+      <td>1.300</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>308</th>
+      <td>xAlN.(1-x)Al2O3</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>11.000000</td>
+      <td>NaN</td>
+      <td>4.840000</td>
+      <td>NaN</td>
+      <td>NaN</td>
     </tr>
   </tbody>
 </table>
-<p>5 rows × 241 columns</p>
+<p>309 rows × 39 columns</p>
 </div>
 </div>
 
@@ -13254,13 +14860,21 @@ comp_int : Al2 O34 Si2 C1
 </div>
 </div>
 
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Make-features-from-categorical-data">Make features from categorical data<a class="anchor-link" href="#Make-features-from-categorical-data">&#182;</a></h3>
+</div>
+</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[66]:</div>
+<div class="prompt input_prompt">In&nbsp;[383]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_feat</span><span class="p">[</span><span class="s1">&#39;mode Column&#39;</span><span class="p">]</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="n">categorical_cols</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 
 </div>
@@ -13273,74 +14887,168 @@ comp_int : Al2 O34 Si2 C1
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[66]:</div>
+<div class="prompt output_prompt">Out[383]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>preparation</th>
+      <th>Crystallinity</th>
+      <th>Production Form</th>
+      <th>names</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>NaN</td>
+      <td>Polycrystalline</td>
+      <td>NaN</td>
+      <td>[Silica]</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>[{'name': 'Hot Pressing'}]</td>
+      <td>Polycrystalline</td>
+      <td>NaN</td>
+      <td>[Mullite composite]</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>[{'name': 'Hot Pressing'}]</td>
+      <td>Polycrystalline</td>
+      <td>NaN</td>
+      <td>[Alumina]</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>[{'name': 'Hot Pressing'}]</td>
+      <td>Polycrystalline</td>
+      <td>NaN</td>
+      <td>[Silicon nitride composite]</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>[{'name': 'Hot Isostatic Pressing'}]</td>
+      <td>Polycrystalline</td>
+      <td>NaN</td>
+      <td>[Silicon nitride]</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[384]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Crystallinity&#39;</span><span class="p">]</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[384]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>0       15.0
-1       16.0
-2        NaN
-3       16.0
-4       16.0
-5       16.0
-6       16.0
-7       16.0
-8       16.0
-9       16.0
-10      16.0
-11      16.0
-12      16.0
-13       NaN
-14      16.0
-15      16.0
-16      16.0
-17      16.0
-18      16.0
-19      16.0
-20      16.0
-21      16.0
-22      16.0
-23      16.0
-24      16.0
-25      13.0
-26      15.0
-27      13.0
-28      13.0
-29      13.0
-        ... 
-93      16.0
-94      16.0
-95      13.0
-96      13.0
-97      13.0
-98      13.0
-99       4.0
-100      4.0
-101     16.0
-102      6.0
-103      6.0
-104     16.0
-105     16.0
-106     13.0
-107     16.0
-108     16.0
-109     16.0
-110     16.0
-111     16.0
-112     16.0
-113     16.0
-114     16.0
-115     16.0
-116     16.0
-117     16.0
-118     16.0
-119     16.0
-120     16.0
-121     16.0
-3892    13.0
-Name: mode Column, Length: 123, dtype: float64</pre>
+<pre>1       Polycrystalline
+2       Polycrystalline
+3       Polycrystalline
+4       Polycrystalline
+5       Polycrystalline
+6       Polycrystalline
+7       Polycrystalline
+8       Polycrystalline
+9       Polycrystalline
+10      Polycrystalline
+11      Polycrystalline
+12      Polycrystalline
+13      Polycrystalline
+14      Polycrystalline
+15      Polycrystalline
+16      Polycrystalline
+17      Polycrystalline
+18      Polycrystalline
+19       Single Crystal
+20      Polycrystalline
+21      Polycrystalline
+22      Polycrystalline
+23      Polycrystalline
+24      Polycrystalline
+25      Polycrystalline
+26      Polycrystalline
+27      Polycrystalline
+28      Polycrystalline
+29      Polycrystalline
+30      Polycrystalline
+             ...       
+4069    Polycrystalline
+4070    Polycrystalline
+4071    Polycrystalline
+4072    Polycrystalline
+4073    Polycrystalline
+4074    Polycrystalline
+4075    Polycrystalline
+4076    Polycrystalline
+4077    Polycrystalline
+4078    Polycrystalline
+4079    Polycrystalline
+4080    Polycrystalline
+4081    Polycrystalline
+4082    Polycrystalline
+4083    Polycrystalline
+4084    Polycrystalline
+4085    Polycrystalline
+4086     Single Crystal
+4087    Polycrystalline
+4088    Polycrystalline
+4089                NaN
+4090    Polycrystalline
+4091    Polycrystalline
+4092    Polycrystalline
+4093    Polycrystalline
+4094    Polycrystalline
+4095    Polycrystalline
+4096    Polycrystalline
+4097    Polycrystalline
+4098    Polycrystalline
+Name: Crystallinity, Length: 4098, dtype: object</pre>
 </div>
 
 </div>
