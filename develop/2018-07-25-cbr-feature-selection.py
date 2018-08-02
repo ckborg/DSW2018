@@ -1,7 +1,7 @@
 
 # coding: utf-8
 
-# In[53]:
+# In[67]:
 
 
 import numpy as np
@@ -14,7 +14,7 @@ from matminer.featurizers.composition import ElementProperty
 from matminer.featurizers.composition import ElementFraction
 
 
-# In[2]:
+# In[68]:
 
 
 df  = pd.read_pickle('../deliver/NIST_CeramicDataSet.pkl')
@@ -303,4 +303,10 @@ df_feat = ep_frac.featurize_dataframe(df_feat, col_id = "composition", ignore_er
 
 
 df_feat.head()
+
+
+# In[66]:
+
+
+df_feat['mode Column']
 
