@@ -11773,7 +11773,7 @@ div#notebook {
 
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[103]:</div>
+<div class="prompt input_prompt">In&nbsp;[124]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -11795,7 +11795,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="prompt input_prompt">In&nbsp;[128]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="n">CitrinationClient</span><span class="p">(</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;CITRINATION_API_KEY&#39;</span><span class="p">],</span> <span class="s1">&#39;https://citrination.com&#39;</span><span class="p">)</span>
@@ -11817,7 +11817,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[78]:</div>
+<div class="prompt input_prompt">In&nbsp;[182]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># This function creates a csv files with columns for:</span>
@@ -11837,14 +11837,12 @@ div#notebook {
     <span class="n">data_query</span> <span class="o">=</span> <span class="n">DataQuery</span><span class="p">(</span><span class="n">dataset</span><span class="o">=</span><span class="n">dataset_query</span><span class="p">,</span> <span class="n">system</span><span class="o">=</span><span class="n">system_query</span><span class="p">)</span>
     <span class="n">pif_query</span> <span class="o">=</span> <span class="n">PifSystemReturningQuery</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">5000</span><span class="p">,</span> <span class="n">random_results</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">query</span><span class="o">=</span><span class="n">data_query</span><span class="p">)</span>
 
-    <span class="n">search_result</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">search</span><span class="o">.</span><span class="n">pif_search</span><span class="p">(</span><span class="n">pif_query</span><span class="p">)</span>
+    <span class="n">search_result</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">search</span><span class="o">.</span><span class="n">pif_search</span><span class="p">(</span><span class="n">pif_query</span><span class="p">)</span> <span class="c1"># Actual pif query against the citrination database</span>
 
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;We found </span><span class="si">{}</span><span class="s2"> records&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">search_result</span><span class="o">.</span><span class="n">hits</span><span class="p">)))</span>
-    <span class="nb">print</span><span class="p">([</span><span class="n">x</span><span class="o">.</span><span class="n">extracted</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">search_result</span><span class="o">.</span><span class="n">hits</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]])</span>
+    <span class="c1">#print([x.extracted for x in search_result.hits[0:2]])</span>
     
     
-
-    <span class="c1">#condition_names = []</span>
     <span class="n">rows</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="n">pif_records</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">system</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">search_result</span><span class="o">.</span><span class="n">hits</span><span class="p">]</span>
     <span class="k">for</span> <span class="n">system</span> <span class="ow">in</span> <span class="n">pif_records</span><span class="p">:</span>
@@ -11852,29 +11850,40 @@ div#notebook {
             <span class="n">crystallinity_val</span> <span class="o">=</span> <span class="s1">&#39;Unknown&#39;</span>
             <span class="k">for</span> <span class="n">prop</span> <span class="ow">in</span> <span class="n">system</span><span class="o">.</span><span class="n">properties</span><span class="p">:</span>
                 
-                <span class="k">if</span> <span class="n">prop</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;Crystallinity&#39;</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">prop</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;Crystallinity&#39;</span><span class="p">:</span> <span class="c1"># look up crystallinity value for this material</span>
                     <span class="n">crystallinity_val</span> <span class="o">=</span> <span class="n">prop</span><span class="o">.</span><span class="n">scalars</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">value</span>
-                <span class="k">if</span> <span class="n">prop</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="n">prop_name</span><span class="p">:</span> <span class="c1">#only entries with the desired property</span>
+                    
+                <span class="k">if</span> <span class="n">prop</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="n">prop_name</span><span class="p">:</span> <span class="c1">#only materials with the desired property</span>
                     
 
-                    <span class="k">for</span> <span class="n">cond</span> <span class="ow">in</span> <span class="n">prop</span><span class="o">.</span><span class="n">conditions</span><span class="p">:</span>
-                        <span class="c1">#condition_names.append(cond.name)</span>
+                    <span class="k">for</span> <span class="n">cond</span> <span class="ow">in</span> <span class="n">prop</span><span class="o">.</span><span class="n">conditions</span><span class="p">:</span> <span class="c1"># loop through all conditions associated with the desired property</span>
 
-                        <span class="k">if</span> <span class="n">cond</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="n">cond_name</span><span class="p">:</span>
-                            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">prop</span><span class="o">.</span><span class="n">scalars</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">cond</span><span class="o">.</span><span class="n">scalars</span><span class="p">):</span>
+                        <span class="k">if</span> <span class="n">cond_name</span> <span class="o">==</span> <span class="s1">&#39;None&#39;</span><span class="p">:</span> <span class="c1"># If no condition is specified (use all materials)</span>
+                            <span class="n">row</span> <span class="o">=</span> <span class="p">[</span><span class="n">system</span><span class="o">.</span><span class="n">chemical_formula</span><span class="p">,</span> <span class="n">prop</span><span class="o">.</span><span class="n">scalars</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">prop</span><span class="o">.</span><span class="n">units</span><span class="p">,</span>  <span class="n">crystallinity_val</span><span class="p">,</span>\
+                                   <span class="n">system</span><span class="o">.</span><span class="n">references</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">citation</span><span class="p">]</span>
+                            <span class="n">rows</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+                        <span class="k">else</span><span class="p">:</span> <span class="c1"># If a condition is specified</span>
+                            <span class="k">if</span> <span class="n">cond</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="n">cond_name</span><span class="p">:</span>
+                                <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">prop</span><span class="o">.</span><span class="n">scalars</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">cond</span><span class="o">.</span><span class="n">scalars</span><span class="p">):</span>
 
-                                <span class="k">for</span> <span class="n">prop_sca</span><span class="p">,</span> <span class="n">cond_sca</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">prop</span><span class="o">.</span><span class="n">scalars</span><span class="p">,</span> <span class="n">cond</span><span class="o">.</span><span class="n">scalars</span><span class="p">):</span>
-                                    <span class="n">row</span> <span class="o">=</span> <span class="p">[</span><span class="n">system</span><span class="o">.</span><span class="n">chemical_formula</span><span class="p">,</span> <span class="n">prop_sca</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">prop</span><span class="o">.</span><span class="n">units</span><span class="p">,</span> <span class="n">cond_sca</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>  <span class="n">crystallinity_val</span><span class="p">,</span> <span class="n">system</span><span class="o">.</span><span class="n">references</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">citation</span><span class="p">]</span>
-                                    <span class="n">rows</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+                                    <span class="k">for</span> <span class="n">prop_sca</span><span class="p">,</span> <span class="n">cond_sca</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">prop</span><span class="o">.</span><span class="n">scalars</span><span class="p">,</span> <span class="n">cond</span><span class="o">.</span><span class="n">scalars</span><span class="p">):</span>
+                                        <span class="n">row</span> <span class="o">=</span> <span class="p">[</span><span class="n">system</span><span class="o">.</span><span class="n">chemical_formula</span><span class="p">,</span> <span class="n">prop_sca</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">prop</span><span class="o">.</span><span class="n">units</span><span class="p">,</span> <span class="n">cond_sca</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> \
+                                               <span class="n">crystallinity_val</span><span class="p">,</span> <span class="n">system</span><span class="o">.</span><span class="n">references</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">citation</span><span class="p">]</span>
+                                        <span class="n">rows</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+
+                            
 
                                 
 
 
-    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;fracture_toughness.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">csvfile</span><span class="p">:</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">prop_name</span> <span class="o">+</span> <span class="s1">&#39;.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">csvfile</span><span class="p">:</span>
         <span class="n">writer</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">writer</span><span class="p">(</span><span class="n">csvfile</span><span class="p">)</span>
-        <span class="n">writer</span><span class="o">.</span><span class="n">writerow</span><span class="p">([</span><span class="s1">&#39;Formula&#39;</span><span class="p">,</span> <span class="n">prop_name</span><span class="p">,</span> <span class="s1">&#39;Unit&#39;</span><span class="p">,</span> <span class="n">cond_name</span><span class="p">,</span> <span class="s1">&#39;Crystallinity&#39;</span><span class="p">,</span> <span class="s1">&#39;Reference&#39;</span><span class="p">])</span>
+        <span class="k">if</span> <span class="n">cond_name</span> <span class="o">==</span> <span class="s1">&#39;None&#39;</span><span class="p">:</span>
+            <span class="n">writer</span><span class="o">.</span><span class="n">writerow</span><span class="p">([</span><span class="s1">&#39;Formula&#39;</span><span class="p">,</span> <span class="n">prop_name</span><span class="p">,</span> <span class="s1">&#39;Unit&#39;</span><span class="p">,</span> <span class="s1">&#39;Crystallinity&#39;</span><span class="p">,</span> <span class="s1">&#39;Reference&#39;</span><span class="p">])</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">writer</span><span class="o">.</span><span class="n">writerow</span><span class="p">([</span><span class="s1">&#39;Formula&#39;</span><span class="p">,</span> <span class="n">prop_name</span><span class="p">,</span> <span class="s1">&#39;Unit&#39;</span><span class="p">,</span> <span class="n">cond_name</span><span class="p">,</span> <span class="s1">&#39;Crystallinity&#39;</span><span class="p">,</span> <span class="s1">&#39;Reference&#39;</span><span class="p">])</span>
+            
         <span class="n">writer</span><span class="o">.</span><span class="n">writerows</span><span class="p">(</span><span class="n">rows</span><span class="p">)</span>
-    <span class="c1">#print(set(condition_names))</span>
 </pre></div>
 
 </div>
@@ -11884,10 +11893,92 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[77]:</div>
+<div class="prompt input_prompt">In&nbsp;[183]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">create_csv_prop</span><span class="p">(</span><span class="s1">&#39;Fracture Toughness&#39;</span><span class="p">,</span> <span class="s1">&#39;Temperature&#39;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">condition_names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Specimen Number&#39;</span><span class="p">,</span> <span class="s1">&#39;Diagonal Direction&#39;</span><span class="p">,</span> <span class="s1">&#39;Typical Range&#39;</span><span class="p">,</span> <span class="s1">&#39;Test Type&#39;</span><span class="p">,</span> <span class="s1">&#39;Annealing Time at 1600 $^{</span><span class="se">\\</span><span class="s1">circ}$C&#39;</span><span class="p">,</span> <span class="s1">&#39;x of 14Ni:xCof Additive&#39;</span><span class="p">,</span> <span class="s1">&#39;Film Thickness&#39;</span><span class="p">,</span> <span class="s1">&#39;Test Condition&#39;</span><span class="p">,</span> <span class="s1">&#39;Mass Fraction of Additive&#39;</span><span class="p">,</span> <span class="s1">&#39;Environment&#39;</span><span class="p">,</span> <span class="s1">&#39;Number of Quenches&#39;</span><span class="p">,</span> <span class="s1">&#39;Porosity&#39;</span><span class="p">,</span> <span class="s1">&#39;Test Temperature&#39;</span><span class="p">,</span> <span class="s1">&#39;Indentation Load&#39;</span><span class="p">,</span> <span class="s1">&#39;Density&#39;</span><span class="p">,</span> <span class="s1">&#39;Loadin Rate&#39;</span><span class="p">,</span> <span class="s1">&#39;Specimen Code&#39;</span><span class="p">,</span> <span class="s1">&#39;Deflection Angle&#39;</span><span class="p">,</span> <span class="s1">&#39;Method&#39;</span><span class="p">,</span> <span class="s1">&#39;Volume Fraction of SiC&#39;</span><span class="p">,</span> <span class="s1">&#39;Phase&#39;</span><span class="p">,</span> <span class="s1">&#39;Sintering Condition&#39;</span><span class="p">,</span> <span class="s1">&#39;Volume Fraction of BA&#39;</span><span class="p">,</span> <span class="s1">&#39;H/ERatio&#39;</span><span class="p">,</span> <span class="s1">&#39;Number of Tests&#39;</span><span class="p">,</span> <span class="s1">&#39;Specimen Thickness&#39;</span><span class="p">,</span> <span class="s1">&#39;Quenching Temperature&#39;</span><span class="p">,</span> <span class="s1">&#39;Numbers of Indents&#39;</span><span class="p">,</span> <span class="s1">&#39;Volume Fraction of TiO2&#39;</span><span class="p">,</span> <span class="s1">&#39;Additive&#39;</span><span class="p">,</span> <span class="s1">&#39;Test Environment&#39;</span><span class="p">,</span> <span class="s1">&#39;x of Alx&#39;</span><span class="p">,</span> <span class="s1">&#39;Specimen Condition&#39;</span><span class="p">,</span> <span class="s1">&#39;Crack Type&#39;</span><span class="p">,</span> <span class="s1">&#39;Notch Width&#39;</span><span class="p">,</span> <span class="s1">&#39;Notch Polishing&#39;</span><span class="p">,</span> <span class="s1">&#39;Orientation&#39;</span><span class="p">,</span> <span class="s1">&#39;Tensile Surface&#39;</span><span class="p">,</span> <span class="s1">&#39;Hot Pressing Time&#39;</span><span class="p">,</span> <span class="s1">&#39;Temperature&#39;</span><span class="p">,</span> <span class="s1">&#39;Relative Density&#39;</span><span class="p">,</span> <span class="s1">&#39;Volume Fraction of HA&#39;</span><span class="p">,</span> <span class="s1">&#39;Volume Fraction of TCP&#39;</span><span class="p">,</span> <span class="s1">&#39;Crystal Plane&#39;</span><span class="p">,</span> <span class="s1">&#39;Batch Number&#39;</span><span class="p">,</span> <span class="s1">&#39;Sample Number&#39;</span><span class="p">,</span> <span class="s1">&#39;Procedure&#39;</span><span class="p">,</span> <span class="s1">&#39;Sintering Temperature&#39;</span><span class="p">,</span> <span class="s1">&#39;Crosshead Speed&#39;</span><span class="p">,</span> <span class="s1">&#39;Mass Fraction of SiC&#39;</span><span class="p">,</span> <span class="s1">&#39;Load&#39;</span><span class="p">,</span> <span class="s1">&#39;Mole Fraction of Additive&#39;</span><span class="p">,</span> <span class="s1">&#39;Method Name&#39;</span><span class="p">,</span> <span class="s1">&#39;Tensile Axis&#39;</span><span class="p">,</span> <span class="s1">&#39;Material Type&#39;</span><span class="p">,</span> <span class="s1">&#39;Volume Swelling&#39;</span><span class="p">,</span> <span class="s1">&#39;Init. Relative Density&#39;</span><span class="p">,</span> <span class="s1">&#39;Measurement Temperature&#39;</span><span class="p">,</span> <span class="s1">&#39;Crack Length&#39;</span><span class="p">,</span> <span class="s1">&#39;Devitrified&#39;</span><span class="p">,</span> <span class="s1">&#39;Type of Zone&#39;</span><span class="p">,</span> <span class="s1">&#39;Crystallizing Treatment&#39;</span><span class="p">,</span> <span class="s1">&#39;Specimen Size&#39;</span><span class="p">,</span> <span class="s1">&#39;Mass Fraction of Ni&#39;</span><span class="p">,</span> <span class="s1">&#39;Fracture Plane&#39;</span><span class="p">,</span> <span class="s1">&#39;Volume Fraction of Porosity&#39;</span><span class="p">,</span> <span class="s1">&#39;Grain Size&#39;</span><span class="p">]</span>
+<span class="c1">#sorted(condition_names)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Featurizing-with-matminer">Featurizing with matminer<a class="anchor-link" href="#Featurizing-with-matminer">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[184]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">featurize_csv</span><span class="p">(</span><span class="n">file_name</span><span class="p">,</span> <span class="n">prop_name</span><span class="p">):</span>
+    
+    <span class="c1"># Read csv file</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">file_name</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;DataFrame shape pre-grouping: &#39;</span><span class="p">,</span> <span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+    
+    <span class="c1"># Remove errors given in parentheses from numerical columns</span>
+    <span class="kn">import</span> <span class="nn">re</span>
+    <span class="k">def</span> <span class="nf">remove_par_errs</span><span class="p">(</span><span class="n">entry_str</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">entry_str</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s1">&#39;- &#39;</span><span class="p">,</span> <span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">entry_str</span><span class="p">)</span>
+            <span class="n">ret</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span> <span class="s1">&#39;\((.*?)\)&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">entry_str</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">entry_str</span><span class="o">==</span><span class="s1">&#39;-&#39;</span><span class="p">:</span>
+                <span class="n">ret</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="n">ret</span> <span class="o">=</span> <span class="n">entry_str</span>
+        <span class="k">return</span> <span class="n">ret</span>
+
+    <span class="c1"># Convert column to float (dropping values that have an error in parentheses)</span>
+    <span class="k">def</span> <span class="nf">conv_to_float</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">column</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">df</span><span class="p">[</span><span class="n">column</span><span class="p">]</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">remove_par_errs</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+    <span class="n">df</span><span class="p">[</span><span class="n">prop_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">prop_name</span><span class="p">]</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">remove_par_errs</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+    
+    <span class="c1"># Group samples by chemical formula</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;Formula&#39;</span><span class="p">,</span><span class="s1">&#39;Crystallinity&#39;</span><span class="p">],</span> <span class="n">as_index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;DataFrame shape post-grouping: &#39;</span><span class="p">,</span> <span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>    
+    
+    <span class="c1"># Create composition column</span>
+    <span class="n">df</span><span class="p">[</span><span class="s2">&quot;composition&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;Formula&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">str_to_composition</span><span class="p">)</span>
+    
+    <span class="c1">#Featurize dataframe</span>
+    <span class="n">ep_feat</span> <span class="o">=</span> <span class="n">ElementProperty</span><span class="o">.</span><span class="n">from_preset</span><span class="p">(</span><span class="n">preset_name</span><span class="o">=</span><span class="s2">&quot;magpie&quot;</span><span class="p">)</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">ep_feat</span><span class="o">.</span><span class="n">featurize_dataframe</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">col_id</span><span class="o">=</span><span class="s2">&quot;composition&quot;</span><span class="p">,</span> <span class="n">ignore_errors</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    
+    <span class="c1"># Write new csv file</span>
+    <span class="n">new_file_name</span> <span class="o">=</span>  <span class="n">file_name</span><span class="p">[:</span><span class="o">-</span><span class="mi">4</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39;_featurized.csv&#39;</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">new_file_name</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Execute-functions">Execute functions<a class="anchor-link" href="#Execute-functions">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[186]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">prop_name</span> <span class="o">=</span> <span class="s1">&#39;Fracture Toughness&#39;</span>
+<span class="n">file_name</span> <span class="o">=</span> <span class="n">prop_name</span> <span class="o">+</span> <span class="s1">&#39;.csv&#39;</span>
+<span class="n">create_csv_prop</span><span class="p">(</span><span class="n">prop_name</span><span class="p">,</span> <span class="s1">&#39;Temperature&#39;</span><span class="p">)</span>
+<span class="n">featurize_csv</span><span class="p">(</span><span class="n">file_name</span><span class="p">,</span> <span class="n">prop_name</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -11905,109 +11996,10 @@ div#notebook {
 
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>We found 396 records
-[{&#39;Fracture Toughness&#39;: [&#39;5.0&#39;, &#39;4.8&#39;], &#39;formula&#39;: &#39;Si3N4&#39;}, {&#39;formula&#39;: &#39;Al2O3.xLaAl11O18&#39;, &#39;Fracture Toughness&#39;: [&#39;4.1&#39;]}]
+DataFrame shape pre-grouping:  (540, 6)
+DataFrame shape post-grouping:  (13, 4)
 </pre>
 </div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[60]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">condition_names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Specimen Number&#39;</span><span class="p">,</span> <span class="s1">&#39;Diagonal Direction&#39;</span><span class="p">,</span> <span class="s1">&#39;Typical Range&#39;</span><span class="p">,</span> <span class="s1">&#39;Test Type&#39;</span><span class="p">,</span> <span class="s1">&#39;Annealing Time at 1600 $^{</span><span class="se">\\</span><span class="s1">circ}$C&#39;</span><span class="p">,</span> <span class="s1">&#39;x of 14Ni:xCof Additive&#39;</span><span class="p">,</span> <span class="s1">&#39;Film Thickness&#39;</span><span class="p">,</span> <span class="s1">&#39;Test Condition&#39;</span><span class="p">,</span> <span class="s1">&#39;Mass Fraction of Additive&#39;</span><span class="p">,</span> <span class="s1">&#39;Environment&#39;</span><span class="p">,</span> <span class="s1">&#39;Number of Quenches&#39;</span><span class="p">,</span> <span class="s1">&#39;Porosity&#39;</span><span class="p">,</span> <span class="s1">&#39;Test Temperature&#39;</span><span class="p">,</span> <span class="s1">&#39;Indentation Load&#39;</span><span class="p">,</span> <span class="s1">&#39;Density&#39;</span><span class="p">,</span> <span class="s1">&#39;Loadin Rate&#39;</span><span class="p">,</span> <span class="s1">&#39;Specimen Code&#39;</span><span class="p">,</span> <span class="s1">&#39;Deflection Angle&#39;</span><span class="p">,</span> <span class="s1">&#39;Method&#39;</span><span class="p">,</span> <span class="s1">&#39;Volume Fraction of SiC&#39;</span><span class="p">,</span> <span class="s1">&#39;Phase&#39;</span><span class="p">,</span> <span class="s1">&#39;Sintering Condition&#39;</span><span class="p">,</span> <span class="s1">&#39;Volume Fraction of BA&#39;</span><span class="p">,</span> <span class="s1">&#39;H/ERatio&#39;</span><span class="p">,</span> <span class="s1">&#39;Number of Tests&#39;</span><span class="p">,</span> <span class="s1">&#39;Specimen Thickness&#39;</span><span class="p">,</span> <span class="s1">&#39;Quenching Temperature&#39;</span><span class="p">,</span> <span class="s1">&#39;Numbers of Indents&#39;</span><span class="p">,</span> <span class="s1">&#39;Volume Fraction of TiO2&#39;</span><span class="p">,</span> <span class="s1">&#39;Additive&#39;</span><span class="p">,</span> <span class="s1">&#39;Test Environment&#39;</span><span class="p">,</span> <span class="s1">&#39;x of Alx&#39;</span><span class="p">,</span> <span class="s1">&#39;Specimen Condition&#39;</span><span class="p">,</span> <span class="s1">&#39;Crack Type&#39;</span><span class="p">,</span> <span class="s1">&#39;Notch Width&#39;</span><span class="p">,</span> <span class="s1">&#39;Notch Polishing&#39;</span><span class="p">,</span> <span class="s1">&#39;Orientation&#39;</span><span class="p">,</span> <span class="s1">&#39;Tensile Surface&#39;</span><span class="p">,</span> <span class="s1">&#39;Hot Pressing Time&#39;</span><span class="p">,</span> <span class="s1">&#39;Temperature&#39;</span><span class="p">,</span> <span class="s1">&#39;Relative Density&#39;</span><span class="p">,</span> <span class="s1">&#39;Volume Fraction of HA&#39;</span><span class="p">,</span> <span class="s1">&#39;Volume Fraction of TCP&#39;</span><span class="p">,</span> <span class="s1">&#39;Crystal Plane&#39;</span><span class="p">,</span> <span class="s1">&#39;Batch Number&#39;</span><span class="p">,</span> <span class="s1">&#39;Sample Number&#39;</span><span class="p">,</span> <span class="s1">&#39;Procedure&#39;</span><span class="p">,</span> <span class="s1">&#39;Sintering Temperature&#39;</span><span class="p">,</span> <span class="s1">&#39;Crosshead Speed&#39;</span><span class="p">,</span> <span class="s1">&#39;Mass Fraction of SiC&#39;</span><span class="p">,</span> <span class="s1">&#39;Load&#39;</span><span class="p">,</span> <span class="s1">&#39;Mole Fraction of Additive&#39;</span><span class="p">,</span> <span class="s1">&#39;Method Name&#39;</span><span class="p">,</span> <span class="s1">&#39;Tensile Axis&#39;</span><span class="p">,</span> <span class="s1">&#39;Material Type&#39;</span><span class="p">,</span> <span class="s1">&#39;Volume Swelling&#39;</span><span class="p">,</span> <span class="s1">&#39;Init. Relative Density&#39;</span><span class="p">,</span> <span class="s1">&#39;Measurement Temperature&#39;</span><span class="p">,</span> <span class="s1">&#39;Crack Length&#39;</span><span class="p">,</span> <span class="s1">&#39;Devitrified&#39;</span><span class="p">,</span> <span class="s1">&#39;Type of Zone&#39;</span><span class="p">,</span> <span class="s1">&#39;Crystallizing Treatment&#39;</span><span class="p">,</span> <span class="s1">&#39;Specimen Size&#39;</span><span class="p">,</span> <span class="s1">&#39;Mass Fraction of Ni&#39;</span><span class="p">,</span> <span class="s1">&#39;Fracture Plane&#39;</span><span class="p">,</span> <span class="s1">&#39;Volume Fraction of Porosity&#39;</span><span class="p">,</span> <span class="s1">&#39;Grain Size&#39;</span><span class="p">]</span>
-<span class="nb">sorted</span><span class="p">(</span><span class="n">condition_names</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[60]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>[&#39;Additive&#39;,
- &#39;Annealing Time at 1600 $^{\\circ}$C&#39;,
- &#39;Batch Number&#39;,
- &#39;Crack Length&#39;,
- &#39;Crack Type&#39;,
- &#39;Crosshead Speed&#39;,
- &#39;Crystal Plane&#39;,
- &#39;Crystallizing Treatment&#39;,
- &#39;Deflection Angle&#39;,
- &#39;Density&#39;,
- &#39;Devitrified&#39;,
- &#39;Diagonal Direction&#39;,
- &#39;Environment&#39;,
- &#39;Film Thickness&#39;,
- &#39;Fracture Plane&#39;,
- &#39;Grain Size&#39;,
- &#39;H/ERatio&#39;,
- &#39;Hot Pressing Time&#39;,
- &#39;Indentation Load&#39;,
- &#39;Init. Relative Density&#39;,
- &#39;Load&#39;,
- &#39;Loadin Rate&#39;,
- &#39;Mass Fraction of Additive&#39;,
- &#39;Mass Fraction of Ni&#39;,
- &#39;Mass Fraction of SiC&#39;,
- &#39;Material Type&#39;,
- &#39;Measurement Temperature&#39;,
- &#39;Method&#39;,
- &#39;Method Name&#39;,
- &#39;Mole Fraction of Additive&#39;,
- &#39;Notch Polishing&#39;,
- &#39;Notch Width&#39;,
- &#39;Number of Quenches&#39;,
- &#39;Number of Tests&#39;,
- &#39;Numbers of Indents&#39;,
- &#39;Orientation&#39;,
- &#39;Phase&#39;,
- &#39;Porosity&#39;,
- &#39;Procedure&#39;,
- &#39;Quenching Temperature&#39;,
- &#39;Relative Density&#39;,
- &#39;Sample Number&#39;,
- &#39;Sintering Condition&#39;,
- &#39;Sintering Temperature&#39;,
- &#39;Specimen Code&#39;,
- &#39;Specimen Condition&#39;,
- &#39;Specimen Number&#39;,
- &#39;Specimen Size&#39;,
- &#39;Specimen Thickness&#39;,
- &#39;Temperature&#39;,
- &#39;Tensile Axis&#39;,
- &#39;Tensile Surface&#39;,
- &#39;Test Condition&#39;,
- &#39;Test Environment&#39;,
- &#39;Test Temperature&#39;,
- &#39;Test Type&#39;,
- &#39;Type of Zone&#39;,
- &#39;Typical Range&#39;,
- &#39;Volume Fraction of BA&#39;,
- &#39;Volume Fraction of HA&#39;,
- &#39;Volume Fraction of Porosity&#39;,
- &#39;Volume Fraction of SiC&#39;,
- &#39;Volume Fraction of TCP&#39;,
- &#39;Volume Fraction of TiO2&#39;,
- &#39;Volume Swelling&#39;,
- &#39;x of 14Ni:xCof Additive&#39;,
- &#39;x of Alx&#39;]</pre>
-</div>
-
 </div>
 
 </div>
@@ -12018,16 +12010,16 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Featurizing-with-matminer">Featurizing with matminer<a class="anchor-link" href="#Featurizing-with-matminer">&#182;</a></h3>
+<h3 id="Test-of-featurization-(used-to-develop-above-function)">Test of featurization (used to develop above function)<a class="anchor-link" href="#Test-of-featurization-(used-to-develop-above-function)">&#182;</a></h3>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[108]:</div>
+<div class="prompt input_prompt">In&nbsp;[172]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;fracture_toughness.csv&#39;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;Density.csv&#39;</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -12037,7 +12029,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[88]:</div>
+<div class="prompt input_prompt">In&nbsp;[173]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
@@ -12053,7 +12045,7 @@ div#notebook {
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[88]:</div>
+<div class="prompt output_prompt">Out[173]:</div>
 
 
 
@@ -12077,9 +12069,8 @@ div#notebook {
     <tr style="text-align: right;">
       <th></th>
       <th>Formula</th>
-      <th>Fracture Toughness</th>
+      <th>Density</th>
       <th>Unit</th>
-      <th>Temperature</th>
       <th>Crystallinity</th>
       <th>Reference</th>
     </tr>
@@ -12087,48 +12078,43 @@ div#notebook {
   <tbody>
     <tr>
       <th>0</th>
-      <td>B4C</td>
-      <td>3.7</td>
-      <td>MPa m$^{1/2}$</td>
-      <td>330</td>
+      <td>Si3N4</td>
+      <td>3.39</td>
+      <td>g cm$^{-3}$</td>
       <td>Polycrystalline</td>
-      <td>High Temperature Fracture of Boron Carbide:  E...</td>
+      <td>Ceramic Technology Project Data Base:  Septemb...</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>B4C</td>
-      <td>3.8</td>
-      <td>MPa m$^{1/2}$</td>
-      <td>900</td>
+      <td>Si3N4</td>
+      <td>3.39</td>
+      <td>g cm$^{-3}$</td>
       <td>Polycrystalline</td>
-      <td>High Temperature Fracture of Boron Carbide:  E...</td>
+      <td>Ceramic Technology Project Data Base:  Septemb...</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>B4C</td>
-      <td>3.4</td>
-      <td>MPa m$^{1/2}$</td>
-      <td>1300</td>
+      <td>TiB2</td>
+      <td>4.210</td>
+      <td>g cm$^{-3}$</td>
       <td>Polycrystalline</td>
-      <td>High Temperature Fracture of Boron Carbide:  E...</td>
+      <td>Elastic Properties of Polycrystalline TiB2, Zr...</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>B4C</td>
-      <td>3.9</td>
-      <td>MPa m$^{1/2}$</td>
-      <td>1500</td>
+      <td>SiC</td>
+      <td>3.19</td>
+      <td>g cm$^{-3}$</td>
       <td>Polycrystalline</td>
-      <td>High Temperature Fracture of Boron Carbide:  E...</td>
+      <td>Engineering Properties of Carbides, P.T.B. Sha...</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>Si3N4</td>
-      <td>5.6</td>
-      <td>MPa m$^{1/2}$</td>
-      <td>23</td>
+      <td>SiC</td>
+      <td>3.19</td>
+      <td>g cm$^{-3}$</td>
       <td>Polycrystalline</td>
-      <td>Engineering Properties of Nitrides, S. Hampshi...</td>
+      <td>Engineering Properties of Carbides, P.T.B. Sha...</td>
     </tr>
   </tbody>
 </table>
@@ -12143,13 +12129,110 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[110]:</div>
+<div class="prompt input_prompt">In&nbsp;[176]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Remove errors given in parentheses from numerical columns</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="k">def</span> <span class="nf">remove_par_errs</span><span class="p">(</span><span class="n">entry_str</span><span class="p">):</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">entry_str</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s1">&#39;- &#39;</span><span class="p">,</span> <span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">entry_str</span><span class="p">)</span>
+        <span class="n">ret</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span> <span class="s1">&#39;\((.*?)\)&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">entry_str</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">entry_str</span><span class="o">==</span><span class="s1">&#39;-&#39;</span><span class="p">:</span>
+            <span class="n">ret</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="n">ret</span> <span class="o">=</span> <span class="n">entry_str</span>
+    <span class="k">return</span> <span class="n">ret</span>
+
+<span class="c1"># Convert column to float (dropping values that have an error in parentheses)</span>
+<span class="k">def</span> <span class="nf">conv_to_float</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">column</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">df</span><span class="p">[</span><span class="n">column</span><span class="p">]</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">remove_par_errs</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;Density&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Density&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">remove_par_errs</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+
+<span class="c1">#conv_to_float(df, &#39;Axis Length&#39;).dropna().head()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[177]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[177]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>(261, 5)</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[179]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;Formula&#39;</span><span class="p">,</span><span class="s1">&#39;Crystallinity&#39;</span><span class="p">],</span> <span class="n">as_index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 </pre></div>
 
 </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[180]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[180]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>(33, 3)</pre>
+</div>
+
+</div>
+
 </div>
 </div>
 
