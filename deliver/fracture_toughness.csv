@@ -1,690 +1,568 @@
-Formula,Fracture Toughness (Mpa m^(1/2)),"Temperature (degC), Reference"
-ZrO2,7.0,23,"Effects of Environment on the Mechanical Behavior of High-Performance Ceramics, G.A. Graves and N.L. Hecht, Report No. UDR-TR-94-136, pp. 1-138 (1995), published by University of Dayton Research Institute."
-SiC,2.6,20,"Summary of Results of the Effects of Environment on Mechanical Behavior of High-Performance Ceramics, D.E. McCullum, N.L. Hecth, L. Chuck, and S.M. Goodrich, Ceramic Engineering and Science Proceedings, Vol. 12 9, pp. 1886-1913 (1991), published by American Ceramic Society."
-SiC,3.4,20,"Summary of Results of the Effects of Environment on Mechanical Behavior of High-Performance Ceramics, D.E. McCullum, N.L. Hecth, L. Chuck, and S.M. Goodrich, Ceramic Engineering and Science Proceedings, Vol. 12 9, pp. 1886-1913 (1991), published by American Ceramic Society."
-SiC,3.1,1400,"Summary of Results of the Effects of Environment on Mechanical Behavior of High-Performance Ceramics, D.E. McCullum, N.L. Hecth, L. Chuck, and S.M. Goodrich, Ceramic Engineering and Science Proceedings, Vol. 12 9, pp. 1886-1913 (1991), published by American Ceramic Society."
-Al2O3,1.46,1200,"High-Temperature Fracture Toughness of Sapphire, S.A. Newcomb and R.E. Tressler, Journal of the American Ceramic Society, Vol. 77 11, pp. 3030-3032 (1994), published by American Ceramic Society."
-Al2O3,1.46,1400,"High-Temperature Fracture Toughness of Sapphire, S.A. Newcomb and R.E. Tressler, Journal of the American Ceramic Society, Vol. 77 11, pp. 3030-3032 (1994), published by American Ceramic Society."
-Al2O3,1.40,1500,"High-Temperature Fracture Toughness of Sapphire, S.A. Newcomb and R.E. Tressler, Journal of the American Ceramic Society, Vol. 77 11, pp. 3030-3032 (1994), published by American Ceramic Society."
-SiC,3.4,23,"Effects of Environment on the Mechanical Behavior of High-Performance Ceramics, G.A. Graves and N.L. Hecht, Report No. UDR-TR-94-136, pp. 1-138 (1995), published by University of Dayton Research Institute."
-ZrO2,6.0,23,"Effects of Environment on the Mechanical Behavior of High-Performance Ceramics, G.A. Graves and N.L. Hecht, Report No. UDR-TR-94-136, pp. 1-138 (1995), published by University of Dayton Research Institute."
-Al2O3,3.12,25,"Part 2: Data Reviews, Section I: High Alumina Ceramics, R. Morrell, Handbook of Properties of Technical and Engineering Ceramics, Vol. 2, pp. 13-35 (1987), published by Her Majestys Stationery Office (London)."
-AlN,2.9,25,"Elevated Temperature Mechanical Properties of SiC-AlN Particulate Composites, S.A. Mariano, D. Friel, and I. Bar-On, Ceramic Engineering and Science Proceedings, Vol. 14, pp. 1077-1088 (1993), published by American Ceramic Society."
-AlN,2.8,800,"Elevated Temperature Mechanical Properties of SiC-AlN Particulate Composites, S.A. Mariano, D. Friel, and I. Bar-On, Ceramic Engineering and Science Proceedings, Vol. 14, pp. 1077-1088 (1993), published by American Ceramic Society."
-AlN,3.3,1050,"Elevated Temperature Mechanical Properties of SiC-AlN Particulate Composites, S.A. Mariano, D. Friel, and I. Bar-On, Ceramic Engineering and Science Proceedings, Vol. 14, pp. 1077-1088 (1993), published by American Ceramic Society."
-SiC,4.0,,"The Evaluation of Environmental Effects in Toughened Ceramics for Advanced Heat Engines Investigation of Selected SiC and Si3N4 Ceramics, N.L.Hecht, G.A.Graves, D.E.McCullum, A.P.Berens, S.Goodrich, J.D.Wolf, J.R.Hoenigman, P.Yaney, D.Grant, and S.Hilton, ORNL Report Number:  ORNL/Sub/84-00221/2, pp. 1-111 (1990), published by Oak Ridge National Laboratory."
-Si3N4,6.8,22,"Sintering Behavior and Properties of Si3N4 Sintered with Nitrogen-Rich Liquid in the System Y2O3-AlN-SiO2, P.K. Das and J. Mukerji, Advanced Ceramic Materials, Vol. 3 3, pp. 238-243 (1988), published by American Ceramic Society."
-Si3N4,6.8,800,"Sintering Behavior and Properties of Si3N4 Sintered with Nitrogen-Rich Liquid in the System Y2O3-AlN-SiO2, P.K. Das and J. Mukerji, Advanced Ceramic Materials, Vol. 3 3, pp. 238-243 (1988), published by American Ceramic Society."
-Si3N4,5.4,1000,"Sintering Behavior and Properties of Si3N4 Sintered with Nitrogen-Rich Liquid in the System Y2O3-AlN-SiO2, P.K. Das and J. Mukerji, Advanced Ceramic Materials, Vol. 3 3, pp. 238-243 (1988), published by American Ceramic Society."
-Si3N4,5.2,1260,"Sintering Behavior and Properties of Si3N4 Sintered with Nitrogen-Rich Liquid in the System Y2O3-AlN-SiO2, P.K. Das and J. Mukerji, Advanced Ceramic Materials, Vol. 3 3, pp. 238-243 (1988), published by American Ceramic Society."
-Si3N4,2.2,23,"Engineering Properties of Nitrides, S. Hampshire, Engineered Materials Handbook, Vol. 4, pp. 812-820 (1991), edited by S.J. Schneider, Jr., published by ASM International."
-Si3N4,3.8,25,"Investigation of Selected Si3N4 and SiC Ceramics, N.L. Hecht, D.E. McCullum, and G.A. Graves, Ceramic Materials and Components for Engines, pp. 806-816 (1988), edited by V.J. Tennery, published by American Ceramic Society."
-Y3Al5O12,1.5,20,"Effects of Temperature, Environment, and Orientation on the Fracture Toughness of Single-Crystal YAG, T. Mah and T.A. Parthasarathy, Journal of the American Ceramic Society, Vol. 80 10, pp. 2730-2734 (1997), published by American Ceramic Society."
-Y3Al5O12,1.9,20,"Effects of Temperature, Environment, and Orientation on the Fracture Toughness of Single-Crystal YAG, T. Mah and T.A. Parthasarathy, Journal of the American Ceramic Society, Vol. 80 10, pp. 2730-2734 (1997), published by American Ceramic Society."
-Y3Al5O12,2.4,20,"Effects of Temperature, Environment, and Orientation on the Fracture Toughness of Single-Crystal YAG, T. Mah and T.A. Parthasarathy, Journal of the American Ceramic Society, Vol. 80 10, pp. 2730-2734 (1997), published by American Ceramic Society."
-Y3Al5O12,2.9,20,"Effects of Temperature, Environment, and Orientation on the Fracture Toughness of Single-Crystal YAG, T. Mah and T.A. Parthasarathy, Journal of the American Ceramic Society, Vol. 80 10, pp. 2730-2734 (1997), published by American Ceramic Society."
-Y3Al5O12,2.1,1200,"Effects of Temperature, Environment, and Orientation on the Fracture Toughness of Single-Crystal YAG, T. Mah and T.A. Parthasarathy, Journal of the American Ceramic Society, Vol. 80 10, pp. 2730-2734 (1997), published by American Ceramic Society."
-Y3Al5O12,2.4,1200,"Effects of Temperature, Environment, and Orientation on the Fracture Toughness of Single-Crystal YAG, T. Mah and T.A. Parthasarathy, Journal of the American Ceramic Society, Vol. 80 10, pp. 2730-2734 (1997), published by American Ceramic Society."
-Y3Al5O12,2.7,1200,"Effects of Temperature, Environment, and Orientation on the Fracture Toughness of Single-Crystal YAG, T. Mah and T.A. Parthasarathy, Journal of the American Ceramic Society, Vol. 80 10, pp. 2730-2734 (1997), published by American Ceramic Society."
-Y3Al5O12,2.9,1200,"Effects of Temperature, Environment, and Orientation on the Fracture Toughness of Single-Crystal YAG, T. Mah and T.A. Parthasarathy, Journal of the American Ceramic Society, Vol. 80 10, pp. 2730-2734 (1997), published by American Ceramic Society."
-Y3Al5O12,3.0,1300,"Effects of Temperature, Environment, and Orientation on the Fracture Toughness of Single-Crystal YAG, T. Mah and T.A. Parthasarathy, Journal of the American Ceramic Society, Vol. 80 10, pp. 2730-2734 (1997), published by American Ceramic Society."
-Y3Al5O12,3.3,1300,"Effects of Temperature, Environment, and Orientation on the Fracture Toughness of Single-Crystal YAG, T. Mah and T.A. Parthasarathy, Journal of the American Ceramic Society, Vol. 80 10, pp. 2730-2734 (1997), published by American Ceramic Society."
-Y3Al5O12,3.1,1400,"Effects of Temperature, Environment, and Orientation on the Fracture Toughness of Single-Crystal YAG, T. Mah and T.A. Parthasarathy, Journal of the American Ceramic Society, Vol. 80 10, pp. 2730-2734 (1997), published by American Ceramic Society."
-Y3Al5O12,3.5,1400,"Effects of Temperature, Environment, and Orientation on the Fracture Toughness of Single-Crystal YAG, T. Mah and T.A. Parthasarathy, Journal of the American Ceramic Society, Vol. 80 10, pp. 2730-2734 (1997), published by American Ceramic Society."
-Y3Al5O12,3.8,1400,"Effects of Temperature, Environment, and Orientation on the Fracture Toughness of Single-Crystal YAG, T. Mah and T.A. Parthasarathy, Journal of the American Ceramic Society, Vol. 80 10, pp. 2730-2734 (1997), published by American Ceramic Society."
-Y3Al5O12,4.1,1400,"Effects of Temperature, Environment, and Orientation on the Fracture Toughness of Single-Crystal YAG, T. Mah and T.A. Parthasarathy, Journal of the American Ceramic Society, Vol. 80 10, pp. 2730-2734 (1997), published by American Ceramic Society."
-Y3Al5O12,3.8,1600,"Effects of Temperature, Environment, and Orientation on the Fracture Toughness of Single-Crystal YAG, T. Mah and T.A. Parthasarathy, Journal of the American Ceramic Society, Vol. 80 10, pp. 2730-2734 (1997), published by American Ceramic Society."
-Y3Al5O12,3.9,1600,"Effects of Temperature, Environment, and Orientation on the Fracture Toughness of Single-Crystal YAG, T. Mah and T.A. Parthasarathy, Journal of the American Ceramic Society, Vol. 80 10, pp. 2730-2734 (1997), published by American Ceramic Society."
-Y3Al5O12,4.3,1600,"Effects of Temperature, Environment, and Orientation on the Fracture Toughness of Single-Crystal YAG, T. Mah and T.A. Parthasarathy, Journal of the American Ceramic Society, Vol. 80 10, pp. 2730-2734 (1997), published by American Ceramic Society."
-Y3Al5O12,4.6,1600,"Effects of Temperature, Environment, and Orientation on the Fracture Toughness of Single-Crystal YAG, T. Mah and T.A. Parthasarathy, Journal of the American Ceramic Society, Vol. 80 10, pp. 2730-2734 (1997), published by American Ceramic Society."
-Y3Al5O12,1.1,20,"Effects of Temperature, Environment, and Orientation on the Fracture Toughness of Single-Crystal YAG, T. Mah and T.A. Parthasarathy, Journal of the American Ceramic Society, Vol. 80 10, pp. 2730-2734 (1997), published by American Ceramic Society."
-Y3Al5O12,1.5,20,"Effects of Temperature, Environment, and Orientation on the Fracture Toughness of Single-Crystal YAG, T. Mah and T.A. Parthasarathy, Journal of the American Ceramic Society, Vol. 80 10, pp. 2730-2734 (1997), published by American Ceramic Society."
-Y3Al5O12,1.7,20,"Effects of Temperature, Environment, and Orientation on the Fracture Toughness of Single-Crystal YAG, T. Mah and T.A. Parthasarathy, Journal of the American Ceramic Society, Vol. 80 10, pp. 2730-2734 (1997), published by American Ceramic Society."
-Y3Al5O12,2.3,20,"Effects of Temperature, Environment, and Orientation on the Fracture Toughness of Single-Crystal YAG, T. Mah and T.A. Parthasarathy, Journal of the American Ceramic Society, Vol. 80 10, pp. 2730-2734 (1997), published by American Ceramic Society."
-Y3Al5O12,2.7,20,"Effects of Temperature, Environment, and Orientation on the Fracture Toughness of Single-Crystal YAG, T. Mah and T.A. Parthasarathy, Journal of the American Ceramic Society, Vol. 80 10, pp. 2730-2734 (1997), published by American Ceramic Society."
-Y3Al5O12,2.0,800,"Effects of Temperature, Environment, and Orientation on the Fracture Toughness of Single-Crystal YAG, T. Mah and T.A. Parthasarathy, Journal of the American Ceramic Society, Vol. 80 10, pp. 2730-2734 (1997), published by American Ceramic Society."
-Y3Al5O12,2.2,800,"Effects of Temperature, Environment, and Orientation on the Fracture Toughness of Single-Crystal YAG, T. Mah and T.A. Parthasarathy, Journal of the American Ceramic Society, Vol. 80 10, pp. 2730-2734 (1997), published by American Ceramic Society."
-Y3Al5O12,2.6,800,"Effects of Temperature, Environment, and Orientation on the Fracture Toughness of Single-Crystal YAG, T. Mah and T.A. Parthasarathy, Journal of the American Ceramic Society, Vol. 80 10, pp. 2730-2734 (1997), published by American Ceramic Society."
-Y3Al5O12,2.9,1200,"Effects of Temperature, Environment, and Orientation on the Fracture Toughness of Single-Crystal YAG, T. Mah and T.A. Parthasarathy, Journal of the American Ceramic Society, Vol. 80 10, pp. 2730-2734 (1997), published by American Ceramic Society."
-Y3Al5O12,3.2,1200,"Effects of Temperature, Environment, and Orientation on the Fracture Toughness of Single-Crystal YAG, T. Mah and T.A. Parthasarathy, Journal of the American Ceramic Society, Vol. 80 10, pp. 2730-2734 (1997), published by American Ceramic Society."
-Y3Al5O12,3.6,1200,"Effects of Temperature, Environment, and Orientation on the Fracture Toughness of Single-Crystal YAG, T. Mah and T.A. Parthasarathy, Journal of the American Ceramic Society, Vol. 80 10, pp. 2730-2734 (1997), published by American Ceramic Society."
-Y3Al5O12,4.0,1200,"Effects of Temperature, Environment, and Orientation on the Fracture Toughness of Single-Crystal YAG, T. Mah and T.A. Parthasarathy, Journal of the American Ceramic Society, Vol. 80 10, pp. 2730-2734 (1997), published by American Ceramic Society."
-Y3Al5O12,4.9,1400,"Effects of Temperature, Environment, and Orientation on the Fracture Toughness of Single-Crystal YAG, T. Mah and T.A. Parthasarathy, Journal of the American Ceramic Society, Vol. 80 10, pp. 2730-2734 (1997), published by American Ceramic Society."
-Y3Al5O12,5.0,1400,"Effects of Temperature, Environment, and Orientation on the Fracture Toughness of Single-Crystal YAG, T. Mah and T.A. Parthasarathy, Journal of the American Ceramic Society, Vol. 80 10, pp. 2730-2734 (1997), published by American Ceramic Society."
-Y3Al5O12,5.8,1400,"Effects of Temperature, Environment, and Orientation on the Fracture Toughness of Single-Crystal YAG, T. Mah and T.A. Parthasarathy, Journal of the American Ceramic Society, Vol. 80 10, pp. 2730-2734 (1997), published by American Ceramic Society."
-Y3Al5O12,6.9,1600,"Effects of Temperature, Environment, and Orientation on the Fracture Toughness of Single-Crystal YAG, T. Mah and T.A. Parthasarathy, Journal of the American Ceramic Society, Vol. 80 10, pp. 2730-2734 (1997), published by American Ceramic Society."
-Y3Al5O12,8.3,1600,"Effects of Temperature, Environment, and Orientation on the Fracture Toughness of Single-Crystal YAG, T. Mah and T.A. Parthasarathy, Journal of the American Ceramic Society, Vol. 80 10, pp. 2730-2734 (1997), published by American Ceramic Society."
-Y3Al5O12,9.5,1600,"Effects of Temperature, Environment, and Orientation on the Fracture Toughness of Single-Crystal YAG, T. Mah and T.A. Parthasarathy, Journal of the American Ceramic Society, Vol. 80 10, pp. 2730-2734 (1997), published by American Ceramic Society."
-SiC,4.6,22,"Microstructure and Material Properties of SiC-TiB2 Particulate Composites, C.H. McMurtry, W.D.G. Boecker, S.G. Seshadri, J.S. Zanghi, and J.E. Garnier, American Ceramic Society Bulletin, Vol. 66 2, pp. 325-329 (1987), published by American Ceramic Society."
-Y3Al5O12,1.1,23,"Fracture Toughness of Single Crystal YAG, T. Mah and T.A. Parthasarathy, Scripta Metallurgica et Materialia, Vol. 28, pp. 1383-1385 (1993), published by Pergamon Press."
-Y3Al5O12,1.2,23,"Fracture Toughness of Single Crystal YAG, T. Mah and T.A. Parthasarathy, Scripta Metallurgica et Materialia, Vol. 28, pp. 1383-1385 (1993), published by Pergamon Press."
-Y3Al5O12,1.4,23,"Fracture Toughness of Single Crystal YAG, T. Mah and T.A. Parthasarathy, Scripta Metallurgica et Materialia, Vol. 28, pp. 1383-1385 (1993), published by Pergamon Press."
-Y3Al5O12,1.6,23,"Fracture Toughness of Single Crystal YAG, T. Mah and T.A. Parthasarathy, Scripta Metallurgica et Materialia, Vol. 28, pp. 1383-1385 (1993), published by Pergamon Press."
-Y3Al5O12,1.7,23,"Fracture Toughness of Single Crystal YAG, T. Mah and T.A. Parthasarathy, Scripta Metallurgica et Materialia, Vol. 28, pp. 1383-1385 (1993), published by Pergamon Press."
-Y3Al5O12,2.3,23,"Fracture Toughness of Single Crystal YAG, T. Mah and T.A. Parthasarathy, Scripta Metallurgica et Materialia, Vol. 28, pp. 1383-1385 (1993), published by Pergamon Press."
-Y3Al5O12,2.7,23,"Fracture Toughness of Single Crystal YAG, T. Mah and T.A. Parthasarathy, Scripta Metallurgica et Materialia, Vol. 28, pp. 1383-1385 (1993), published by Pergamon Press."
-Y3Al5O12,1.9,800,"Fracture Toughness of Single Crystal YAG, T. Mah and T.A. Parthasarathy, Scripta Metallurgica et Materialia, Vol. 28, pp. 1383-1385 (1993), published by Pergamon Press."
-Y3Al5O12,2.2,800,"Fracture Toughness of Single Crystal YAG, T. Mah and T.A. Parthasarathy, Scripta Metallurgica et Materialia, Vol. 28, pp. 1383-1385 (1993), published by Pergamon Press."
-Y3Al5O12,2.7,800,"Fracture Toughness of Single Crystal YAG, T. Mah and T.A. Parthasarathy, Scripta Metallurgica et Materialia, Vol. 28, pp. 1383-1385 (1993), published by Pergamon Press."
-Y3Al5O12,3.0,1200,"Fracture Toughness of Single Crystal YAG, T. Mah and T.A. Parthasarathy, Scripta Metallurgica et Materialia, Vol. 28, pp. 1383-1385 (1993), published by Pergamon Press."
-Y3Al5O12,3.2,1200,"Fracture Toughness of Single Crystal YAG, T. Mah and T.A. Parthasarathy, Scripta Metallurgica et Materialia, Vol. 28, pp. 1383-1385 (1993), published by Pergamon Press."
-Y3Al5O12,3.7,1200,"Fracture Toughness of Single Crystal YAG, T. Mah and T.A. Parthasarathy, Scripta Metallurgica et Materialia, Vol. 28, pp. 1383-1385 (1993), published by Pergamon Press."
-Y3Al5O12,3.9,1200,"Fracture Toughness of Single Crystal YAG, T. Mah and T.A. Parthasarathy, Scripta Metallurgica et Materialia, Vol. 28, pp. 1383-1385 (1993), published by Pergamon Press."
-Y3Al5O12,4.8,1400,"Fracture Toughness of Single Crystal YAG, T. Mah and T.A. Parthasarathy, Scripta Metallurgica et Materialia, Vol. 28, pp. 1383-1385 (1993), published by Pergamon Press."
-Y3Al5O12,5.0,1400,"Fracture Toughness of Single Crystal YAG, T. Mah and T.A. Parthasarathy, Scripta Metallurgica et Materialia, Vol. 28, pp. 1383-1385 (1993), published by Pergamon Press."
-Y3Al5O12,5.8,1400,"Fracture Toughness of Single Crystal YAG, T. Mah and T.A. Parthasarathy, Scripta Metallurgica et Materialia, Vol. 28, pp. 1383-1385 (1993), published by Pergamon Press."
-Y3Al5O12,6.9,1600,"Fracture Toughness of Single Crystal YAG, T. Mah and T.A. Parthasarathy, Scripta Metallurgica et Materialia, Vol. 28, pp. 1383-1385 (1993), published by Pergamon Press."
-Y3Al5O12,8.3,1600,"Fracture Toughness of Single Crystal YAG, T. Mah and T.A. Parthasarathy, Scripta Metallurgica et Materialia, Vol. 28, pp. 1383-1385 (1993), published by Pergamon Press."
-Y3Al5O12,9.5,1600,"Fracture Toughness of Single Crystal YAG, T. Mah and T.A. Parthasarathy, Scripta Metallurgica et Materialia, Vol. 28, pp. 1383-1385 (1993), published by Pergamon Press."
-SiC,7.7,20,"Mechanical Response of High Performance Silicon Carbide, E.H. Kraft and G.I. Dooher, Conference on Mechanical Behavior of Materials, pp. 1-6 (1976), published by Carborundum Company, Research and Development Division."
-SiC,7.9,1000,"Mechanical Response of High Performance Silicon Carbide, E.H. Kraft and G.I. Dooher, Conference on Mechanical Behavior of Materials, pp. 1-6 (1976), published by Carborundum Company, Research and Development Division."
-SiC,7.8,1200,"Mechanical Response of High Performance Silicon Carbide, E.H. Kraft and G.I. Dooher, Conference on Mechanical Behavior of Materials, pp. 1-6 (1976), published by Carborundum Company, Research and Development Division."
-SiC,4.8,1350,"Mechanical Response of High Performance Silicon Carbide, E.H. Kraft and G.I. Dooher, Conference on Mechanical Behavior of Materials, pp. 1-6 (1976), published by Carborundum Company, Research and Development Division."
-Al2O3,2.46,25,"Effect of Temperature on the Fracture of Sapphire, S.M. Wiederhorn, B.J. Hockey, and D.E. Roberts, Philosophical Magazine, Vol. 28, pp. 783-796 (1973), published by Taylor and Francis Ltd.."
-Al2O3,2.11,200,"Effect of Temperature on the Fracture of Sapphire, S.M. Wiederhorn, B.J. Hockey, and D.E. Roberts, Philosophical Magazine, Vol. 28, pp. 783-796 (1973), published by Taylor and Francis Ltd.."
-Al2O3,1.98,400,"Effect of Temperature on the Fracture of Sapphire, S.M. Wiederhorn, B.J. Hockey, and D.E. Roberts, Philosophical Magazine, Vol. 28, pp. 783-796 (1973), published by Taylor and Francis Ltd.."
-Al2O3,1.81,600,"Effect of Temperature on the Fracture of Sapphire, S.M. Wiederhorn, B.J. Hockey, and D.E. Roberts, Philosophical Magazine, Vol. 28, pp. 783-796 (1973), published by Taylor and Francis Ltd.."
-Al2O3,1.79,775,"Effect of Temperature on the Fracture of Sapphire, S.M. Wiederhorn, B.J. Hockey, and D.E. Roberts, Philosophical Magazine, Vol. 28, pp. 783-796 (1973), published by Taylor and Francis Ltd.."
-Si3N4,4.0,23,"Creep of Sintered Silicon Nitride, D. Chakraborty and A.K. Mukhopadhyay, Ceramics International, Vol. 15, pp. 237-245 (1989), published by Elsevier Applied Science."
-Si3N4,5.0,1000,"Creep of Sintered Silicon Nitride, D. Chakraborty and A.K. Mukhopadhyay, Ceramics International, Vol. 15, pp. 237-245 (1989), published by Elsevier Applied Science."
-Si3N4,4.3,1210,"Creep of Sintered Silicon Nitride, D. Chakraborty and A.K. Mukhopadhyay, Ceramics International, Vol. 15, pp. 237-245 (1989), published by Elsevier Applied Science."
-Al2O3,4.6,0,"Fracture Toughness of Single-Crystal Alumina, M. Iwasa and R.C. Bradt, Advances in Ceramics, Vol. 10, pp. 767-779 (1984), published by American Ceramic Society."
-Al2O3,3.6,200,"Fracture Toughness of Single-Crystal Alumina, M. Iwasa and R.C. Bradt, Advances in Ceramics, Vol. 10, pp. 767-779 (1984), published by American Ceramic Society."
-Al2O3,2.8,400,"Fracture Toughness of Single-Crystal Alumina, M. Iwasa and R.C. Bradt, Advances in Ceramics, Vol. 10, pp. 767-779 (1984), published by American Ceramic Society."
-Al2O3,2.2,600,"Fracture Toughness of Single-Crystal Alumina, M. Iwasa and R.C. Bradt, Advances in Ceramics, Vol. 10, pp. 767-779 (1984), published by American Ceramic Society."
-Al2O3,1.6,800,"Fracture Toughness of Single-Crystal Alumina, M. Iwasa and R.C. Bradt, Advances in Ceramics, Vol. 10, pp. 767-779 (1984), published by American Ceramic Society."
-Al2O3,1.2,1000,"Fracture Toughness of Single-Crystal Alumina, M. Iwasa and R.C. Bradt, Advances in Ceramics, Vol. 10, pp. 767-779 (1984), published by American Ceramic Society."
-Al2O3,1.2,1200,"Fracture Toughness of Single-Crystal Alumina, M. Iwasa and R.C. Bradt, Advances in Ceramics, Vol. 10, pp. 767-779 (1984), published by American Ceramic Society."
-Al2O3,1.6,1400,"Fracture Toughness of Single-Crystal Alumina, M. Iwasa and R.C. Bradt, Advances in Ceramics, Vol. 10, pp. 767-779 (1984), published by American Ceramic Society."
-Al2O3,3.2,0,"Fracture Toughness of Single-Crystal Alumina, M. Iwasa and R.C. Bradt, Advances in Ceramics, Vol. 10, pp. 767-779 (1984), published by American Ceramic Society."
-Al2O3,3.1,200,"Fracture Toughness of Single-Crystal Alumina, M. Iwasa and R.C. Bradt, Advances in Ceramics, Vol. 10, pp. 767-779 (1984), published by American Ceramic Society."
-Al2O3,3.1,400,"Fracture Toughness of Single-Crystal Alumina, M. Iwasa and R.C. Bradt, Advances in Ceramics, Vol. 10, pp. 767-779 (1984), published by American Ceramic Society."
-Al2O3,3.0,600,"Fracture Toughness of Single-Crystal Alumina, M. Iwasa and R.C. Bradt, Advances in Ceramics, Vol. 10, pp. 767-779 (1984), published by American Ceramic Society."
-Al2O3,2.9,800,"Fracture Toughness of Single-Crystal Alumina, M. Iwasa and R.C. Bradt, Advances in Ceramics, Vol. 10, pp. 767-779 (1984), published by American Ceramic Society."
-Al2O3,2.5,0,"Fracture Toughness of Single-Crystal Alumina, M. Iwasa and R.C. Bradt, Advances in Ceramics, Vol. 10, pp. 767-779 (1984), published by American Ceramic Society."
-Al2O3,2.4,200,"Fracture Toughness of Single-Crystal Alumina, M. Iwasa and R.C. Bradt, Advances in Ceramics, Vol. 10, pp. 767-779 (1984), published by American Ceramic Society."
-Al2O3,2.3,400,"Fracture Toughness of Single-Crystal Alumina, M. Iwasa and R.C. Bradt, Advances in Ceramics, Vol. 10, pp. 767-779 (1984), published by American Ceramic Society."
-Al2O3,2.3,600,"Fracture Toughness of Single-Crystal Alumina, M. Iwasa and R.C. Bradt, Advances in Ceramics, Vol. 10, pp. 767-779 (1984), published by American Ceramic Society."
-Al2O3,2.3,800,"Fracture Toughness of Single-Crystal Alumina, M. Iwasa and R.C. Bradt, Advances in Ceramics, Vol. 10, pp. 767-779 (1984), published by American Ceramic Society."
-Al2O3,2.2,1000,"Fracture Toughness of Single-Crystal Alumina, M. Iwasa and R.C. Bradt, Advances in Ceramics, Vol. 10, pp. 767-779 (1984), published by American Ceramic Society."
-Al2O3,2.1,1200,"Fracture Toughness of Single-Crystal Alumina, M. Iwasa and R.C. Bradt, Advances in Ceramics, Vol. 10, pp. 767-779 (1984), published by American Ceramic Society."
-Al2O3,1.9,1400,"Fracture Toughness of Single-Crystal Alumina, M. Iwasa and R.C. Bradt, Advances in Ceramics, Vol. 10, pp. 767-779 (1984), published by American Ceramic Society."
-Al2O3,2.4,0,"Fracture Toughness of Single-Crystal Alumina, M. Iwasa and R.C. Bradt, Advances in Ceramics, Vol. 10, pp. 767-779 (1984), published by American Ceramic Society."
-Al2O3,2.1,200,"Fracture Toughness of Single-Crystal Alumina, M. Iwasa and R.C. Bradt, Advances in Ceramics, Vol. 10, pp. 767-779 (1984), published by American Ceramic Society."
-Al2O3,1.9,400,"Fracture Toughness of Single-Crystal Alumina, M. Iwasa and R.C. Bradt, Advances in Ceramics, Vol. 10, pp. 767-779 (1984), published by American Ceramic Society."
-Al2O3,1.8,600,"Fracture Toughness of Single-Crystal Alumina, M. Iwasa and R.C. Bradt, Advances in Ceramics, Vol. 10, pp. 767-779 (1984), published by American Ceramic Society."
-Al2O3,1.8,800,"Fracture Toughness of Single-Crystal Alumina, M. Iwasa and R.C. Bradt, Advances in Ceramics, Vol. 10, pp. 767-779 (1984), published by American Ceramic Society."
-Al2O3,1.8,1000,"Fracture Toughness of Single-Crystal Alumina, M. Iwasa and R.C. Bradt, Advances in Ceramics, Vol. 10, pp. 767-779 (1984), published by American Ceramic Society."
-Al2O3,1.9,1200,"Fracture Toughness of Single-Crystal Alumina, M. Iwasa and R.C. Bradt, Advances in Ceramics, Vol. 10, pp. 767-779 (1984), published by American Ceramic Society."
-Al2O3,2.0,1400,"Fracture Toughness of Single-Crystal Alumina, M. Iwasa and R.C. Bradt, Advances in Ceramics, Vol. 10, pp. 767-779 (1984), published by American Ceramic Society."
-Si3N4,7.0,23,"Creep of Sintered Silicon Nitride, D. Chakraborty and A.K. Mukhopadhyay, Ceramics International, Vol. 15, pp. 237-245 (1989), published by Elsevier Applied Science."
-Si3N4,7.0,810,"Creep of Sintered Silicon Nitride, D. Chakraborty and A.K. Mukhopadhyay, Ceramics International, Vol. 15, pp. 237-245 (1989), published by Elsevier Applied Science."
-Si3N4,5.2,1000,"Creep of Sintered Silicon Nitride, D. Chakraborty and A.K. Mukhopadhyay, Ceramics International, Vol. 15, pp. 237-245 (1989), published by Elsevier Applied Science."
-Si3N4,5.1,1270,"Creep of Sintered Silicon Nitride, D. Chakraborty and A.K. Mukhopadhyay, Ceramics International, Vol. 15, pp. 237-245 (1989), published by Elsevier Applied Science."
-ZrO2,7.6,23,"Effects of Environment on the Mechanical Behavior of High-Performance Ceramics, G.A. Graves and N.L. Hecht, Report No. UDR-TR-94-136, pp. 1-138 (1995), published by University of Dayton Research Institute."
-MgAl2O4,1.71,23,"Fracture of Polycrystalline MgAl2O4, R.L. Stewart and R.C. Bradt, Journal of the American Ceramic Society, Vol. 63 11, pp. 619-623 (1980), published by American Ceramic Society."
-MgAl2O4,1.89,23,"Fracture of Polycrystalline MgAl2O4, R.L. Stewart and R.C. Bradt, Journal of the American Ceramic Society, Vol. 63 11, pp. 619-623 (1980), published by American Ceramic Society."
-MgAl2O4,1.95,23,"Fracture of Polycrystalline MgAl2O4, R.L. Stewart and R.C. Bradt, Journal of the American Ceramic Society, Vol. 63 11, pp. 619-623 (1980), published by American Ceramic Society."
-MgAl2O4,2.04,23,"Fracture of Polycrystalline MgAl2O4, R.L. Stewart and R.C. Bradt, Journal of the American Ceramic Society, Vol. 63 11, pp. 619-623 (1980), published by American Ceramic Society."
-MgAl2O4,1.61,200,"Fracture of Polycrystalline MgAl2O4, R.L. Stewart and R.C. Bradt, Journal of the American Ceramic Society, Vol. 63 11, pp. 619-623 (1980), published by American Ceramic Society."
-MgAl2O4,1.84,200,"Fracture of Polycrystalline MgAl2O4, R.L. Stewart and R.C. Bradt, Journal of the American Ceramic Society, Vol. 63 11, pp. 619-623 (1980), published by American Ceramic Society."
-MgAl2O4,1.88,200,"Fracture of Polycrystalline MgAl2O4, R.L. Stewart and R.C. Bradt, Journal of the American Ceramic Society, Vol. 63 11, pp. 619-623 (1980), published by American Ceramic Society."
-MgAl2O4,1.91,200,"Fracture of Polycrystalline MgAl2O4, R.L. Stewart and R.C. Bradt, Journal of the American Ceramic Society, Vol. 63 11, pp. 619-623 (1980), published by American Ceramic Society."
-MgAl2O4,1.62,400,"Fracture of Polycrystalline MgAl2O4, R.L. Stewart and R.C. Bradt, Journal of the American Ceramic Society, Vol. 63 11, pp. 619-623 (1980), published by American Ceramic Society."
-MgAl2O4,1.66,400,"Fracture of Polycrystalline MgAl2O4, R.L. Stewart and R.C. Bradt, Journal of the American Ceramic Society, Vol. 63 11, pp. 619-623 (1980), published by American Ceramic Society."
-MgAl2O4,1.90,400,"Fracture of Polycrystalline MgAl2O4, R.L. Stewart and R.C. Bradt, Journal of the American Ceramic Society, Vol. 63 11, pp. 619-623 (1980), published by American Ceramic Society."
-MgAl2O4,2.03,400,"Fracture of Polycrystalline MgAl2O4, R.L. Stewart and R.C. Bradt, Journal of the American Ceramic Society, Vol. 63 11, pp. 619-623 (1980), published by American Ceramic Society."
-MgAl2O4,1.72,600,"Fracture of Polycrystalline MgAl2O4, R.L. Stewart and R.C. Bradt, Journal of the American Ceramic Society, Vol. 63 11, pp. 619-623 (1980), published by American Ceramic Society."
-MgAl2O4,1.75,600,"Fracture of Polycrystalline MgAl2O4, R.L. Stewart and R.C. Bradt, Journal of the American Ceramic Society, Vol. 63 11, pp. 619-623 (1980), published by American Ceramic Society."
-MgAl2O4,1.79,600,"Fracture of Polycrystalline MgAl2O4, R.L. Stewart and R.C. Bradt, Journal of the American Ceramic Society, Vol. 63 11, pp. 619-623 (1980), published by American Ceramic Society."
-MgAl2O4,1.56,800,"Fracture of Polycrystalline MgAl2O4, R.L. Stewart and R.C. Bradt, Journal of the American Ceramic Society, Vol. 63 11, pp. 619-623 (1980), published by American Ceramic Society."
-MgAl2O4,1.70,800,"Fracture of Polycrystalline MgAl2O4, R.L. Stewart and R.C. Bradt, Journal of the American Ceramic Society, Vol. 63 11, pp. 619-623 (1980), published by American Ceramic Society."
-MgAl2O4,1.74,800,"Fracture of Polycrystalline MgAl2O4, R.L. Stewart and R.C. Bradt, Journal of the American Ceramic Society, Vol. 63 11, pp. 619-623 (1980), published by American Ceramic Society."
-MgAl2O4,1.72,1000,"Fracture of Polycrystalline MgAl2O4, R.L. Stewart and R.C. Bradt, Journal of the American Ceramic Society, Vol. 63 11, pp. 619-623 (1980), published by American Ceramic Society."
-MgAl2O4,1.56,1000,"Fracture of Polycrystalline MgAl2O4, R.L. Stewart and R.C. Bradt, Journal of the American Ceramic Society, Vol. 63 11, pp. 619-623 (1980), published by American Ceramic Society."
-MgAl2O4,1.25,1100,"Fracture of Polycrystalline MgAl2O4, R.L. Stewart and R.C. Bradt, Journal of the American Ceramic Society, Vol. 63 11, pp. 619-623 (1980), published by American Ceramic Society."
-MgAl2O4,1.14,1100,"Fracture of Polycrystalline MgAl2O4, R.L. Stewart and R.C. Bradt, Journal of the American Ceramic Society, Vol. 63 11, pp. 619-623 (1980), published by American Ceramic Society."
-MgAl2O4,0.93,1100,"Fracture of Polycrystalline MgAl2O4, R.L. Stewart and R.C. Bradt, Journal of the American Ceramic Society, Vol. 63 11, pp. 619-623 (1980), published by American Ceramic Society."
-MgAl2O4,0.88,1200,"Fracture of Polycrystalline MgAl2O4, R.L. Stewart and R.C. Bradt, Journal of the American Ceramic Society, Vol. 63 11, pp. 619-623 (1980), published by American Ceramic Society."
-MgAl2O4,0.68,1200,"Fracture of Polycrystalline MgAl2O4, R.L. Stewart and R.C. Bradt, Journal of the American Ceramic Society, Vol. 63 11, pp. 619-623 (1980), published by American Ceramic Society."
-MgAl2O4,0.56,1200,"Fracture of Polycrystalline MgAl2O4, R.L. Stewart and R.C. Bradt, Journal of the American Ceramic Society, Vol. 63 11, pp. 619-623 (1980), published by American Ceramic Society."
-MgAl2O4,0.29,1400,"Fracture of Polycrystalline MgAl2O4, R.L. Stewart and R.C. Bradt, Journal of the American Ceramic Society, Vol. 63 11, pp. 619-623 (1980), published by American Ceramic Society."
-MgAl2O4,0.24,1400,"Fracture of Polycrystalline MgAl2O4, R.L. Stewart and R.C. Bradt, Journal of the American Ceramic Society, Vol. 63 11, pp. 619-623 (1980), published by American Ceramic Society."
-MgAl2O4,0.20,1400,"Fracture of Polycrystalline MgAl2O4, R.L. Stewart and R.C. Bradt, Journal of the American Ceramic Society, Vol. 63 11, pp. 619-623 (1980), published by American Ceramic Society."
-MgAl2O4,1.75,23,"Fracture of Polycrystalline MgAl2O4, R.L. Stewart and R.C. Bradt, Journal of the American Ceramic Society, Vol. 63 11, pp. 619-623 (1980), published by American Ceramic Society."
-MgAl2O4,1.85,23,"Fracture of Polycrystalline MgAl2O4, R.L. Stewart and R.C. Bradt, Journal of the American Ceramic Society, Vol. 63 11, pp. 619-623 (1980), published by American Ceramic Society."
-MgAl2O4,2.00,23,"Fracture of Polycrystalline MgAl2O4, R.L. Stewart and R.C. Bradt, Journal of the American Ceramic Society, Vol. 63 11, pp. 619-623 (1980), published by American Ceramic Society."
-MgAl2O4,2.02,23,"Fracture of Polycrystalline MgAl2O4, R.L. Stewart and R.C. Bradt, Journal of the American Ceramic Society, Vol. 63 11, pp. 619-623 (1980), published by American Ceramic Society."
-MgAl2O4,1.69,300,"Fracture of Polycrystalline MgAl2O4, R.L. Stewart and R.C. Bradt, Journal of the American Ceramic Society, Vol. 63 11, pp. 619-623 (1980), published by American Ceramic Society."
-MgAl2O4,1.75,300,"Fracture of Polycrystalline MgAl2O4, R.L. Stewart and R.C. Bradt, Journal of the American Ceramic Society, Vol. 63 11, pp. 619-623 (1980), published by American Ceramic Society."
-MgAl2O4,1.98,300,"Fracture of Polycrystalline MgAl2O4, R.L. Stewart and R.C. Bradt, Journal of the American Ceramic Society, Vol. 63 11, pp. 619-623 (1980), published by American Ceramic Society."
-MgAl2O4,2.05,300,"Fracture of Polycrystalline MgAl2O4, R.L. Stewart and R.C. Bradt, Journal of the American Ceramic Society, Vol. 63 11, pp. 619-623 (1980), published by American Ceramic Society."
-MgAl2O4,2.11,300,"Fracture of Polycrystalline MgAl2O4, R.L. Stewart and R.C. Bradt, Journal of the American Ceramic Society, Vol. 63 11, pp. 619-623 (1980), published by American Ceramic Society."
-MgAl2O4,1.71,600,"Fracture of Polycrystalline MgAl2O4, R.L. Stewart and R.C. Bradt, Journal of the American Ceramic Society, Vol. 63 11, pp. 619-623 (1980), published by American Ceramic Society."
-MgAl2O4,1.82,600,"Fracture of Polycrystalline MgAl2O4, R.L. Stewart and R.C. Bradt, Journal of the American Ceramic Society, Vol. 63 11, pp. 619-623 (1980), published by American Ceramic Society."
-MgAl2O4,1.91,600,"Fracture of Polycrystalline MgAl2O4, R.L. Stewart and R.C. Bradt, Journal of the American Ceramic Society, Vol. 63 11, pp. 619-623 (1980), published by American Ceramic Society."
-MgAl2O4,1.49,800,"Fracture of Polycrystalline MgAl2O4, R.L. Stewart and R.C. Bradt, Journal of the American Ceramic Society, Vol. 63 11, pp. 619-623 (1980), published by American Ceramic Society."
-MgAl2O4,1.63,800,"Fracture of Polycrystalline MgAl2O4, R.L. Stewart and R.C. Bradt, Journal of the American Ceramic Society, Vol. 63 11, pp. 619-623 (1980), published by American Ceramic Society."
-MgAl2O4,2.00,800,"Fracture of Polycrystalline MgAl2O4, R.L. Stewart and R.C. Bradt, Journal of the American Ceramic Society, Vol. 63 11, pp. 619-623 (1980), published by American Ceramic Society."
-MgAl2O4,2.02,800,"Fracture of Polycrystalline MgAl2O4, R.L. Stewart and R.C. Bradt, Journal of the American Ceramic Society, Vol. 63 11, pp. 619-623 (1980), published by American Ceramic Society."
-MgAl2O4,1.49,1000,"Fracture of Polycrystalline MgAl2O4, R.L. Stewart and R.C. Bradt, Journal of the American Ceramic Society, Vol. 63 11, pp. 619-623 (1980), published by American Ceramic Society."
-MgAl2O4,1.34,1000,"Fracture of Polycrystalline MgAl2O4, R.L. Stewart and R.C. Bradt, Journal of the American Ceramic Society, Vol. 63 11, pp. 619-623 (1980), published by American Ceramic Society."
-MgAl2O4,1.29,1000,"Fracture of Polycrystalline MgAl2O4, R.L. Stewart and R.C. Bradt, Journal of the American Ceramic Society, Vol. 63 11, pp. 619-623 (1980), published by American Ceramic Society."
-MgAl2O4,1.15,1200,"Fracture of Polycrystalline MgAl2O4, R.L. Stewart and R.C. Bradt, Journal of the American Ceramic Society, Vol. 63 11, pp. 619-623 (1980), published by American Ceramic Society."
-MgAl2O4,1.12,1200,"Fracture of Polycrystalline MgAl2O4, R.L. Stewart and R.C. Bradt, Journal of the American Ceramic Society, Vol. 63 11, pp. 619-623 (1980), published by American Ceramic Society."
-MgAl2O4,1.10,1200,"Fracture of Polycrystalline MgAl2O4, R.L. Stewart and R.C. Bradt, Journal of the American Ceramic Society, Vol. 63 11, pp. 619-623 (1980), published by American Ceramic Society."
-MgAl2O4,0.59,1400,"Fracture of Polycrystalline MgAl2O4, R.L. Stewart and R.C. Bradt, Journal of the American Ceramic Society, Vol. 63 11, pp. 619-623 (1980), published by American Ceramic Society."
-MgAl2O4,0.56,1400,"Fracture of Polycrystalline MgAl2O4, R.L. Stewart and R.C. Bradt, Journal of the American Ceramic Society, Vol. 63 11, pp. 619-623 (1980), published by American Ceramic Society."
-MgAl2O4,0.41,1400,"Fracture of Polycrystalline MgAl2O4, R.L. Stewart and R.C. Bradt, Journal of the American Ceramic Society, Vol. 63 11, pp. 619-623 (1980), published by American Ceramic Society."
-MgAl2O4,1.73,23,"Fracture of Polycrystalline MgAl2O4, R.L. Stewart and R.C. Bradt, Journal of the American Ceramic Society, Vol. 63 11, pp. 619-623 (1980), published by American Ceramic Society."
-MgAl2O4,1.79,23,"Fracture of Polycrystalline MgAl2O4, R.L. Stewart and R.C. Bradt, Journal of the American Ceramic Society, Vol. 63 11, pp. 619-623 (1980), published by American Ceramic Society."
-MgAl2O4,1.88,23,"Fracture of Polycrystalline MgAl2O4, R.L. Stewart and R.C. Bradt, Journal of the American Ceramic Society, Vol. 63 11, pp. 619-623 (1980), published by American Ceramic Society."
-MgAl2O4,1.91,23,"Fracture of Polycrystalline MgAl2O4, R.L. Stewart and R.C. Bradt, Journal of the American Ceramic Society, Vol. 63 11, pp. 619-623 (1980), published by American Ceramic Society."
-MgAl2O4,1.63,250,"Fracture of Polycrystalline MgAl2O4, R.L. Stewart and R.C. Bradt, Journal of the American Ceramic Society, Vol. 63 11, pp. 619-623 (1980), published by American Ceramic Society."
-MgAl2O4,1.82,250,"Fracture of Polycrystalline MgAl2O4, R.L. Stewart and R.C. Bradt, Journal of the American Ceramic Society, Vol. 63 11, pp. 619-623 (1980), published by American Ceramic Society."
-MgAl2O4,1.85,250,"Fracture of Polycrystalline MgAl2O4, R.L. Stewart and R.C. Bradt, Journal of the American Ceramic Society, Vol. 63 11, pp. 619-623 (1980), published by American Ceramic Society."
-MgAl2O4,1.55,500,"Fracture of Polycrystalline MgAl2O4, R.L. Stewart and R.C. Bradt, Journal of the American Ceramic Society, Vol. 63 11, pp. 619-623 (1980), published by American Ceramic Society."
-MgAl2O4,1.80,500,"Fracture of Polycrystalline MgAl2O4, R.L. Stewart and R.C. Bradt, Journal of the American Ceramic Society, Vol. 63 11, pp. 619-623 (1980), published by American Ceramic Society."
-MgAl2O4,1.84,500,"Fracture of Polycrystalline MgAl2O4, R.L. Stewart and R.C. Bradt, Journal of the American Ceramic Society, Vol. 63 11, pp. 619-623 (1980), published by American Ceramic Society."
-MgAl2O4,1.85,600,"Fracture of Polycrystalline MgAl2O4, R.L. Stewart and R.C. Bradt, Journal of the American Ceramic Society, Vol. 63 11, pp. 619-623 (1980), published by American Ceramic Society."
-MgAl2O4,1.94,600,"Fracture of Polycrystalline MgAl2O4, R.L. Stewart and R.C. Bradt, Journal of the American Ceramic Society, Vol. 63 11, pp. 619-623 (1980), published by American Ceramic Society."
-MgAl2O4,1.89,700,"Fracture of Polycrystalline MgAl2O4, R.L. Stewart and R.C. Bradt, Journal of the American Ceramic Society, Vol. 63 11, pp. 619-623 (1980), published by American Ceramic Society."
-MgAl2O4,1.80,750,"Fracture of Polycrystalline MgAl2O4, R.L. Stewart and R.C. Bradt, Journal of the American Ceramic Society, Vol. 63 11, pp. 619-623 (1980), published by American Ceramic Society."
-MgAl2O4,1.73,750,"Fracture of Polycrystalline MgAl2O4, R.L. Stewart and R.C. Bradt, Journal of the American Ceramic Society, Vol. 63 11, pp. 619-623 (1980), published by American Ceramic Society."
-MgAl2O4,1.83,850,"Fracture of Polycrystalline MgAl2O4, R.L. Stewart and R.C. Bradt, Journal of the American Ceramic Society, Vol. 63 11, pp. 619-623 (1980), published by American Ceramic Society."
-MgAl2O4,1.90,850,"Fracture of Polycrystalline MgAl2O4, R.L. Stewart and R.C. Bradt, Journal of the American Ceramic Society, Vol. 63 11, pp. 619-623 (1980), published by American Ceramic Society."
-MgAl2O4,1.95,900,"Fracture of Polycrystalline MgAl2O4, R.L. Stewart and R.C. Bradt, Journal of the American Ceramic Society, Vol. 63 11, pp. 619-623 (1980), published by American Ceramic Society."
-MgAl2O4,1.86,900,"Fracture of Polycrystalline MgAl2O4, R.L. Stewart and R.C. Bradt, Journal of the American Ceramic Society, Vol. 63 11, pp. 619-623 (1980), published by American Ceramic Society."
-MgAl2O4,1.65,950,"Fracture of Polycrystalline MgAl2O4, R.L. Stewart and R.C. Bradt, Journal of the American Ceramic Society, Vol. 63 11, pp. 619-623 (1980), published by American Ceramic Society."
-MgAl2O4,1.23,950,"Fracture of Polycrystalline MgAl2O4, R.L. Stewart and R.C. Bradt, Journal of the American Ceramic Society, Vol. 63 11, pp. 619-623 (1980), published by American Ceramic Society."
-MgAl2O4,1.22,1000,"Fracture of Polycrystalline MgAl2O4, R.L. Stewart and R.C. Bradt, Journal of the American Ceramic Society, Vol. 63 11, pp. 619-623 (1980), published by American Ceramic Society."
-MgAl2O4,1.08,1000,"Fracture of Polycrystalline MgAl2O4, R.L. Stewart and R.C. Bradt, Journal of the American Ceramic Society, Vol. 63 11, pp. 619-623 (1980), published by American Ceramic Society."
-MgAl2O4,1.03,1000,"Fracture of Polycrystalline MgAl2O4, R.L. Stewart and R.C. Bradt, Journal of the American Ceramic Society, Vol. 63 11, pp. 619-623 (1980), published by American Ceramic Society."
-MgAl2O4,0.95,1100,"Fracture of Polycrystalline MgAl2O4, R.L. Stewart and R.C. Bradt, Journal of the American Ceramic Society, Vol. 63 11, pp. 619-623 (1980), published by American Ceramic Society."
-MgAl2O4,0.64,1100,"Fracture of Polycrystalline MgAl2O4, R.L. Stewart and R.C. Bradt, Journal of the American Ceramic Society, Vol. 63 11, pp. 619-623 (1980), published by American Ceramic Society."
-MgAl2O4,1.06,1200,"Fracture of Polycrystalline MgAl2O4, R.L. Stewart and R.C. Bradt, Journal of the American Ceramic Society, Vol. 63 11, pp. 619-623 (1980), published by American Ceramic Society."
-MgAl2O4,0.91,1200,"Fracture of Polycrystalline MgAl2O4, R.L. Stewart and R.C. Bradt, Journal of the American Ceramic Society, Vol. 63 11, pp. 619-623 (1980), published by American Ceramic Society."
-MgAl2O4,0.84,1200,"Fracture of Polycrystalline MgAl2O4, R.L. Stewart and R.C. Bradt, Journal of the American Ceramic Society, Vol. 63 11, pp. 619-623 (1980), published by American Ceramic Society."
-MgAl2O4,0.52,1400,"Fracture of Polycrystalline MgAl2O4, R.L. Stewart and R.C. Bradt, Journal of the American Ceramic Society, Vol. 63 11, pp. 619-623 (1980), published by American Ceramic Society."
-MgAl2O4,0.38,1400,"Fracture of Polycrystalline MgAl2O4, R.L. Stewart and R.C. Bradt, Journal of the American Ceramic Society, Vol. 63 11, pp. 619-623 (1980), published by American Ceramic Society."
-MgAl2O4,1.69,23,"Fracture of Polycrystalline MgAl2O4, R.L. Stewart and R.C. Bradt, Journal of the American Ceramic Society, Vol. 63 11, pp. 619-623 (1980), published by American Ceramic Society."
-MgAl2O4,1.93,23,"Fracture of Polycrystalline MgAl2O4, R.L. Stewart and R.C. Bradt, Journal of the American Ceramic Society, Vol. 63 11, pp. 619-623 (1980), published by American Ceramic Society."
-MgAl2O4,2.06,23,"Fracture of Polycrystalline MgAl2O4, R.L. Stewart and R.C. Bradt, Journal of the American Ceramic Society, Vol. 63 11, pp. 619-623 (1980), published by American Ceramic Society."
-MgAl2O4,1.89,250,"Fracture of Polycrystalline MgAl2O4, R.L. Stewart and R.C. Bradt, Journal of the American Ceramic Society, Vol. 63 11, pp. 619-623 (1980), published by American Ceramic Society."
-MgAl2O4,1.92,250,"Fracture of Polycrystalline MgAl2O4, R.L. Stewart and R.C. Bradt, Journal of the American Ceramic Society, Vol. 63 11, pp. 619-623 (1980), published by American Ceramic Society."
-MgAl2O4,2.03,250,"Fracture of Polycrystalline MgAl2O4, R.L. Stewart and R.C. Bradt, Journal of the American Ceramic Society, Vol. 63 11, pp. 619-623 (1980), published by American Ceramic Society."
-MgAl2O4,1.82,500,"Fracture of Polycrystalline MgAl2O4, R.L. Stewart and R.C. Bradt, Journal of the American Ceramic Society, Vol. 63 11, pp. 619-623 (1980), published by American Ceramic Society."
-MgAl2O4,1.91,500,"Fracture of Polycrystalline MgAl2O4, R.L. Stewart and R.C. Bradt, Journal of the American Ceramic Society, Vol. 63 11, pp. 619-623 (1980), published by American Ceramic Society."
-MgAl2O4,2.02,500,"Fracture of Polycrystalline MgAl2O4, R.L. Stewart and R.C. Bradt, Journal of the American Ceramic Society, Vol. 63 11, pp. 619-623 (1980), published by American Ceramic Society."
-MgAl2O4,1.96,600,"Fracture of Polycrystalline MgAl2O4, R.L. Stewart and R.C. Bradt, Journal of the American Ceramic Society, Vol. 63 11, pp. 619-623 (1980), published by American Ceramic Society."
-MgAl2O4,1.92,750,"Fracture of Polycrystalline MgAl2O4, R.L. Stewart and R.C. Bradt, Journal of the American Ceramic Society, Vol. 63 11, pp. 619-623 (1980), published by American Ceramic Society."
-MgAl2O4,2.02,750,"Fracture of Polycrystalline MgAl2O4, R.L. Stewart and R.C. Bradt, Journal of the American Ceramic Society, Vol. 63 11, pp. 619-623 (1980), published by American Ceramic Society."
-MgAl2O4,2.05,750,"Fracture of Polycrystalline MgAl2O4, R.L. Stewart and R.C. Bradt, Journal of the American Ceramic Society, Vol. 63 11, pp. 619-623 (1980), published by American Ceramic Society."
-MgAl2O4,1.80,900,"Fracture of Polycrystalline MgAl2O4, R.L. Stewart and R.C. Bradt, Journal of the American Ceramic Society, Vol. 63 11, pp. 619-623 (1980), published by American Ceramic Society."
-MgAl2O4,1.84,900,"Fracture of Polycrystalline MgAl2O4, R.L. Stewart and R.C. Bradt, Journal of the American Ceramic Society, Vol. 63 11, pp. 619-623 (1980), published by American Ceramic Society."
-MgAl2O4,1.97,950,"Fracture of Polycrystalline MgAl2O4, R.L. Stewart and R.C. Bradt, Journal of the American Ceramic Society, Vol. 63 11, pp. 619-623 (1980), published by American Ceramic Society."
-MgAl2O4,2.02,950,"Fracture of Polycrystalline MgAl2O4, R.L. Stewart and R.C. Bradt, Journal of the American Ceramic Society, Vol. 63 11, pp. 619-623 (1980), published by American Ceramic Society."
-MgAl2O4,1.25,1000,"Fracture of Polycrystalline MgAl2O4, R.L. Stewart and R.C. Bradt, Journal of the American Ceramic Society, Vol. 63 11, pp. 619-623 (1980), published by American Ceramic Society."
-MgAl2O4,1.19,1000,"Fracture of Polycrystalline MgAl2O4, R.L. Stewart and R.C. Bradt, Journal of the American Ceramic Society, Vol. 63 11, pp. 619-623 (1980), published by American Ceramic Society."
-MgAl2O4,1.11,1000,"Fracture of Polycrystalline MgAl2O4, R.L. Stewart and R.C. Bradt, Journal of the American Ceramic Society, Vol. 63 11, pp. 619-623 (1980), published by American Ceramic Society."
-MgAl2O4,0.83,1100,"Fracture of Polycrystalline MgAl2O4, R.L. Stewart and R.C. Bradt, Journal of the American Ceramic Society, Vol. 63 11, pp. 619-623 (1980), published by American Ceramic Society."
-MgAl2O4,0.79,1100,"Fracture of Polycrystalline MgAl2O4, R.L. Stewart and R.C. Bradt, Journal of the American Ceramic Society, Vol. 63 11, pp. 619-623 (1980), published by American Ceramic Society."
-MgAl2O4,0.77,1200,"Fracture of Polycrystalline MgAl2O4, R.L. Stewart and R.C. Bradt, Journal of the American Ceramic Society, Vol. 63 11, pp. 619-623 (1980), published by American Ceramic Society."
-MgAl2O4,0.72,1200,"Fracture of Polycrystalline MgAl2O4, R.L. Stewart and R.C. Bradt, Journal of the American Ceramic Society, Vol. 63 11, pp. 619-623 (1980), published by American Ceramic Society."
-MgAl2O4,0.50,1200,"Fracture of Polycrystalline MgAl2O4, R.L. Stewart and R.C. Bradt, Journal of the American Ceramic Society, Vol. 63 11, pp. 619-623 (1980), published by American Ceramic Society."
-MgAl2O4,0.49,1400,"Fracture of Polycrystalline MgAl2O4, R.L. Stewart and R.C. Bradt, Journal of the American Ceramic Society, Vol. 63 11, pp. 619-623 (1980), published by American Ceramic Society."
-MgAl2O4,0.44,1400,"Fracture of Polycrystalline MgAl2O4, R.L. Stewart and R.C. Bradt, Journal of the American Ceramic Society, Vol. 63 11, pp. 619-623 (1980), published by American Ceramic Society."
-Y3Al5O12,1.7,25,"The Fracture Behavior of Single-Crystal Y3Al5O12, L.E. Reimanis, J.J. Petrovic, and T.E. Mitchell, Journal of Non-Crystalline Solids, Vol. 177, pp. 67-73 (1994), published by Elsevier Science B.V.."
-Y3Al5O12,2.3,1400,"The Fracture Behavior of Single-Crystal Y3Al5O12, L.E. Reimanis, J.J. Petrovic, and T.E. Mitchell, Journal of Non-Crystalline Solids, Vol. 177, pp. 67-73 (1994), published by Elsevier Science B.V.."
-Y3Al5O12,3.8,1600,"The Fracture Behavior of Single-Crystal Y3Al5O12, L.E. Reimanis, J.J. Petrovic, and T.E. Mitchell, Journal of Non-Crystalline Solids, Vol. 177, pp. 67-73 (1994), published by Elsevier Science B.V.."
-Y3Al5O12,1.5,1600,"The Fracture Behavior of Single-Crystal Y3Al5O12, L.E. Reimanis, J.J. Petrovic, and T.E. Mitchell, Journal of Non-Crystalline Solids, Vol. 177, pp. 67-73 (1994), published by Elsevier Science B.V.."
-Si3N4,4,23,"Effects of Environment on the Mechanical Behavior of High-Performance Ceramics, G.A. Graves and N.L. Hecht, Report No. UDR-TR-94-136, pp. 1-138 (1995), published by University of Dayton Research Institute."
-Si3N4,2.3,23,"High-Strength Reaction-Bonded Silicon Nitride, J.E. Ritter, S.V. Nair, P.A. Gennari, and W.A. Dunlay, Advanced Ceramic Materials, Vol. 3 4, pp. 415-417 (1988), published by American Ceramic Society."
-Si3N4,5.4,1000,"High Temperature Fracture Toughness in Silicon Nitride and Sialon, Y. Mutoh, N. Miyahara, K. Yamaishi, and T. Oikawa, Transactions of the American Society of Mechanical Engineers, Vol. 115, pp. 268-272 (1993), published by American Society of Mechanical Engineers."
-Si3N4,4.3,1200,"High Temperature Fracture Toughness in Silicon Nitride and Sialon, Y. Mutoh, N. Miyahara, K. Yamaishi, and T. Oikawa, Transactions of the American Society of Mechanical Engineers, Vol. 115, pp. 268-272 (1993), published by American Society of Mechanical Engineers."
-Si3N4,6.1,1220,"High Temperature Fracture Toughness in Silicon Nitride and Sialon, Y. Mutoh, N. Miyahara, K. Yamaishi, and T. Oikawa, Transactions of the American Society of Mechanical Engineers, Vol. 115, pp. 268-272 (1993), published by American Society of Mechanical Engineers."
-Si3N4,6.2,1250,"High Temperature Fracture Toughness in Silicon Nitride and Sialon, Y. Mutoh, N. Miyahara, K. Yamaishi, and T. Oikawa, Transactions of the American Society of Mechanical Engineers, Vol. 115, pp. 268-272 (1993), published by American Society of Mechanical Engineers."
-Si3N4,7.9,1280,"High Temperature Fracture Toughness in Silicon Nitride and Sialon, Y. Mutoh, N. Miyahara, K. Yamaishi, and T. Oikawa, Transactions of the American Society of Mechanical Engineers, Vol. 115, pp. 268-272 (1993), published by American Society of Mechanical Engineers."
-Si3N4,6.5,1300,"High Temperature Fracture Toughness in Silicon Nitride and Sialon, Y. Mutoh, N. Miyahara, K. Yamaishi, and T. Oikawa, Transactions of the American Society of Mechanical Engineers, Vol. 115, pp. 268-272 (1993), published by American Society of Mechanical Engineers."
-Si3N4,5.0,1400,"High Temperature Fracture Toughness in Silicon Nitride and Sialon, Y. Mutoh, N. Miyahara, K. Yamaishi, and T. Oikawa, Transactions of the American Society of Mechanical Engineers, Vol. 115, pp. 268-272 (1993), published by American Society of Mechanical Engineers."
-Si3N4,5.3,1500,"High Temperature Fracture Toughness in Silicon Nitride and Sialon, Y. Mutoh, N. Miyahara, K. Yamaishi, and T. Oikawa, Transactions of the American Society of Mechanical Engineers, Vol. 115, pp. 268-272 (1993), published by American Society of Mechanical Engineers."
-Si3N4,6.4,23,"High Temperature Fracture Toughness in Silicon Nitride and Sialon, Y. Mutoh, N. Miyahara, K. Yamaishi, and T. Oikawa, Transactions of the American Society of Mechanical Engineers, Vol. 115, pp. 268-272 (1993), published by American Society of Mechanical Engineers."
-Si3N4,6.0,1000,"High Temperature Fracture Toughness in Silicon Nitride and Sialon, Y. Mutoh, N. Miyahara, K. Yamaishi, and T. Oikawa, Transactions of the American Society of Mechanical Engineers, Vol. 115, pp. 268-272 (1993), published by American Society of Mechanical Engineers."
-Si3N4,4.0,1200,"High Temperature Fracture Toughness in Silicon Nitride and Sialon, Y. Mutoh, N. Miyahara, K. Yamaishi, and T. Oikawa, Transactions of the American Society of Mechanical Engineers, Vol. 115, pp. 268-272 (1993), published by American Society of Mechanical Engineers."
-Si3N4,4.7,1250,"High Temperature Fracture Toughness in Silicon Nitride and Sialon, Y. Mutoh, N. Miyahara, K. Yamaishi, and T. Oikawa, Transactions of the American Society of Mechanical Engineers, Vol. 115, pp. 268-272 (1993), published by American Society of Mechanical Engineers."
-Si3N4,7.1,1300,"High Temperature Fracture Toughness in Silicon Nitride and Sialon, Y. Mutoh, N. Miyahara, K. Yamaishi, and T. Oikawa, Transactions of the American Society of Mechanical Engineers, Vol. 115, pp. 268-272 (1993), published by American Society of Mechanical Engineers."
-Si3N4,6.2,1400,"High Temperature Fracture Toughness in Silicon Nitride and Sialon, Y. Mutoh, N. Miyahara, K. Yamaishi, and T. Oikawa, Transactions of the American Society of Mechanical Engineers, Vol. 115, pp. 268-272 (1993), published by American Society of Mechanical Engineers."
-Si3N4,3.12,22,"Hot Isostatic Press Sintering and Properties of Silicon Nitride without Additives, I. Tanaka, G. Pezzotti, T. Okamoto, and Y. Miyamoto, Journal of the American Ceramic Society, Vol. 72 9, pp. 1656-1660 (1989), published by American Ceramic Society."
-Si3N4,3.18,200,"Hot Isostatic Press Sintering and Properties of Silicon Nitride without Additives, I. Tanaka, G. Pezzotti, T. Okamoto, and Y. Miyamoto, Journal of the American Ceramic Society, Vol. 72 9, pp. 1656-1660 (1989), published by American Ceramic Society."
-Si3N4,2.85,500,"Hot Isostatic Press Sintering and Properties of Silicon Nitride without Additives, I. Tanaka, G. Pezzotti, T. Okamoto, and Y. Miyamoto, Journal of the American Ceramic Society, Vol. 72 9, pp. 1656-1660 (1989), published by American Ceramic Society."
-Si3N4,2.83,800,"Hot Isostatic Press Sintering and Properties of Silicon Nitride without Additives, I. Tanaka, G. Pezzotti, T. Okamoto, and Y. Miyamoto, Journal of the American Ceramic Society, Vol. 72 9, pp. 1656-1660 (1989), published by American Ceramic Society."
-Si3N4,2.59,1000,"Hot Isostatic Press Sintering and Properties of Silicon Nitride without Additives, I. Tanaka, G. Pezzotti, T. Okamoto, and Y. Miyamoto, Journal of the American Ceramic Society, Vol. 72 9, pp. 1656-1660 (1989), published by American Ceramic Society."
-Si3N4,2.61,1100,"Hot Isostatic Press Sintering and Properties of Silicon Nitride without Additives, I. Tanaka, G. Pezzotti, T. Okamoto, and Y. Miyamoto, Journal of the American Ceramic Society, Vol. 72 9, pp. 1656-1660 (1989), published by American Ceramic Society."
-Si3N4,2.58,1200,"Hot Isostatic Press Sintering and Properties of Silicon Nitride without Additives, I. Tanaka, G. Pezzotti, T. Okamoto, and Y. Miyamoto, Journal of the American Ceramic Society, Vol. 72 9, pp. 1656-1660 (1989), published by American Ceramic Society."
-SiC,2.3,23,"Effects of Environment on the Mechanical Behavior of High-Performance Ceramics, G.A. Graves and N.L. Hecht, Report No. UDR-TR-94-136, pp. 1-138 (1995), published by University of Dayton Research Institute."
-Si3N4,5.4,1000,"High Temperature Fracture Toughness in Silicon Nitride and Sialon, Y. Mutoh, N. Miyahara, K. Yamaishi, and T. Oikawa, Transactions of the American Society of Mechanical Engineers, Vol. 115, pp. 268-272 (1993), published by American Society of Mechanical Engineers."
-Si3N4,4.3,1200,"High Temperature Fracture Toughness in Silicon Nitride and Sialon, Y. Mutoh, N. Miyahara, K. Yamaishi, and T. Oikawa, Transactions of the American Society of Mechanical Engineers, Vol. 115, pp. 268-272 (1993), published by American Society of Mechanical Engineers."
-Si3N4,6.1,1220,"High Temperature Fracture Toughness in Silicon Nitride and Sialon, Y. Mutoh, N. Miyahara, K. Yamaishi, and T. Oikawa, Transactions of the American Society of Mechanical Engineers, Vol. 115, pp. 268-272 (1993), published by American Society of Mechanical Engineers."
-Si3N4,6.2,1250,"High Temperature Fracture Toughness in Silicon Nitride and Sialon, Y. Mutoh, N. Miyahara, K. Yamaishi, and T. Oikawa, Transactions of the American Society of Mechanical Engineers, Vol. 115, pp. 268-272 (1993), published by American Society of Mechanical Engineers."
-Si3N4,7.9,1280,"High Temperature Fracture Toughness in Silicon Nitride and Sialon, Y. Mutoh, N. Miyahara, K. Yamaishi, and T. Oikawa, Transactions of the American Society of Mechanical Engineers, Vol. 115, pp. 268-272 (1993), published by American Society of Mechanical Engineers."
-Si3N4,6.5,1300,"High Temperature Fracture Toughness in Silicon Nitride and Sialon, Y. Mutoh, N. Miyahara, K. Yamaishi, and T. Oikawa, Transactions of the American Society of Mechanical Engineers, Vol. 115, pp. 268-272 (1993), published by American Society of Mechanical Engineers."
-Si3N4,5.0,1400,"High Temperature Fracture Toughness in Silicon Nitride and Sialon, Y. Mutoh, N. Miyahara, K. Yamaishi, and T. Oikawa, Transactions of the American Society of Mechanical Engineers, Vol. 115, pp. 268-272 (1993), published by American Society of Mechanical Engineers."
-Si3N4,5.3,1500,"High Temperature Fracture Toughness in Silicon Nitride and Sialon, Y. Mutoh, N. Miyahara, K. Yamaishi, and T. Oikawa, Transactions of the American Society of Mechanical Engineers, Vol. 115, pp. 268-272 (1993), published by American Society of Mechanical Engineers."
-Si3N4,6.4,23,"High Temperature Fracture Toughness in Silicon Nitride and Sialon, Y. Mutoh, N. Miyahara, K. Yamaishi, and T. Oikawa, Transactions of the American Society of Mechanical Engineers, Vol. 115, pp. 268-272 (1993), published by American Society of Mechanical Engineers."
-Si3N4,6.0,1000,"High Temperature Fracture Toughness in Silicon Nitride and Sialon, Y. Mutoh, N. Miyahara, K. Yamaishi, and T. Oikawa, Transactions of the American Society of Mechanical Engineers, Vol. 115, pp. 268-272 (1993), published by American Society of Mechanical Engineers."
-Si3N4,4.0,1200,"High Temperature Fracture Toughness in Silicon Nitride and Sialon, Y. Mutoh, N. Miyahara, K. Yamaishi, and T. Oikawa, Transactions of the American Society of Mechanical Engineers, Vol. 115, pp. 268-272 (1993), published by American Society of Mechanical Engineers."
-Si3N4,4.7,1250,"High Temperature Fracture Toughness in Silicon Nitride and Sialon, Y. Mutoh, N. Miyahara, K. Yamaishi, and T. Oikawa, Transactions of the American Society of Mechanical Engineers, Vol. 115, pp. 268-272 (1993), published by American Society of Mechanical Engineers."
-Si3N4,7.1,1300,"High Temperature Fracture Toughness in Silicon Nitride and Sialon, Y. Mutoh, N. Miyahara, K. Yamaishi, and T. Oikawa, Transactions of the American Society of Mechanical Engineers, Vol. 115, pp. 268-272 (1993), published by American Society of Mechanical Engineers."
-Si3N4,6.2,1400,"High Temperature Fracture Toughness in Silicon Nitride and Sialon, Y. Mutoh, N. Miyahara, K. Yamaishi, and T. Oikawa, Transactions of the American Society of Mechanical Engineers, Vol. 115, pp. 268-272 (1993), published by American Society of Mechanical Engineers."
-MgAl2O4,1.20,20,"Fracture of Single Crystal MgAl2O4, R.L. Stewart and R.C. Bradt, Journal of Materials Science, Vol. 15, pp. 67-72 (1980), published by Chapman and Hall."
-MgAl2O4,1.18,200,"Fracture of Single Crystal MgAl2O4, R.L. Stewart and R.C. Bradt, Journal of Materials Science, Vol. 15, pp. 67-72 (1980), published by Chapman and Hall."
-MgAl2O4,1.10,400,"Fracture of Single Crystal MgAl2O4, R.L. Stewart and R.C. Bradt, Journal of Materials Science, Vol. 15, pp. 67-72 (1980), published by Chapman and Hall."
-MgAl2O4,1.02,600,"Fracture of Single Crystal MgAl2O4, R.L. Stewart and R.C. Bradt, Journal of Materials Science, Vol. 15, pp. 67-72 (1980), published by Chapman and Hall."
-MgAl2O4,0.98,800,"Fracture of Single Crystal MgAl2O4, R.L. Stewart and R.C. Bradt, Journal of Materials Science, Vol. 15, pp. 67-72 (1980), published by Chapman and Hall."
-MgAl2O4,1.15,1000,"Fracture of Single Crystal MgAl2O4, R.L. Stewart and R.C. Bradt, Journal of Materials Science, Vol. 15, pp. 67-72 (1980), published by Chapman and Hall."
-MgAl2O4,1.73,1200,"Fracture of Single Crystal MgAl2O4, R.L. Stewart and R.C. Bradt, Journal of Materials Science, Vol. 15, pp. 67-72 (1980), published by Chapman and Hall."
-MgAl2O4,2.69,1400,"Fracture of Single Crystal MgAl2O4, R.L. Stewart and R.C. Bradt, Journal of Materials Science, Vol. 15, pp. 67-72 (1980), published by Chapman and Hall."
-MgAl2O4,1.54,20,"Fracture of Single Crystal MgAl2O4, R.L. Stewart and R.C. Bradt, Journal of Materials Science, Vol. 15, pp. 67-72 (1980), published by Chapman and Hall."
-MgAl2O4,1.55,200,"Fracture of Single Crystal MgAl2O4, R.L. Stewart and R.C. Bradt, Journal of Materials Science, Vol. 15, pp. 67-72 (1980), published by Chapman and Hall."
-MgAl2O4,1.53,400,"Fracture of Single Crystal MgAl2O4, R.L. Stewart and R.C. Bradt, Journal of Materials Science, Vol. 15, pp. 67-72 (1980), published by Chapman and Hall."
-MgAl2O4,1.51,600,"Fracture of Single Crystal MgAl2O4, R.L. Stewart and R.C. Bradt, Journal of Materials Science, Vol. 15, pp. 67-72 (1980), published by Chapman and Hall."
-MgAl2O4,1.49,800,"Fracture of Single Crystal MgAl2O4, R.L. Stewart and R.C. Bradt, Journal of Materials Science, Vol. 15, pp. 67-72 (1980), published by Chapman and Hall."
-MgAl2O4,1.61,1000,"Fracture of Single Crystal MgAl2O4, R.L. Stewart and R.C. Bradt, Journal of Materials Science, Vol. 15, pp. 67-72 (1980), published by Chapman and Hall."
-MgAl2O4,2.11,1200,"Fracture of Single Crystal MgAl2O4, R.L. Stewart and R.C. Bradt, Journal of Materials Science, Vol. 15, pp. 67-72 (1980), published by Chapman and Hall."
-MgAl2O4,2.66,1400,"Fracture of Single Crystal MgAl2O4, R.L. Stewart and R.C. Bradt, Journal of Materials Science, Vol. 15, pp. 67-72 (1980), published by Chapman and Hall."
-MgAl2O4,1.89,20,"Fracture of Single Crystal MgAl2O4, R.L. Stewart and R.C. Bradt, Journal of Materials Science, Vol. 15, pp. 67-72 (1980), published by Chapman and Hall."
-MgAl2O4,1.87,200,"Fracture of Single Crystal MgAl2O4, R.L. Stewart and R.C. Bradt, Journal of Materials Science, Vol. 15, pp. 67-72 (1980), published by Chapman and Hall."
-MgAl2O4,1.84,400,"Fracture of Single Crystal MgAl2O4, R.L. Stewart and R.C. Bradt, Journal of Materials Science, Vol. 15, pp. 67-72 (1980), published by Chapman and Hall."
-MgAl2O4,1.80,600,"Fracture of Single Crystal MgAl2O4, R.L. Stewart and R.C. Bradt, Journal of Materials Science, Vol. 15, pp. 67-72 (1980), published by Chapman and Hall."
-MgAl2O4,1.77,800,"Fracture of Single Crystal MgAl2O4, R.L. Stewart and R.C. Bradt, Journal of Materials Science, Vol. 15, pp. 67-72 (1980), published by Chapman and Hall."
-MgAl2O4,1.75,1000,"Fracture of Single Crystal MgAl2O4, R.L. Stewart and R.C. Bradt, Journal of Materials Science, Vol. 15, pp. 67-72 (1980), published by Chapman and Hall."
-MgAl2O4,1.91,1200,"Fracture of Single Crystal MgAl2O4, R.L. Stewart and R.C. Bradt, Journal of Materials Science, Vol. 15, pp. 67-72 (1980), published by Chapman and Hall."
-MgAl2O4,2.43,1400,"Fracture of Single Crystal MgAl2O4, R.L. Stewart and R.C. Bradt, Journal of Materials Science, Vol. 15, pp. 67-72 (1980), published by Chapman and Hall."
-Si3N4,6.0,22,"Sintering Behavior and Properties of Si3N4 Sintered with Nitrogen-Rich Liquid in the System Y2O3-AlN-SiO2, P.K. Das and J. Mukerji, Advanced Ceramic Materials, Vol. 3 3, pp. 238-243 (1988), published by American Ceramic Society."
-Si3N4,5.5,800,"Sintering Behavior and Properties of Si3N4 Sintered with Nitrogen-Rich Liquid in the System Y2O3-AlN-SiO2, P.K. Das and J. Mukerji, Advanced Ceramic Materials, Vol. 3 3, pp. 238-243 (1988), published by American Ceramic Society."
-Si3N4,6.4,900,"Sintering Behavior and Properties of Si3N4 Sintered with Nitrogen-Rich Liquid in the System Y2O3-AlN-SiO2, P.K. Das and J. Mukerji, Advanced Ceramic Materials, Vol. 3 3, pp. 238-243 (1988), published by American Ceramic Society."
-Si3N4,3.6,1120,"Sintering Behavior and Properties of Si3N4 Sintered with Nitrogen-Rich Liquid in the System Y2O3-AlN-SiO2, P.K. Das and J. Mukerji, Advanced Ceramic Materials, Vol. 3 3, pp. 238-243 (1988), published by American Ceramic Society."
-Si3N4,3.5,1200,"Sintering Behavior and Properties of Si3N4 Sintered with Nitrogen-Rich Liquid in the System Y2O3-AlN-SiO2, P.K. Das and J. Mukerji, Advanced Ceramic Materials, Vol. 3 3, pp. 238-243 (1988), published by American Ceramic Society."
-Si3N4,4.4,22,"Sintering Behavior and Properties of Si3N4 Sintered with Nitrogen-Rich Liquid in the System Y2O3-AlN-SiO2, P.K. Das and J. Mukerji, Advanced Ceramic Materials, Vol. 3 3, pp. 238-243 (1988), published by American Ceramic Society."
-Si3N4,4.3,1000,"Sintering Behavior and Properties of Si3N4 Sintered with Nitrogen-Rich Liquid in the System Y2O3-AlN-SiO2, P.K. Das and J. Mukerji, Advanced Ceramic Materials, Vol. 3 3, pp. 238-243 (1988), published by American Ceramic Society."
-Si3N4,1.0,1360,"Sintering Behavior and Properties of Si3N4 Sintered with Nitrogen-Rich Liquid in the System Y2O3-AlN-SiO2, P.K. Das and J. Mukerji, Advanced Ceramic Materials, Vol. 3 3, pp. 238-243 (1988), published by American Ceramic Society."
-Si3N4,5.7,23,"Effects of Environment on the Mechanical Behavior of High-Performance Ceramics, G.A. Graves and N.L. Hecht, Report No. UDR-TR-94-136, pp. 1-138 (1995), published by University of Dayton Research Institute."
-Si3N4,6.2,23,"Effects of Environment on the Mechanical Behavior of High-Performance Ceramics, G.A. Graves and N.L. Hecht, Report No. UDR-TR-94-136, pp. 1-138 (1995), published by University of Dayton Research Institute."
-Si3N4,5.2,23,"Engineering Properties of Nitrides, S. Hampshire, Engineered Materials Handbook, Vol. 4, pp. 812-820 (1991), edited by S.J. Schneider, Jr., published by ASM International."
-TiB2,5.0,25,"Densification of Titanium Diboride by Hot Isostatic Pressing and Production of Near-Net-Shape Components, J. Besson, F. Valin, P. Lointier, and M. Boncoeur, Journal of Materials Engineering and Performance, Vol. 1 5, pp. 637-649 (1992), published by ASM International."
-TiB2,6.6,600,"Densification of Titanium Diboride by Hot Isostatic Pressing and Production of Near-Net-Shape Components, J. Besson, F. Valin, P. Lointier, and M. Boncoeur, Journal of Materials Engineering and Performance, Vol. 1 5, pp. 637-649 (1992), published by ASM International."
-C,6,23,"Properties of Bulk Polycrystalline CVD Diamond, R.S. Sussmann, J.R. Brandon, G.A. Scarsbrook, C.G. Sweeney, T.J. Valentine, A.J. Whitehead, and C.J.H. Wort, Diamond and Related Materials, Vol. 3, pp. 303-312 (1994), published by Elsevier Science S.A.."
-Al2O3,3.12,25,"Part 2: Data Reviews, Section I: High Alumina Ceramics, R. Morrell, Handbook of Properties of Technical and Engineering Ceramics, Vol. 2, pp. 13-35 (1987), published by Her Majestys Stationery Office (London)."
-Y2O3,2.0,20,"Grain Size Dependences of Vickers Microhardness and Fracture Toughness in Al2O3 and Y2O3 Ceramics, T. Tani, Y. Miyamoto, M. Koizumi, and M. Shimada, Ceramics International, Vol. 12, pp. 33-37 (1986), published by Elsevier Science Ltd.."
-Y2O3,2.1,20,"Grain Size Dependences of Vickers Microhardness and Fracture Toughness in Al2O3 and Y2O3 Ceramics, T. Tani, Y. Miyamoto, M. Koizumi, and M. Shimada, Ceramics International, Vol. 12, pp. 33-37 (1986), published by Elsevier Science Ltd.."
-Y2O3,1.8,20,"Grain Size Dependences of Vickers Microhardness and Fracture Toughness in Al2O3 and Y2O3 Ceramics, T. Tani, Y. Miyamoto, M. Koizumi, and M. Shimada, Ceramics International, Vol. 12, pp. 33-37 (1986), published by Elsevier Science Ltd.."
-Y2O3,1.3,20,"Grain Size Dependences of Vickers Microhardness and Fracture Toughness in Al2O3 and Y2O3 Ceramics, T. Tani, Y. Miyamoto, M. Koizumi, and M. Shimada, Ceramics International, Vol. 12, pp. 33-37 (1986), published by Elsevier Science Ltd.."
-Y2O3,1.6,20,"Grain Size Dependences of Vickers Microhardness and Fracture Toughness in Al2O3 and Y2O3 Ceramics, T. Tani, Y. Miyamoto, M. Koizumi, and M. Shimada, Ceramics International, Vol. 12, pp. 33-37 (1986), published by Elsevier Science Ltd.."
-Y2O3,1.6,500,"Grain Size Dependences of Vickers Microhardness and Fracture Toughness in Al2O3 and Y2O3 Ceramics, T. Tani, Y. Miyamoto, M. Koizumi, and M. Shimada, Ceramics International, Vol. 12, pp. 33-37 (1986), published by Elsevier Science Ltd.."
-Y2O3,1.5,500,"Grain Size Dependences of Vickers Microhardness and Fracture Toughness in Al2O3 and Y2O3 Ceramics, T. Tani, Y. Miyamoto, M. Koizumi, and M. Shimada, Ceramics International, Vol. 12, pp. 33-37 (1986), published by Elsevier Science Ltd.."
-Y2O3,1.3,500,"Grain Size Dependences of Vickers Microhardness and Fracture Toughness in Al2O3 and Y2O3 Ceramics, T. Tani, Y. Miyamoto, M. Koizumi, and M. Shimada, Ceramics International, Vol. 12, pp. 33-37 (1986), published by Elsevier Science Ltd.."
-Y2O3,1.2,500,"Grain Size Dependences of Vickers Microhardness and Fracture Toughness in Al2O3 and Y2O3 Ceramics, T. Tani, Y. Miyamoto, M. Koizumi, and M. Shimada, Ceramics International, Vol. 12, pp. 33-37 (1986), published by Elsevier Science Ltd.."
-Y2O3,1.0,500,"Grain Size Dependences of Vickers Microhardness and Fracture Toughness in Al2O3 and Y2O3 Ceramics, T. Tani, Y. Miyamoto, M. Koizumi, and M. Shimada, Ceramics International, Vol. 12, pp. 33-37 (1986), published by Elsevier Science Ltd.."
-Y2O3,1.5,1000,"Grain Size Dependences of Vickers Microhardness and Fracture Toughness in Al2O3 and Y2O3 Ceramics, T. Tani, Y. Miyamoto, M. Koizumi, and M. Shimada, Ceramics International, Vol. 12, pp. 33-37 (1986), published by Elsevier Science Ltd.."
-Y2O3,1.8,1000,"Grain Size Dependences of Vickers Microhardness and Fracture Toughness in Al2O3 and Y2O3 Ceramics, T. Tani, Y. Miyamoto, M. Koizumi, and M. Shimada, Ceramics International, Vol. 12, pp. 33-37 (1986), published by Elsevier Science Ltd.."
-Y2O3,1.9,1000,"Grain Size Dependences of Vickers Microhardness and Fracture Toughness in Al2O3 and Y2O3 Ceramics, T. Tani, Y. Miyamoto, M. Koizumi, and M. Shimada, Ceramics International, Vol. 12, pp. 33-37 (1986), published by Elsevier Science Ltd.."
-Y2O3,1.3,1000,"Grain Size Dependences of Vickers Microhardness and Fracture Toughness in Al2O3 and Y2O3 Ceramics, T. Tani, Y. Miyamoto, M. Koizumi, and M. Shimada, Ceramics International, Vol. 12, pp. 33-37 (1986), published by Elsevier Science Ltd.."
-Y2O3,0.9,1000,"Grain Size Dependences of Vickers Microhardness and Fracture Toughness in Al2O3 and Y2O3 Ceramics, T. Tani, Y. Miyamoto, M. Koizumi, and M. Shimada, Ceramics International, Vol. 12, pp. 33-37 (1986), published by Elsevier Science Ltd.."
-Si3N4,4.59,23,"Fracture Toughness by the Surface Crack in Flexure (SCF) Method:  Results of the VAMAS Round Robin, G.D. Quinn, R.J. Gettings, and J.J. Kubler, Ceramic Engineering and Science Proceedings, Vol. 15 5, pp. 846-855 (1994), published by American Ceramic Society."
-Si3N4,5.5,23,"Effects of Environment on the Mechanical Behavior of High-Performance Ceramics, G.A. Graves and N.L. Hecht, Report No. UDR-TR-94-136, pp. 1-138 (1995), published by University of Dayton Research Institute."
-Si3N4,2.1,25,"Mechanical Properties of Single-Crystal $\alpha$-Si3N4, I.E. Reimanis, H. Suematsu, J.J. Petrovic, and T.E. Mitchell, Journal of the American Ceramic Society, Vol. 79 8, pp. 2065-2073 (1996), published by American Ceramic Society."
-Si3N4,1.7,600,"Mechanical Properties of Single-Crystal $\alpha$-Si3N4, I.E. Reimanis, H. Suematsu, J.J. Petrovic, and T.E. Mitchell, Journal of the American Ceramic Society, Vol. 79 8, pp. 2065-2073 (1996), published by American Ceramic Society."
-Si3N4,1.7,800,"Mechanical Properties of Single-Crystal $\alpha$-Si3N4, I.E. Reimanis, H. Suematsu, J.J. Petrovic, and T.E. Mitchell, Journal of the American Ceramic Society, Vol. 79 8, pp. 2065-2073 (1996), published by American Ceramic Society."
-Si3N4,1.4,1000,"Mechanical Properties of Single-Crystal $\alpha$-Si3N4, I.E. Reimanis, H. Suematsu, J.J. Petrovic, and T.E. Mitchell, Journal of the American Ceramic Society, Vol. 79 8, pp. 2065-2073 (1996), published by American Ceramic Society."
-Si3N4,1.4,1200,"Mechanical Properties of Single-Crystal $\alpha$-Si3N4, I.E. Reimanis, H. Suematsu, J.J. Petrovic, and T.E. Mitchell, Journal of the American Ceramic Society, Vol. 79 8, pp. 2065-2073 (1996), published by American Ceramic Society."
-SiC,3.8,23,"Strength Distributions of SiC Ceramics After Oxidation and Oxidation Under Load, T.E. Easler, R.C. Bradt, and R.E. Tressler, Journal of the American Ceramic Society, Vol. 64 12, pp. 731-734 (1981), published by American Ceramic Society."
-GaN,0.8,23,"Hardness and Fracture Toughness of Bulk Single Crystal Gallium Nitride, M.D. Drory, J.W. Ager, T. Suski, I. Grzegory, and S. Porowski, Applied Physics Letters, Vol. 69 26, pp. 4044-4046 (1996), published by American Institute of Physics."
-SiC,5.3,20,"Mechanical Response of High Performance Silicon Carbide, E.H. Kraft and G.I. Dooher, Conference on Mechanical Behavior of Materials, pp. 1-6 (1976), published by Carborundum Company, Research and Development Division."
-SiC,6.7,1000,"Mechanical Response of High Performance Silicon Carbide, E.H. Kraft and G.I. Dooher, Conference on Mechanical Behavior of Materials, pp. 1-6 (1976), published by Carborundum Company, Research and Development Division."
-SiC,6.8,1300,"Mechanical Response of High Performance Silicon Carbide, E.H. Kraft and G.I. Dooher, Conference on Mechanical Behavior of Materials, pp. 1-6 (1976), published by Carborundum Company, Research and Development Division."
-SiC,8.8,1600,"Mechanical Response of High Performance Silicon Carbide, E.H. Kraft and G.I. Dooher, Conference on Mechanical Behavior of Materials, pp. 1-6 (1976), published by Carborundum Company, Research and Development Division."
-MgAl2O4,2.2,20,"Fracture Mechanisms of a Coarse-Grained, Transparent MgAl2O4 at Elevated Temperatures, K.W. White and G.P. Kelkar, Journal of the American Ceramic Society, Vol. 75 12, pp. 3440-3444 (1992), published by American Ceramic Society."
-MgAl2O4,2.2,400,"Fracture Mechanisms of a Coarse-Grained, Transparent MgAl2O4 at Elevated Temperatures, K.W. White and G.P. Kelkar, Journal of the American Ceramic Society, Vol. 75 12, pp. 3440-3444 (1992), published by American Ceramic Society."
-MgAl2O4,1.9,600,"Fracture Mechanisms of a Coarse-Grained, Transparent MgAl2O4 at Elevated Temperatures, K.W. White and G.P. Kelkar, Journal of the American Ceramic Society, Vol. 75 12, pp. 3440-3444 (1992), published by American Ceramic Society."
-MgAl2O4,1.3,800,"Fracture Mechanisms of a Coarse-Grained, Transparent MgAl2O4 at Elevated Temperatures, K.W. White and G.P. Kelkar, Journal of the American Ceramic Society, Vol. 75 12, pp. 3440-3444 (1992), published by American Ceramic Society."
-MgAl2O4,1.4,1200,"Fracture Mechanisms of a Coarse-Grained, Transparent MgAl2O4 at Elevated Temperatures, K.W. White and G.P. Kelkar, Journal of the American Ceramic Society, Vol. 75 12, pp. 3440-3444 (1992), published by American Ceramic Society."
-MgAl2O4,1.4,1400,"Fracture Mechanisms of a Coarse-Grained, Transparent MgAl2O4 at Elevated Temperatures, K.W. White and G.P. Kelkar, Journal of the American Ceramic Society, Vol. 75 12, pp. 3440-3444 (1992), published by American Ceramic Society."
-MgO,1.8,23,"Influence of Grain Size and Temperature on Fracture Toughness of MgO Sintered Bodies, K. Yasuda, S.D. Kim, Y. Kanemichi, Y. Matsuo and S. Kimura, Journal of the Ceramic Society of Japan Inter. Ed., Vol. 98, pp. 44-49 (1990), published by FUJI Technology Press Ltd.."
-MgO,1.6,23,"Influence of Grain Size and Temperature on Fracture Toughness of MgO Sintered Bodies, K. Yasuda, S.D. Kim, Y. Kanemichi, Y. Matsuo and S. Kimura, Journal of the Ceramic Society of Japan Inter. Ed., Vol. 98, pp. 44-49 (1990), published by FUJI Technology Press Ltd.."
-MgO,1.3,23,"Influence of Grain Size and Temperature on Fracture Toughness of MgO Sintered Bodies, K. Yasuda, S.D. Kim, Y. Kanemichi, Y. Matsuo and S. Kimura, Journal of the Ceramic Society of Japan Inter. Ed., Vol. 98, pp. 44-49 (1990), published by FUJI Technology Press Ltd.."
-MgO,2.0,23,"Influence of Grain Size and Temperature on Fracture Toughness of MgO Sintered Bodies, K. Yasuda, S.D. Kim, Y. Kanemichi, Y. Matsuo and S. Kimura, Journal of the Ceramic Society of Japan Inter. Ed., Vol. 98, pp. 44-49 (1990), published by FUJI Technology Press Ltd.."
-MgO,1.9,23,"Influence of Grain Size and Temperature on Fracture Toughness of MgO Sintered Bodies, K. Yasuda, S.D. Kim, Y. Kanemichi, Y. Matsuo and S. Kimura, Journal of the Ceramic Society of Japan Inter. Ed., Vol. 98, pp. 44-49 (1990), published by FUJI Technology Press Ltd.."
-MgO,2.0,23,"Influence of Grain Size and Temperature on Fracture Toughness of MgO Sintered Bodies, K. Yasuda, S.D. Kim, Y. Kanemichi, Y. Matsuo and S. Kimura, Journal of the Ceramic Society of Japan Inter. Ed., Vol. 98, pp. 44-49 (1990), published by FUJI Technology Press Ltd.."
-MgO,3.3,1000,"Influence of Grain Size and Temperature on Fracture Toughness of MgO Sintered Bodies, K. Yasuda, S.D. Kim, Y. Kanemichi, Y. Matsuo and S. Kimura, Journal of the Ceramic Society of Japan Inter. Ed., Vol. 98, pp. 44-49 (1990), published by FUJI Technology Press Ltd.."
-MgO,2.6,1000,"Influence of Grain Size and Temperature on Fracture Toughness of MgO Sintered Bodies, K. Yasuda, S.D. Kim, Y. Kanemichi, Y. Matsuo and S. Kimura, Journal of the Ceramic Society of Japan Inter. Ed., Vol. 98, pp. 44-49 (1990), published by FUJI Technology Press Ltd.."
-MgO,2.8,1000,"Influence of Grain Size and Temperature on Fracture Toughness of MgO Sintered Bodies, K. Yasuda, S.D. Kim, Y. Kanemichi, Y. Matsuo and S. Kimura, Journal of the Ceramic Society of Japan Inter. Ed., Vol. 98, pp. 44-49 (1990), published by FUJI Technology Press Ltd.."
-MgO,2.7,1000,"Influence of Grain Size and Temperature on Fracture Toughness of MgO Sintered Bodies, K. Yasuda, S.D. Kim, Y. Kanemichi, Y. Matsuo and S. Kimura, Journal of the Ceramic Society of Japan Inter. Ed., Vol. 98, pp. 44-49 (1990), published by FUJI Technology Press Ltd.."
-MgO,1.8,1000,"Influence of Grain Size and Temperature on Fracture Toughness of MgO Sintered Bodies, K. Yasuda, S.D. Kim, Y. Kanemichi, Y. Matsuo and S. Kimura, Journal of the Ceramic Society of Japan Inter. Ed., Vol. 98, pp. 44-49 (1990), published by FUJI Technology Press Ltd.."
-MgO,4.2,1200,"Influence of Grain Size and Temperature on Fracture Toughness of MgO Sintered Bodies, K. Yasuda, S.D. Kim, Y. Kanemichi, Y. Matsuo and S. Kimura, Journal of the Ceramic Society of Japan Inter. Ed., Vol. 98, pp. 44-49 (1990), published by FUJI Technology Press Ltd.."
-MgO,2.9,1200,"Influence of Grain Size and Temperature on Fracture Toughness of MgO Sintered Bodies, K. Yasuda, S.D. Kim, Y. Kanemichi, Y. Matsuo and S. Kimura, Journal of the Ceramic Society of Japan Inter. Ed., Vol. 98, pp. 44-49 (1990), published by FUJI Technology Press Ltd.."
-MgO,2.3,1200,"Influence of Grain Size and Temperature on Fracture Toughness of MgO Sintered Bodies, K. Yasuda, S.D. Kim, Y. Kanemichi, Y. Matsuo and S. Kimura, Journal of the Ceramic Society of Japan Inter. Ed., Vol. 98, pp. 44-49 (1990), published by FUJI Technology Press Ltd.."
-SiC,2.3,23,"Ceramic Technology Project Data Base:  September 1992 Summary Report, B.L.P. Keyes, ORNL Report Number:  ORNL/M-2775, pp. 1-171 (1992), published by Oak Ridge National Laboratory."
-Y3Al5O12,1.7,25,"The Fracture Behavior of Single-Crystal Y3Al5O12, L.E. Reimanis, J.J. Petrovic, and T.E. Mitchell, Journal of Non-Crystalline Solids, Vol. 177, pp. 67-73 (1994), published by Elsevier Science B.V.."
-Y3Al5O12,2.3,1400,"The Fracture Behavior of Single-Crystal Y3Al5O12, L.E. Reimanis, J.J. Petrovic, and T.E. Mitchell, Journal of Non-Crystalline Solids, Vol. 177, pp. 67-73 (1994), published by Elsevier Science B.V.."
-Y3Al5O12,3.8,1600,"The Fracture Behavior of Single-Crystal Y3Al5O12, L.E. Reimanis, J.J. Petrovic, and T.E. Mitchell, Journal of Non-Crystalline Solids, Vol. 177, pp. 67-73 (1994), published by Elsevier Science B.V.."
-Y3Al5O12,1.5,1600,"The Fracture Behavior of Single-Crystal Y3Al5O12, L.E. Reimanis, J.J. Petrovic, and T.E. Mitchell, Journal of Non-Crystalline Solids, Vol. 177, pp. 67-73 (1994), published by Elsevier Science B.V.."
-SiC,2.3,23,"Ceramic Technology Project Data Base:  September 1992 Summary Report, B.L.P. Keyes, ORNL Report Number:  ORNL/M-2775, pp. 1-171 (1992), published by Oak Ridge National Laboratory."
-Si3N4,7.11,23,"Ceramic Technology Project Data Base:  September 1992 Summary Report, B.L.P. Keyes, ORNL Report Number:  ORNL/M-2775, pp. 1-171 (1992), published by Oak Ridge National Laboratory."
-Si3N4,4.0,23,"Creep of Sintered Silicon Nitride, D. Chakraborty and A.K. Mukhopadhyay, Ceramics International, Vol. 15, pp. 237-245 (1989), published by Elsevier Applied Science."
-Si3N4,5.0,1000,"Creep of Sintered Silicon Nitride, D. Chakraborty and A.K. Mukhopadhyay, Ceramics International, Vol. 15, pp. 237-245 (1989), published by Elsevier Applied Science."
-Si3N4,4.3,1210,"Creep of Sintered Silicon Nitride, D. Chakraborty and A.K. Mukhopadhyay, Ceramics International, Vol. 15, pp. 237-245 (1989), published by Elsevier Applied Science."
-Al2O3,2.46,25,"Effect of Temperature on the Fracture of Sapphire, S.M. Wiederhorn, B.J. Hockey, and D.E. Roberts, Philosophical Magazine, Vol. 28, pp. 783-796 (1973), published by Taylor and Francis Ltd.."
-Al2O3,2.11,200,"Effect of Temperature on the Fracture of Sapphire, S.M. Wiederhorn, B.J. Hockey, and D.E. Roberts, Philosophical Magazine, Vol. 28, pp. 783-796 (1973), published by Taylor and Francis Ltd.."
-Al2O3,1.98,400,"Effect of Temperature on the Fracture of Sapphire, S.M. Wiederhorn, B.J. Hockey, and D.E. Roberts, Philosophical Magazine, Vol. 28, pp. 783-796 (1973), published by Taylor and Francis Ltd.."
-Al2O3,1.81,600,"Effect of Temperature on the Fracture of Sapphire, S.M. Wiederhorn, B.J. Hockey, and D.E. Roberts, Philosophical Magazine, Vol. 28, pp. 783-796 (1973), published by Taylor and Francis Ltd.."
-Al2O3,1.79,775,"Effect of Temperature on the Fracture of Sapphire, S.M. Wiederhorn, B.J. Hockey, and D.E. Roberts, Philosophical Magazine, Vol. 28, pp. 783-796 (1973), published by Taylor and Francis Ltd.."
-Si3N4,6.0,23,"Engineering Properties of Nitrides, S. Hampshire, Engineered Materials Handbook, Vol. 4, pp. 812-820 (1991), edited by S.J. Schneider, Jr., published by ASM International."
-SiC,4.0,23,"Strength Distributions of SiC Ceramics After Oxidation and Oxidation Under Load, T.E. Easler, R.C. Bradt, and R.E. Tressler, Journal of the American Ceramic Society, Vol. 64 12, pp. 731-734 (1981), published by American Ceramic Society."
-C,5.6,1150,"Mechanical Propeties of Natural Diamonds at 1200 °C, N.V. Novikov, S.N. Dub, V.I. Malnev, and V.V. Beskrovanov, Diamond and Related Materials, Vol. 3, pp. 198-204 (1994), published by Elsevier Science S.A.."
-C,3.1,1190,"Mechanical Propeties of Natural Diamonds at 1200 °C, N.V. Novikov, S.N. Dub, V.I. Malnev, and V.V. Beskrovanov, Diamond and Related Materials, Vol. 3, pp. 198-204 (1994), published by Elsevier Science S.A.."
-C,1.6,1200,"Mechanical Propeties of Natural Diamonds at 1200 °C, N.V. Novikov, S.N. Dub, V.I. Malnev, and V.V. Beskrovanov, Diamond and Related Materials, Vol. 3, pp. 198-204 (1994), published by Elsevier Science S.A.."
-C,4.2,1160,"Mechanical Propeties of Natural Diamonds at 1200 °C, N.V. Novikov, S.N. Dub, V.I. Malnev, and V.V. Beskrovanov, Diamond and Related Materials, Vol. 3, pp. 198-204 (1994), published by Elsevier Science S.A.."
-C,3.4,1190,"Mechanical Propeties of Natural Diamonds at 1200 °C, N.V. Novikov, S.N. Dub, V.I. Malnev, and V.V. Beskrovanov, Diamond and Related Materials, Vol. 3, pp. 198-204 (1994), published by Elsevier Science S.A.."
-AlN,2.9,25,"Elevated Temperature Mechanical Properties of SiC-AlN Particulate Composites, S.A. Mariano, D. Friel, and I. Bar-On, Ceramic Engineering and Science Proceedings, Vol. 14, pp. 1077-1088 (1993), published by American Ceramic Society."
-AlN,2.8,800,"Elevated Temperature Mechanical Properties of SiC-AlN Particulate Composites, S.A. Mariano, D. Friel, and I. Bar-On, Ceramic Engineering and Science Proceedings, Vol. 14, pp. 1077-1088 (1993), published by American Ceramic Society."
-AlN,3.3,1050,"Elevated Temperature Mechanical Properties of SiC-AlN Particulate Composites, S.A. Mariano, D. Friel, and I. Bar-On, Ceramic Engineering and Science Proceedings, Vol. 14, pp. 1077-1088 (1993), published by American Ceramic Society."
-Si3N4,6.2,23,"Effects of Environment on the Mechanical Behavior of High-Performance Ceramics, G.A. Graves and N.L. Hecht, Report No. UDR-TR-94-136, pp. 1-138 (1995), published by University of Dayton Research Institute."
-ZrO2,6.0,23,"Effects of Environment on the Mechanical Behavior of High-Performance Ceramics, G.A. Graves and N.L. Hecht, Report No. UDR-TR-94-136, pp. 1-138 (1995), published by University of Dayton Research Institute."
-Si3N4,7,23,"Weibull Characterization of Four Hipped/Posthipped Engineering Ceramics Between Room Temperature and 1500 °C, J. Kubler, Mechanische Charakterisierung von Hochleistungskeramik Festigkeitsunte, pp. 1-88 (1992), published by EMPA Swiss Federal Laboratories for Materials Testing and Research."
-Al2O3,4.5,23,"Weibull Characterization of Four Hipped/Posthipped Engineering Ceramics Between Room Temperature and 1500 °C, J. Kubler, Mechanische Charakterisierung von Hochleistungskeramik Festigkeitsunte, pp. 1-88 (1992), published by EMPA Swiss Federal Laboratories for Materials Testing and Research."
-Si3N4,5.4,1000,"High Temperature Fracture Toughness in Silicon Nitride and Sialon, Y. Mutoh, N. Miyahara, K. Yamaishi, and T. Oikawa, Transactions of the American Society of Mechanical Engineers, Vol. 115, pp. 268-272 (1993), published by American Society of Mechanical Engineers."
-Si3N4,4.3,1200,"High Temperature Fracture Toughness in Silicon Nitride and Sialon, Y. Mutoh, N. Miyahara, K. Yamaishi, and T. Oikawa, Transactions of the American Society of Mechanical Engineers, Vol. 115, pp. 268-272 (1993), published by American Society of Mechanical Engineers."
-Si3N4,6.1,1220,"High Temperature Fracture Toughness in Silicon Nitride and Sialon, Y. Mutoh, N. Miyahara, K. Yamaishi, and T. Oikawa, Transactions of the American Society of Mechanical Engineers, Vol. 115, pp. 268-272 (1993), published by American Society of Mechanical Engineers."
-Si3N4,6.2,1250,"High Temperature Fracture Toughness in Silicon Nitride and Sialon, Y. Mutoh, N. Miyahara, K. Yamaishi, and T. Oikawa, Transactions of the American Society of Mechanical Engineers, Vol. 115, pp. 268-272 (1993), published by American Society of Mechanical Engineers."
-Si3N4,7.9,1280,"High Temperature Fracture Toughness in Silicon Nitride and Sialon, Y. Mutoh, N. Miyahara, K. Yamaishi, and T. Oikawa, Transactions of the American Society of Mechanical Engineers, Vol. 115, pp. 268-272 (1993), published by American Society of Mechanical Engineers."
-Si3N4,6.5,1300,"High Temperature Fracture Toughness in Silicon Nitride and Sialon, Y. Mutoh, N. Miyahara, K. Yamaishi, and T. Oikawa, Transactions of the American Society of Mechanical Engineers, Vol. 115, pp. 268-272 (1993), published by American Society of Mechanical Engineers."
-Si3N4,5.0,1400,"High Temperature Fracture Toughness in Silicon Nitride and Sialon, Y. Mutoh, N. Miyahara, K. Yamaishi, and T. Oikawa, Transactions of the American Society of Mechanical Engineers, Vol. 115, pp. 268-272 (1993), published by American Society of Mechanical Engineers."
-Si3N4,5.3,1500,"High Temperature Fracture Toughness in Silicon Nitride and Sialon, Y. Mutoh, N. Miyahara, K. Yamaishi, and T. Oikawa, Transactions of the American Society of Mechanical Engineers, Vol. 115, pp. 268-272 (1993), published by American Society of Mechanical Engineers."
-Si3N4,6.4,23,"High Temperature Fracture Toughness in Silicon Nitride and Sialon, Y. Mutoh, N. Miyahara, K. Yamaishi, and T. Oikawa, Transactions of the American Society of Mechanical Engineers, Vol. 115, pp. 268-272 (1993), published by American Society of Mechanical Engineers."
-Si3N4,6.0,1000,"High Temperature Fracture Toughness in Silicon Nitride and Sialon, Y. Mutoh, N. Miyahara, K. Yamaishi, and T. Oikawa, Transactions of the American Society of Mechanical Engineers, Vol. 115, pp. 268-272 (1993), published by American Society of Mechanical Engineers."
-Si3N4,4.0,1200,"High Temperature Fracture Toughness in Silicon Nitride and Sialon, Y. Mutoh, N. Miyahara, K. Yamaishi, and T. Oikawa, Transactions of the American Society of Mechanical Engineers, Vol. 115, pp. 268-272 (1993), published by American Society of Mechanical Engineers."
-Si3N4,4.7,1250,"High Temperature Fracture Toughness in Silicon Nitride and Sialon, Y. Mutoh, N. Miyahara, K. Yamaishi, and T. Oikawa, Transactions of the American Society of Mechanical Engineers, Vol. 115, pp. 268-272 (1993), published by American Society of Mechanical Engineers."
-Si3N4,7.1,1300,"High Temperature Fracture Toughness in Silicon Nitride and Sialon, Y. Mutoh, N. Miyahara, K. Yamaishi, and T. Oikawa, Transactions of the American Society of Mechanical Engineers, Vol. 115, pp. 268-272 (1993), published by American Society of Mechanical Engineers."
-Si3N4,6.2,1400,"High Temperature Fracture Toughness in Silicon Nitride and Sialon, Y. Mutoh, N. Miyahara, K. Yamaishi, and T. Oikawa, Transactions of the American Society of Mechanical Engineers, Vol. 115, pp. 268-272 (1993), published by American Society of Mechanical Engineers."
-Si3N4,5.7,23,"Effects of Environment on the Mechanical Behavior of High-Performance Ceramics, G.A. Graves and N.L. Hecht, Report No. UDR-TR-94-136, pp. 1-138 (1995), published by University of Dayton Research Institute."
-SiC,2.0,23,"Ceramic Technology Project Data Base:  September 1992 Summary Report, B.L.P. Keyes, ORNL Report Number:  ORNL/M-2775, pp. 1-171 (1992), published by Oak Ridge National Laboratory."
-Si3N4,7.0,22,"Unlubricated Sliding Friction and Wear of Various Si3N4 Pairs Between 22 °C and 1000 °C, A. Skopp, M. Woydt, and K.H. Habig, Tribology International, Vol. 23 3, pp. 189-199 (1990), published by Butterworth-Heinemann Ltd."
-SiC,3.9,22,"Performance Verification of New, Low-Cost Ceramics, R.E. Tressler, Projects Within the Center for Advanced Materials, pp. 124-163 (1987), edited by J.R. Hellmann and B.K. Kennedy, published by Center for Advanced Materials, Pennsylvania State University."
-SiC,3.5,1300,"Performance Verification of New, Low-Cost Ceramics, R.E. Tressler, Projects Within the Center for Advanced Materials, pp. 124-163 (1987), edited by J.R. Hellmann and B.K. Kennedy, published by Center for Advanced Materials, Pennsylvania State University."
-SiC,4.6,22,"Microstructure and Material Properties of SiC-TiB2 Particulate Composites, C.H. McMurtry, W.D.G. Boecker, S.G. Seshadri, J.S. Zanghi, and J.E. Garnier, American Ceramic Society Bulletin, Vol. 66 2, pp. 325-329 (1987), published by American Ceramic Society."
-MgO,1.8,23,"Influence of Grain Size and Temperature on Fracture Toughness of MgO Sintered Bodies, K. Yasuda, S.D. Kim, Y. Kanemichi, Y. Matsuo and S. Kimura, Journal of the Ceramic Society of Japan Inter. Ed., Vol. 98, pp. 44-49 (1990), published by FUJI Technology Press Ltd.."
-MgO,1.6,23,"Influence of Grain Size and Temperature on Fracture Toughness of MgO Sintered Bodies, K. Yasuda, S.D. Kim, Y. Kanemichi, Y. Matsuo and S. Kimura, Journal of the Ceramic Society of Japan Inter. Ed., Vol. 98, pp. 44-49 (1990), published by FUJI Technology Press Ltd.."
-MgO,1.3,23,"Influence of Grain Size and Temperature on Fracture Toughness of MgO Sintered Bodies, K. Yasuda, S.D. Kim, Y. Kanemichi, Y. Matsuo and S. Kimura, Journal of the Ceramic Society of Japan Inter. Ed., Vol. 98, pp. 44-49 (1990), published by FUJI Technology Press Ltd.."
-MgO,2.0,23,"Influence of Grain Size and Temperature on Fracture Toughness of MgO Sintered Bodies, K. Yasuda, S.D. Kim, Y. Kanemichi, Y. Matsuo and S. Kimura, Journal of the Ceramic Society of Japan Inter. Ed., Vol. 98, pp. 44-49 (1990), published by FUJI Technology Press Ltd.."
-MgO,1.9,23,"Influence of Grain Size and Temperature on Fracture Toughness of MgO Sintered Bodies, K. Yasuda, S.D. Kim, Y. Kanemichi, Y. Matsuo and S. Kimura, Journal of the Ceramic Society of Japan Inter. Ed., Vol. 98, pp. 44-49 (1990), published by FUJI Technology Press Ltd.."
-MgO,2.0,23,"Influence of Grain Size and Temperature on Fracture Toughness of MgO Sintered Bodies, K. Yasuda, S.D. Kim, Y. Kanemichi, Y. Matsuo and S. Kimura, Journal of the Ceramic Society of Japan Inter. Ed., Vol. 98, pp. 44-49 (1990), published by FUJI Technology Press Ltd.."
-MgO,3.3,1000,"Influence of Grain Size and Temperature on Fracture Toughness of MgO Sintered Bodies, K. Yasuda, S.D. Kim, Y. Kanemichi, Y. Matsuo and S. Kimura, Journal of the Ceramic Society of Japan Inter. Ed., Vol. 98, pp. 44-49 (1990), published by FUJI Technology Press Ltd.."
-MgO,2.6,1000,"Influence of Grain Size and Temperature on Fracture Toughness of MgO Sintered Bodies, K. Yasuda, S.D. Kim, Y. Kanemichi, Y. Matsuo and S. Kimura, Journal of the Ceramic Society of Japan Inter. Ed., Vol. 98, pp. 44-49 (1990), published by FUJI Technology Press Ltd.."
-MgO,2.8,1000,"Influence of Grain Size and Temperature on Fracture Toughness of MgO Sintered Bodies, K. Yasuda, S.D. Kim, Y. Kanemichi, Y. Matsuo and S. Kimura, Journal of the Ceramic Society of Japan Inter. Ed., Vol. 98, pp. 44-49 (1990), published by FUJI Technology Press Ltd.."
-MgO,2.7,1000,"Influence of Grain Size and Temperature on Fracture Toughness of MgO Sintered Bodies, K. Yasuda, S.D. Kim, Y. Kanemichi, Y. Matsuo and S. Kimura, Journal of the Ceramic Society of Japan Inter. Ed., Vol. 98, pp. 44-49 (1990), published by FUJI Technology Press Ltd.."
-MgO,1.8,1000,"Influence of Grain Size and Temperature on Fracture Toughness of MgO Sintered Bodies, K. Yasuda, S.D. Kim, Y. Kanemichi, Y. Matsuo and S. Kimura, Journal of the Ceramic Society of Japan Inter. Ed., Vol. 98, pp. 44-49 (1990), published by FUJI Technology Press Ltd.."
-MgO,4.2,1200,"Influence of Grain Size and Temperature on Fracture Toughness of MgO Sintered Bodies, K. Yasuda, S.D. Kim, Y. Kanemichi, Y. Matsuo and S. Kimura, Journal of the Ceramic Society of Japan Inter. Ed., Vol. 98, pp. 44-49 (1990), published by FUJI Technology Press Ltd.."
-MgO,2.9,1200,"Influence of Grain Size and Temperature on Fracture Toughness of MgO Sintered Bodies, K. Yasuda, S.D. Kim, Y. Kanemichi, Y. Matsuo and S. Kimura, Journal of the Ceramic Society of Japan Inter. Ed., Vol. 98, pp. 44-49 (1990), published by FUJI Technology Press Ltd.."
-MgO,2.3,1200,"Influence of Grain Size and Temperature on Fracture Toughness of MgO Sintered Bodies, K. Yasuda, S.D. Kim, Y. Kanemichi, Y. Matsuo and S. Kimura, Journal of the Ceramic Society of Japan Inter. Ed., Vol. 98, pp. 44-49 (1990), published by FUJI Technology Press Ltd.."
-Si3N4,4.95,23,"Fracture Toughness by the Surface Crack in Flexure (SCF) Method:  Results of the VAMAS Round Robin, G.D. Quinn, R.J. Gettings, and J.J. Kubler, Ceramic Engineering and Science Proceedings, Vol. 15 5, pp. 846-855 (1994), published by American Ceramic Society."
-Y3Al5O12,1.02,23,"High Temperature Fracture Toughness of Single Crystal Yttrium-Aluminium Garnet, W.R. Blumenthal and S.T. Taylor, Acta Materialia, Vol. 45 7, pp. 3071-3078 (1997), published by Acta Metallurgica Inc.."
-Y3Al5O12,1.06,23,"High Temperature Fracture Toughness of Single Crystal Yttrium-Aluminium Garnet, W.R. Blumenthal and S.T. Taylor, Acta Materialia, Vol. 45 7, pp. 3071-3078 (1997), published by Acta Metallurgica Inc.."
-Y3Al5O12,1.09,23,"High Temperature Fracture Toughness of Single Crystal Yttrium-Aluminium Garnet, W.R. Blumenthal and S.T. Taylor, Acta Materialia, Vol. 45 7, pp. 3071-3078 (1997), published by Acta Metallurgica Inc.."
-Y3Al5O12,1.21,1300,"High Temperature Fracture Toughness of Single Crystal Yttrium-Aluminium Garnet, W.R. Blumenthal and S.T. Taylor, Acta Materialia, Vol. 45 7, pp. 3071-3078 (1997), published by Acta Metallurgica Inc.."
-Y3Al5O12,0.97,1500,"High Temperature Fracture Toughness of Single Crystal Yttrium-Aluminium Garnet, W.R. Blumenthal and S.T. Taylor, Acta Materialia, Vol. 45 7, pp. 3071-3078 (1997), published by Acta Metallurgica Inc.."
-Y3Al5O12,1.83,1600,"High Temperature Fracture Toughness of Single Crystal Yttrium-Aluminium Garnet, W.R. Blumenthal and S.T. Taylor, Acta Materialia, Vol. 45 7, pp. 3071-3078 (1997), published by Acta Metallurgica Inc.."
-Y3Al5O12,1.13,1400,"High Temperature Fracture Toughness of Single Crystal Yttrium-Aluminium Garnet, W.R. Blumenthal and S.T. Taylor, Acta Materialia, Vol. 45 7, pp. 3071-3078 (1997), published by Acta Metallurgica Inc.."
-Y3Al5O12,1.72,1600,"High Temperature Fracture Toughness of Single Crystal Yttrium-Aluminium Garnet, W.R. Blumenthal and S.T. Taylor, Acta Materialia, Vol. 45 7, pp. 3071-3078 (1997), published by Acta Metallurgica Inc.."
-Y3Al5O12,1.79,1650,"High Temperature Fracture Toughness of Single Crystal Yttrium-Aluminium Garnet, W.R. Blumenthal and S.T. Taylor, Acta Materialia, Vol. 45 7, pp. 3071-3078 (1997), published by Acta Metallurgica Inc.."
-Y3Al5O12,1.57,23,"High Temperature Fracture Toughness of Single Crystal Yttrium-Aluminium Garnet, W.R. Blumenthal and S.T. Taylor, Acta Materialia, Vol. 45 7, pp. 3071-3078 (1997), published by Acta Metallurgica Inc.."
-Y3Al5O12,1.66,1400,"High Temperature Fracture Toughness of Single Crystal Yttrium-Aluminium Garnet, W.R. Blumenthal and S.T. Taylor, Acta Materialia, Vol. 45 7, pp. 3071-3078 (1997), published by Acta Metallurgica Inc.."
-Y3Al5O12,1.50,1500,"High Temperature Fracture Toughness of Single Crystal Yttrium-Aluminium Garnet, W.R. Blumenthal and S.T. Taylor, Acta Materialia, Vol. 45 7, pp. 3071-3078 (1997), published by Acta Metallurgica Inc.."
-Y3Al5O12,1.51,1700,"High Temperature Fracture Toughness of Single Crystal Yttrium-Aluminium Garnet, W.R. Blumenthal and S.T. Taylor, Acta Materialia, Vol. 45 7, pp. 3071-3078 (1997), published by Acta Metallurgica Inc.."
-Si3N4,2.2,23,"Engineering Properties of Nitrides, S. Hampshire, Engineered Materials Handbook, Vol. 4, pp. 812-820 (1991), edited by S.J. Schneider, Jr., published by ASM International."
-Al2O3,3.5,20,"Evaluated Material Properties for a Sintered $\alpha$-Alumina, R.G. Munro, Journal of the American Ceramic Society, Vol. 80 8, pp. 1919-1928 (1997), published by American Ceramic Society."
-Al2O3,3.0,500,"Evaluated Material Properties for a Sintered $\alpha$-Alumina, R.G. Munro, Journal of the American Ceramic Society, Vol. 80 8, pp. 1919-1928 (1997), published by American Ceramic Society."
-Al2O3,2.7,1000,"Evaluated Material Properties for a Sintered $\alpha$-Alumina, R.G. Munro, Journal of the American Ceramic Society, Vol. 80 8, pp. 1919-1928 (1997), published by American Ceramic Society."
-Al2O3,2.6,1200,"Evaluated Material Properties for a Sintered $\alpha$-Alumina, R.G. Munro, Journal of the American Ceramic Society, Vol. 80 8, pp. 1919-1928 (1997), published by American Ceramic Society."
-Al2O3,2.5,1400,"Evaluated Material Properties for a Sintered $\alpha$-Alumina, R.G. Munro, Journal of the American Ceramic Society, Vol. 80 8, pp. 1919-1928 (1997), published by American Ceramic Society."
-Al2O3,2.5,1500,"Evaluated Material Properties for a Sintered $\alpha$-Alumina, R.G. Munro, Journal of the American Ceramic Society, Vol. 80 8, pp. 1919-1928 (1997), published by American Ceramic Society."
-TiB2,6,23,"Titanium Diboride, C. Mroz, American Ceramic Society Bulletin, Vol. 73 6, pp. 136-137 (1994), published by American Ceramic Society."
-Al2O3,3.5,20,"Grain Size Dependences of Vickers Microhardness and Fracture Toughness in Al2O3 and Y2O3 Ceramics, T. Tani, Y. Miyamoto, M. Koizumi, and M. Shimada, Ceramics International, Vol. 12, pp. 33-37 (1986), published by Elsevier Science Ltd.."
-Al2O3,3.7,20,"Grain Size Dependences of Vickers Microhardness and Fracture Toughness in Al2O3 and Y2O3 Ceramics, T. Tani, Y. Miyamoto, M. Koizumi, and M. Shimada, Ceramics International, Vol. 12, pp. 33-37 (1986), published by Elsevier Science Ltd.."
-Al2O3,3.3,20,"Grain Size Dependences of Vickers Microhardness and Fracture Toughness in Al2O3 and Y2O3 Ceramics, T. Tani, Y. Miyamoto, M. Koizumi, and M. Shimada, Ceramics International, Vol. 12, pp. 33-37 (1986), published by Elsevier Science Ltd.."
-Al2O3,3.1,20,"Grain Size Dependences of Vickers Microhardness and Fracture Toughness in Al2O3 and Y2O3 Ceramics, T. Tani, Y. Miyamoto, M. Koizumi, and M. Shimada, Ceramics International, Vol. 12, pp. 33-37 (1986), published by Elsevier Science Ltd.."
-Al2O3,2.9,20,"Grain Size Dependences of Vickers Microhardness and Fracture Toughness in Al2O3 and Y2O3 Ceramics, T. Tani, Y. Miyamoto, M. Koizumi, and M. Shimada, Ceramics International, Vol. 12, pp. 33-37 (1986), published by Elsevier Science Ltd.."
-Al2O3,2.9,500,"Grain Size Dependences of Vickers Microhardness and Fracture Toughness in Al2O3 and Y2O3 Ceramics, T. Tani, Y. Miyamoto, M. Koizumi, and M. Shimada, Ceramics International, Vol. 12, pp. 33-37 (1986), published by Elsevier Science Ltd.."
-Al2O3,2.8,500,"Grain Size Dependences of Vickers Microhardness and Fracture Toughness in Al2O3 and Y2O3 Ceramics, T. Tani, Y. Miyamoto, M. Koizumi, and M. Shimada, Ceramics International, Vol. 12, pp. 33-37 (1986), published by Elsevier Science Ltd.."
-Al2O3,2.5,500,"Grain Size Dependences of Vickers Microhardness and Fracture Toughness in Al2O3 and Y2O3 Ceramics, T. Tani, Y. Miyamoto, M. Koizumi, and M. Shimada, Ceramics International, Vol. 12, pp. 33-37 (1986), published by Elsevier Science Ltd.."
-Al2O3,2.3,500,"Grain Size Dependences of Vickers Microhardness and Fracture Toughness in Al2O3 and Y2O3 Ceramics, T. Tani, Y. Miyamoto, M. Koizumi, and M. Shimada, Ceramics International, Vol. 12, pp. 33-37 (1986), published by Elsevier Science Ltd.."
-Al2O3,2.5,500,"Grain Size Dependences of Vickers Microhardness and Fracture Toughness in Al2O3 and Y2O3 Ceramics, T. Tani, Y. Miyamoto, M. Koizumi, and M. Shimada, Ceramics International, Vol. 12, pp. 33-37 (1986), published by Elsevier Science Ltd.."
-Al2O3,2.3,800,"Grain Size Dependences of Vickers Microhardness and Fracture Toughness in Al2O3 and Y2O3 Ceramics, T. Tani, Y. Miyamoto, M. Koizumi, and M. Shimada, Ceramics International, Vol. 12, pp. 33-37 (1986), published by Elsevier Science Ltd.."
-Al2O3,2.5,800,"Grain Size Dependences of Vickers Microhardness and Fracture Toughness in Al2O3 and Y2O3 Ceramics, T. Tani, Y. Miyamoto, M. Koizumi, and M. Shimada, Ceramics International, Vol. 12, pp. 33-37 (1986), published by Elsevier Science Ltd.."
-Al2O3,1.8,800,"Grain Size Dependences of Vickers Microhardness and Fracture Toughness in Al2O3 and Y2O3 Ceramics, T. Tani, Y. Miyamoto, M. Koizumi, and M. Shimada, Ceramics International, Vol. 12, pp. 33-37 (1986), published by Elsevier Science Ltd.."
-Al2O3,1.6,800,"Grain Size Dependences of Vickers Microhardness and Fracture Toughness in Al2O3 and Y2O3 Ceramics, T. Tani, Y. Miyamoto, M. Koizumi, and M. Shimada, Ceramics International, Vol. 12, pp. 33-37 (1986), published by Elsevier Science Ltd.."
-Al2O3,1.6,800,"Grain Size Dependences of Vickers Microhardness and Fracture Toughness in Al2O3 and Y2O3 Ceramics, T. Tani, Y. Miyamoto, M. Koizumi, and M. Shimada, Ceramics International, Vol. 12, pp. 33-37 (1986), published by Elsevier Science Ltd.."
-Si3N4,6.0,22,"Sintering Behavior and Properties of Si3N4 Sintered with Nitrogen-Rich Liquid in the System Y2O3-AlN-SiO2, P.K. Das and J. Mukerji, Advanced Ceramic Materials, Vol. 3 3, pp. 238-243 (1988), published by American Ceramic Society."
-Si3N4,5.5,800,"Sintering Behavior and Properties of Si3N4 Sintered with Nitrogen-Rich Liquid in the System Y2O3-AlN-SiO2, P.K. Das and J. Mukerji, Advanced Ceramic Materials, Vol. 3 3, pp. 238-243 (1988), published by American Ceramic Society."
-Si3N4,6.4,900,"Sintering Behavior and Properties of Si3N4 Sintered with Nitrogen-Rich Liquid in the System Y2O3-AlN-SiO2, P.K. Das and J. Mukerji, Advanced Ceramic Materials, Vol. 3 3, pp. 238-243 (1988), published by American Ceramic Society."
-Si3N4,3.6,1120,"Sintering Behavior and Properties of Si3N4 Sintered with Nitrogen-Rich Liquid in the System Y2O3-AlN-SiO2, P.K. Das and J. Mukerji, Advanced Ceramic Materials, Vol. 3 3, pp. 238-243 (1988), published by American Ceramic Society."
-Si3N4,3.5,1200,"Sintering Behavior and Properties of Si3N4 Sintered with Nitrogen-Rich Liquid in the System Y2O3-AlN-SiO2, P.K. Das and J. Mukerji, Advanced Ceramic Materials, Vol. 3 3, pp. 238-243 (1988), published by American Ceramic Society."
-Si3N4,4.4,22,"Sintering Behavior and Properties of Si3N4 Sintered with Nitrogen-Rich Liquid in the System Y2O3-AlN-SiO2, P.K. Das and J. Mukerji, Advanced Ceramic Materials, Vol. 3 3, pp. 238-243 (1988), published by American Ceramic Society."
-Si3N4,4.3,1000,"Sintering Behavior and Properties of Si3N4 Sintered with Nitrogen-Rich Liquid in the System Y2O3-AlN-SiO2, P.K. Das and J. Mukerji, Advanced Ceramic Materials, Vol. 3 3, pp. 238-243 (1988), published by American Ceramic Society."
-Si3N4,1.0,1360,"Sintering Behavior and Properties of Si3N4 Sintered with Nitrogen-Rich Liquid in the System Y2O3-AlN-SiO2, P.K. Das and J. Mukerji, Advanced Ceramic Materials, Vol. 3 3, pp. 238-243 (1988), published by American Ceramic Society."
-Si3N4,2.7,20,"Mechanical Properties of Hot Isostatically Pressed Si3N4 and Si3N4/SiC composites, O. Unal, J.J. Petrovic, and T.E. Mitchell, Journal of Materials Research, Vol. 8 3, pp. 626-634 (1993), published by Materials Research Society."
-Si3N4,2.7,200,"Mechanical Properties of Hot Isostatically Pressed Si3N4 and Si3N4/SiC composites, O. Unal, J.J. Petrovic, and T.E. Mitchell, Journal of Materials Research, Vol. 8 3, pp. 626-634 (1993), published by Materials Research Society."
-Si3N4,2.6,400,"Mechanical Properties of Hot Isostatically Pressed Si3N4 and Si3N4/SiC composites, O. Unal, J.J. Petrovic, and T.E. Mitchell, Journal of Materials Research, Vol. 8 3, pp. 626-634 (1993), published by Materials Research Society."
-Si3N4,2.5,600,"Mechanical Properties of Hot Isostatically Pressed Si3N4 and Si3N4/SiC composites, O. Unal, J.J. Petrovic, and T.E. Mitchell, Journal of Materials Research, Vol. 8 3, pp. 626-634 (1993), published by Materials Research Society."
-Si3N4,2.5,800,"Mechanical Properties of Hot Isostatically Pressed Si3N4 and Si3N4/SiC composites, O. Unal, J.J. Petrovic, and T.E. Mitchell, Journal of Materials Research, Vol. 8 3, pp. 626-634 (1993), published by Materials Research Society."
-Si3N4,2.4,1000,"Mechanical Properties of Hot Isostatically Pressed Si3N4 and Si3N4/SiC composites, O. Unal, J.J. Petrovic, and T.E. Mitchell, Journal of Materials Research, Vol. 8 3, pp. 626-634 (1993), published by Materials Research Society."
-Si3N4,2.4,1200,"Mechanical Properties of Hot Isostatically Pressed Si3N4 and Si3N4/SiC composites, O. Unal, J.J. Petrovic, and T.E. Mitchell, Journal of Materials Research, Vol. 8 3, pp. 626-634 (1993), published by Materials Research Society."
-Si3N4,2.4,1400,"Mechanical Properties of Hot Isostatically Pressed Si3N4 and Si3N4/SiC composites, O. Unal, J.J. Petrovic, and T.E. Mitchell, Journal of Materials Research, Vol. 8 3, pp. 626-634 (1993), published by Materials Research Society."
-MgAl2O4,1.46,20,"Fracture Resistance of a Transparent Magnesium Aluminate Spinel, A. Ghosh, K.W. White, M.G. Jenkins, A.S. Kobayashi, and R.C. Bradt, Journal of the American Ceramic Society, Vol. 74 7, pp. 1624-1630 (1991), published by American Ceramic Society."
-MgAl2O4,1.45,200,"Fracture Resistance of a Transparent Magnesium Aluminate Spinel, A. Ghosh, K.W. White, M.G. Jenkins, A.S. Kobayashi, and R.C. Bradt, Journal of the American Ceramic Society, Vol. 74 7, pp. 1624-1630 (1991), published by American Ceramic Society."
-MgAl2O4,1.56,400,"Fracture Resistance of a Transparent Magnesium Aluminate Spinel, A. Ghosh, K.W. White, M.G. Jenkins, A.S. Kobayashi, and R.C. Bradt, Journal of the American Ceramic Society, Vol. 74 7, pp. 1624-1630 (1991), published by American Ceramic Society."
-MgAl2O4,0.72,600,"Fracture Resistance of a Transparent Magnesium Aluminate Spinel, A. Ghosh, K.W. White, M.G. Jenkins, A.S. Kobayashi, and R.C. Bradt, Journal of the American Ceramic Society, Vol. 74 7, pp. 1624-1630 (1991), published by American Ceramic Society."
-MgAl2O4,0.85,800,"Fracture Resistance of a Transparent Magnesium Aluminate Spinel, A. Ghosh, K.W. White, M.G. Jenkins, A.S. Kobayashi, and R.C. Bradt, Journal of the American Ceramic Society, Vol. 74 7, pp. 1624-1630 (1991), published by American Ceramic Society."
-MgAl2O4,1.03,1000,"Fracture Resistance of a Transparent Magnesium Aluminate Spinel, A. Ghosh, K.W. White, M.G. Jenkins, A.S. Kobayashi, and R.C. Bradt, Journal of the American Ceramic Society, Vol. 74 7, pp. 1624-1630 (1991), published by American Ceramic Society."
-MgAl2O4,1.01,1200,"Fracture Resistance of a Transparent Magnesium Aluminate Spinel, A. Ghosh, K.W. White, M.G. Jenkins, A.S. Kobayashi, and R.C. Bradt, Journal of the American Ceramic Society, Vol. 74 7, pp. 1624-1630 (1991), published by American Ceramic Society."
-MgAl2O4,0.96,1400,"Fracture Resistance of a Transparent Magnesium Aluminate Spinel, A. Ghosh, K.W. White, M.G. Jenkins, A.S. Kobayashi, and R.C. Bradt, Journal of the American Ceramic Society, Vol. 74 7, pp. 1624-1630 (1991), published by American Ceramic Society."
-MgAl2O4,1.79,20,"Fracture Resistance of a Transparent Magnesium Aluminate Spinel, A. Ghosh, K.W. White, M.G. Jenkins, A.S. Kobayashi, and R.C. Bradt, Journal of the American Ceramic Society, Vol. 74 7, pp. 1624-1630 (1991), published by American Ceramic Society."
-MgAl2O4,1.76,200,"Fracture Resistance of a Transparent Magnesium Aluminate Spinel, A. Ghosh, K.W. White, M.G. Jenkins, A.S. Kobayashi, and R.C. Bradt, Journal of the American Ceramic Society, Vol. 74 7, pp. 1624-1630 (1991), published by American Ceramic Society."
-MgAl2O4,1.74,400,"Fracture Resistance of a Transparent Magnesium Aluminate Spinel, A. Ghosh, K.W. White, M.G. Jenkins, A.S. Kobayashi, and R.C. Bradt, Journal of the American Ceramic Society, Vol. 74 7, pp. 1624-1630 (1991), published by American Ceramic Society."
-MgAl2O4,1.60,600,"Fracture Resistance of a Transparent Magnesium Aluminate Spinel, A. Ghosh, K.W. White, M.G. Jenkins, A.S. Kobayashi, and R.C. Bradt, Journal of the American Ceramic Society, Vol. 74 7, pp. 1624-1630 (1991), published by American Ceramic Society."
-MgAl2O4,1.31,800,"Fracture Resistance of a Transparent Magnesium Aluminate Spinel, A. Ghosh, K.W. White, M.G. Jenkins, A.S. Kobayashi, and R.C. Bradt, Journal of the American Ceramic Society, Vol. 74 7, pp. 1624-1630 (1991), published by American Ceramic Society."
-MgAl2O4,1.26,1000,"Fracture Resistance of a Transparent Magnesium Aluminate Spinel, A. Ghosh, K.W. White, M.G. Jenkins, A.S. Kobayashi, and R.C. Bradt, Journal of the American Ceramic Society, Vol. 74 7, pp. 1624-1630 (1991), published by American Ceramic Society."
-MgAl2O4,1.18,1200,"Fracture Resistance of a Transparent Magnesium Aluminate Spinel, A. Ghosh, K.W. White, M.G. Jenkins, A.S. Kobayashi, and R.C. Bradt, Journal of the American Ceramic Society, Vol. 74 7, pp. 1624-1630 (1991), published by American Ceramic Society."
-MgAl2O4,1.28,1400,"Fracture Resistance of a Transparent Magnesium Aluminate Spinel, A. Ghosh, K.W. White, M.G. Jenkins, A.S. Kobayashi, and R.C. Bradt, Journal of the American Ceramic Society, Vol. 74 7, pp. 1624-1630 (1991), published by American Ceramic Society."
-MgAl2O4,1.81,20,"Fracture Resistance of a Transparent Magnesium Aluminate Spinel, A. Ghosh, K.W. White, M.G. Jenkins, A.S. Kobayashi, and R.C. Bradt, Journal of the American Ceramic Society, Vol. 74 7, pp. 1624-1630 (1991), published by American Ceramic Society."
-MgAl2O4,1.88,200,"Fracture Resistance of a Transparent Magnesium Aluminate Spinel, A. Ghosh, K.W. White, M.G. Jenkins, A.S. Kobayashi, and R.C. Bradt, Journal of the American Ceramic Society, Vol. 74 7, pp. 1624-1630 (1991), published by American Ceramic Society."
-MgAl2O4,1.76,400,"Fracture Resistance of a Transparent Magnesium Aluminate Spinel, A. Ghosh, K.W. White, M.G. Jenkins, A.S. Kobayashi, and R.C. Bradt, Journal of the American Ceramic Society, Vol. 74 7, pp. 1624-1630 (1991), published by American Ceramic Society."
-MgAl2O4,1.51,600,"Fracture Resistance of a Transparent Magnesium Aluminate Spinel, A. Ghosh, K.W. White, M.G. Jenkins, A.S. Kobayashi, and R.C. Bradt, Journal of the American Ceramic Society, Vol. 74 7, pp. 1624-1630 (1991), published by American Ceramic Society."
-MgAl2O4,1.24,800,"Fracture Resistance of a Transparent Magnesium Aluminate Spinel, A. Ghosh, K.W. White, M.G. Jenkins, A.S. Kobayashi, and R.C. Bradt, Journal of the American Ceramic Society, Vol. 74 7, pp. 1624-1630 (1991), published by American Ceramic Society."
-MgAl2O4,0.94,1000,"Fracture Resistance of a Transparent Magnesium Aluminate Spinel, A. Ghosh, K.W. White, M.G. Jenkins, A.S. Kobayashi, and R.C. Bradt, Journal of the American Ceramic Society, Vol. 74 7, pp. 1624-1630 (1991), published by American Ceramic Society."
-MgAl2O4,1.04,1200,"Fracture Resistance of a Transparent Magnesium Aluminate Spinel, A. Ghosh, K.W. White, M.G. Jenkins, A.S. Kobayashi, and R.C. Bradt, Journal of the American Ceramic Society, Vol. 74 7, pp. 1624-1630 (1991), published by American Ceramic Society."
-MgAl2O4,1.01,1400,"Fracture Resistance of a Transparent Magnesium Aluminate Spinel, A. Ghosh, K.W. White, M.G. Jenkins, A.S. Kobayashi, and R.C. Bradt, Journal of the American Ceramic Society, Vol. 74 7, pp. 1624-1630 (1991), published by American Ceramic Society."
-Y3Al5O12,1.5,20,"Effects of Temperature, Environment, and Orientation on the Fracture Toughness of Single-Crystal YAG, T. Mah and T.A. Parthasarathy, Journal of the American Ceramic Society, Vol. 80 10, pp. 2730-2734 (1997), published by American Ceramic Society."
-Y3Al5O12,1.9,20,"Effects of Temperature, Environment, and Orientation on the Fracture Toughness of Single-Crystal YAG, T. Mah and T.A. Parthasarathy, Journal of the American Ceramic Society, Vol. 80 10, pp. 2730-2734 (1997), published by American Ceramic Society."
-Y3Al5O12,2.4,20,"Effects of Temperature, Environment, and Orientation on the Fracture Toughness of Single-Crystal YAG, T. Mah and T.A. Parthasarathy, Journal of the American Ceramic Society, Vol. 80 10, pp. 2730-2734 (1997), published by American Ceramic Society."
-Y3Al5O12,2.9,20,"Effects of Temperature, Environment, and Orientation on the Fracture Toughness of Single-Crystal YAG, T. Mah and T.A. Parthasarathy, Journal of the American Ceramic Society, Vol. 80 10, pp. 2730-2734 (1997), published by American Ceramic Society."
-Y3Al5O12,2.1,1200,"Effects of Temperature, Environment, and Orientation on the Fracture Toughness of Single-Crystal YAG, T. Mah and T.A. Parthasarathy, Journal of the American Ceramic Society, Vol. 80 10, pp. 2730-2734 (1997), published by American Ceramic Society."
-Y3Al5O12,2.4,1200,"Effects of Temperature, Environment, and Orientation on the Fracture Toughness of Single-Crystal YAG, T. Mah and T.A. Parthasarathy, Journal of the American Ceramic Society, Vol. 80 10, pp. 2730-2734 (1997), published by American Ceramic Society."
-Y3Al5O12,2.7,1200,"Effects of Temperature, Environment, and Orientation on the Fracture Toughness of Single-Crystal YAG, T. Mah and T.A. Parthasarathy, Journal of the American Ceramic Society, Vol. 80 10, pp. 2730-2734 (1997), published by American Ceramic Society."
-Y3Al5O12,2.9,1200,"Effects of Temperature, Environment, and Orientation on the Fracture Toughness of Single-Crystal YAG, T. Mah and T.A. Parthasarathy, Journal of the American Ceramic Society, Vol. 80 10, pp. 2730-2734 (1997), published by American Ceramic Society."
-Y3Al5O12,3.0,1300,"Effects of Temperature, Environment, and Orientation on the Fracture Toughness of Single-Crystal YAG, T. Mah and T.A. Parthasarathy, Journal of the American Ceramic Society, Vol. 80 10, pp. 2730-2734 (1997), published by American Ceramic Society."
-Y3Al5O12,3.3,1300,"Effects of Temperature, Environment, and Orientation on the Fracture Toughness of Single-Crystal YAG, T. Mah and T.A. Parthasarathy, Journal of the American Ceramic Society, Vol. 80 10, pp. 2730-2734 (1997), published by American Ceramic Society."
-Y3Al5O12,3.1,1400,"Effects of Temperature, Environment, and Orientation on the Fracture Toughness of Single-Crystal YAG, T. Mah and T.A. Parthasarathy, Journal of the American Ceramic Society, Vol. 80 10, pp. 2730-2734 (1997), published by American Ceramic Society."
-Y3Al5O12,3.5,1400,"Effects of Temperature, Environment, and Orientation on the Fracture Toughness of Single-Crystal YAG, T. Mah and T.A. Parthasarathy, Journal of the American Ceramic Society, Vol. 80 10, pp. 2730-2734 (1997), published by American Ceramic Society."
-Y3Al5O12,3.8,1400,"Effects of Temperature, Environment, and Orientation on the Fracture Toughness of Single-Crystal YAG, T. Mah and T.A. Parthasarathy, Journal of the American Ceramic Society, Vol. 80 10, pp. 2730-2734 (1997), published by American Ceramic Society."
-Y3Al5O12,4.1,1400,"Effects of Temperature, Environment, and Orientation on the Fracture Toughness of Single-Crystal YAG, T. Mah and T.A. Parthasarathy, Journal of the American Ceramic Society, Vol. 80 10, pp. 2730-2734 (1997), published by American Ceramic Society."
-Y3Al5O12,3.8,1600,"Effects of Temperature, Environment, and Orientation on the Fracture Toughness of Single-Crystal YAG, T. Mah and T.A. Parthasarathy, Journal of the American Ceramic Society, Vol. 80 10, pp. 2730-2734 (1997), published by American Ceramic Society."
-Y3Al5O12,3.9,1600,"Effects of Temperature, Environment, and Orientation on the Fracture Toughness of Single-Crystal YAG, T. Mah and T.A. Parthasarathy, Journal of the American Ceramic Society, Vol. 80 10, pp. 2730-2734 (1997), published by American Ceramic Society."
-Y3Al5O12,4.3,1600,"Effects of Temperature, Environment, and Orientation on the Fracture Toughness of Single-Crystal YAG, T. Mah and T.A. Parthasarathy, Journal of the American Ceramic Society, Vol. 80 10, pp. 2730-2734 (1997), published by American Ceramic Society."
-Y3Al5O12,4.6,1600,"Effects of Temperature, Environment, and Orientation on the Fracture Toughness of Single-Crystal YAG, T. Mah and T.A. Parthasarathy, Journal of the American Ceramic Society, Vol. 80 10, pp. 2730-2734 (1997), published by American Ceramic Society."
-Y3Al5O12,1.1,20,"Effects of Temperature, Environment, and Orientation on the Fracture Toughness of Single-Crystal YAG, T. Mah and T.A. Parthasarathy, Journal of the American Ceramic Society, Vol. 80 10, pp. 2730-2734 (1997), published by American Ceramic Society."
-Y3Al5O12,1.5,20,"Effects of Temperature, Environment, and Orientation on the Fracture Toughness of Single-Crystal YAG, T. Mah and T.A. Parthasarathy, Journal of the American Ceramic Society, Vol. 80 10, pp. 2730-2734 (1997), published by American Ceramic Society."
-Y3Al5O12,1.7,20,"Effects of Temperature, Environment, and Orientation on the Fracture Toughness of Single-Crystal YAG, T. Mah and T.A. Parthasarathy, Journal of the American Ceramic Society, Vol. 80 10, pp. 2730-2734 (1997), published by American Ceramic Society."
-Y3Al5O12,2.3,20,"Effects of Temperature, Environment, and Orientation on the Fracture Toughness of Single-Crystal YAG, T. Mah and T.A. Parthasarathy, Journal of the American Ceramic Society, Vol. 80 10, pp. 2730-2734 (1997), published by American Ceramic Society."
-Y3Al5O12,2.7,20,"Effects of Temperature, Environment, and Orientation on the Fracture Toughness of Single-Crystal YAG, T. Mah and T.A. Parthasarathy, Journal of the American Ceramic Society, Vol. 80 10, pp. 2730-2734 (1997), published by American Ceramic Society."
-Y3Al5O12,2.0,800,"Effects of Temperature, Environment, and Orientation on the Fracture Toughness of Single-Crystal YAG, T. Mah and T.A. Parthasarathy, Journal of the American Ceramic Society, Vol. 80 10, pp. 2730-2734 (1997), published by American Ceramic Society."
-Y3Al5O12,2.2,800,"Effects of Temperature, Environment, and Orientation on the Fracture Toughness of Single-Crystal YAG, T. Mah and T.A. Parthasarathy, Journal of the American Ceramic Society, Vol. 80 10, pp. 2730-2734 (1997), published by American Ceramic Society."
-Y3Al5O12,2.6,800,"Effects of Temperature, Environment, and Orientation on the Fracture Toughness of Single-Crystal YAG, T. Mah and T.A. Parthasarathy, Journal of the American Ceramic Society, Vol. 80 10, pp. 2730-2734 (1997), published by American Ceramic Society."
-Y3Al5O12,2.9,1200,"Effects of Temperature, Environment, and Orientation on the Fracture Toughness of Single-Crystal YAG, T. Mah and T.A. Parthasarathy, Journal of the American Ceramic Society, Vol. 80 10, pp. 2730-2734 (1997), published by American Ceramic Society."
-Y3Al5O12,3.2,1200,"Effects of Temperature, Environment, and Orientation on the Fracture Toughness of Single-Crystal YAG, T. Mah and T.A. Parthasarathy, Journal of the American Ceramic Society, Vol. 80 10, pp. 2730-2734 (1997), published by American Ceramic Society."
-Y3Al5O12,3.6,1200,"Effects of Temperature, Environment, and Orientation on the Fracture Toughness of Single-Crystal YAG, T. Mah and T.A. Parthasarathy, Journal of the American Ceramic Society, Vol. 80 10, pp. 2730-2734 (1997), published by American Ceramic Society."
-Y3Al5O12,4.0,1200,"Effects of Temperature, Environment, and Orientation on the Fracture Toughness of Single-Crystal YAG, T. Mah and T.A. Parthasarathy, Journal of the American Ceramic Society, Vol. 80 10, pp. 2730-2734 (1997), published by American Ceramic Society."
-Y3Al5O12,4.9,1400,"Effects of Temperature, Environment, and Orientation on the Fracture Toughness of Single-Crystal YAG, T. Mah and T.A. Parthasarathy, Journal of the American Ceramic Society, Vol. 80 10, pp. 2730-2734 (1997), published by American Ceramic Society."
-Y3Al5O12,5.0,1400,"Effects of Temperature, Environment, and Orientation on the Fracture Toughness of Single-Crystal YAG, T. Mah and T.A. Parthasarathy, Journal of the American Ceramic Society, Vol. 80 10, pp. 2730-2734 (1997), published by American Ceramic Society."
-Y3Al5O12,5.8,1400,"Effects of Temperature, Environment, and Orientation on the Fracture Toughness of Single-Crystal YAG, T. Mah and T.A. Parthasarathy, Journal of the American Ceramic Society, Vol. 80 10, pp. 2730-2734 (1997), published by American Ceramic Society."
-Y3Al5O12,6.9,1600,"Effects of Temperature, Environment, and Orientation on the Fracture Toughness of Single-Crystal YAG, T. Mah and T.A. Parthasarathy, Journal of the American Ceramic Society, Vol. 80 10, pp. 2730-2734 (1997), published by American Ceramic Society."
-Y3Al5O12,8.3,1600,"Effects of Temperature, Environment, and Orientation on the Fracture Toughness of Single-Crystal YAG, T. Mah and T.A. Parthasarathy, Journal of the American Ceramic Society, Vol. 80 10, pp. 2730-2734 (1997), published by American Ceramic Society."
-Y3Al5O12,9.5,1600,"Effects of Temperature, Environment, and Orientation on the Fracture Toughness of Single-Crystal YAG, T. Mah and T.A. Parthasarathy, Journal of the American Ceramic Society, Vol. 80 10, pp. 2730-2734 (1997), published by American Ceramic Society."
-Si3N4,7.0,23,"Creep of Sintered Silicon Nitride, D. Chakraborty and A.K. Mukhopadhyay, Ceramics International, Vol. 15, pp. 237-245 (1989), published by Elsevier Applied Science."
-Si3N4,7.0,810,"Creep of Sintered Silicon Nitride, D. Chakraborty and A.K. Mukhopadhyay, Ceramics International, Vol. 15, pp. 237-245 (1989), published by Elsevier Applied Science."
-Si3N4,5.2,1000,"Creep of Sintered Silicon Nitride, D. Chakraborty and A.K. Mukhopadhyay, Ceramics International, Vol. 15, pp. 237-245 (1989), published by Elsevier Applied Science."
-Si3N4,5.1,1270,"Creep of Sintered Silicon Nitride, D. Chakraborty and A.K. Mukhopadhyay, Ceramics International, Vol. 15, pp. 237-245 (1989), published by Elsevier Applied Science."
-Si3N4,5.7,23,"Effects of Environment on the Mechanical Behavior of High-Performance Ceramics, G.A. Graves and N.L. Hecht, Report No. UDR-TR-94-136, pp. 1-138 (1995), published by University of Dayton Research Institute."
-Al2O3,3.5,23,"Sliding Friction of Ceramics:  Mechanical Action of the Wear Debris, J. Denape and J. Lamon, Journal of Materials Science, Vol. 25, pp. 3592-3604 (1990), published by Chapman and Hall."
-Al2O3,4.6,0,"Fracture Toughness of Single-Crystal Alumina, M. Iwasa and R.C. Bradt, Advances in Ceramics, Vol. 10, pp. 767-779 (1984), published by American Ceramic Society."
-Al2O3,3.6,200,"Fracture Toughness of Single-Crystal Alumina, M. Iwasa and R.C. Bradt, Advances in Ceramics, Vol. 10, pp. 767-779 (1984), published by American Ceramic Society."
-Al2O3,2.8,400,"Fracture Toughness of Single-Crystal Alumina, M. Iwasa and R.C. Bradt, Advances in Ceramics, Vol. 10, pp. 767-779 (1984), published by American Ceramic Society."
-Al2O3,2.2,600,"Fracture Toughness of Single-Crystal Alumina, M. Iwasa and R.C. Bradt, Advances in Ceramics, Vol. 10, pp. 767-779 (1984), published by American Ceramic Society."
-Al2O3,1.6,800,"Fracture Toughness of Single-Crystal Alumina, M. Iwasa and R.C. Bradt, Advances in Ceramics, Vol. 10, pp. 767-779 (1984), published by American Ceramic Society."
-Al2O3,1.2,1000,"Fracture Toughness of Single-Crystal Alumina, M. Iwasa and R.C. Bradt, Advances in Ceramics, Vol. 10, pp. 767-779 (1984), published by American Ceramic Society."
-Al2O3,1.2,1200,"Fracture Toughness of Single-Crystal Alumina, M. Iwasa and R.C. Bradt, Advances in Ceramics, Vol. 10, pp. 767-779 (1984), published by American Ceramic Society."
-Al2O3,1.6,1400,"Fracture Toughness of Single-Crystal Alumina, M. Iwasa and R.C. Bradt, Advances in Ceramics, Vol. 10, pp. 767-779 (1984), published by American Ceramic Society."
-Al2O3,3.2,0,"Fracture Toughness of Single-Crystal Alumina, M. Iwasa and R.C. Bradt, Advances in Ceramics, Vol. 10, pp. 767-779 (1984), published by American Ceramic Society."
-Al2O3,3.1,200,"Fracture Toughness of Single-Crystal Alumina, M. Iwasa and R.C. Bradt, Advances in Ceramics, Vol. 10, pp. 767-779 (1984), published by American Ceramic Society."
-Al2O3,3.1,400,"Fracture Toughness of Single-Crystal Alumina, M. Iwasa and R.C. Bradt, Advances in Ceramics, Vol. 10, pp. 767-779 (1984), published by American Ceramic Society."
-Al2O3,3.0,600,"Fracture Toughness of Single-Crystal Alumina, M. Iwasa and R.C. Bradt, Advances in Ceramics, Vol. 10, pp. 767-779 (1984), published by American Ceramic Society."
-Al2O3,2.9,800,"Fracture Toughness of Single-Crystal Alumina, M. Iwasa and R.C. Bradt, Advances in Ceramics, Vol. 10, pp. 767-779 (1984), published by American Ceramic Society."
-Al2O3,2.5,0,"Fracture Toughness of Single-Crystal Alumina, M. Iwasa and R.C. Bradt, Advances in Ceramics, Vol. 10, pp. 767-779 (1984), published by American Ceramic Society."
-Al2O3,2.4,200,"Fracture Toughness of Single-Crystal Alumina, M. Iwasa and R.C. Bradt, Advances in Ceramics, Vol. 10, pp. 767-779 (1984), published by American Ceramic Society."
-Al2O3,2.3,400,"Fracture Toughness of Single-Crystal Alumina, M. Iwasa and R.C. Bradt, Advances in Ceramics, Vol. 10, pp. 767-779 (1984), published by American Ceramic Society."
-Al2O3,2.3,600,"Fracture Toughness of Single-Crystal Alumina, M. Iwasa and R.C. Bradt, Advances in Ceramics, Vol. 10, pp. 767-779 (1984), published by American Ceramic Society."
-Al2O3,2.3,800,"Fracture Toughness of Single-Crystal Alumina, M. Iwasa and R.C. Bradt, Advances in Ceramics, Vol. 10, pp. 767-779 (1984), published by American Ceramic Society."
-Al2O3,2.2,1000,"Fracture Toughness of Single-Crystal Alumina, M. Iwasa and R.C. Bradt, Advances in Ceramics, Vol. 10, pp. 767-779 (1984), published by American Ceramic Society."
-Al2O3,2.1,1200,"Fracture Toughness of Single-Crystal Alumina, M. Iwasa and R.C. Bradt, Advances in Ceramics, Vol. 10, pp. 767-779 (1984), published by American Ceramic Society."
-Al2O3,1.9,1400,"Fracture Toughness of Single-Crystal Alumina, M. Iwasa and R.C. Bradt, Advances in Ceramics, Vol. 10, pp. 767-779 (1984), published by American Ceramic Society."
-Al2O3,2.4,0,"Fracture Toughness of Single-Crystal Alumina, M. Iwasa and R.C. Bradt, Advances in Ceramics, Vol. 10, pp. 767-779 (1984), published by American Ceramic Society."
-Al2O3,2.1,200,"Fracture Toughness of Single-Crystal Alumina, M. Iwasa and R.C. Bradt, Advances in Ceramics, Vol. 10, pp. 767-779 (1984), published by American Ceramic Society."
-Al2O3,1.9,400,"Fracture Toughness of Single-Crystal Alumina, M. Iwasa and R.C. Bradt, Advances in Ceramics, Vol. 10, pp. 767-779 (1984), published by American Ceramic Society."
-Al2O3,1.8,600,"Fracture Toughness of Single-Crystal Alumina, M. Iwasa and R.C. Bradt, Advances in Ceramics, Vol. 10, pp. 767-779 (1984), published by American Ceramic Society."
-Al2O3,1.8,800,"Fracture Toughness of Single-Crystal Alumina, M. Iwasa and R.C. Bradt, Advances in Ceramics, Vol. 10, pp. 767-779 (1984), published by American Ceramic Society."
-Al2O3,1.8,1000,"Fracture Toughness of Single-Crystal Alumina, M. Iwasa and R.C. Bradt, Advances in Ceramics, Vol. 10, pp. 767-779 (1984), published by American Ceramic Society."
-Al2O3,1.9,1200,"Fracture Toughness of Single-Crystal Alumina, M. Iwasa and R.C. Bradt, Advances in Ceramics, Vol. 10, pp. 767-779 (1984), published by American Ceramic Society."
-Al2O3,2.0,1400,"Fracture Toughness of Single-Crystal Alumina, M. Iwasa and R.C. Bradt, Advances in Ceramics, Vol. 10, pp. 767-779 (1984), published by American Ceramic Society."
-Si3N4,2.2,23,"Engineering Properties of Nitrides, S. Hampshire, Engineered Materials Handbook, Vol. 4, pp. 812-820 (1991), edited by S.J. Schneider, Jr., published by ASM International."
-Si3N4,4.95,23,"Fracture Toughness by the Surface Crack in Flexure (SCF) Method:  Results of the VAMAS Round Robin, G.D. Quinn, R.J. Gettings, and J.J. Kubler, Ceramic Engineering and Science Proceedings, Vol. 15 5, pp. 846-855 (1994), published by American Ceramic Society."
-Y3Al5O12,1.02,23,"High Temperature Fracture Toughness of Single Crystal Yttrium-Aluminium Garnet, W.R. Blumenthal and S.T. Taylor, Acta Materialia, Vol. 45 7, pp. 3071-3078 (1997), published by Acta Metallurgica Inc.."
-Y3Al5O12,1.06,23,"High Temperature Fracture Toughness of Single Crystal Yttrium-Aluminium Garnet, W.R. Blumenthal and S.T. Taylor, Acta Materialia, Vol. 45 7, pp. 3071-3078 (1997), published by Acta Metallurgica Inc.."
-Y3Al5O12,1.09,23,"High Temperature Fracture Toughness of Single Crystal Yttrium-Aluminium Garnet, W.R. Blumenthal and S.T. Taylor, Acta Materialia, Vol. 45 7, pp. 3071-3078 (1997), published by Acta Metallurgica Inc.."
-Y3Al5O12,1.21,1300,"High Temperature Fracture Toughness of Single Crystal Yttrium-Aluminium Garnet, W.R. Blumenthal and S.T. Taylor, Acta Materialia, Vol. 45 7, pp. 3071-3078 (1997), published by Acta Metallurgica Inc.."
-Y3Al5O12,0.97,1500,"High Temperature Fracture Toughness of Single Crystal Yttrium-Aluminium Garnet, W.R. Blumenthal and S.T. Taylor, Acta Materialia, Vol. 45 7, pp. 3071-3078 (1997), published by Acta Metallurgica Inc.."
-Y3Al5O12,1.83,1600,"High Temperature Fracture Toughness of Single Crystal Yttrium-Aluminium Garnet, W.R. Blumenthal and S.T. Taylor, Acta Materialia, Vol. 45 7, pp. 3071-3078 (1997), published by Acta Metallurgica Inc.."
-Y3Al5O12,1.13,1400,"High Temperature Fracture Toughness of Single Crystal Yttrium-Aluminium Garnet, W.R. Blumenthal and S.T. Taylor, Acta Materialia, Vol. 45 7, pp. 3071-3078 (1997), published by Acta Metallurgica Inc.."
-Y3Al5O12,1.72,1600,"High Temperature Fracture Toughness of Single Crystal Yttrium-Aluminium Garnet, W.R. Blumenthal and S.T. Taylor, Acta Materialia, Vol. 45 7, pp. 3071-3078 (1997), published by Acta Metallurgica Inc.."
-Y3Al5O12,1.79,1650,"High Temperature Fracture Toughness of Single Crystal Yttrium-Aluminium Garnet, W.R. Blumenthal and S.T. Taylor, Acta Materialia, Vol. 45 7, pp. 3071-3078 (1997), published by Acta Metallurgica Inc.."
-Y3Al5O12,1.57,23,"High Temperature Fracture Toughness of Single Crystal Yttrium-Aluminium Garnet, W.R. Blumenthal and S.T. Taylor, Acta Materialia, Vol. 45 7, pp. 3071-3078 (1997), published by Acta Metallurgica Inc.."
-Y3Al5O12,1.66,1400,"High Temperature Fracture Toughness of Single Crystal Yttrium-Aluminium Garnet, W.R. Blumenthal and S.T. Taylor, Acta Materialia, Vol. 45 7, pp. 3071-3078 (1997), published by Acta Metallurgica Inc.."
-Y3Al5O12,1.50,1500,"High Temperature Fracture Toughness of Single Crystal Yttrium-Aluminium Garnet, W.R. Blumenthal and S.T. Taylor, Acta Materialia, Vol. 45 7, pp. 3071-3078 (1997), published by Acta Metallurgica Inc.."
-Y3Al5O12,1.51,1700,"High Temperature Fracture Toughness of Single Crystal Yttrium-Aluminium Garnet, W.R. Blumenthal and S.T. Taylor, Acta Materialia, Vol. 45 7, pp. 3071-3078 (1997), published by Acta Metallurgica Inc.."
-GaN,0.8,23,"Hardness and Fracture Toughness of Bulk Single Crystal Gallium Nitride, M.D. Drory, J.W. Ager, T. Suski, I. Grzegory, and S. Porowski, Applied Physics Letters, Vol. 69 26, pp. 4044-4046 (1996), published by American Institute of Physics."
-Si3N4,5,23,"Effects of Environment on the Mechanical Behavior of High-Performance Ceramics, G.A. Graves and N.L. Hecht, Report No. UDR-TR-94-136, pp. 1-138 (1995), published by University of Dayton Research Institute."
-Al2O3,4.1,23,"Fabrication of Engineering Ceramics by Injection Moulding a Suspension with Optimum Powder Properties, Part II - Mechanical Properties and Wear Behaviour, R.E.F.Q. Nogueira, D.T. Gawne, and M.J. Edirisinghe, Journal of Materials Science, Vol. 28, pp. 4821-4828 (1993), published by Chapman and Hall."
-Si3N4,4.8,,"The Evaluation of Environmental Effects in Toughened Ceramics for Advanced Heat Engines Investigation of Selected SiC and Si3N4 Ceramics, N.L.Hecht, G.A.Graves, D.E.McCullum, A.P.Berens, S.Goodrich, J.D.Wolf, J.R.Hoenigman, P.Yaney, D.Grant, and S.Hilton, ORNL Report Number:  ORNL/Sub/84-00221/2, pp. 1-111 (1990), published by Oak Ridge National Laboratory."
-AlN,2.9,25,"Elevated Temperature Mechanical Properties of SiC-AlN Particulate Composites, S.A. Mariano, D. Friel, and I. Bar-On, Ceramic Engineering and Science Proceedings, Vol. 14, pp. 1077-1088 (1993), published by American Ceramic Society."
-AlN,2.8,800,"Elevated Temperature Mechanical Properties of SiC-AlN Particulate Composites, S.A. Mariano, D. Friel, and I. Bar-On, Ceramic Engineering and Science Proceedings, Vol. 14, pp. 1077-1088 (1993), published by American Ceramic Society."
-AlN,3.3,1050,"Elevated Temperature Mechanical Properties of SiC-AlN Particulate Composites, S.A. Mariano, D. Friel, and I. Bar-On, Ceramic Engineering and Science Proceedings, Vol. 14, pp. 1077-1088 (1993), published by American Ceramic Society."
-SiC,3.9,22,"Performance Verification of New, Low-Cost Ceramics, R.E. Tressler, Projects Within the Center for Advanced Materials, pp. 124-163 (1987), edited by J.R. Hellmann and B.K. Kennedy, published by Center for Advanced Materials, Pennsylvania State University."
-SiC,3.5,1300,"Performance Verification of New, Low-Cost Ceramics, R.E. Tressler, Projects Within the Center for Advanced Materials, pp. 124-163 (1987), edited by J.R. Hellmann and B.K. Kennedy, published by Center for Advanced Materials, Pennsylvania State University."
-SiC,5.3,22,"Performance Verification of New, Low-Cost Ceramics, R.E. Tressler, Projects Within the Center for Advanced Materials, pp. 124-163 (1987), edited by J.R. Hellmann and B.K. Kennedy, published by Center for Advanced Materials, Pennsylvania State University."
-SiC,6.5,1200,"Performance Verification of New, Low-Cost Ceramics, R.E. Tressler, Projects Within the Center for Advanced Materials, pp. 124-163 (1987), edited by J.R. Hellmann and B.K. Kennedy, published by Center for Advanced Materials, Pennsylvania State University."
-MgAl2O4,1.46,20,"Fracture Resistance of a Transparent Magnesium Aluminate Spinel, A. Ghosh, K.W. White, M.G. Jenkins, A.S. Kobayashi, and R.C. Bradt, Journal of the American Ceramic Society, Vol. 74 7, pp. 1624-1630 (1991), published by American Ceramic Society."
-MgAl2O4,1.45,200,"Fracture Resistance of a Transparent Magnesium Aluminate Spinel, A. Ghosh, K.W. White, M.G. Jenkins, A.S. Kobayashi, and R.C. Bradt, Journal of the American Ceramic Society, Vol. 74 7, pp. 1624-1630 (1991), published by American Ceramic Society."
-MgAl2O4,1.56,400,"Fracture Resistance of a Transparent Magnesium Aluminate Spinel, A. Ghosh, K.W. White, M.G. Jenkins, A.S. Kobayashi, and R.C. Bradt, Journal of the American Ceramic Society, Vol. 74 7, pp. 1624-1630 (1991), published by American Ceramic Society."
-MgAl2O4,0.72,600,"Fracture Resistance of a Transparent Magnesium Aluminate Spinel, A. Ghosh, K.W. White, M.G. Jenkins, A.S. Kobayashi, and R.C. Bradt, Journal of the American Ceramic Society, Vol. 74 7, pp. 1624-1630 (1991), published by American Ceramic Society."
-MgAl2O4,0.85,800,"Fracture Resistance of a Transparent Magnesium Aluminate Spinel, A. Ghosh, K.W. White, M.G. Jenkins, A.S. Kobayashi, and R.C. Bradt, Journal of the American Ceramic Society, Vol. 74 7, pp. 1624-1630 (1991), published by American Ceramic Society."
-MgAl2O4,1.03,1000,"Fracture Resistance of a Transparent Magnesium Aluminate Spinel, A. Ghosh, K.W. White, M.G. Jenkins, A.S. Kobayashi, and R.C. Bradt, Journal of the American Ceramic Society, Vol. 74 7, pp. 1624-1630 (1991), published by American Ceramic Society."
-MgAl2O4,1.01,1200,"Fracture Resistance of a Transparent Magnesium Aluminate Spinel, A. Ghosh, K.W. White, M.G. Jenkins, A.S. Kobayashi, and R.C. Bradt, Journal of the American Ceramic Society, Vol. 74 7, pp. 1624-1630 (1991), published by American Ceramic Society."
-MgAl2O4,0.96,1400,"Fracture Resistance of a Transparent Magnesium Aluminate Spinel, A. Ghosh, K.W. White, M.G. Jenkins, A.S. Kobayashi, and R.C. Bradt, Journal of the American Ceramic Society, Vol. 74 7, pp. 1624-1630 (1991), published by American Ceramic Society."
-MgAl2O4,1.79,20,"Fracture Resistance of a Transparent Magnesium Aluminate Spinel, A. Ghosh, K.W. White, M.G. Jenkins, A.S. Kobayashi, and R.C. Bradt, Journal of the American Ceramic Society, Vol. 74 7, pp. 1624-1630 (1991), published by American Ceramic Society."
-MgAl2O4,1.76,200,"Fracture Resistance of a Transparent Magnesium Aluminate Spinel, A. Ghosh, K.W. White, M.G. Jenkins, A.S. Kobayashi, and R.C. Bradt, Journal of the American Ceramic Society, Vol. 74 7, pp. 1624-1630 (1991), published by American Ceramic Society."
-MgAl2O4,1.74,400,"Fracture Resistance of a Transparent Magnesium Aluminate Spinel, A. Ghosh, K.W. White, M.G. Jenkins, A.S. Kobayashi, and R.C. Bradt, Journal of the American Ceramic Society, Vol. 74 7, pp. 1624-1630 (1991), published by American Ceramic Society."
-MgAl2O4,1.60,600,"Fracture Resistance of a Transparent Magnesium Aluminate Spinel, A. Ghosh, K.W. White, M.G. Jenkins, A.S. Kobayashi, and R.C. Bradt, Journal of the American Ceramic Society, Vol. 74 7, pp. 1624-1630 (1991), published by American Ceramic Society."
-MgAl2O4,1.31,800,"Fracture Resistance of a Transparent Magnesium Aluminate Spinel, A. Ghosh, K.W. White, M.G. Jenkins, A.S. Kobayashi, and R.C. Bradt, Journal of the American Ceramic Society, Vol. 74 7, pp. 1624-1630 (1991), published by American Ceramic Society."
-MgAl2O4,1.26,1000,"Fracture Resistance of a Transparent Magnesium Aluminate Spinel, A. Ghosh, K.W. White, M.G. Jenkins, A.S. Kobayashi, and R.C. Bradt, Journal of the American Ceramic Society, Vol. 74 7, pp. 1624-1630 (1991), published by American Ceramic Society."
-MgAl2O4,1.18,1200,"Fracture Resistance of a Transparent Magnesium Aluminate Spinel, A. Ghosh, K.W. White, M.G. Jenkins, A.S. Kobayashi, and R.C. Bradt, Journal of the American Ceramic Society, Vol. 74 7, pp. 1624-1630 (1991), published by American Ceramic Society."
-MgAl2O4,1.28,1400,"Fracture Resistance of a Transparent Magnesium Aluminate Spinel, A. Ghosh, K.W. White, M.G. Jenkins, A.S. Kobayashi, and R.C. Bradt, Journal of the American Ceramic Society, Vol. 74 7, pp. 1624-1630 (1991), published by American Ceramic Society."
-MgAl2O4,1.81,20,"Fracture Resistance of a Transparent Magnesium Aluminate Spinel, A. Ghosh, K.W. White, M.G. Jenkins, A.S. Kobayashi, and R.C. Bradt, Journal of the American Ceramic Society, Vol. 74 7, pp. 1624-1630 (1991), published by American Ceramic Society."
-MgAl2O4,1.88,200,"Fracture Resistance of a Transparent Magnesium Aluminate Spinel, A. Ghosh, K.W. White, M.G. Jenkins, A.S. Kobayashi, and R.C. Bradt, Journal of the American Ceramic Society, Vol. 74 7, pp. 1624-1630 (1991), published by American Ceramic Society."
-MgAl2O4,1.76,400,"Fracture Resistance of a Transparent Magnesium Aluminate Spinel, A. Ghosh, K.W. White, M.G. Jenkins, A.S. Kobayashi, and R.C. Bradt, Journal of the American Ceramic Society, Vol. 74 7, pp. 1624-1630 (1991), published by American Ceramic Society."
-MgAl2O4,1.51,600,"Fracture Resistance of a Transparent Magnesium Aluminate Spinel, A. Ghosh, K.W. White, M.G. Jenkins, A.S. Kobayashi, and R.C. Bradt, Journal of the American Ceramic Society, Vol. 74 7, pp. 1624-1630 (1991), published by American Ceramic Society."
-MgAl2O4,1.24,800,"Fracture Resistance of a Transparent Magnesium Aluminate Spinel, A. Ghosh, K.W. White, M.G. Jenkins, A.S. Kobayashi, and R.C. Bradt, Journal of the American Ceramic Society, Vol. 74 7, pp. 1624-1630 (1991), published by American Ceramic Society."
-MgAl2O4,0.94,1000,"Fracture Resistance of a Transparent Magnesium Aluminate Spinel, A. Ghosh, K.W. White, M.G. Jenkins, A.S. Kobayashi, and R.C. Bradt, Journal of the American Ceramic Society, Vol. 74 7, pp. 1624-1630 (1991), published by American Ceramic Society."
-MgAl2O4,1.04,1200,"Fracture Resistance of a Transparent Magnesium Aluminate Spinel, A. Ghosh, K.W. White, M.G. Jenkins, A.S. Kobayashi, and R.C. Bradt, Journal of the American Ceramic Society, Vol. 74 7, pp. 1624-1630 (1991), published by American Ceramic Society."
-MgAl2O4,1.01,1400,"Fracture Resistance of a Transparent Magnesium Aluminate Spinel, A. Ghosh, K.W. White, M.G. Jenkins, A.S. Kobayashi, and R.C. Bradt, Journal of the American Ceramic Society, Vol. 74 7, pp. 1624-1630 (1991), published by American Ceramic Society."
-Al2O3,2.52,25,"Effect of Temperature on Toughness Curves in Alumina, H.H.K. Xu, C.P. Ostertag, and R.F. Krause, Jr., Journal of the American Ceramic Society, Vol. 78 1, pp. 260-262 (1995), published by American Ceramic Society."
-Al2O3,3.00,25,"Effect of Temperature on Toughness Curves in Alumina, H.H.K. Xu, C.P. Ostertag, and R.F. Krause, Jr., Journal of the American Ceramic Society, Vol. 78 1, pp. 260-262 (1995), published by American Ceramic Society."
-Al2O3,3.15,25,"Effect of Temperature on Toughness Curves in Alumina, H.H.K. Xu, C.P. Ostertag, and R.F. Krause, Jr., Journal of the American Ceramic Society, Vol. 78 1, pp. 260-262 (1995), published by American Ceramic Society."
-Al2O3,3.10,25,"Effect of Temperature on Toughness Curves in Alumina, H.H.K. Xu, C.P. Ostertag, and R.F. Krause, Jr., Journal of the American Ceramic Society, Vol. 78 1, pp. 260-262 (1995), published by American Ceramic Society."
-Al2O3,3.33,25,"Effect of Temperature on Toughness Curves in Alumina, H.H.K. Xu, C.P. Ostertag, and R.F. Krause, Jr., Journal of the American Ceramic Society, Vol. 78 1, pp. 260-262 (1995), published by American Ceramic Society."
-Al2O3,3.53,25,"Effect of Temperature on Toughness Curves in Alumina, H.H.K. Xu, C.P. Ostertag, and R.F. Krause, Jr., Journal of the American Ceramic Society, Vol. 78 1, pp. 260-262 (1995), published by American Ceramic Society."
-Al2O3,3.76,25,"Effect of Temperature on Toughness Curves in Alumina, H.H.K. Xu, C.P. Ostertag, and R.F. Krause, Jr., Journal of the American Ceramic Society, Vol. 78 1, pp. 260-262 (1995), published by American Ceramic Society."
-Al2O3,3.80,25,"Effect of Temperature on Toughness Curves in Alumina, H.H.K. Xu, C.P. Ostertag, and R.F. Krause, Jr., Journal of the American Ceramic Society, Vol. 78 1, pp. 260-262 (1995), published by American Ceramic Society."
-Al2O3,2.28,400,"Effect of Temperature on Toughness Curves in Alumina, H.H.K. Xu, C.P. Ostertag, and R.F. Krause, Jr., Journal of the American Ceramic Society, Vol. 78 1, pp. 260-262 (1995), published by American Ceramic Society."
-Al2O3,2.79,400,"Effect of Temperature on Toughness Curves in Alumina, H.H.K. Xu, C.P. Ostertag, and R.F. Krause, Jr., Journal of the American Ceramic Society, Vol. 78 1, pp. 260-262 (1995), published by American Ceramic Society."
-Al2O3,3.09,400,"Effect of Temperature on Toughness Curves in Alumina, H.H.K. Xu, C.P. Ostertag, and R.F. Krause, Jr., Journal of the American Ceramic Society, Vol. 78 1, pp. 260-262 (1995), published by American Ceramic Society."
-Al2O3,2.16,700,"Effect of Temperature on Toughness Curves in Alumina, H.H.K. Xu, C.P. Ostertag, and R.F. Krause, Jr., Journal of the American Ceramic Society, Vol. 78 1, pp. 260-262 (1995), published by American Ceramic Society."
-Al2O3,2.70,700,"Effect of Temperature on Toughness Curves in Alumina, H.H.K. Xu, C.P. Ostertag, and R.F. Krause, Jr., Journal of the American Ceramic Society, Vol. 78 1, pp. 260-262 (1995), published by American Ceramic Society."
-Al2O3,2.89,700,"Effect of Temperature on Toughness Curves in Alumina, H.H.K. Xu, C.P. Ostertag, and R.F. Krause, Jr., Journal of the American Ceramic Society, Vol. 78 1, pp. 260-262 (1995), published by American Ceramic Society."
-Al2O3,2.16,1000,"Effect of Temperature on Toughness Curves in Alumina, H.H.K. Xu, C.P. Ostertag, and R.F. Krause, Jr., Journal of the American Ceramic Society, Vol. 78 1, pp. 260-262 (1995), published by American Ceramic Society."
-Al2O3,2.27,1000,"Effect of Temperature on Toughness Curves in Alumina, H.H.K. Xu, C.P. Ostertag, and R.F. Krause, Jr., Journal of the American Ceramic Society, Vol. 78 1, pp. 260-262 (1995), published by American Ceramic Society."
-Al2O3,2.78,1000,"Effect of Temperature on Toughness Curves in Alumina, H.H.K. Xu, C.P. Ostertag, and R.F. Krause, Jr., Journal of the American Ceramic Society, Vol. 78 1, pp. 260-262 (1995), published by American Ceramic Society."
-Al2O3,1.96,1300,"Effect of Temperature on Toughness Curves in Alumina, H.H.K. Xu, C.P. Ostertag, and R.F. Krause, Jr., Journal of the American Ceramic Society, Vol. 78 1, pp. 260-262 (1995), published by American Ceramic Society."
-Al2O3,2.15,1300,"Effect of Temperature on Toughness Curves in Alumina, H.H.K. Xu, C.P. Ostertag, and R.F. Krause, Jr., Journal of the American Ceramic Society, Vol. 78 1, pp. 260-262 (1995), published by American Ceramic Society."
-Al2O3,2.50,1300,"Effect of Temperature on Toughness Curves in Alumina, H.H.K. Xu, C.P. Ostertag, and R.F. Krause, Jr., Journal of the American Ceramic Society, Vol. 78 1, pp. 260-262 (1995), published by American Ceramic Society."
-SiC,4.6,22,"Microstructure and Material Properties of SiC-TiB2 Particulate Composites, C.H. McMurtry, W.D.G. Boecker, S.G. Seshadri, J.S. Zanghi, and J.E. Garnier, American Ceramic Society Bulletin, Vol. 66 2, pp. 325-329 (1987), published by American Ceramic Society."
-Si3N4,6.0,22,"Unlubricated Sliding Friction and Wear of Various Si3N4 Pairs Between 22 °C and 1000 °C, A. Skopp, M. Woydt, and K.H. Habig, Tribology International, Vol. 23 3, pp. 189-199 (1990), published by Butterworth-Heinemann Ltd."
-Si3N4,5.2,23,"Creep of Sintered Silicon Nitride, D. Chakraborty and A.K. Mukhopadhyay, Ceramics International, Vol. 15, pp. 237-245 (1989), published by Elsevier Applied Science."
-Si3N4,4.0,910,"Creep of Sintered Silicon Nitride, D. Chakraborty and A.K. Mukhopadhyay, Ceramics International, Vol. 15, pp. 237-245 (1989), published by Elsevier Applied Science."
-Si3N4,3.0,1000,"Creep of Sintered Silicon Nitride, D. Chakraborty and A.K. Mukhopadhyay, Ceramics International, Vol. 15, pp. 237-245 (1989), published by Elsevier Applied Science."
-Si3N4,2.6,1210,"Creep of Sintered Silicon Nitride, D. Chakraborty and A.K. Mukhopadhyay, Ceramics International, Vol. 15, pp. 237-245 (1989), published by Elsevier Applied Science."
-SiC,5.4,22,"Crack Propagation in Sintered Alpha Silicon Carbide, E.H. Kraft and R.H. Smoak, Report - Fall Meeting, American Ceramic Society, 1977, pp. 3-7 (1977), published by The Carborundum Company."
-SiC,6.8,1000,"Crack Propagation in Sintered Alpha Silicon Carbide, E.H. Kraft and R.H. Smoak, Report - Fall Meeting, American Ceramic Society, 1977, pp. 3-7 (1977), published by The Carborundum Company."
-SiC,8.8,1600,"Crack Propagation in Sintered Alpha Silicon Carbide, E.H. Kraft and R.H. Smoak, Report - Fall Meeting, American Ceramic Society, 1977, pp. 3-7 (1977), published by The Carborundum Company."
-SiC,2.8,22,"Crack Propagation in Sintered Alpha Silicon Carbide, E.H. Kraft and R.H. Smoak, Report - Fall Meeting, American Ceramic Society, 1977, pp. 3-7 (1977), published by The Carborundum Company."
-SiC,4.0,1000,"Crack Propagation in Sintered Alpha Silicon Carbide, E.H. Kraft and R.H. Smoak, Report - Fall Meeting, American Ceramic Society, 1977, pp. 3-7 (1977), published by The Carborundum Company."
-SiC,4.7,22,"Crack Propagation in Sintered Alpha Silicon Carbide, E.H. Kraft and R.H. Smoak, Report - Fall Meeting, American Ceramic Society, 1977, pp. 3-7 (1977), published by The Carborundum Company."
-SiC,5.0,1500,"Crack Propagation in Sintered Alpha Silicon Carbide, E.H. Kraft and R.H. Smoak, Report - Fall Meeting, American Ceramic Society, 1977, pp. 3-7 (1977), published by The Carborundum Company."
-SiC,2.91,20,"Elevated-Temperature Fracture Resistance of a Sintered $\alpha$-Silicon Carbide, A. Ghosh, M.G. Jenkins, K.W. White, A.S. Kobayashi, and R.C. Bradt, Journal of the American Ceramic Society, Vol. 72 2, pp. 242-247 (1989), published by American Ceramic Society."
-SiC,2.64,200,"Elevated-Temperature Fracture Resistance of a Sintered $\alpha$-Silicon Carbide, A. Ghosh, M.G. Jenkins, K.W. White, A.S. Kobayashi, and R.C. Bradt, Journal of the American Ceramic Society, Vol. 72 2, pp. 242-247 (1989), published by American Ceramic Society."
-SiC,2.88,400,"Elevated-Temperature Fracture Resistance of a Sintered $\alpha$-Silicon Carbide, A. Ghosh, M.G. Jenkins, K.W. White, A.S. Kobayashi, and R.C. Bradt, Journal of the American Ceramic Society, Vol. 72 2, pp. 242-247 (1989), published by American Ceramic Society."
-SiC,3.19,600,"Elevated-Temperature Fracture Resistance of a Sintered $\alpha$-Silicon Carbide, A. Ghosh, M.G. Jenkins, K.W. White, A.S. Kobayashi, and R.C. Bradt, Journal of the American Ceramic Society, Vol. 72 2, pp. 242-247 (1989), published by American Ceramic Society."
-SiC,2.71,800,"Elevated-Temperature Fracture Resistance of a Sintered $\alpha$-Silicon Carbide, A. Ghosh, M.G. Jenkins, K.W. White, A.S. Kobayashi, and R.C. Bradt, Journal of the American Ceramic Society, Vol. 72 2, pp. 242-247 (1989), published by American Ceramic Society."
-SiC,2.76,1000,"Elevated-Temperature Fracture Resistance of a Sintered $\alpha$-Silicon Carbide, A. Ghosh, M.G. Jenkins, K.W. White, A.S. Kobayashi, and R.C. Bradt, Journal of the American Ceramic Society, Vol. 72 2, pp. 242-247 (1989), published by American Ceramic Society."
-SiC,3.37,1200,"Elevated-Temperature Fracture Resistance of a Sintered $\alpha$-Silicon Carbide, A. Ghosh, M.G. Jenkins, K.W. White, A.S. Kobayashi, and R.C. Bradt, Journal of the American Ceramic Society, Vol. 72 2, pp. 242-247 (1989), published by American Ceramic Society."
-SiC,2.91,1400,"Elevated-Temperature Fracture Resistance of a Sintered $\alpha$-Silicon Carbide, A. Ghosh, M.G. Jenkins, K.W. White, A.S. Kobayashi, and R.C. Bradt, Journal of the American Ceramic Society, Vol. 72 2, pp. 242-247 (1989), published by American Ceramic Society."
-SiC,3.88,20,"Elevated-Temperature Fracture Resistance of a Sintered $\alpha$-Silicon Carbide, A. Ghosh, M.G. Jenkins, K.W. White, A.S. Kobayashi, and R.C. Bradt, Journal of the American Ceramic Society, Vol. 72 2, pp. 242-247 (1989), published by American Ceramic Society."
-SiC,3.74,200,"Elevated-Temperature Fracture Resistance of a Sintered $\alpha$-Silicon Carbide, A. Ghosh, M.G. Jenkins, K.W. White, A.S. Kobayashi, and R.C. Bradt, Journal of the American Ceramic Society, Vol. 72 2, pp. 242-247 (1989), published by American Ceramic Society."
-SiC,3.54,400,"Elevated-Temperature Fracture Resistance of a Sintered $\alpha$-Silicon Carbide, A. Ghosh, M.G. Jenkins, K.W. White, A.S. Kobayashi, and R.C. Bradt, Journal of the American Ceramic Society, Vol. 72 2, pp. 242-247 (1989), published by American Ceramic Society."
-SiC,4.04,600,"Elevated-Temperature Fracture Resistance of a Sintered $\alpha$-Silicon Carbide, A. Ghosh, M.G. Jenkins, K.W. White, A.S. Kobayashi, and R.C. Bradt, Journal of the American Ceramic Society, Vol. 72 2, pp. 242-247 (1989), published by American Ceramic Society."
-SiC,4.27,800,"Elevated-Temperature Fracture Resistance of a Sintered $\alpha$-Silicon Carbide, A. Ghosh, M.G. Jenkins, K.W. White, A.S. Kobayashi, and R.C. Bradt, Journal of the American Ceramic Society, Vol. 72 2, pp. 242-247 (1989), published by American Ceramic Society."
-SiC,4.19,1000,"Elevated-Temperature Fracture Resistance of a Sintered $\alpha$-Silicon Carbide, A. Ghosh, M.G. Jenkins, K.W. White, A.S. Kobayashi, and R.C. Bradt, Journal of the American Ceramic Society, Vol. 72 2, pp. 242-247 (1989), published by American Ceramic Society."
-SiC,3.95,1200,"Elevated-Temperature Fracture Resistance of a Sintered $\alpha$-Silicon Carbide, A. Ghosh, M.G. Jenkins, K.W. White, A.S. Kobayashi, and R.C. Bradt, Journal of the American Ceramic Society, Vol. 72 2, pp. 242-247 (1989), published by American Ceramic Society."
-SiC,4.73,1400,"Elevated-Temperature Fracture Resistance of a Sintered $\alpha$-Silicon Carbide, A. Ghosh, M.G. Jenkins, K.W. White, A.S. Kobayashi, and R.C. Bradt, Journal of the American Ceramic Society, Vol. 72 2, pp. 242-247 (1989), published by American Ceramic Society."
-SiC,3.01,20,"Elevated-Temperature Fracture Resistance of a Sintered $\alpha$-Silicon Carbide, A. Ghosh, M.G. Jenkins, K.W. White, A.S. Kobayashi, and R.C. Bradt, Journal of the American Ceramic Society, Vol. 72 2, pp. 242-247 (1989), published by American Ceramic Society."
-SiC,3.14,200,"Elevated-Temperature Fracture Resistance of a Sintered $\alpha$-Silicon Carbide, A. Ghosh, M.G. Jenkins, K.W. White, A.S. Kobayashi, and R.C. Bradt, Journal of the American Ceramic Society, Vol. 72 2, pp. 242-247 (1989), published by American Ceramic Society."
-SiC,3.02,400,"Elevated-Temperature Fracture Resistance of a Sintered $\alpha$-Silicon Carbide, A. Ghosh, M.G. Jenkins, K.W. White, A.S. Kobayashi, and R.C. Bradt, Journal of the American Ceramic Society, Vol. 72 2, pp. 242-247 (1989), published by American Ceramic Society."
-SiC,3.15,600,"Elevated-Temperature Fracture Resistance of a Sintered $\alpha$-Silicon Carbide, A. Ghosh, M.G. Jenkins, K.W. White, A.S. Kobayashi, and R.C. Bradt, Journal of the American Ceramic Society, Vol. 72 2, pp. 242-247 (1989), published by American Ceramic Society."
-SiC,3.36,800,"Elevated-Temperature Fracture Resistance of a Sintered $\alpha$-Silicon Carbide, A. Ghosh, M.G. Jenkins, K.W. White, A.S. Kobayashi, and R.C. Bradt, Journal of the American Ceramic Society, Vol. 72 2, pp. 242-247 (1989), published by American Ceramic Society."
-SiC,3.25,1000,"Elevated-Temperature Fracture Resistance of a Sintered $\alpha$-Silicon Carbide, A. Ghosh, M.G. Jenkins, K.W. White, A.S. Kobayashi, and R.C. Bradt, Journal of the American Ceramic Society, Vol. 72 2, pp. 242-247 (1989), published by American Ceramic Society."
-SiC,3.28,1200,"Elevated-Temperature Fracture Resistance of a Sintered $\alpha$-Silicon Carbide, A. Ghosh, M.G. Jenkins, K.W. White, A.S. Kobayashi, and R.C. Bradt, Journal of the American Ceramic Society, Vol. 72 2, pp. 242-247 (1989), published by American Ceramic Society."
-SiC,2.93,1400,"Elevated-Temperature Fracture Resistance of a Sintered $\alpha$-Silicon Carbide, A. Ghosh, M.G. Jenkins, K.W. White, A.S. Kobayashi, and R.C. Bradt, Journal of the American Ceramic Society, Vol. 72 2, pp. 242-247 (1989), published by American Ceramic Society."
-C,7.5,1190,"Mechanical Propeties of Natural Diamonds at 1200 °C, N.V. Novikov, S.N. Dub, V.I. Malnev, and V.V. Beskrovanov, Diamond and Related Materials, Vol. 3, pp. 198-204 (1994), published by Elsevier Science S.A.."
-C,8.4,1200,"Mechanical Propeties of Natural Diamonds at 1200 °C, N.V. Novikov, S.N. Dub, V.I. Malnev, and V.V. Beskrovanov, Diamond and Related Materials, Vol. 3, pp. 198-204 (1994), published by Elsevier Science S.A.."
-C,7.1,1200,"Mechanical Propeties of Natural Diamonds at 1200 °C, N.V. Novikov, S.N. Dub, V.I. Malnev, and V.V. Beskrovanov, Diamond and Related Materials, Vol. 3, pp. 198-204 (1994), published by Elsevier Science S.A.."
-C,7.0,1100,"Mechanical Propeties of Natural Diamonds at 1200 °C, N.V. Novikov, S.N. Dub, V.I. Malnev, and V.V. Beskrovanov, Diamond and Related Materials, Vol. 3, pp. 198-204 (1994), published by Elsevier Science S.A.."
-Si3N4,3.2,20,"Summary of Results of the Effects of Environment on Mechanical Behavior of High-Performance Ceramics, D.E. McCullum, N.L. Hecth, L. Chuck, and S.M. Goodrich, Ceramic Engineering and Science Proceedings, Vol. 12 9, pp. 1886-1913 (1991), published by American Ceramic Society."
-Si3N4,4.3,20,"Summary of Results of the Effects of Environment on Mechanical Behavior of High-Performance Ceramics, D.E. McCullum, N.L. Hecth, L. Chuck, and S.M. Goodrich, Ceramic Engineering and Science Proceedings, Vol. 12 9, pp. 1886-1913 (1991), published by American Ceramic Society."
-Si3N4,3.6,1400,"Summary of Results of the Effects of Environment on Mechanical Behavior of High-Performance Ceramics, D.E. McCullum, N.L. Hecth, L. Chuck, and S.M. Goodrich, Ceramic Engineering and Science Proceedings, Vol. 12 9, pp. 1886-1913 (1991), published by American Ceramic Society."
+Formula,Fracture Toughness,Temperature
+Si3N4,3.8,25
+Si3N4,5.4,1000
+Si3N4,4.3,1200
+Si3N4,6.1,1220
+Si3N4,6.2,1250
+Si3N4,7.9,1280
+Si3N4,6.5,1300
+Si3N4,5.0,1400
+Si3N4,5.3,1500
+Si3N4,6.4,23
+Si3N4,6.0,1000
+Si3N4,4.0,1200
+Si3N4,4.7,1250
+Si3N4,7.1,1300
+Si3N4,6.2,1400
+Si3N4,6.8,22
+Si3N4,6.8,800
+Si3N4,5.4,1000
+Si3N4,5.2,1260
+SiC,3.5,23
+Si3N4,7.0,22
+Y3Al5O12,1.6,23
+Y3Al5O12,1.8,23
+Y3Al5O12,2.0,23
+Y3Al5O12,2.5,23
+Y3Al5O12,3.0,23
+Y3Al5O12,2.2,1200
+Y3Al5O12,2.4,1200
+Y3Al5O12,2.7,1200
+Y3Al5O12,2.9,1200
+Y3Al5O12,3.0,1300
+Y3Al5O12,3.3,1300
+Y3Al5O12,3.1,1400
+Y3Al5O12,3.4,1400
+Y3Al5O12,3.6,1400
+Y3Al5O12,3.7,1400
+Y3Al5O12,3.9,1400
+Y3Al5O12,4.1,1400
+Y3Al5O12,4.0,1600
+Y3Al5O12,4.2,1600
+Y3Al5O12,4.6,1600
+Y3Al5O12,1.0,23
+Y3Al5O12,1.1,23
+Y3Al5O12,1.5,23
+Y3Al5O12,2.1,23
+Y3Al5O12,2.5,23
+Y3Al5O12,1.9,800
+Y3Al5O12,2.1,800
+Y3Al5O12,2.6,800
+Y3Al5O12,2.9,1200
+Y3Al5O12,3.3,1200
+Y3Al5O12,3.6,1200
+Y3Al5O12,4.0,1200
+Y3Al5O12,4.8,1400
+Y3Al5O12,5.1,1400
+Y3Al5O12,5.8,1400
+Y3Al5O12,7.0,1600
+Y3Al5O12,8.5,1600
+Y3Al5O12,9.7,1600
+Si3N4,7.0,23
+Si3N4,7.0,810
+Si3N4,5.2,1000
+Si3N4,5.1,1270
+Si3N4,4.0,23
+MgO,1.8,23
+MgO,1.6,23
+MgO,1.3,23
+MgO,2.0,23
+MgO,1.9,23
+MgO,2.0,23
+MgO,3.3,1000
+MgO,2.6,1000
+MgO,2.8,1000
+MgO,2.7,1000
+MgO,1.8,1000
+MgO,4.2,1200
+MgO,2.9,1200
+MgO,2.3,1200
+C,6.0,23
+TiB2,6.0,23
+SiC,2.6,20
+SiC,3.4,20
+SiC,3.1,1400
+Y3Al5O12,1.1,23
+Y3Al5O12,1.2,23
+Y3Al5O12,1.4,23
+Y3Al5O12,1.6,23
+Y3Al5O12,1.7,23
+Y3Al5O12,2.3,23
+Y3Al5O12,2.7,23
+Y3Al5O12,1.9,800
+Y3Al5O12,2.2,800
+Y3Al5O12,2.7,800
+Y3Al5O12,3.0,1200
+Y3Al5O12,3.2,1200
+Y3Al5O12,3.7,1200
+Y3Al5O12,3.9,1200
+Y3Al5O12,4.8,1400
+Y3Al5O12,5.0,1400
+Y3Al5O12,5.8,1400
+Y3Al5O12,6.9,1600
+Y3Al5O12,8.3,1600
+Y3Al5O12,9.5,1600
+SiC,5.3,20
+SiC,6.7,1000
+SiC,6.8,1300
+SiC,8.8,1600
+Y3Al5O12,1.02,23
+Y3Al5O12,1.06,23
+Y3Al5O12,1.09,23
+Y3Al5O12,1.21,1300
+Y3Al5O12,0.97,1500
+Y3Al5O12,1.83,1600
+Y3Al5O12,1.13,1400
+Y3Al5O12,1.72,1600
+Y3Al5O12,1.79,1650
+Y3Al5O12,1.57,23
+Y3Al5O12,1.66,1400
+Y3Al5O12,1.5,1500
+Y3Al5O12,1.51,1700
+Si3N4,6.8,23
+Al2O3,3.5,23
+Si3N4,7.11,23
+Si3N4,5.0,23
+SiC,2.0,23
+Si3N4,5.6,22
+ZrO2,7.6,23
+Si3N4,4.0,23
+Si3N4,5.0,1000
+Si3N4,4.3,1210
+B4C,3.2,20
+B4C,3.4,600
+B4C,3.1,900
+B4C,3.4,1200
+Al2O3,3.5,20
+Al2O3,3.0,500
+Al2O3,2.7,1000
+Al2O3,2.6,1200
+Al2O3,2.5,1400
+Al2O3,2.5,1500
+Al2O3,3.12,25
+SiC,2.3,22
+Si3N4,6.2,23
+SiC,4.6,22
+MgAl2O4,1.2,20
+MgAl2O4,1.18,200
+MgAl2O4,1.1,400
+MgAl2O4,1.02,600
+MgAl2O4,0.98,800
+MgAl2O4,1.15,1000
+MgAl2O4,1.73,1200
+MgAl2O4,2.69,1400
+MgAl2O4,1.54,20
+MgAl2O4,1.55,200
+MgAl2O4,1.53,400
+MgAl2O4,1.51,600
+MgAl2O4,1.49,800
+MgAl2O4,1.61,1000
+MgAl2O4,2.11,1200
+MgAl2O4,2.66,1400
+MgAl2O4,1.89,20
+MgAl2O4,1.87,200
+MgAl2O4,1.84,400
+MgAl2O4,1.8,600
+MgAl2O4,1.77,800
+MgAl2O4,1.75,1000
+MgAl2O4,1.91,1200
+MgAl2O4,2.43,1400
+Si3N4,6.2,23
+SiC,4.6,23
+SiC,4.6,22
+Si3N4,5.6,22
+SiC,2.91,20
+SiC,2.64,200
+SiC,2.88,400
+SiC,3.19,600
+SiC,2.71,800
+SiC,2.76,1000
+SiC,3.37,1200
+SiC,2.91,1400
+SiC,3.88,20
+SiC,3.74,200
+SiC,3.54,400
+SiC,4.04,600
+SiC,4.27,800
+SiC,4.19,1000
+SiC,3.95,1200
+SiC,4.73,1400
+SiC,3.01,20
+SiC,3.14,200
+SiC,3.02,400
+SiC,3.15,600
+SiC,3.36,800
+SiC,3.25,1000
+SiC,3.28,1200
+SiC,2.93,1400
+Si3N4,5.6,23
+Si3N4,3.8,25
+Si3N4,5.5,23
+SiC,4.0,23
+Si3N4,6.0,25
+Si3N4,6.1,1000
+Si3N4,5.3,1100
+Si3N4,4.6,1200
+Si3N4,4.3,1300
+Si3N4,5.0,1350
+Si3N4,9.7,1400
+Si3N4,7.9,1450
+Si3N4,5.8,1500
+Si3N4,4.4,1550
+Si3N4,5.1,1350
+Si3N4,7.0,1400
+Si3N4,9.0,1450
+Si3N4,7.4,1500
+Si3N4,5.1,1550
+Al2O3,3.5,20
+Al2O3,3.7,20
+Al2O3,3.3,20
+Al2O3,3.1,20
+Al2O3,2.9,20
+Al2O3,2.9,500
+Al2O3,2.8,500
+Al2O3,2.5,500
+Al2O3,2.3,500
+Al2O3,2.5,500
+Al2O3,2.3,800
+Al2O3,2.5,800
+Al2O3,1.8,800
+Al2O3,1.6,800
+Al2O3,1.6,800
+B4C,3.2,20
+B4C,3.4,600
+B4C,3.1,900
+B4C,3.4,1200
+Si3N4,3.12,22
+Si3N4,3.18,200
+Si3N4,2.85,500
+Si3N4,2.83,800
+Si3N4,2.59,1000
+Si3N4,2.61,1100
+Si3N4,2.58,1200
+Si3N4,6.8,23
+SiC,2.6,25
+Si3N4,5.2,23
+Si3N4,4.0,910
+Si3N4,3.0,1000
+Si3N4,2.6,1210
+SiC,2.3,23
+Y3Al5O12,1.7,25
+Y3Al5O12,2.3,1400
+Y3Al5O12,3.8,1600
+Y3Al5O12,1.5,1600
+TiB2,6.2,20
+Al2O3,3.5,23
+Si3N4,7.0,23
+Si3N4,5.0,23
+Al2O3,2.52,25
+Al2O3,3.0,25
+Al2O3,3.15,25
+Al2O3,3.1,25
+Al2O3,3.33,25
+Al2O3,3.53,25
+Al2O3,3.76,25
+Al2O3,3.8,25
+Al2O3,2.28,400
+Al2O3,2.79,400
+Al2O3,3.09,400
+Al2O3,2.16,700
+Al2O3,2.7,700
+Al2O3,2.89,700
+Al2O3,2.16,1000
+Al2O3,2.27,1000
+Al2O3,2.78,1000
+Al2O3,1.96,1300
+Al2O3,2.15,1300
+Al2O3,2.5,1300
+C,7.5,1190
+C,8.4,1200
+C,7.1,1200
+C,7.0,1100
+MgO,1.8,23
+MgO,1.6,23
+MgO,1.3,23
+MgO,2.0,23
+MgO,1.9,23
+MgO,2.0,23
+MgO,3.3,1000
+MgO,2.6,1000
+MgO,2.8,1000
+MgO,2.7,1000
+MgO,1.8,1000
+MgO,4.2,1200
+MgO,2.9,1200
+MgO,2.3,1200
+SiC,2.3,22
+SiC,3.5,23
+SiC,2.6,20
+SiC,3.4,20
+SiC,3.1,1400
+Y3Al5O12,1.6,23
+Y3Al5O12,1.8,23
+Y3Al5O12,2.0,23
+Y3Al5O12,2.5,23
+Y3Al5O12,3.0,23
+Y3Al5O12,2.2,1200
+Y3Al5O12,2.4,1200
+Y3Al5O12,2.7,1200
+Y3Al5O12,2.9,1200
+Y3Al5O12,3.0,1300
+Y3Al5O12,3.3,1300
+Y3Al5O12,3.1,1400
+Y3Al5O12,3.4,1400
+Y3Al5O12,3.6,1400
+Y3Al5O12,3.7,1400
+Y3Al5O12,3.9,1400
+Y3Al5O12,4.1,1400
+Y3Al5O12,4.0,1600
+Y3Al5O12,4.2,1600
+Y3Al5O12,4.6,1600
+Y3Al5O12,1.0,23
+Y3Al5O12,1.1,23
+Y3Al5O12,1.5,23
+Y3Al5O12,2.1,23
+Y3Al5O12,2.5,23
+Y3Al5O12,1.9,800
+Y3Al5O12,2.1,800
+Y3Al5O12,2.6,800
+Y3Al5O12,2.9,1200
+Y3Al5O12,3.3,1200
+Y3Al5O12,3.6,1200
+Y3Al5O12,4.0,1200
+Y3Al5O12,4.8,1400
+Y3Al5O12,5.1,1400
+Y3Al5O12,5.8,1400
+Y3Al5O12,7.0,1600
+Y3Al5O12,8.5,1600
+Y3Al5O12,9.7,1600
+Si3N4,7.9,25
+Si3N4,7.1,800
+Si3N4,6.9,1000
+Si3N4,6.0,1200
+Si3N4,10.4,1371
+Si3N4,7.4,25
+Si3N4,6.1,1371
+Si3N4,4.0,23
+Si3N4,5.0,1000
+Si3N4,4.3,1210
+Al2O3,4.1,23
+SiC,3.4,23
+Si3N4,3.2,20
+Si3N4,4.3,20
+Si3N4,3.6,1400
+TiB2,5.0,25
+TiB2,6.6,600
+Si3N4,7.11,23
+Y3Al5O12,1.5,20
+Y3Al5O12,1.9,20
+Y3Al5O12,2.4,20
+Y3Al5O12,2.9,20
+Y3Al5O12,2.1,1200
+Y3Al5O12,2.4,1200
+Y3Al5O12,2.7,1200
+Y3Al5O12,2.9,1200
+Y3Al5O12,3.0,1300
+Y3Al5O12,3.3,1300
+Y3Al5O12,3.1,1400
+Y3Al5O12,3.5,1400
+Y3Al5O12,3.8,1400
+Y3Al5O12,4.1,1400
+Y3Al5O12,3.8,1600
+Y3Al5O12,3.9,1600
+Y3Al5O12,4.3,1600
+Y3Al5O12,4.6,1600
+Y3Al5O12,1.1,20
+Y3Al5O12,1.5,20
+Y3Al5O12,1.7,20
+Y3Al5O12,2.3,20
+Y3Al5O12,2.7,20
+Y3Al5O12,2.0,800
+Y3Al5O12,2.2,800
+Y3Al5O12,2.6,800
+Y3Al5O12,2.9,1200
+Y3Al5O12,3.2,1200
+Y3Al5O12,3.6,1200
+Y3Al5O12,4.0,1200
+Y3Al5O12,4.9,1400
+Y3Al5O12,5.0,1400
+Y3Al5O12,5.8,1400
+Y3Al5O12,6.9,1600
+Y3Al5O12,8.3,1600
+Y3Al5O12,9.5,1600
+Si3N4,3.9,23
+Si3N4,5.2,23
+MgAl2O4,2.2,20
+MgAl2O4,2.2,400
+MgAl2O4,1.9,600
+MgAl2O4,1.3,800
+MgAl2O4,1.4,1200
+MgAl2O4,1.4,1400
+Si3N4,5.6,23
+Si3N4,4.0,23
+SiC,2.6,25
+Si3N4,6.0,23
+Al2O3,2.46,25
+Al2O3,2.11,200
+Al2O3,1.98,400
+Al2O3,1.81,600
+Al2O3,1.79,775
+MgAl2O4,1.46,20
+MgAl2O4,1.45,200
+MgAl2O4,1.56,400
+MgAl2O4,0.72,600
+MgAl2O4,0.85,800
+MgAl2O4,1.03,1000
+MgAl2O4,1.01,1200
+MgAl2O4,0.96,1400
+MgAl2O4,1.79,20
+MgAl2O4,1.76,200
+MgAl2O4,1.74,400
+MgAl2O4,1.6,600
+MgAl2O4,1.31,800
+MgAl2O4,1.26,1000
+MgAl2O4,1.18,1200
+MgAl2O4,1.28,1400
+MgAl2O4,1.81,20
+MgAl2O4,1.88,200
+MgAl2O4,1.76,400
+MgAl2O4,1.51,600
+MgAl2O4,1.24,800
+MgAl2O4,0.94,1000
+MgAl2O4,1.04,1200
+MgAl2O4,1.01,1400
+Al2O3,3.12,25
+AlN,2.7,330
+AlN,3.1,1100
+AlN,3.1,1300
+AlN,2.5,1500
+AlN,2.6,330
+AlN,2.4,1100
+AlN,2.1,1300
+AlN,2.0,1500
+AlN,1.5,320
+AlN,1.5,1100
+AlN,1.4,1300
+AlN,1.2,1500
+AlN,1.3,320
+AlN,1.3,1100
+AlN,1.1,1300
+AlN,1.1,1500
+Si3N4,5.2,23
+Si3N4,4.0,910
+Si3N4,3.0,1000
+Si3N4,2.6,1210
+Si3N4,2.2,23
+SiC,2.6,20
+SiC,3.4,20
+SiC,3.1,1400
+TiB2,5.0,25
+TiB2,6.6,600
+B4C,3.7,330
+B4C,3.8,900
+B4C,3.4,1300
+B4C,3.9,1500
+MgO,1.8,23
+MgO,1.6,23
+MgO,1.3,23
+MgO,2.0,23
+MgO,1.9,23
+MgO,2.0,23
+MgO,3.3,1000
+MgO,2.6,1000
+MgO,2.8,1000
+MgO,2.7,1000
+MgO,1.8,1000
+MgO,4.2,1200
+MgO,2.9,1200
+MgO,2.3,1200
+ZrO2,7.0,23
+SiC,4.6,23
+SiC,4.4,23
+ZrO2,6.0,23
+Si3N4,3.9,23
+Al2O3,3.5,23
+MgAl2O4,1.2,20
+MgAl2O4,1.18,200
+MgAl2O4,1.1,400
+MgAl2O4,1.02,600
+MgAl2O4,0.98,800
+MgAl2O4,1.15,1000
+MgAl2O4,1.73,1200
+MgAl2O4,2.69,1400
+MgAl2O4,1.54,20
+MgAl2O4,1.55,200
+MgAl2O4,1.53,400
+MgAl2O4,1.51,600
+MgAl2O4,1.49,800
+MgAl2O4,1.61,1000
+MgAl2O4,2.11,1200
+MgAl2O4,2.66,1400
+MgAl2O4,1.89,20
+MgAl2O4,1.87,200
+MgAl2O4,1.84,400
+MgAl2O4,1.8,600
+MgAl2O4,1.77,800
+MgAl2O4,1.75,1000
+MgAl2O4,1.91,1200
+MgAl2O4,2.43,1400
+Al2O3,3.6,23
+Al2O3,3.6,197
+Al2O3,3.4,301
+Al2O3,3.4,400
+Al2O3,2.9,504
+Al2O3,2.6,603
+Al2O3,2.4,701
+Al2O3,3.5,20
+Al2O3,3.0,500
+Al2O3,2.7,1000
+Al2O3,2.6,1200
+Al2O3,2.5,1400
+Al2O3,2.5,1500
+Si3N4,6.0,22
+Si3N4,5.5,800
+Si3N4,6.4,900
+Si3N4,3.6,1120
+Si3N4,3.5,1200
+Si3N4,4.4,22
+Si3N4,4.3,1000
+Si3N4,1.0,1360
+SiC,4.0,23
+Si3N4,5.4,1000
+Si3N4,4.3,1200
+Si3N4,6.1,1220
+Si3N4,6.2,1250
+Si3N4,7.9,1280
+Si3N4,6.5,1300
+Si3N4,5.0,1400
+Si3N4,5.3,1500
+Si3N4,6.4,23
+Si3N4,6.0,1000
+Si3N4,4.0,1200
+Si3N4,4.7,1250
+Si3N4,7.1,1300
+Si3N4,6.2,1400
+Si3N4,5.0,23
+Si3N4,4.59,23
+Si3N4,6.0,25
+Si3N4,6.1,1000
+Si3N4,5.3,1100
+Si3N4,4.6,1200
+Si3N4,4.3,1300
+Si3N4,5.0,1350
+Si3N4,9.7,1400
+Si3N4,7.9,1450
+Si3N4,5.8,1500
+Si3N4,4.4,1550
+Si3N4,5.1,1350
+Si3N4,7.0,1400
+Si3N4,9.0,1450
+Si3N4,7.4,1500
+Si3N4,5.1,1550
+SiC,3.8,23
+C,6.0,23
+C,5.6,1150
+C,3.1,1190
+C,1.6,1200
+C,4.2,1160
+C,3.4,1190
