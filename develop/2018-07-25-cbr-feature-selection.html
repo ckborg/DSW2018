@@ -11773,14 +11773,17 @@ div#notebook {
 
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[14]:</div>
+<div class="prompt input_prompt">In&nbsp;[67]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">re</span>
 
 <span class="kn">from</span> <span class="nn">matminer.utils.conversions</span> <span class="k">import</span> <span class="n">str_to_composition</span>
 <span class="kn">from</span> <span class="nn">matminer.featurizers.composition</span> <span class="k">import</span> <span class="n">ElementProperty</span>
+<span class="kn">from</span> <span class="nn">matminer.featurizers.composition</span> <span class="k">import</span> <span class="n">ElementFraction</span>
 </pre></div>
 
 </div>
@@ -11790,7 +11793,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[15]:</div>
+<div class="prompt input_prompt">In&nbsp;[68]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span>  <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_pickle</span><span class="p">(</span><span class="s1">&#39;../deliver/NIST_CeramicDataSet.pkl&#39;</span><span class="p">)</span>
@@ -11807,7 +11810,7 @@ div#notebook {
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[15]:</div>
+<div class="prompt output_prompt">Out[68]:</div>
 
 
 
@@ -11990,17 +11993,25 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Composition-with-Chih-Hao's-method">Composition with Chih-Hao's method<a class="anchor-link" href="#Composition-with-Chih-Hao's-method">&#182;</a></h3>
+<h1 id="Prepare-dataset">Prepare dataset<a class="anchor-link" href="#Prepare-dataset">&#182;</a></h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Drop-non-density-materials">Drop non-density materials<a class="anchor-link" href="#Drop-non-density-materials">&#182;</a></h3>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[16]:</div>
+<div class="prompt input_prompt">In&nbsp;[27]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df1</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-<span class="n">df1</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">3892</span><span class="p">,</span><span class="s1">&#39;chemicalFormula&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;BN&#39;</span> <span class="c1">#fix &#39;B-N&#39; to &#39;BN&#39;</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># New DataFrame containing only samples with a density value</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">isnull</span><span class="p">()[</span><span class="s1">&#39;Density&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="kc">False</span><span class="p">]</span>
 </pre></div>
 
 </div>
@@ -12010,10 +12021,620 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[17]:</div>
+<div class="prompt input_prompt">In&nbsp;[28]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Parse the chemicalFormula</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[28]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>(398, 161)</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[29]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Plot occurrence of features of the reduced dataset</span>
+<span class="n">df</span><span class="o">.</span><span class="n">count</span><span class="p">()</span><span class="o">.</span><span class="n">sort_values</span><span class="p">()[</span><span class="o">-</span><span class="mi">17</span><span class="p">:]</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">barh</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+
+
+<div class="output_png output_subarea ">
+<img src="data:image/png;base64,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
+AAAAAElFTkSuQmCC
+"
+>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[30]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Drop all columns that contain less than 300 entries </span>
+<span class="c1"># (crystallinity is only features left with NaN)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">thresh</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Clean-up-columns">Clean up columns<a class="anchor-link" href="#Clean-up-columns">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Check-if-all-density-units-are-the-same">Check if all density units are the same<a class="anchor-link" href="#Check-if-all-density-units-are-the-same">&#182;</a></h4>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[31]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Check if all density units are the same, in which case we don&#39;t need the units.</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;Density-units&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[31]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([&#39;g cm$^{-3}$&#39;], dtype=object)</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Fill-missing-crystallinity-values">Fill missing crystallinity values<a class="anchor-link" href="#Fill-missing-crystallinity-values">&#182;</a></h4>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[33]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Determine number of polycrystalline / single crystal samples</span>
+<span class="n">N_polyX</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Crystallinity&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;Polycrystalline&#39;</span><span class="p">][</span><span class="s1">&#39;Crystallinity&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span>
+<span class="n">N_singleX</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Crystallinity&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;Single Crystal&#39;</span><span class="p">][</span><span class="s1">&#39;Crystallinity&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Polycrystalline: </span><span class="si">{0}</span><span class="s1">, Single crystal: </span><span class="si">{1}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">N_polyX</span><span class="p">,</span> <span class="n">N_singleX</span><span class="p">))</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Polycrystalline: (354,), Single crystal: (27,)
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[34]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Fill NaN values in crystallinity with polycrystalline:</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;Crystallinity&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Crystallinity&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="s1">&#39;Polycrystalline&#39;</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Convert-density-to-float">Convert density to float<a class="anchor-link" href="#Convert-density-to-float">&#182;</a></h4>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[35]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Check how density values cannot simply be transformed from string to int</span>
+
+<span class="n">N_errors</span><span class="p">,</span> <span class="n">N_total</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">entry</span> <span class="ow">in</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Density&#39;</span><span class="p">]:</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="n">entry</span><span class="p">])</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="n">N_errors</span> <span class="o">+=</span><span class="mi">1</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">entry</span><span class="p">)</span>
+    <span class="k">finally</span><span class="p">:</span>
+        <span class="n">N_total</span> <span class="o">+=</span><span class="mi">1</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{0}</span><span class="s1"> errors in </span><span class="si">{1}</span><span class="s1"> samples&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">N_errors</span><span class="p">,</span> <span class="n">N_total</span><span class="p">))</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>3.16 (1%)
+1 errors in 398 samples
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[36]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#convert the troublesome density value to a good value</span>
+<span class="n">df</span><span class="o">.</span><span class="n">set_value</span><span class="p">(</span><span class="mi">1185</span><span class="p">,</span> <span class="s1">&#39;Density&#39;</span><span class="p">,</span> <span class="s1">&#39;3.16&#39;</span><span class="p">);</span>
+<span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">1185</span><span class="p">,</span><span class="s1">&#39;Density&#39;</span><span class="p">]</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[36]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&#39;3.16&#39;</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[37]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Convert densities to float</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;Density&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Density&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Remove-useless-columns">Remove useless columns<a class="anchor-link" href="#Remove-useless-columns">&#182;</a></h4>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[38]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Drop columns that don&#39;t contain numerical or categorical data</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;licenses&#39;</span><span class="p">,</span><span class="s1">&#39;names&#39;</span><span class="p">,</span><span class="s1">&#39;references&#39;</span><span class="p">,</span><span class="s1">&#39;Density-units&#39;</span><span class="p">,</span><span class="s1">&#39;Density-conditions&#39;</span><span class="p">,</span><span class="s1">&#39;Chemical Family&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Eliminate-duplicate-materials">Eliminate duplicate materials<a class="anchor-link" href="#Eliminate-duplicate-materials">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[39]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">N_unique_entries</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;chemicalFormula&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;There are just </span><span class="si">{0}</span><span class="s1"> unique entries in the </span><span class="si">{1}</span><span class="s1"> materials.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">N_unique_entries</span><span class="p">,</span><span class="n">df_dens</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>There are just 110 unique entries in the 122 materials.
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[40]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;chemicalFormula&#39;</span><span class="p">,</span><span class="s1">&#39;Crystallinity&#39;</span><span class="p">],</span> <span class="n">as_index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Composition-with-Chih-Hao's-method">Composition with Chih-Hao's method<a class="anchor-link" href="#Composition-with-Chih-Hao's-method">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[41]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">3892</span><span class="p">,</span><span class="s1">&#39;chemicalFormula&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;BN&#39;</span> <span class="c1">#fix &#39;B-N&#39; to &#39;BN&#39;</span>
+
+<span class="c1"># Parse the chemicalFormula</span>
 <span class="k">def</span> <span class="nf">formula_decompose</span><span class="p">(</span><span class="n">formula</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    decompose chemical formula </span>
@@ -12070,6 +12691,48 @@ div#notebook {
   
 <span class="k">def</span> <span class="nf">formula_parser</span><span class="p">(</span><span class="n">formula</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">formula_reconstruct</span><span class="p">(</span><span class="n">formula_decompose</span><span class="p">(</span><span class="n">formula</span><span class="p">))</span>
+
+<span class="n">df</span><span class="p">[</span><span class="s2">&quot;flatFormula&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;chemicalFormula&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">formula_parser</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">&quot;composition&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;flatFormula&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">str_to_composition</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Composition-with-Chris'-method">Composition with Chris' method<a class="anchor-link" href="#Composition-with-Chris'-method">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[42]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Add second composition column (that doesn&#39;t have float stoichiometries; Chris&#39; version)</span>
+<span class="k">def</span> <span class="nf">make_chem_form_compatible</span><span class="p">(</span><span class="n">formula</span><span class="p">):</span>
+    
+    <span class="k">for</span> <span class="n">bad_str</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;\.&#39;</span><span class="p">,</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="s1">&#39;\+&#39;</span><span class="p">,</span> <span class="s1">&#39;\-&#39;</span><span class="p">,</span> <span class="s1">&#39;z&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="s1">&#39;\%&#39;</span><span class="p">,</span> <span class="s1">&#39;\^&#39;</span><span class="p">,</span>   <span class="c1"># individual characters</span>
+                 <span class="s1">&#39;Cordierite&#39;</span><span class="p">,</span><span class="s1">&#39;hisker&#39;</span><span class="p">,</span><span class="s1">&#39;Sialon&#39;</span><span class="p">,</span> <span class="c1"># certain words that show up in some formulas</span>
+                 <span class="s1">&#39;\$(.*?)\$&#39;</span><span class="p">,</span>    <span class="c1"># LaTeX expressions</span>
+                 <span class="s1">&#39;\((.*?)\)&#39;</span><span class="p">,</span>    <span class="c1"># bracketed expressions</span>
+                 <span class="s1">&#39;^\d{1,2}&#39;</span><span class="p">]:</span>    <span class="c1"># leading numbers of 1 or 2 digits</span>
+        <span class="n">formula</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="n">bad_str</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">formula</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">formula</span>
+
+<span class="c1"># Convert chemical formulas using above function</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">&quot;comp_int&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;chemicalFormula&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">make_chem_form_compatible</span><span class="p">)</span>
+
+<span class="c1"># Converting chemical formula to composition object using</span>
+<span class="c1"># matminer.utils.conversions.str_to_composition</span>
+<span class="c1"># which in turn uses pymatgen.core.composition</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">&quot;comp_int&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;comp_int&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">str_to_composition</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -12079,11 +12742,10 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[18]:</div>
+<div class="prompt input_prompt">In&nbsp;[43]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df1</span><span class="p">[</span><span class="s2">&quot;flatFormula&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df1</span><span class="p">[</span><span class="s2">&quot;chemicalFormula&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">formula_parser</span><span class="p">)</span>
-<span class="n">df1</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 
 </div>
@@ -12096,7 +12758,7 @@ div#notebook {
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[18]:</div>
+<div class="prompt output_prompt">Out[43]:</div>
 
 
 
@@ -12120,159 +12782,58 @@ div#notebook {
     <tr style="text-align: right;">
       <th></th>
       <th>chemicalFormula</th>
-      <th>licenses</th>
-      <th>references</th>
-      <th>Chemical Family</th>
-      <th>flatFormula</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>1</th>
-      <td>SiO2</td>
-      <td>[{'name': 'NIST_SRD-30'}]</td>
-      <td>[{'citation': 'Gaseous Corrosion of Ceramics, ...</td>
-      <td>Si-O</td>
-      <td>Si1.0O2.0</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>3Al2O3.2SiO2.xZrO2.yY2O3</td>
-      <td>[{'name': 'NIST_SRD-30'}]</td>
-      <td>[{'citation': 'Thermal Diffusivity/Conductivit...</td>
-      <td>Al-Si-O:ZrO</td>
-      <td>Al6.0O9.0Si2.0O4.0Zr0.1O0.2Y0.2O0.3</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>Al2O3</td>
-      <td>[{'name': 'NIST_SRD-30'}]</td>
-      <td>[{'citation': 'Mechanical Properties of Pure, ...</td>
-      <td>Al-O</td>
-      <td>Al2.0O3.0</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>Si3N4.xCeO2.ySiC</td>
-      <td>[{'name': 'NIST_SRD-30'}]</td>
-      <td>[{'citation': 'Effect of Silicon Carbide Whisk...</td>
-      <td>Si-N:CeO</td>
-      <td>Si3.0N4.0Ce0.1O0.2Si0.1C0.1</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>Si3N4</td>
-      <td>[{'name': 'NIST_SRD-30'}]</td>
-      <td>[{'citation': 'Corrosion of Silicon Nitride Ce...</td>
-      <td>Si-N</td>
-      <td>Si3.0N4.0</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[19]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df1</span><span class="p">[</span><span class="s2">&quot;composition&quot;</span><span class="p">]</span> <span class="o">=</span><span class="n">df1</span><span class="p">[</span><span class="s2">&quot;flatFormula&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">str_to_composition</span><span class="p">)</span>
-<span class="n">df1</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[19]:</div>
-
-
-
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
-<style>
-    .dataframe thead tr:only-child th {
-        text-align: right;
-    }
-
-    .dataframe thead th {
-        text-align: left;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>chemicalFormula</th>
-      <th>licenses</th>
-      <th>references</th>
-      <th>Chemical Family</th>
+      <th>Crystallinity</th>
+      <th>Density</th>
       <th>flatFormula</th>
       <th>composition</th>
+      <th>comp_int</th>
     </tr>
   </thead>
   <tbody>
     <tr>
+      <th>0</th>
+      <td>$\beta$-Si3Al3O3N5</td>
+      <td>Polycrystalline</td>
+      <td>3.091000</td>
+      <td>Si3.0Al3.0O3.0N5.0</td>
+      <td>(Si, Al, O, N)</td>
+      <td>(Si, Al, O, N)</td>
+    </tr>
+    <tr>
       <th>1</th>
-      <td>SiO2</td>
-      <td>[{'name': 'NIST_SRD-30'}]</td>
-      <td>[{'citation': 'Gaseous Corrosion of Ceramics, ...</td>
-      <td>Si-O</td>
-      <td>Si1.0O2.0</td>
-      <td>(Si, O)</td>
+      <td>(1-x-y)Al2O3.xAlN.yTiN</td>
+      <td>Polycrystalline</td>
+      <td>4.380000</td>
+      <td>Al2.0O3.0Al0.1N0.1Ti0.1N0.1</td>
+      <td>(Al, O, N, Ti)</td>
+      <td>(Al, O, N, Ti)</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>3Al2O3.2SiO2.xZrO2.yY2O3</td>
-      <td>[{'name': 'NIST_SRD-30'}]</td>
-      <td>[{'citation': 'Thermal Diffusivity/Conductivit...</td>
-      <td>Al-Si-O:ZrO</td>
-      <td>Al6.0O9.0Si2.0O4.0Zr0.1O0.2Y0.2O0.3</td>
-      <td>(Al, O, Si, Zr, Y)</td>
+      <td>0.5SiO2.(0.5-x)Al2O3.xE2O3</td>
+      <td>Noncrystalline</td>
+      <td>3.520000</td>
+      <td>Si5.0O10.0Al2.0O3.0E0.2O0.3</td>
+      <td>(Si, O, Al, E0+)</td>
+      <td>(Si, O, Al, E0+)</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>Al2O3</td>
-      <td>[{'name': 'NIST_SRD-30'}]</td>
-      <td>[{'citation': 'Mechanical Properties of Pure, ...</td>
-      <td>Al-O</td>
-      <td>Al2.0O3.0</td>
-      <td>(Al, O)</td>
+      <td>3Al2O3.2SiO2</td>
+      <td>Polycrystalline</td>
+      <td>3.097167</td>
+      <td>Al6.0O9.0Si2.0O4.0</td>
+      <td>(Al, O, Si)</td>
+      <td>(Al, O, Si)</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>Si3N4.xCeO2.ySiC</td>
-      <td>[{'name': 'NIST_SRD-30'}]</td>
-      <td>[{'citation': 'Effect of Silicon Carbide Whisk...</td>
-      <td>Si-N:CeO</td>
-      <td>Si3.0N4.0Ce0.1O0.2Si0.1C0.1</td>
-      <td>(Si, N, Ce, O, C)</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>Si3N4</td>
-      <td>[{'name': 'NIST_SRD-30'}]</td>
-      <td>[{'citation': 'Corrosion of Silicon Nitride Ce...</td>
-      <td>Si-N</td>
-      <td>Si3.0N4.0</td>
-      <td>(Si, N)</td>
+      <td>3Al2O3.2SiO2.xCordierite</td>
+      <td>Polycrystalline</td>
+      <td>2.720000</td>
+      <td>Al6.0O9.0Si2.0O4.0Co0.1</td>
+      <td>(Al, O, Si, Co)</td>
+      <td>(Al, O, Si)</td>
     </tr>
   </tbody>
 </table>
@@ -12287,10 +12848,13 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[22]:</div>
+<div class="prompt input_prompt">In&nbsp;[44]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df1</span><span class="o">.</span><span class="n">shape</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">sample</span><span class="o">=</span><span class="mi">5</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;chemical formula: &#39;</span><span class="p">,</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">sample</span><span class="p">,</span><span class="s1">&#39;chemicalFormula&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;composition :&#39;</span><span class="p">,</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">sample</span><span class="p">,</span><span class="s1">&#39;composition&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;comp_int :&#39;</span><span class="p">,</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">sample</span><span class="p">,</span><span class="s1">&#39;comp_int&#39;</span><span class="p">])</span>
 </pre></div>
 
 </div>
@@ -12303,27 +12867,35 @@ div#notebook {
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[22]:</div>
+<div class="prompt"></div>
 
 
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>(4098, 163)</pre>
-</div>
-
-</div>
-
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>chemical formula:  3Al2O3.2SiO2.xSiC
+composition : Al6 O13 Si2.1 C0.1
+comp_int : Al2 O34 Si2 C1
+</pre>
 </div>
 </div>
 
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Add-Additional-Features-with-matminer">Add Additional Features with matminer<a class="anchor-link" href="#Add-Additional-Features-with-matminer">&#182;</a></h1>
+</div>
+</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[20]:</div>
+<div class="prompt input_prompt">In&nbsp;[45]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df1_feat</span> <span class="o">=</span> <span class="n">df1</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_feat</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span> <span class="c1"># Create new DataFrame for featurization</span>
 </pre></div>
 
 </div>
@@ -12331,14 +12903,55 @@ div#notebook {
 </div>
 
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="ElementProperty">ElementProperty<a class="anchor-link" href="#ElementProperty">&#182;</a></h3>
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[21]:</div>
+<div class="prompt input_prompt">In&nbsp;[46]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Add features with matminer</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_feat</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[46]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>(123, 6)</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[47]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Add features with matminer (using the floating point composition by Chih-Hao)</span>
 <span class="n">ep_feat</span> <span class="o">=</span> <span class="n">ElementProperty</span><span class="o">.</span><span class="n">from_preset</span><span class="p">(</span><span class="n">preset_name</span><span class="o">=</span><span class="s2">&quot;magpie&quot;</span><span class="p">)</span>
-<span class="n">df1_feat</span> <span class="o">=</span> <span class="n">ep_feat</span><span class="o">.</span><span class="n">featurize_dataframe</span><span class="p">(</span><span class="n">df1_feat</span><span class="p">,</span> <span class="n">col_id</span><span class="o">=</span><span class="s2">&quot;composition&quot;</span><span class="p">,</span> <span class="n">ignore_errors</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">df_feat</span> <span class="o">=</span> <span class="n">ep_feat</span><span class="o">.</span><span class="n">featurize_dataframe</span><span class="p">(</span><span class="n">df_feat</span><span class="p">,</span> <span class="n">col_id</span><span class="o">=</span><span class="s2">&quot;composition&quot;</span><span class="p">,</span> <span class="n">ignore_errors</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -12348,10 +12961,10 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[23]:</div>
+<div class="prompt input_prompt">In&nbsp;[48]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df1_feat</span><span class="o">.</span><span class="n">shape</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_feat</span><span class="o">.</span><span class="n">shape</span>
 </pre></div>
 
 </div>
@@ -12364,13 +12977,13 @@ div#notebook {
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[23]:</div>
+<div class="prompt output_prompt">Out[48]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>(4098, 295)</pre>
+<pre>(123, 138)</pre>
 </div>
 
 </div>
@@ -12381,11 +12994,11 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[24]:</div>
+<div class="prompt input_prompt">In&nbsp;[51]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># List of the new columns</span>
-<span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">df1_feat</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span> <span class="o">^</span> <span class="nb">set</span><span class="p">(</span><span class="n">df1</span><span class="p">))</span>
+<span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">df_feat</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span> <span class="o">^</span> <span class="nb">set</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">))[:</span><span class="mi">10</span><span class="p">]</span>
 </pre></div>
 
 </div>
@@ -12398,144 +13011,242 @@ div#notebook {
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[24]:</div>
+<div class="prompt output_prompt">Out[51]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>[&#39;range GSvolume_pa&#39;,
- &#39;range NdUnfilled&#39;,
- &#39;mean Electronegativity&#39;,
- &#39;mean NValence&#39;,
- &#39;mode NValence&#39;,
- &#39;mode SpaceGroupNumber&#39;,
- &#39;mean NpUnfilled&#39;,
- &#39;avg_dev Column&#39;,
- &#39;avg_dev NsUnfilled&#39;,
- &#39;mean CovalentRadius&#39;,
- &#39;mean AtomicWeight&#39;,
- &#39;mode NdValence&#39;,
- &#39;maximum NfValence&#39;,
- &#39;avg_dev NdValence&#39;,
- &#39;maximum NfUnfilled&#39;,
- &#39;mode CovalentRadius&#39;,
- &#39;maximum GSvolume_pa&#39;,
- &#39;mean NfValence&#39;,
- &#39;mode NfUnfilled&#39;,
- &#39;maximum Row&#39;,
- &#39;avg_dev NfValence&#39;,
- &#39;mean Column&#39;,
- &#39;minimum NsUnfilled&#39;,
- &#39;mean GSmagmom&#39;,
- &#39;minimum MeltingT&#39;,
- &#39;minimum NfUnfilled&#39;,
- &#39;range SpaceGroupNumber&#39;,
- &#39;minimum NValence&#39;,
- &#39;avg_dev NValence&#39;,
- &#39;mean NsUnfilled&#39;,
- &#39;mean NfUnfilled&#39;,
- &#39;maximum NValence&#39;,
- &#39;maximum NpUnfilled&#39;,
- &#39;avg_dev NUnfilled&#39;,
- &#39;maximum Electronegativity&#39;,
- &#39;minimum GSbandgap&#39;,
- &#39;avg_dev NpUnfilled&#39;,
- &#39;range AtomicWeight&#39;,
- &#39;avg_dev MeltingT&#39;,
- &#39;range NValence&#39;,
- &#39;range Column&#39;,
- &#39;mode MendeleevNumber&#39;,
- &#39;mean SpaceGroupNumber&#39;,
- &#39;range NdValence&#39;,
- &#39;maximum AtomicWeight&#39;,
- &#39;minimum NpValence&#39;,
- &#39;avg_dev SpaceGroupNumber&#39;,
- &#39;avg_dev Electronegativity&#39;,
- &#39;mode AtomicWeight&#39;,
- &#39;minimum SpaceGroupNumber&#39;,
- &#39;mean Number&#39;,
- &#39;range MeltingT&#39;,
- &#39;maximum NpValence&#39;,
- &#39;maximum Column&#39;,
- &#39;maximum MeltingT&#39;,
- &#39;mean NUnfilled&#39;,
- &#39;range GSbandgap&#39;,
- &#39;mean NdValence&#39;,
- &#39;range MendeleevNumber&#39;,
- &#39;maximum GSbandgap&#39;,
- &#39;avg_dev CovalentRadius&#39;,
- &#39;minimum Number&#39;,
- &#39;range Number&#39;,
- &#39;minimum NsValence&#39;,
- &#39;mean MendeleevNumber&#39;,
- &#39;range NsUnfilled&#39;,
- &#39;minimum Column&#39;,
- &#39;mode NdUnfilled&#39;,
- &#39;mode Number&#39;,
- &#39;maximum CovalentRadius&#39;,
- &#39;minimum NdUnfilled&#39;,
- &#39;minimum NpUnfilled&#39;,
- &#39;avg_dev Row&#39;,
- &#39;maximum GSmagmom&#39;,
- &#39;range NpValence&#39;,
- &#39;range NUnfilled&#39;,
- &#39;range NpUnfilled&#39;,
- &#39;minimum CovalentRadius&#39;,
- &#39;maximum NdUnfilled&#39;,
- &#39;mean Row&#39;,
- &#39;minimum NUnfilled&#39;,
- &#39;avg_dev Number&#39;,
- &#39;avg_dev NpValence&#39;,
- &#39;range Row&#39;,
- &#39;mean NdUnfilled&#39;,
- &#39;range GSmagmom&#39;,
- &#39;avg_dev GSbandgap&#39;,
- &#39;maximum NsValence&#39;,
- &#39;maximum Number&#39;,
- &#39;maximum NUnfilled&#39;,
- &#39;mode NsUnfilled&#39;,
- &#39;minimum NdValence&#39;,
- &#39;avg_dev GSvolume_pa&#39;,
- &#39;range NfValence&#39;,
- &#39;mode Column&#39;,
- &#39;mode GSmagmom&#39;,
- &#39;avg_dev GSmagmom&#39;,
- &#39;mode NsValence&#39;,
- &#39;minimum NfValence&#39;,
- &#39;avg_dev NsValence&#39;,
- &#39;maximum NdValence&#39;,
- &#39;range Electronegativity&#39;,
- &#39;mode NpValence&#39;,
- &#39;mean GSvolume_pa&#39;,
- &#39;maximum SpaceGroupNumber&#39;,
- &#39;range CovalentRadius&#39;,
+<pre>[&#39;mean NfUnfilled&#39;,
  &#39;maximum MendeleevNumber&#39;,
- &#39;avg_dev MendeleevNumber&#39;,
- &#39;mode NUnfilled&#39;,
- &#39;mode GSbandgap&#39;,
- &#39;minimum GSvolume_pa&#39;,
- &#39;minimum GSmagmom&#39;,
- &#39;mode NpUnfilled&#39;,
- &#39;mode MeltingT&#39;,
- &#39;minimum MendeleevNumber&#39;,
- &#39;minimum AtomicWeight&#39;,
- &#39;range NsValence&#39;,
- &#39;avg_dev NfUnfilled&#39;,
- &#39;mode NfValence&#39;,
- &#39;mean NsValence&#39;,
- &#39;minimum Row&#39;,
- &#39;mean NpValence&#39;,
- &#39;avg_dev NdUnfilled&#39;,
- &#39;range NfUnfilled&#39;,
- &#39;maximum NsUnfilled&#39;,
- &#39;mode Electronegativity&#39;,
- &#39;avg_dev AtomicWeight&#39;,
- &#39;mode Row&#39;,
- &#39;mean MeltingT&#39;,
- &#39;mode GSvolume_pa&#39;,
+ &#39;mode Column&#39;,
+ &#39;mean GSmagmom&#39;,
  &#39;mean GSbandgap&#39;,
- &#39;minimum Electronegativity&#39;]</pre>
+ &#39;minimum GSvolume_pa&#39;,
+ &#39;avg_dev NpUnfilled&#39;,
+ &#39;mean SpaceGroupNumber&#39;,
+ &#39;mean Row&#39;,
+ &#39;mean CovalentRadius&#39;]</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="ElementFraction">ElementFraction<a class="anchor-link" href="#ElementFraction">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[55]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Adds a column for every element. Values are fraction of atoms that belong to that element.</span>
+<span class="n">ep_frac</span> <span class="o">=</span> <span class="n">ElementFraction</span><span class="p">()</span>
+<span class="n">df_feat</span> <span class="o">=</span> <span class="n">ep_frac</span><span class="o">.</span><span class="n">featurize_dataframe</span><span class="p">(</span><span class="n">df_feat</span><span class="p">,</span> <span class="n">col_id</span> <span class="o">=</span> <span class="s2">&quot;composition&quot;</span><span class="p">,</span> <span class="n">ignore_errors</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[65]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_feat</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[65]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>chemicalFormula</th>
+      <th>Crystallinity</th>
+      <th>Density</th>
+      <th>flatFormula</th>
+      <th>composition</th>
+      <th>comp_int</th>
+      <th>minimum Number</th>
+      <th>maximum Number</th>
+      <th>range Number</th>
+      <th>mean Number</th>
+      <th>...</th>
+      <th>Pu</th>
+      <th>Am</th>
+      <th>Cm</th>
+      <th>Bk</th>
+      <th>Cf</th>
+      <th>Es</th>
+      <th>Fm</th>
+      <th>Md</th>
+      <th>No</th>
+      <th>Lr</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>$\beta$-Si3Al3O3N5</td>
+      <td>Polycrystalline</td>
+      <td>3.091000</td>
+      <td>Si3.0Al3.0O3.0N5.0</td>
+      <td>(Si, Al, O, N)</td>
+      <td>(Si, Al, O, N)</td>
+      <td>7.0</td>
+      <td>14.0</td>
+      <td>7.0</td>
+      <td>10.000000</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>(1-x-y)Al2O3.xAlN.yTiN</td>
+      <td>Polycrystalline</td>
+      <td>4.380000</td>
+      <td>Al2.0O3.0Al0.1N0.1Ti0.1N0.1</td>
+      <td>(Al, O, N, Ti)</td>
+      <td>(Al, O, N, Ti)</td>
+      <td>7.0</td>
+      <td>22.0</td>
+      <td>15.0</td>
+      <td>10.166667</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.5SiO2.(0.5-x)Al2O3.xE2O3</td>
+      <td>Noncrystalline</td>
+      <td>3.520000</td>
+      <td>Si5.0O10.0Al2.0O3.0E0.2O0.3</td>
+      <td>(Si, O, Al, E0+)</td>
+      <td>(Si, O, Al, E0+)</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>3Al2O3.2SiO2</td>
+      <td>Polycrystalline</td>
+      <td>3.097167</td>
+      <td>Al6.0O9.0Si2.0O4.0</td>
+      <td>(Al, O, Si)</td>
+      <td>(Al, O, Si)</td>
+      <td>8.0</td>
+      <td>14.0</td>
+      <td>6.0</td>
+      <td>10.000000</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>3Al2O3.2SiO2.xCordierite</td>
+      <td>Polycrystalline</td>
+      <td>2.720000</td>
+      <td>Al6.0O9.0Si2.0O4.0Co0.1</td>
+      <td>(Al, O, Si, Co)</td>
+      <td>(Al, O, Si)</td>
+      <td>8.0</td>
+      <td>27.0</td>
+      <td>19.0</td>
+      <td>10.080569</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 241 columns</p>
+</div>
 </div>
 
 </div>
@@ -12546,10 +13257,10 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[25]:</div>
+<div class="prompt input_prompt">In&nbsp;[66]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df1_feat</span><span class="p">[</span><span class="s1">&#39;avg_dev MeltingT&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_feat</span><span class="p">[</span><span class="s1">&#39;mode Column&#39;</span><span class="p">]</span>
 </pre></div>
 
 </div>
@@ -12562,18 +13273,74 @@ div#notebook {
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[25]:</div>
+<div class="prompt output_prompt">Out[66]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>1    725.422222
-2    516.580380
-3    421.761600
-4    823.174827
-5    795.404082
-Name: avg_dev MeltingT, dtype: float64</pre>
+<pre>0       15.0
+1       16.0
+2        NaN
+3       16.0
+4       16.0
+5       16.0
+6       16.0
+7       16.0
+8       16.0
+9       16.0
+10      16.0
+11      16.0
+12      16.0
+13       NaN
+14      16.0
+15      16.0
+16      16.0
+17      16.0
+18      16.0
+19      16.0
+20      16.0
+21      16.0
+22      16.0
+23      16.0
+24      16.0
+25      13.0
+26      15.0
+27      13.0
+28      13.0
+29      13.0
+        ... 
+93      16.0
+94      16.0
+95      13.0
+96      13.0
+97      13.0
+98      13.0
+99       4.0
+100      4.0
+101     16.0
+102      6.0
+103      6.0
+104     16.0
+105     16.0
+106     13.0
+107     16.0
+108     16.0
+109     16.0
+110     16.0
+111     16.0
+112     16.0
+113     16.0
+114     16.0
+115     16.0
+116     16.0
+117     16.0
+118     16.0
+119     16.0
+120     16.0
+121     16.0
+3892    13.0
+Name: mode Column, Length: 123, dtype: float64</pre>
 </div>
 
 </div>

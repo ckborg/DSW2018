@@ -1,34 +1,153 @@
 
 # coding: utf-8
 
-# In[14]:
+# In[67]:
 
 
+import numpy as np
 import pandas as pd
+import matplotlib.pyplot as plt
 import re
 
 from matminer.utils.conversions import str_to_composition
 from matminer.featurizers.composition import ElementProperty
+from matminer.featurizers.composition import ElementFraction
 
 
-# In[15]:
+# In[68]:
 
 
 df  = pd.read_pickle('../deliver/NIST_CeramicDataSet.pkl')
 df.head()
 
 
+# # Prepare dataset
+
+# ### Drop non-density materials
+
+# In[27]:
+
+
+# New DataFrame containing only samples with a density value
+df = df[df.isnull()['Density'] == False]
+
+
+# In[28]:
+
+
+df.shape
+
+
+# In[29]:
+
+
+# Plot occurrence of features of the reduced dataset
+df.count().sort_values()[-17:].plot.barh()
+plt.show()
+
+
+# In[30]:
+
+
+# Drop all columns that contain less than 300 entries 
+# (crystallinity is only features left with NaN)
+df = df.dropna(axis=1, thresh=300)
+
+
+# ### Clean up columns
+
+# #### Check if all density units are the same
+
+# In[31]:
+
+
+# Check if all density units are the same, in which case we don't need the units.
+df['Density-units'].unique()
+
+
+# #### Fill missing crystallinity values
+
+# In[33]:
+
+
+# Determine number of polycrystalline / single crystal samples
+N_polyX = df[df['Crystallinity']=='Polycrystalline']['Crystallinity'].shape
+N_singleX = df[df['Crystallinity']=='Single Crystal']['Crystallinity'].shape
+print('Polycrystalline: {0}, Single crystal: {1}'.format(N_polyX, N_singleX))
+
+
+# In[34]:
+
+
+#Fill NaN values in crystallinity with polycrystalline:
+df['Crystallinity'] = df['Crystallinity'].fillna('Polycrystalline')
+
+
+# #### Convert density to float
+
+# In[35]:
+
+
+# Check how density values cannot simply be transformed from string to int
+
+N_errors, N_total = 0, 0
+for entry in df['Density']:
+    try:
+        pd.Series([entry]).astype(float)
+    except:
+        N_errors +=1
+        print(entry)
+    finally:
+        N_total +=1
+
+print('{0} errors in {1} samples'.format(N_errors, N_total))
+
+
+# In[36]:
+
+
+#convert the troublesome density value to a good value
+df.set_value(1185, 'Density', '3.16');
+df.loc[1185,'Density']
+
+
+# In[37]:
+
+
+# Convert densities to float
+df['Density'] = df['Density'].astype(float)
+
+
+# #### Remove useless columns
+
+# In[38]:
+
+
+#Drop columns that don't contain numerical or categorical data
+df = df.drop(['licenses','names','references','Density-units','Density-conditions','Chemical Family'], axis=1)
+
+
+# ### Eliminate duplicate materials
+
+# In[39]:
+
+
+N_unique_entries = len(df['chemicalFormula'].unique())
+print('There are just {0} unique entries in the {1} materials.'.format(N_unique_entries,df_dens.shape[0]))
+
+
+# In[40]:
+
+
+df = df.groupby(['chemicalFormula','Crystallinity'], as_index=False).mean()
+
+
 # ### Composition with Chih-Hao's method
 
-# In[16]:
+# In[41]:
 
 
-df1 = df.copy()
-df1.loc[3892,'chemicalFormula'] = 'BN' #fix 'B-N' to 'BN'
-
-
-# In[17]:
-
+df.loc[3892,'chemicalFormula'] = 'BN' #fix 'B-N' to 'BN'
 
 # Parse the chemicalFormula
 def formula_decompose(formula):
@@ -88,56 +207,106 @@ def formula_reconstruct(composition, x=0.1, y=0.1, z=0.1, w=0.1):
 def formula_parser(formula):
     return formula_reconstruct(formula_decompose(formula))
 
-
-# In[18]:
-
-
-df1["flatFormula"] = df1["chemicalFormula"].map(formula_parser)
-df1.dropna(axis=1).head()
+df["flatFormula"] = df["chemicalFormula"].map(formula_parser)
+df["composition"] = df["flatFormula"].transform(str_to_composition)
 
 
-# In[19]:
+# ### Composition with Chris' method
+
+# In[42]:
 
 
-df1["composition"] =df1["flatFormula"].transform(str_to_composition)
-df1.dropna(axis=1).head()
+# Add second composition column (that doesn't have float stoichiometries; Chris' version)
+def make_chem_form_compatible(formula):
+    
+    for bad_str in ['\.','x', 'y', '\+', '\-', 'z', 'w', '\%', '\^',   # individual characters
+                 'Cordierite','hisker','Sialon', # certain words that show up in some formulas
+                 '\$(.*?)\$',    # LaTeX expressions
+                 '\((.*?)\)',    # bracketed expressions
+                 '^\d{1,2}']:    # leading numbers of 1 or 2 digits
+        formula = re.sub(bad_str, '', formula)
+    
+    return formula
+
+# Convert chemical formulas using above function
+df["comp_int"] = df["chemicalFormula"].transform(make_chem_form_compatible)
+
+# Converting chemical formula to composition object using
+# matminer.utils.conversions.str_to_composition
+# which in turn uses pymatgen.core.composition
+df["comp_int"] = df["comp_int"].transform(str_to_composition)
 
 
-# In[22]:
+# In[43]:
 
 
-df1.shape
+df.head()
 
 
-# In[20]:
+# In[44]:
 
 
-df1_feat = df1.copy()
+sample=5
+print('chemical formula: ', df.loc[sample,'chemicalFormula'])
+print('composition :', df.loc[sample,'composition'])
+print('comp_int :', df.loc[sample,'comp_int'])
 
 
-# In[21]:
+# # Add Additional Features with matminer
+
+# In[45]:
 
 
-# Add features with matminer
+df_feat = df.copy() # Create new DataFrame for featurization
+
+
+# ### ElementProperty
+
+# In[46]:
+
+
+df_feat.shape
+
+
+# In[47]:
+
+
+# Add features with matminer (using the floating point composition by Chih-Hao)
 ep_feat = ElementProperty.from_preset(preset_name="magpie")
-df1_feat = ep_feat.featurize_dataframe(df1_feat, col_id="composition", ignore_errors=True)
+df_feat = ep_feat.featurize_dataframe(df_feat, col_id="composition", ignore_errors=True)
 
 
-# In[23]:
+# In[48]:
 
 
-df1_feat.shape
+df_feat.shape
 
 
-# In[24]:
+# In[51]:
 
 
 # List of the new columns
-list(set(df1_feat.columns) ^ set(df1))
+list(set(df_feat.columns) ^ set(df.columns))[:10]
 
 
-# In[25]:
+# ### ElementFraction
+
+# In[55]:
 
 
-df1_feat['avg_dev MeltingT'].head()
+# Adds a column for every element. Values are fraction of atoms that belong to that element.
+ep_frac = ElementFraction()
+df_feat = ep_frac.featurize_dataframe(df_feat, col_id = "composition", ignore_errors = True)
+
+
+# In[65]:
+
+
+df_feat.head()
+
+
+# In[66]:
+
+
+df_feat['mode Column']
 
