@@ -12,7 +12,7 @@ Investigation of a structural ceramics database (WebSCD) curated by the National
 
 Most represented mechanical properties: Elastic modulus, flexural strength, fracture toughness.
 
-![plot of most represented propeties](/images/properties.png =250x)
+![plot of most represented propeties](/images/properties.png)
 
 
 ## Team members
