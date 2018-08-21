@@ -19,12 +19,15 @@ Most represented mechanical properties: Elastic modulus, flexural strength, frac
 Data distribution for properties of interest:
 
 * Flexural strength
+
 ![distribution](/images/flexural_strength.png)
 
 * Fracture toughness
+
 ![distribution](/images/fracture_toughness.png)
 
 * Elastic modulus
+
 ![distribution](/images/elastic_modulus.png)
 
 
@@ -32,25 +35,31 @@ Data distribution for properties of interest:
 Random forest regression:
 
 * Flexural strength
+
 ![prediction vs. actual curve](/images/flexural_rf.png)
 
 * Fracture toughness
+
 ![prediction vs. actual curve](/images/fracture_rf.png)
 
 * Elastic modulus
+
 ![prediction vs. actual curve](/images/elastic_rf.png)
 
 
 Important features:
 
 * Flexural strength
-![Important features](/images/flexural_rf.png)
+
+![Important features](/images/flexural_features.png)
 
 * Fracture toughness
-![Important features](/images/fracture_rf.png)
+
+![Important features](/images/fracture_features.png)
 
 * Elastic modulus
-![Important features](/images/elastic_rf.png)
+
+![Important features](/images/elastic_features.png)
 
 
 ## Team members
