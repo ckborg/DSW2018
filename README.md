@@ -9,10 +9,48 @@ Investigation of a structural ceramics database (WebSCD) curated by the National
 ## Results at-a-glance
 
 ~4000 material entries
+Matminer was used to generate features based on composition.
+
 
 Most represented mechanical properties: Elastic modulus, flexural strength, fracture toughness.
 
 ![plot of most represented propeties](/images/properties.png)
+
+Data distribution for properties of interest:
+
+* Flexural strength
+![distribution](/images/flexural_strength.png)
+
+* Fracture toughness
+![distribution](/images/fracture_toughness.png)
+
+* Elastic modulus
+![distribution](/images/elastic_modulus.png)
+
+
+
+Random forest regression:
+
+* Flexural strength
+![prediction vs. actual curve](/images/flexural_rf.png)
+
+* Fracture toughness
+![prediction vs. actual curve](/images/fracture_rf.png)
+
+* Elastic modulus
+![prediction vs. actual curve](/images/elastic_rf.png)
+
+
+Important features:
+
+* Flexural strength
+![Important features](/images/flexural_rf.png)
+
+* Fracture toughness
+![Important features](/images/fracture_rf.png)
+
+* Elastic modulus
+![Important features](/images/elastic_rf.png)
 
 
 ## Team members
